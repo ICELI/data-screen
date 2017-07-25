@@ -2,7 +2,12 @@
   "name": "data-screen",
   "version": "1.0.0",
   "description": "数据大屏",
-  "main": "index.js",
+  "scripts": {
+    "scss": "node-sass --watch ./src/assets/css/index.scss ./src/assets/css/all.css  --output-style compressed --source-map true"
+  },
   "author": "ICELI <woticeli@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "node-sass": "^4.5.3"
+  }
 }
