@@ -4,3 +4,4 @@
 
 const echarts = require('echarts');
 window.echarts = echarts;
+const world = require('./assets/js/world');
