@@ -1,0 +1,8 @@
+{
+  "name": "data-screen",
+  "version": "1.0.0",
+  "description": "数据大屏",
+  "main": "index.js",
+  "author": "ICELI <woticeli@gmail.com>",
+  "license": "MIT"
+}
