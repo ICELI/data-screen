@@ -20,7 +20,7 @@ $brand-danger: #ea6262 !default; //== 脚手架
 //
 //## 一些全局样式设置
 //** `<body>`的背景色.
-$body-bg: #fff !default; //** `<body>`上的全局文本颜色.
+$body-bg: #0b172d !default; //** `<body>`上的全局文本颜色.
 $text-color: $gray-dark !default; //** 全局文本链接颜色.
 $link-color: $brand-primary !default; //** 通过`darken()` 函数设置鼠标悬停颜色.
 $link-hover-color: darken($link-color, 15%) !default; //** 链接悬停样式.

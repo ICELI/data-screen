@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "数据大屏",
   "scripts": {
-    "scss": "node-sass --watch ./src/assets/css/index.scss ./src/assets/css/all.css  --output-style compressed --source-map true"
+    "dev": "webpack --progress --hide-modules --config ./build/webpack.config.js",
+    "scss": "node-sass --watch ./src/assets/css/index.scss ./dist/screen.css  --output-style compressed --source-map true"
   },
   "author": "ICELI <woticeli@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "node-sass": "^4.5.3"
+    "echarts": "^3.6.2",
+    "node-sass": "^4.5.3",
+    "webpack": "^3.3.0"
   }
 }
