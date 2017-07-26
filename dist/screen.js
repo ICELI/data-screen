@@ -10313,7 +10313,7 @@ if (typeof __DEV__ === 'undefined') {
         // ancestor element, so we should make sure el is positioned (e.g., not position:static).
         // BTW1, Webkit don't return the same results as FF in non-simple cases (like add
         // zoom-factor, overflow / opacity layers, transforms ...)
-        // BTW2, (ev.offsetY || ev.pageY - $(ev.target).offset().top) is not correct in preserve-3d.
+        // BTW2, (ev.offsetY || ev.pageY - $(ev.target).offset().top) is not correct in preserve-3d.html.
         // <https://bugs.jquery.com/ticket/8523#comment:14>
         // BTW3, In ff, offsetX/offsetY is always 0.
         else if (env.browser.firefox && e.layerX != null && e.layerX !== e.offsetX) {

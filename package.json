@@ -4,7 +4,7 @@
   "description": "数据大屏",
   "scripts": {
     "dev": "webpack --progress --hide-modules --config ./build/webpack.config.js",
-    "scss": "node-sass --watch ./src/assets/css/index.scss ./dist/screen.css  --output-style compressed --source-map true"
+    "scss": "node-sass --watch ./src/assets/css/index.scss ./src/assets/css/screen.css  --output-style compressed --source-map true"
   },
   "author": "ICELI <woticeli@gmail.com>",
   "license": "MIT",

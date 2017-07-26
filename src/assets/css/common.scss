@@ -1,0 +1,114 @@
+.e4b-bg {
+  background: #0b172d url(../img/e4b-bg.png) no-repeat top center;
+}
+
+.e4b-title {
+  width: 684px;
+  height: 103px;
+  margin: 0 auto;
+  padding-top: 23px;
+  background: url(../img/e4b-title-bg.png);
+  text-align: center;
+}
+
+// 旋转
+.carousel-floor {
+/*  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1200px;
+  height: 1200px;
+
+  background: -webkit-radial-gradient(center center, 600px 600px, rgba(50, 50, 50, 1), rgba(0, 0, 0, 0));
+  background: -moz-radial-gradient(center center, 600px 600px, rgba(50, 50, 50, 1), rgba(0, 0, 0, 0));
+  background: -ms-radial-gradient(center center, 600px 600px, rgba(50, 50, 50, 1), rgba(0, 0, 0, 0));
+  background: -o-radial-gradient(center center, 600px 600px, rgba(50, 50, 50, 1), rgba(0, 0, 0, 0));
+  background: radial-gradient(center center, 600px 600px, rgba(50, 50, 50, 1), rgba(0, 0, 0, 0));
+
+  margin-left: -600px;
+  margin-top: -600px;
+  -webkit-transform: translateY(200px) rotateX(90deg);
+  -moz-transform: translateY(200px) rotateX(90deg);
+  -ms-transform: translateY(200px) rotateX(90deg);
+  -o-transform: translateY(200px) rotateX(90deg);
+  transform: translateY(200px) rotateX(90deg);*/
+}
+
+#carousel {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  margin: 210px auto;
+  background: none;
+
+  -webkit-transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  -moz-transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  -ms-transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  -o-transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+#carousel div.hid {
+  position: absolute;
+  left: 50%;
+  margin-left: -136px;
+  margin-top: -86px;
+  top: 50%;
+  padding: 8px;
+  border:2px solid #2788e8;
+  background-size: 100% 100%;
+  font-size: 50px;
+  -webkit-transition: 1s all ease;
+  -moz-transition: 1s all ease;
+  -ms-transition: 1s all ease;
+  -o-transition: 1s all ease;
+  transition: 1s all ease;
+
+  width: 276px;
+  height: 176px;
+
+  -webkit-transform: rotateY(0deg) translateZ(0px);
+  -moz-transform: rotateY(0deg) translateZ(0px);
+  -ms-transform: rotateY(0deg) translateZ(0px);
+  -o-transform: rotateY(0deg) translateZ(0px);
+  transform: rotateY(0deg) translateZ(0px);
+
+  background-color: #102542;
+  background-color: rgba(16, 37, 66, .8);
+  box-shadow: 0 0 10px #2788e8;
+}
+
+#carousel div.img {
+  position: absolute;
+  margin: 0;
+  top: 10px;
+  left: 10px;
+  width: 254px;
+  height: 154px;
+  background-size: cover;
+  background-origin: content-box;
+  background-repeat: no-repeat;
+  .logo {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 76px;
+    height: 76px;
+    margin-top: 26px;
+    margin-left: -41px;
+    padding: 6px;
+    background-color: #2788e8;
+    border-radius: 50%;
+    background-size: contain;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+    background-position: center;
+
+  }
+}

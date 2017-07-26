@@ -2,9 +2,178 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>E4B-EN</title>
+    <link rel="stylesheet" href="../../src/assets/css/screen.css">
+    <link rel="stylesheet" href="../../src/assets/css/pure-min.css">
 </head>
-<body>
+<body class="e4b-bg">
+<div class="e4b-title">
+    <img src="../assets/img/e4b-title-en.png" alt="聚贸E4B跨境电商全球体系">
+</div>
+<div id="carousel">
+    <!--<div class="carousel-floor"></div>-->
+</div>
+<script>
+    var carouselData = [{
+        bannerUrl: '../assets/img/mock/e4b-site-1.png',
+        logoUrl: '../assets/img/mock/e4b-logo-1.png'
+    }, {
+        bannerUrl: '../assets/img/mock/e4b-site-3.png',
+        logoUrl: '../assets/img/mock/e4b-logo-3.png'
+    }, {
+        bannerUrl: '../assets/img/mock/e4b-site-2.png',
+        logoUrl: '../assets/img/mock/e4b-logo-2.png'
+    }, {
+        bannerUrl: '../assets/img/mock/e4b-site-4.png',
+        logoUrl: '../assets/img/mock/e4b-logo-4.png'
+//    }, {
+//        bannerUrl: '../assets/img/mock/e4b-site-5.png',
+//        logoUrl: '../assets/img/mock/e4b-logo-5.png'
+//    }, {
+//        bannerUrl: '../assets/img/mock/e4b-site-6.png',
+//        logoUrl: '../assets/img/mock/e4b-logo-6.png'
+    }];
+    
+    window.onload = function () {
+        var M = carouselData.length;
+        var oDiv = document.getElementById('carousel');
+        var aDiv = oDiv.getElementsByClassName('hid');
+        var x = -5;
+        var y = 0;
 
+        var speedX = 0;
+        var speedY = 0;
+
+        for (var i = 1; i <= M; i++) {
+            var oNewDiv = document.createElement('div');
+
+            oNewDiv.className = 'hid';
+
+            (function (oNewDiv, i) {
+                setTimeout(function () {
+//                    oNewDiv.style.WebkitTransform = 'rotateY(' + (360 * (i - 1) / M) + 'deg) translateZ(400px)';
+//                    oNewDiv.style.MozTransform = 'rotateY(' + (360 * (i - 1) / M) + 'deg) translateZ(400px)';
+//                    oNewDiv.style.msTransform = 'rotateY(' + (360 * (i - 1) / M) + 'deg) translateZ(400px)';
+//                    oNewDiv.style.OTransform = 'rotateY(' + (360 * (i - 1) / M) + 'deg) translateZ(400px)';
+                    oNewDiv.style.transform = 'rotateY(' + (360 * (i - 1) / M) + 'deg) translateZ(400px)';
+
+                    setTimeout(function () {
+                        if (i == M) fixAll();
+
+                        setTimeout(function () {
+
+//                            oNewDiv.style.WebkitTransition = 'none';
+//                            oNewDiv.style.MozTransition = 'none';
+//                            oNewDiv.style.msTransition = 'none';
+//                            oNewDiv.style.OTransition = 'none';
+                            oNewDiv.style.transition = 'none';
+
+                        }, 1000);
+                    }, 3000);
+                }, (M + 3 - i) * 200);
+            })(oNewDiv, i);
+
+            oNewDiv.degY = 360 * (i - 1) / M;
+
+            oNewDiv.innerHTML = '<div class="img"><div class="logo"></div></div>';
+            oNewDiv = oNewDiv.getElementsByClassName('img')[0];
+
+            oNewDiv.style.backgroundImage = 'url(' + carouselData[i - 1].bannerUrl + ')';
+            oNewDiv.getElementsByClassName('logo')[0].style.backgroundImage = 'url(' + carouselData[i - 1].logoUrl + ')';
+
+            oDiv.appendChild(oNewDiv.parentNode);
+        }
+
+        document.onmousedown = function (ev) {
+            var oEvent = ev || event;
+            var mouseStartX = oEvent.clientX;
+            var mouseStartY = oEvent.clientY;
+
+            var startX = x;
+            var startY = y;
+
+            var lastX = mouseStartX;
+            var lastY = mouseStartY;
+
+            speedX = speedY = 0;
+
+            document.onmousemove = function (ev) {
+                var oEvent = ev || event;
+
+                y = startY + (oEvent.clientX - mouseStartX) / 10;
+                x = startX - (oEvent.clientY - mouseStartY) / 10;
+
+                speedX = (oEvent.clientX - lastX) / 5;
+                speedY = (oEvent.clientY - lastY) / 5;
+
+                fixAll();
+
+                lastX = oEvent.clientX;
+                lastY = oEvent.clientY;
+            };
+
+            document.onmouseup = function () {
+                document.onmousemove = null;
+                document.onmouseup = null;
+
+                startMove();
+            };
+
+            stopMove();
+
+            return false;
+        };
+
+        var timer = null;
+
+        function startMove() {
+            clearInterval(timer);
+            timer = setInterval(function () {
+                x -= speedY;
+                y += speedX;
+
+                speedY *= 0.93;
+                speedX *= 0.93;
+
+                if (Math.abs(speedX) < 0.1 && Math.abs(speedY) < 0.1)
+                    stopMove();
+
+                fixAll();
+            }, 30);
+        }
+
+        function stopMove() {
+            clearInterval(timer);
+        }
+
+        function fixAll() {
+//            oDiv.style.WebkitTransform = 'perspective(1000px) rotateX(' + x + 'deg) rotateY(' + y + 'deg)';
+//            oDiv.style.MozTransform = 'perspective(1000px) rotateX(' + x + 'deg) rotateY(' + y + 'deg)';
+//            oDiv.style.msTransform = 'perspective(1000px) rotateX(' + x + 'deg) rotateY(' + y + 'deg)';
+//            oDiv.style.OTransform = 'perspective(1000px) rotateX(' + x + 'deg) rotateY(' + y + 'deg)';
+            oDiv.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(' + y + 'deg)';
+
+            for (var i = 0; i < aDiv.length; i++) {
+                var deg = aDiv[i].degY + y;
+                var a = (deg % 360 + 360) % 360;
+
+                a = Math.abs(180 - a);
+
+                var d = 0.1 + (a / 180) * 0.9;
+
+                if (d < 0.2) d = 0.2;
+
+                aDiv[i].style.opacity = d;
+
+                //aDiv[i].innerHTML=parseInt(a);
+            }
+        }
+
+        // todo
+        setInterval(function () {
+            
+        }, 1000)
+    };
+</script>
 </body>
 </html>
