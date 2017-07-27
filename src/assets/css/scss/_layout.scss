@@ -1,6 +1,11 @@
 @charset "UTF-8";
+@font-face {
+  font-family: "PingFang";
+  src: url(../fonts/PingFang.ttc); // todo 太大了超过30M
+}
 html, body {
   height: 100%;
+  font-family: 'PingFang', serif;
   color: $brand-default;
 }
 
@@ -104,5 +109,23 @@ html, body {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes bounceInLeft {
+  0% {
+    transform: translate3d(0,0,0);
+  }
+  100% {
+    transform: translate3d(220%,0,0);
+  }
+}
+
+@keyframes bounceInRight {
+  0% {
+    transform: translate3d(0,0,0);
+  }
+  100% {
+    transform: translate3d(-220%,0,0);
   }
 }
