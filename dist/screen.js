@@ -17528,7 +17528,7 @@ if (typeof __DEV__ === 'undefined') {
         /**
          * Notice: only enable needed types. For example, if 'zoom'
          * is not needed, 'zoom' should not be enabled, otherwise
-         * default mousewheel behaviour (scroll page) will be disabled.
+         * default mousewheel behaviour (scroll.html page) will be disabled.
          *
          * @param  {boolean|string} [controlType=true] Specify the control type,
          *                          which can be null/undefined or true/false
@@ -17644,8 +17644,8 @@ if (typeof __DEV__ === 'undefined') {
         }
 
         // Convenience:
-        // Mac and VM Windows on Mac: scroll up: zoom out.
-        // Windows: scroll up: zoom in.
+        // Mac and VM Windows on Mac: scroll.html up: zoom out.
+        // Windows: scroll.html up: zoom in.
         var zoomDelta = e.wheelDelta > 0 ? 1.1 : 1 / 1.1;
         zoom.call(this, e, zoomDelta, e.offsetX, e.offsetY);
     }

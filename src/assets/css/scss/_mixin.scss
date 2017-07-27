@@ -284,3 +284,37 @@
 @mixin text-hide() {
     @include hide-text;
 }
+
+// 排版
+
+// [converter] $parent hack
+@mixin text-emphasis-variant($parent, $color) {
+    #{$parent} {
+        color: $color;
+    }
+    a#{$parent}:hover,
+    a#{$parent}:focus {
+        color: darken($color, 10%);
+    }
+}
+// 上下文背景
+
+// [converter] $parent hack
+@mixin bg-variant($parent, $color) {
+    #{$parent} {
+        background-color: $color;
+    }
+    a#{$parent}:hover,
+    a#{$parent}:focus {
+        background-color: darken($color, 10%);
+    }
+}
+
+// 文本超出隐藏
+// 需要inline-block或block才能获得正确的样式
+
+@mixin text-overflow() {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

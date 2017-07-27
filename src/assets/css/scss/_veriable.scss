@@ -11,12 +11,12 @@ $gray-dark: lighten($gray-base, 20%) !default; // #333
 $gray: lighten($gray-base, 33.5%) !default; // #555
 $gray-light: lighten($gray-base, 46.7%) !default; // #777
 $gray-lighter: lighten($gray-base, 93.5%) !default; // #eee
-$brand-default: #f6f6f6 !default;
-$brand-primary: #0e62c7 !default;
-$brand-success: #68b828 !default;
-$brand-info: #5bc0de !default;
-$brand-warning: #f2aa00 !default;
-$brand-danger: #ea6262 !default; //== 脚手架
+$brand-default: #c6ecff !default;
+$brand-primary: #00fff8 !default;
+$brand-success: #08ffa0 !default;
+$brand-info: #ebebeb !default;
+$brand-warning: #ffbb17 !default;
+$brand-danger: #ff005c !default; //== 脚手架
 //
 //## 一些全局样式设置
 //** `<body>`的背景色.
