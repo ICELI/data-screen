@@ -115,9 +115,12 @@ html, body {
 @keyframes bounceInLeft {
   0% {
     transform: translate3d(0,0,0);
+    opacity: 0;
+  }
+  25% {
     opacity: 1;
   }
-  50% {
+  75% {
     opacity: 1;
   }
   100% {
@@ -129,9 +132,12 @@ html, body {
 @keyframes bounceInRight {
   0% {
     transform: translate3d(0,0,0);
+    opacity: 0;
+  }
+  25% {
     opacity: 1;
   }
-  50% {
+  75% {
     opacity: 1;
   }
   100% {
