@@ -1,11 +1,11 @@
 @charset "UTF-8";
 @font-face {
   font-family: "PingFang";
-  src: url(../fonts/PingFang.ttc); // todo 太大了超过30M
+  //src: url(../fonts/PingFang.ttc); // todo 太大了超过30M
 }
 html, body {
   height: 100%;
-  font-family: 'PingFang', serif;
+  //font-family: 'PingFang', serif;
   color: $brand-default;
 }
 
@@ -46,7 +46,7 @@ html, body {
   height: 210px;
   margin: 13px 0;
   padding-left: 28px;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 34px;
   color: $brand-default;
   overflow: hidden;
@@ -103,45 +103,7 @@ html, body {
   }
 }
 
-@keyframes rotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes bounceInLeft {
-  0% {
-    transform: translate3d(0,0,0);
-    opacity: 0;
-  }
-  25% {
-    opacity: 1;
-  }
-  75% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(220%,0,0);
-    opacity: 0;
-  }
-}
-
-@keyframes bounceInRight {
-  0% {
-    transform: translate3d(0,0,0);
-    opacity: 0;
-  }
-  25% {
-    opacity: 1;
-  }
-  75% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(-220%,0,0);
-    opacity: 0;
-  }
+.doughnut-legend-list {
+  position: relative;
+  height: 100%;
 }
