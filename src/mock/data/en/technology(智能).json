@@ -1,0 +1,92 @@
+{
+    "data": {
+        "demandNum": [
+            {
+                "total": "工厂类",
+                "increase": "2861"
+            },
+            {
+                "total": "生产类",
+                "increase": "1753"
+            },
+            {
+                "total": "管理类",
+                "increase": "1564"
+            },
+            {
+                "total": "销售类",
+                "increase": "1826"
+            },
+            {
+                "total": "供应链类",
+                "increase": "1751"
+            },
+            {
+                "total": "ERP软件",
+                "increase": "1237"
+            },
+            {
+                "total": "物流",
+                "increase": "987"
+            },
+            {
+                "total": "OA软件",
+                "increase": "812"
+            },
+            {
+                "total": "数据分析",
+                "increase": "1273"
+            },
+            {
+                "total": "仓库管理",
+                "increase": "721"
+            },
+            {
+                "total": "其它类",
+                "increase": "534"
+            },
+            {
+                "total": "总计",
+                "increase": "9141"
+            }
+        ],
+        "solutionNum": [
+            {
+                "total": "智能生产",
+                "increase": "1097"
+            },
+            {
+                "total": "智能管理",
+                "increase": "842"
+            },
+            {
+                "total": "智能IT",
+                "increase": "477"
+            },
+            {
+                "total": "智能销售",
+                "increase": "583"
+            },
+            {
+                "total": "智能供应链",
+                "increase": "436"
+            },
+            {
+                "total": "智能物流",
+                "increase": "523"
+            },
+            {
+                "total": "智能工厂",
+                "increase": "432"
+            },
+            {
+                "total": "智能服务",
+                "increase": "823"
+            },
+            {
+                "total": "总计",
+                "increase": "5213"
+            }
+        ]
+    }
+}

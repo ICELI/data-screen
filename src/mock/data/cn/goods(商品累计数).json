@@ -1,0 +1,54 @@
+{
+    "data": {
+        "goodsNum": [
+            {
+                "industry": "食品",
+                "num": "73"
+            },
+            {
+                "industry": "农产品",
+                "num": "45"
+            },
+            {
+                "industry": "工业品",
+                "num": "327"
+            },
+            {
+                "industry": "矿产",
+                "num": "15"
+            },
+            {
+                "industry": "机械",
+                "num": "126"
+            },
+            {
+                "industry": "有色",
+                "num": "37"
+            },
+            {
+                "industry": "钢铁",
+                "num": "73"
+            },
+            {
+                "industry": "煤炭",
+                "num": "24"
+            },
+            {
+                "industry": "石油",
+                "num": "19"
+            },
+            {
+                "industry": "消费品",
+                "num": "298"
+            },
+            {
+                "industry": "化工",
+                "num": "85"
+            },
+            {
+                "industry": "总计",
+                "num": "1122万"
+            }
+        ]
+    }
+}

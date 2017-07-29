@@ -576,6 +576,11 @@
     computed: {},
     components: {},
     created() {
+      this.Api.topCarousel().then((res) => {
+        if (res.data.statusCode === 200 && res.data.rows.length > 0) {
+          this.carousels = res.data.rows;
+        }
+      });
     },
     methods: {},
     mounted() {

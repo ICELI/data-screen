@@ -1,0 +1,48 @@
+{
+    "data": {
+        "serviceCompNum": [
+            {
+                "serviceType": "贸易型",
+                "num": "12489"
+            },
+            {
+                "serviceType": "工贸一体型",
+                "num": "16489+"
+            },
+            {
+                "serviceType": "工厂型",
+                "num": "10256"
+            },
+            {
+                "serviceType": "其它",
+                "num": "8495"
+            },
+            {
+                "serviceType": "总计",
+                "num": "47729"
+            }
+        ],
+        "financialProdNum": [
+            {
+                "financeType": "应收账款融资",
+                "percent": "44%"
+            },
+            {
+                "financeType": "订单融资",
+                "percent": "21%"
+            },
+            {
+                "financeType": "质押融资",
+                "percent": "15%"
+            },
+            {
+                "financeType": "担保融资",
+                "percent": "8%"
+            },
+            {
+                "financeType": "其它",
+                "percent": "12%"
+            }
+        ]
+    }
+}

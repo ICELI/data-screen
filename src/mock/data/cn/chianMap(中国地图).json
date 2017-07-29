@@ -1,0 +1,179 @@
+{
+    "data": {
+        "chinaMap": [
+            {
+                "region": "东部",
+                "industries": "消费品 工业品 农产品等",
+                "goods": "发布商品295万"
+            },
+            {
+                "region": "南部",
+                "industries": "化工 食品 工业品等",
+                "goods": "发布商品257万"
+            },
+            {
+                "region": "西部",
+                "industries": "有色 矿产 金属 食品等",
+                "goods": "发布商品186万"
+            },
+            {
+                "region": "北部",
+                "industries": "消费品 工业品 化工等",
+                "goods": "发布商品169万"
+            },
+            {
+                "region": "中部",
+                "industries": "消费品 工业品 农业品等",
+                "goods": "发布商品207万"
+            }
+        ],
+        "regionCompanies": [
+            {
+                "region": "东部",
+                "provinces": [
+                    {
+                        "province": "江苏",
+                        "compNum": "30094"
+                    },
+                    {
+                        "province": "上海",
+                        "compNum": "2506"
+                    },
+                    {
+                        "province": "浙江",
+                        "compNum": "41085"
+                    },
+                    {
+                        "province": "福建",
+                        "compNum": "4517"
+                    },
+                    {
+                        "province": "江西",
+                        "compNum": "2935"
+                    },
+                    {
+                        "province": "安徽",
+                        "compNum": "7299"
+                    }
+                ]
+            },
+            {
+                "region": "南部",
+                "provinces": [
+                    {
+                        "province": "湖北",
+                        "compNum": "4346"
+                    },
+                    {
+                        "province": "湖南",
+                        "compNum": "10694"
+                    },
+                    {
+                        "province": "广东",
+                        "compNum": "38310"
+                    },
+                    {
+                        "province": "广西",
+                        "compNum": "9625"
+                    },
+                    {
+                        "province": "海南",
+                        "compNum": "1120"
+                    }
+                ]
+            },
+            {
+                "region": "西部",
+                "provinces": [
+                    {
+                        "province": "新疆",
+                        "compNum": "4184"
+                    },
+                    {
+                        "province": "青海",
+                        "compNum": "2333"
+                    },
+                    {
+                        "province": "甘肃",
+                        "compNum": "4967"
+                    },
+                    {
+                        "province": "宁夏",
+                        "compNum": "3113"
+                    },
+                    {
+                        "province": "陕西",
+                        "compNum": "8010"
+                    },
+                    {
+                        "province": "四川",
+                        "compNum": "4700"
+                    },
+                    {
+                        "province": "重庆",
+                        "compNum": "2958"
+                    },
+                    {
+                        "province": "贵州",
+                        "compNum": "3314"
+                    },
+                    {
+                        "province": "云南",
+                        "compNum": "3255"
+                    }
+                ]
+            },
+            {
+                "region": "北部",
+                "provinces": [
+                    {
+                        "province": "辽宁",
+                        "compNum": "1030"
+                    },
+                    {
+                        "province": "吉林",
+                        "compNum": "6796"
+                    },
+                    {
+                        "province": "黑龙江",
+                        "compNum": "14534"
+                    },
+                    {
+                        "province": "内蒙古",
+                        "compNum": "1760"
+                    }
+                ]
+            },
+            {
+                "region": "中部",
+                "provinces": [
+                    {
+                        "province": "天津",
+                        "compNum": "4007"
+                    },
+                    {
+                        "province": "河北",
+                        "compNum": "16158"
+                    },
+                    {
+                        "province": "河南",
+                        "compNum": "5216"
+                    },
+                    {
+                        "province": "山东",
+                        "compNum": "4059"
+                    },
+                    {
+                        "province": "山西",
+                        "compNum": "1929"
+                    }
+                ]
+            },
+            {
+                "region": "总计",
+                "province": "",
+                "compNum": "244854"
+            }
+        ]
+    }
+}

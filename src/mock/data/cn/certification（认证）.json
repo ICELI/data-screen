@@ -1,0 +1,98 @@
+{
+    "data": {
+        "coverItemNum": [
+            {
+                "industry": "食品",
+                "itemNum": "181",
+                "companyNum": "8231"
+            },
+            {
+                "industry": "农产品",
+                "itemNum": "71",
+                "companyNum": "11385"
+            },
+            {
+                "industry": "工业品",
+                "itemNum": "151",
+                "companyNum": "110400"
+            },
+            {
+                "industry": "矿产",
+                "itemNum": "87",
+                "companyNum": "5175"
+            },
+            {
+                "industry": "机械",
+                "itemNum": "270",
+                "companyNum": "50370"
+            },
+            {
+                "industry": "有色",
+                "itemNum": "81",
+                "companyNum": "6210"
+            },
+            {
+                "industry": "钢铁",
+                "itemNum": "80",
+                "companyNum": "4140"
+            },
+            {
+                "industry": "煤炭",
+                "itemNum": "61",
+                "companyNum": "1725"
+            },
+            {
+                "industry": "石油",
+                "itemNum": "57",
+                "companyNum": "690"
+            },
+            {
+                "industry": "消费品",
+                "itemNum": "180",
+                "companyNum": "102810"
+            },
+            {
+                "industry": "化工",
+                "itemNum": "162",
+                "companyNum": "29325"
+            },
+            {
+                "industry": "总计",
+                "itemNum": "1381",
+                "companyNum": ""
+            }
+        ],
+        "certifySys": [
+            {
+                "type": "体系认证",
+                "total": "118",
+                "increase": "8"
+            },
+            {
+                "type": "征信服务",
+                "total": "79",
+                "increase": "5"
+            },
+            {
+                "type": "产品认证",
+                "total": "65",
+                "increase": "23"
+            },
+            {
+                "type": "大宗检测",
+                "total": "53",
+                "increase": "26"
+            },
+            {
+                "type": "其他服务",
+                "total": "34",
+                "increase": "12"
+            },
+            {
+                "type": "总计",
+                "total": "349",
+                "increase": ""
+            }
+        ]
+    }
+}

@@ -1,0 +1,268 @@
+{
+    "data": {
+        "worldMap": [
+            {
+                "continent": "欧洲",
+                "typeNum": "231",
+                "detailType": "有色 金属 消费品 矿产",
+                "countryNum": "36"
+            },
+            {
+                "continent": "非洲",
+                "typeNum": "172",
+                "detailType": "矿产 金属 食品 工业品 农产品",
+                "countryNum": "31"
+            },
+            {
+                "continent": "亚洲",
+                "typeNum": "246",
+                "detailType": "化工 工业品 金属 矿产 石油",
+                "countryNum": "38"
+            },
+            {
+                "continent": "北美洲",
+                "typeNum": "207",
+                "detailType": "金属 农业品 消费品 矿产",
+                "countryNum": "10"
+            },
+            {
+                "continent": "南美洲",
+                "typeNum": "179",
+                "detailType": "矿产 金属 食品 工业品 农产品",
+                "countryNum": "11"
+            },
+            {
+                "continent": "大洋洲",
+                "typeNum": "100",
+                "detailType": "钢铁 金属 化工 消费品 食品",
+                "countryNum": "4"
+            }
+        ],
+        "nationalPavilion": [
+            {
+                "continentInfo": {
+                    "continent": "北美洲",
+                    "enContinent": "North America"
+                },
+                "countryInfo": [
+                    {
+                        "country": "美国",
+                        "enCountry": "United States"
+                    },
+                    {
+                        "country": "加拿大",
+                        "enCountry": "Canada"
+                    },
+                    {
+                        "country": "多米尼加",
+                        "enCountry": "Dominican Republic"
+                    },
+                    {
+                        "country": "特立尼达和多巴哥",
+                        "enCountry": "Trinidad and Tobago"
+                    },
+                    {
+                        "country": "巴巴多斯",
+                        "enCountry": "Barbados"
+                    },
+                    {
+                        "country": "牙买加",
+                        "enCountry": "Jamaica"
+                    },
+                    {
+                        "country": "巴哈马",
+                        "enCountry": "Bahamas"
+                    },
+                    {
+                        "country": "墨西哥",
+                        "enCountry": "Mexico"
+                    }
+                ]
+            },
+            {
+                "continentInfo": {
+                    "continent": "南美洲",
+                    "enContinent": "South America"
+                },
+                "countryInfo": [
+                    {
+                        "country": "哥伦比亚",
+                        "enCountry": "Colombia"
+                    },
+                    {
+                        "country": "厄瓜多尔",
+                        "enCountry": "Ecuador"
+                    },
+                    {
+                        "country": "秘鲁",
+                        "enCountry": "Peru"
+                    },
+                    {
+                        "country": "玻利维亚",
+                        "enCountry": "Bolivia"
+                    },
+                    {
+                        "country": "巴西",
+                        "enCountry": "Brazil"
+                    },
+                    {
+                        "country": "乌拉圭",
+                        "enCountry": "Uruguay"
+                    },
+                    {
+                        "country": "智利",
+                        "enCountry": "Chile"
+                    },
+                    {
+                        "country": "委内瑞拉",
+                        "enCountry": "Venezuela"
+                    }
+                ]
+            },
+            {
+                "continentInfo": {
+                    "continent": "非洲",
+                    "enContinent": "Africa"
+                },
+                "countryInfo": [
+                    {
+                        "country": "南非",
+                        "enCountry": "South Africa"
+                    },
+                    {
+                        "country": "津巴布韦",
+                        "enCountry": "Zimbabwe"
+                    },
+                    {
+                        "country": "尼日利亚",
+                        "enCountry": "Nigeria"
+                    },
+                    {
+                        "country": "冈比亚",
+                        "enCountry": "Gambia"
+                    },
+                    {
+                        "country": "加纳",
+                        "enCountry": "Ghana"
+                    },
+                    {
+                        "country": "多哥",
+                        "enCountry": "Togo"
+                    },
+                    {
+                        "country": "莫桑比克",
+                        "enCountry": "Mozambique"
+                    },
+                    {
+                        "country": "坦桑尼亚",
+                        "enCountry": "Tanzania"
+                    }
+                ]
+            },
+            {
+                "continentInfo": {
+                    "continent": "欧洲",
+                    "enContinent": "Europe"
+                },
+                "countryInfo": [
+                    {
+                        "country": "比利时",
+                        "enCountry": "Belgium"
+                    },
+                    {
+                        "country": "德国",
+                        "enCountry": "Germany"
+                    },
+                    {
+                        "country": "爱尔兰",
+                        "enCountry": "Ireland"
+                    },
+                    {
+                        "country": "英国",
+                        "enCountry": "UK"
+                    },
+                    {
+                        "country": "葡萄牙",
+                        "enCountry": "Portugal"
+                    },
+                    {
+                        "country": "西班牙",
+                        "enCountry": "Spain"
+                    },
+                    {
+                        "country": "法国",
+                        "enCountry": "France"
+                    },
+                    {
+                        "country": "摩纳哥",
+                        "enCountry": "Monaco"
+                    }
+                ]
+            },
+            {
+                "continentInfo": {
+                    "continent": "亚洲",
+                    "enContinent": "Asia"
+                },
+                "countryInfo": [
+                    {
+                        "country": "韩国",
+                        "enCountry": "Korea"
+                    },
+                    {
+                        "country": "日本",
+                        "enCountry": "Japan"
+                    },
+                    {
+                        "country": "巴基斯坦",
+                        "enCountry": "Pakistan"
+                    },
+                    {
+                        "country": "越南",
+                        "enCountry": "Vietnam"
+                    },
+                    {
+                        "country": "哈萨克斯坦",
+                        "enCountry": "Kazakhstan"
+                    },
+                    {
+                        "country": "乌兹别克斯坦",
+                        "enCountry": "Uzbekistan"
+                    },
+                    {
+                        "country": "吉尔吉斯斯坦",
+                        "enCountry": "Kyrgyzstan"
+                    },
+                    {
+                        "country": "阿富汗",
+                        "enCountry": "Afghaistan"
+                    }
+                ]
+            },
+            {
+                "continentInfo": {
+                    "continent": "大洋洲",
+                    "enContinent": "Oceania"
+                },
+                "countryInfo": [
+                    {
+                        "country": "巴布亚新几内亚",
+                        "enCountry": "Papuanewguinea"
+                    },
+                    {
+                        "country": "澳大利亚",
+                        "enCountry": "Australia"
+                    },
+                    {
+                        "country": "新西兰",
+                        "enCountry": "NewZealand"
+                    },
+                    {
+                        "country": "斐济",
+                        "enCountry": "Fiji"
+                    }
+                ]
+            }
+        ]
+    }
+}

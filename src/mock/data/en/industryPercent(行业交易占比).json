@@ -1,0 +1,50 @@
+{
+    "data": {
+        "industryPercent": [
+            {
+                "industry": "食品",
+                "percent": "9.5%"
+            },
+            {
+                "industry": "农产品",
+                "percent": "7.5%"
+            },
+            {
+                "industry": "工业品",
+                "percent": "20.5%"
+            },
+            {
+                "industry": "矿产",
+                "percent": "8.5%"
+            },
+            {
+                "industry": "机械",
+                "percent": "10.5%"
+            },
+            {
+                "industry": "有色",
+                "percent": "6.5%"
+            },
+            {
+                "industry": "钢铁",
+                "percent": "5.5%"
+            },
+            {
+                "industry": "煤炭",
+                "percent": "8.5%"
+            },
+            {
+                "industry": "石油",
+                "percent": "11.5%"
+            },
+            {
+                "industry": "消费品",
+                "percent": "6.5%"
+            },
+            {
+                "industry": "化工",
+                "percent": "5.0%"
+            }
+        ]
+    }
+}

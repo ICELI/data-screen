@@ -1,0 +1,48 @@
+{
+    "data": {
+        "declarationAmount": [
+            {
+                "type": "进口",
+                "money": "8"
+            },
+            {
+                "type": "出口",
+                "money": "12"
+            },
+            {
+                "type": "总计",
+                "money": "20"
+            }
+        ],
+        "inOutArea": [
+            {
+                "area": "欧洲",
+                "money": "38"
+            },
+            {
+                "area": "亚洲",
+                "money": "42"
+            },
+            {
+                "area": "非洲",
+                "money": "43"
+            },
+            {
+                "area": "南美洲",
+                "money": "11"
+            },
+            {
+                "area": "北美洲",
+                "money": "16"
+            },
+            {
+                "area": "大洋洲",
+                "money": "8"
+            },
+            {
+                "area": "总计",
+                "money": "158"
+            }
+        ]
+    }
+}
