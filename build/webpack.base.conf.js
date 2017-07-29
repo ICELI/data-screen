@@ -17,9 +17,6 @@ module.exports = {
     path: config.build.assetsRoot,
     filename: '[name].js',
     chunkFilename: '[name].js',  // 定义chunk文件名称生成规则,
-    libraryTarget: 'umd', // 变量定义于根作用域下
-    umdNamedDefine: true, // boolean
-    // 在 UMD 库中使用命名的 AMD 模块
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
@@ -57,11 +54,11 @@ module.exports = {
         loader: 'vue-loader',
         options: vueLoaderConfig
       },
-      {
+/*      {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test')]
-      },
+      },*/
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',

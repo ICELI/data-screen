@@ -13,7 +13,6 @@ import router from './router';
 import lazyLoad from './assets/js/lazyload';
 import * as filters from './filter';
 
-
 Object.keys(filters).forEach((key) => {
   Vue.filter(key, filters[key]);
 });
@@ -28,9 +27,7 @@ Vue.use(lazyLoad);
 const app = new Vue({
   el: '#app',
   data() {
-    return {
-      showFooter: false,
-    };
+    return {};
   },
   router,
   store,
