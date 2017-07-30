@@ -577,9 +577,7 @@
     components: {},
     created() {
       this.Api.topCarousel().then((res) => {
-        if (res.data.statusCode === 200 && res.data.rows.length > 0) {
-          this.carousels = res.data.rows;
-        }
+        console.log(res)
       });
     },
     methods: {},
@@ -692,23 +690,23 @@
       (function () {
 
         const carouselData = [{
-          bannerUrl: '/mock/e4b-site-1.png',
-          logoUrl: '/mock/e4b-logo-1.png',
+          bannerUrl: '/mock/img/e4b-site-1.png',
+          logoUrl: '/mock/img/e4b-logo-1.png',
         }, {
-          bannerUrl: '/mock/e4b-site-3.png',
-          logoUrl: '/mock/e4b-logo-3.png',
+          bannerUrl: '/mock/img/e4b-site-3.png',
+          logoUrl: '/mock/img/e4b-logo-3.png',
         }, {
-          bannerUrl: '/mock/e4b-site-6.png',
-          logoUrl: '/mock/e4b-logo-6.png',
+          bannerUrl: '/mock/img/e4b-site-6.png',
+          logoUrl: '/mock/img/e4b-logo-6.png',
         }, {
-          bannerUrl: '/mock/e4b-site-5.png',
-          logoUrl: '/mock/e4b-logo-5.png',
+          bannerUrl: '/mock/img/e4b-site-5.png',
+          logoUrl: '/mock/img/e4b-logo-5.png',
         }, {
-          bannerUrl: '/mock/e4b-site-2.png',
-          logoUrl: '/mock/e4b-logo-2.png',
+          bannerUrl: '/mock/img/e4b-site-2.png',
+          logoUrl: '/mock/img/e4b-logo-2.png',
         }, {
-          bannerUrl: '/mock/e4b-site-4.png',
-          logoUrl: '/mock/e4b-logo-4.png',
+          bannerUrl: '/mock/img/e4b-site-4.png',
+          logoUrl: '/mock/img/e4b-logo-4.png',
         }];
         // TODO: carousel
         const M = carouselData.length;

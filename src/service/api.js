@@ -2,13 +2,14 @@ import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import { Message } from 'element-ui';
+import mock from './mock';
 
 Vue.use(VueAxios, axios);
 
 // 引入api地址配置
 const API_ADDRESS = '/webapi/v2';
 // eslint-disable-next-line
-const API_ADDRESS2 = `${__webpack_require__.p}mock`;
+const API_ADDRESS2 = `${__webpack_require__.p}mock/data/en`;
 const Api = {};
 
 Api.install = () => {
@@ -27,12 +28,16 @@ Api.install = () => {
   // response响应拦截处理
   Vue.axios.interceptors.response.use((res) => {
     // 请求成功，但是操作不成功时显示后端返回的错误信息
-    if (res.data.statusCode !== 200) {
+    if (res.status !== 200) {
       const msg = Message(res.data.desc || `${res.config.apiName || '获取数据'}失败`);
       console.error(msg.message);
     }
     return res;
   }, (err) => {
+    // TODO: 接口404走mock数据
+    if(mock[err.config.url]) {
+      return Promise.resolve(mock[err.config.url]);
+    }
     // 判断请求是否被取消
     if (Vue.axios.isCancel(err)) {
       console.log('Request canceled', err.message);
@@ -58,7 +63,7 @@ Api.install = () => {
     },
 
     topCarousel() {
-      return Vue.axios.get(`${API_ADDRESS2}/indexBanner.json`, {
+      return Vue.axios.get(`${API_ADDRESS2}/certification（认证）.json`, {
         apiName: '获取首页顶部banner',
       });
     },
