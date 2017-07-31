@@ -125,10 +125,10 @@ export default function (carouselData, barPolarStack) {
           e4bInfo[j].setAttribute('style', 'display:none!important');
         }
         e4bInfo[i].setAttribute('style', 'display:block!important');
-        if (i === 2 && !barPolarStack.isInit) {
-          barPolarStack.resize();
-          barPolarStack.isInit = true;
-        }
+        // if (i === 2 && !barPolarStack.isInit) {
+        //   barPolarStack.resize();
+        //   barPolarStack.isInit = true;
+        // }
       }
     }
   }

@@ -11,7 +11,8 @@
       <div class="pure-g e4b-info">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">服务企业数 <span class="title-number"><a num="e4b1">{{financeTotal}}</a></span></h3>
+            <h3 class="panel-title">服务企业数 <span class="title-number"><a num="financeTotal">{{financeTotal}}</a></span>
+            </h3>
             <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
             <div class="panel-content panel-chart-wrap" id="doughnut">
             </div>
@@ -38,10 +39,10 @@
       <div class="pure-g e4b-info">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">2017增量 <span class="title-number">666</span></h3>
+            <h3 class="panel-title">2017增量 <span class="title-number"><a num="consultancyInquiriesIncrease">{{consultancyInquiriesIncrease}}</a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="panel-dashboard">
-                <h3 class="text-primary">26593</h3>
+                <h3 class="text-primary"><a num="consultancyInquiriesNum">{{consultancyInquiriesNum}}</a></h3>
                 <p class="text-default">企业咨询次数</p>
               </div>
             </div>
@@ -49,7 +50,7 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">咨询服务 <span class="title-number">666</span></h3>
+            <h3 class="panel-title">咨询服务 <span class="title-number"><a num="consultationServiceTotal">{{consultationServiceTotal}}</a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
@@ -58,55 +59,10 @@
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能生产</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能管理</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能生产</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能管理</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能生产</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能管理</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能生产</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能管理</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能生产</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能管理</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
+                  <div class="pure-g" v-for="item in consultationService">
+                    <div class="pure-u-9-24 pr20">{{item.type}}</div>
+                    <div class="pure-u-6-24 text-primary">{{item.total}}</div>
+                    <div class="pure-u-9-24 text-danger">+{{item.increase}}</div>
                   </div>
 
                 </div>
@@ -121,7 +77,8 @@
       <div class="pure-g e4b-info">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">热门运力 <span class="title-number">223</span></h3>
+            <h3 class="panel-title">热门运力 <span class="title-number"><a num="transProportionTotal">{{transProportionTotal}}</a></span>
+            </h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-14-24">跨境线路</div>
@@ -130,57 +87,11 @@
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
-                  <div class="pure-g">
-                    <div class="pure-u-14-24 pr20">SHANGHAI-LOS ANGELES ANGELES ANGELES</div>
-                    <div class="pure-u-4-24 text-primary">21</div>
-                    <div class="pure-u-6-24">海运/铁路</div>
+                  <div class="pure-g" v-for="item in transProportion">
+                    <div class="pure-u-14-24 pr20">{{item.line}}</div>
+                    <div class="pure-u-4-24 text-primary">{{item.amount}}</div>
+                    <div class="pure-u-6-24">{{item.transMode}}</div>
                   </div>
-                  <div class="pure-g">
-                    <div class="pure-u-14-24 pr20">SHANGHAI-LOS ANGELES ANGELES ANGELES</div>
-                    <div class="pure-u-4-24 text-primary">21</div>
-                    <div class="pure-u-6-24">海运/铁路</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-14-24 pr20">SHANGHAI-LOS ANGELES ANGELES ANGELES</div>
-                    <div class="pure-u-4-24 text-primary">21</div>
-                    <div class="pure-u-6-24">海运/铁路</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-14-24 pr20">SHANGHAI-LOS ANGELES ANGELES ANGELES</div>
-                    <div class="pure-u-4-24 text-primary">21</div>
-                    <div class="pure-u-6-24">海运/铁路</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-14-24 pr20">SHANGHAI-LOS ANGELES ANGELES ANGELES</div>
-                    <div class="pure-u-4-24 text-primary">21</div>
-                    <div class="pure-u-6-24">海运/铁路</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-14-24 pr20">SHANGHAI-LOS ANGELES ANGELES ANGELES</div>
-                    <div class="pure-u-4-24 text-primary">21</div>
-                    <div class="pure-u-6-24">海运/铁路</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-14-24 pr20">SHANGHAI-LOS ANGELES ANGELES ANGELES</div>
-                    <div class="pure-u-4-24 text-primary">21</div>
-                    <div class="pure-u-6-24">海运/铁路</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-14-24 pr20">SHANGHAI-LOS ANGELES ANGELES ANGELES</div>
-                    <div class="pure-u-4-24 text-primary">21</div>
-                    <div class="pure-u-6-24">海运/铁路</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-14-24 pr20">SHANGHAI-LOS ANGELES ANGELES ANGELES</div>
-                    <div class="pure-u-4-24 text-primary">21</div>
-                    <div class="pure-u-6-24">海运/铁路</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-14-24 pr20">SHANGHAI-LOS ANGELES ANGELES ANGELES</div>
-                    <div class="pure-u-4-24 text-primary">21</div>
-                    <div class="pure-u-6-24">海运/铁路</div>
-                  </div>
-
                 </div>
               </div>
             </div>
@@ -190,7 +101,7 @@
           <div class="panel-wrap">
             <h3 class="panel-title">运输方式</h3>
             <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-            <div class="panel-content panel-chart-wrap" id="barPolarStack"></div>
+            <div class="panel-content panel-chart-wrap panel-ring-wrap" id="barPolarStack"></div>
           </div>
         </div>
       </div>
@@ -571,19 +482,54 @@
   export default {
     data() {
       return {
-        doughnut: null,
-        barPolarStack: null,
-        ring: null,
+        // banner
+        carousel: [],
+        // 字体跳动
         number: {
-            e4b1: 0
+          financeTotal: 0,
+          consultancyInquiriesIncrease: 0,
+          consultancyInquiriesNum: 0,
+          consultationServiceTotal: 0,
+          transProportionTotal: 0
         },
+        // 聚融通
         finance: [],
-        carousel: []
+        doughnut: null,
+        ring: null,
+        // 聚咨询
+        consultancy: {
+          consultationService: [],
+          inquiriesNum: [{
+            total: 0,
+            increase: 0
+          }]
+        },
+        // 聚运通
+        linesNum: [],
+        barPolarStack: null
       };
     },
     computed: {
       financeTotal() {
         return this.finance.filter(v => v.name === '总计')[0] ? this.finance.filter(v => v.name === '总计')[0].value : ''
+      },
+      consultancyInquiriesIncrease() {
+        return this.consultancy.inquiriesNum[0].increase || 0
+      },
+      consultancyInquiriesNum() {
+        return this.consultancy.inquiriesNum[0].total || 0
+      },
+      consultationServiceTotal() {
+        return this.consultancy.consultationService.filter(v => v.type === '总量')[0] ? this.consultancy.consultationService.filter(v => v.type === '总量')[0].total : ''
+      },
+      consultationService() {
+        return this.consultancy.consultationService.filter(v => v.type !== '总量')
+      },
+      transProportionTotal() {
+        return this.linesNum.filter(v => v.line === '总计')[0] ? this.linesNum.filter(v => v.line === '总计')[0].amount : ''
+      },
+      transProportion() {
+        return this.linesNum.filter(v => v.line !== '总计')
       }
     },
     components: {},
@@ -669,7 +615,34 @@
           };
         });
         this.ring.setData(ringData);
-        this.number.e4b1 = +this.financeTotal;
+        this.number.financeTotal = +this.financeTotal;
+      });
+
+      this.Api.consultancy().then((res) => {
+        this.consultancy = res.data.data;
+
+        this.number.consultancyInquiriesIncrease = +this.consultancyInquiriesIncrease;
+        this.number.consultancyInquiriesNum = +this.consultancyInquiriesNum;
+        this.number.consultationServiceTotal = +this.consultationServiceTotal;
+      });
+
+      this.Api.etransmore().then((res) => {
+        this.linesNum = res.data.data.linesNum;
+        let transProportion = [];
+
+        res.data.data.transProportion.map(function (v, i) {
+          transProportion[i] = {
+            name: v.type,
+            value: +v.percent.replace('%', '') / 100,
+            display: +v.percent.replace('%', ''),
+            unit: '%',
+          };
+        });
+        this.barPolarStack.setData(transProportion);
+        this.number.transProportionTotal = +this.transProportionTotal;
+
+        // '.panel-list-scroll' TODO: async data
+        scroll('.panel-list-scroll')
       });
     },
     methods: {},
@@ -689,6 +662,19 @@
         smooth: true
       }, document);
 
+      this.barPolarStack = new Rings({
+        el: 'barPolarStack',
+        size: 127, //圆环最外层尺寸(肯定是正方形)
+        colors: ['#2589e9', '#08f6ff', '#f3ff00', '#ff3273', '#fed267'], //颜色列表(必须等于数据数组长度)
+        width: 8,  //每一个内环的宽度
+        split: 3,   //内环与内环之间的间隔
+        alph: 0.2,  //内环底色透明度
+        duration: 1.0,  //数据动画过渡时长
+        label: '<div><span class="pointer" style="background:{{color}}"></span><label class="lab">{{name}}</label></div><h4 class="val" number="{{value}}"></h4>',  //自定义标注的单元内容
+        dir: ['RIGHT', 'RIGHT', 'RIGHT', 'LEFT', 'LEFT'],
+        smooth: true
+      }, document);
+
       bindNumber(this.number, {
         attr: 'num',    //属性名称 <a num='100.0'></a>
         id: 'e4b-content', //外层容器#id
@@ -696,47 +682,9 @@
         duration: 2,    //动画时长
         size: '36px'
       });
-      // 图表
-      this.barPolarStack = echarts.init(document.getElementById('barPolarStack'));
-      const barPolarStackOption = {
-        angleAxis: {},
-        radiusAxis: {
-          type: 'category',
-          data: ['周一', '周二', '周三', '周四'],
-          z: 10,
-        },
-        polar: {},
-        series: [{
-          type: 'bar',
-          data: [1, 2, 3, 4],
-          coordinateSystem: 'polar',
-          name: 'A',
-          stack: 'a',
-        }, {
-          type: 'bar',
-          data: [2, 4, 6, 8],
-          coordinateSystem: 'polar',
-          name: 'B',
-          stack: 'a',
-        }, {
-          type: 'bar',
-          data: [1, 2, 3, 4],
-          coordinateSystem: 'polar',
-          name: 'C',
-          stack: 'a',
-        }],
-        legend: {
-          show: true,
-          data: ['A', 'B', 'C'],
-        },
-      };
-      this.barPolarStack.setOption(barPolarStackOption);
 
       // 圆环
       this.doughnut = echarts.init(document.getElementById('doughnut'));
-
-      // '.panel-list-scroll'
-      scroll('.panel-list-scroll')
     },
   };
 </script>

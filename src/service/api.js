@@ -74,6 +74,18 @@ Api.install = () => {
       });
     },
 
+    consultancy() {
+      return Vue.axios.get(`${API_ADDRESS2}/en/consultancy(咨询).json`, {
+        apiName: 'consultancy(咨询)',
+      });
+    },
+
+    etransmore() {
+      return Vue.axios.get(`${API_ADDRESS2}/en/etransmore(物流).json`, {
+        apiName: 'etransmore(物流)',
+      });
+    },
+
     expertStyleBanner() {
       return Vue.axios.get(`${API_ADDRESS2}/betweenExpertBanner.json`);
     },
