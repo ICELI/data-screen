@@ -86,6 +86,12 @@ Api.install = () => {
       });
     },
 
+    certification() {
+      return Vue.axios.get(`${API_ADDRESS2}/en/certification（认证）.json`, {
+        apiName: 'certification（认证）',
+      });
+    },
+
     expertStyleBanner() {
       return Vue.axios.get(`${API_ADDRESS2}/betweenExpertBanner.json`);
     },

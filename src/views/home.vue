@@ -111,7 +111,7 @@
       <div class="pure-g e4b-info">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">覆盖品类数 <span class="title-number">2223</span></h3>
+            <h3 class="panel-title">覆盖品类数 <span class="title-number"><a num="certificationCoverItemNumTotal">{{certificationCoverItemNumTotal}}</a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-7-24">名称</div>
@@ -120,47 +120,11 @@
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
-                  <div class="pure-g">
-                    <div class="pure-u-7-24 pr20">食品</div>
-                    <div class="pure-u-9-24 text-primary">121</div>
-                    <div class="pure-u-8-24 text-primary">123213</div>
+                  <div class="pure-g" v-for="item in certification.coverItemNum.slice(0, -1)">
+                    <div class="pure-u-7-24 pr20">{{item.industry}}</div>
+                    <div class="pure-u-9-24 text-primary">{{item.itemNum}}</div>
+                    <div class="pure-u-8-24 text-primary">{{item.companyNum}}</div>
                   </div>
-                  <div class="pure-g">
-                    <div class="pure-u-7-24 pr20">食品</div>
-                    <div class="pure-u-9-24 text-primary">121</div>
-                    <div class="pure-u-8-24 text-primary">123213</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-7-24 pr20">食品</div>
-                    <div class="pure-u-9-24 text-primary">121</div>
-                    <div class="pure-u-8-24 text-primary">123213</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-7-24 pr20">食品</div>
-                    <div class="pure-u-9-24 text-primary">121</div>
-                    <div class="pure-u-8-24 text-primary">123213</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-7-24 pr20">食品</div>
-                    <div class="pure-u-9-24 text-primary">121</div>
-                    <div class="pure-u-8-24 text-primary">123213</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-7-24 pr20">食品</div>
-                    <div class="pure-u-9-24 text-primary">121</div>
-                    <div class="pure-u-8-24 text-primary">123213</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-7-24 pr20">食品</div>
-                    <div class="pure-u-9-24 text-primary">121</div>
-                    <div class="pure-u-8-24 text-primary">123213</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-7-24 pr20">食品</div>
-                    <div class="pure-u-9-24 text-primary">121</div>
-                    <div class="pure-u-8-24 text-primary">123213</div>
-                  </div>
-
                 </div>
               </div>
             </div>
@@ -168,7 +132,7 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">认证体系 <span class="title-number">666</span></h3>
+            <h3 class="panel-title">认证体系 <span class="title-number"><a num="certificationCoverCertifySysTotal">{{certificationCoverCertifySysTotal}}</a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
@@ -177,30 +141,10 @@
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-line5">
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">体系认证</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">征信服务</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">产品认证</div>
-                    <div class="pure-u-6-24 text-primary">44</div>
-                    <div class="pure-u-9-24 text-danger">+13</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">大宗检测</div>
-                    <div class="pure-u-6-24 text-primary">35</div>
-                    <div class="pure-u-9-24 text-danger">+15</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">其他服务</div>
-                    <div class="pure-u-6-24 text-primary">23</div>
-                    <div class="pure-u-9-24 text-danger">+4</div>
+                  <div class="pure-g" v-for="item in certification.certifySys.slice(0, -1)">
+                    <div class="pure-u-9-24 pr20">{{item.type}}</div>
+                    <div class="pure-u-6-24 text-primary">{{item.total}}</div>
+                    <div class="pure-u-9-24 text-danger">+{{item.increase}}</div>
                   </div>
 
                 </div>
@@ -490,7 +434,9 @@
           consultancyInquiriesIncrease: 0,
           consultancyInquiriesNum: 0,
           consultationServiceTotal: 0,
-          transProportionTotal: 0
+          transProportionTotal: 0,
+          certificationCoverItemNumTotal: 0,
+          certificationCoverCertifySysTotal: 0,
         },
         // 聚融通
         finance: [],
@@ -506,7 +452,12 @@
         },
         // 聚运通
         linesNum: [],
-        barPolarStack: null
+        barPolarStack: null,
+        // 聚认证
+        certification: {
+          coverItemNum: [],
+          certifySys: []
+        },
       };
     },
     computed: {
@@ -530,6 +481,12 @@
       },
       transProportion() {
         return this.linesNum.filter(v => v.line !== '总计')
+      },
+      certificationCoverItemNumTotal() {
+        return this.certification.coverItemNum.filter(v => v.industry === '总计')[0] ? this.certification.coverItemNum.filter(v => v.industry === '总计')[0].itemNum : ''
+      },
+      certificationCoverCertifySysTotal() {
+        return this.certification.certifySys.filter(v => v.type === '总计')[0] ? this.certification.certifySys.filter(v => v.type === '总计')[0].total : ''
       }
     },
     components: {},
@@ -640,6 +597,17 @@
         });
         this.barPolarStack.setData(transProportion);
         this.number.transProportionTotal = +this.transProportionTotal;
+
+        // '.panel-list-scroll' TODO: async data
+        scroll('.panel-list-scroll')
+      });
+
+      this.Api.certification().then((res) => {
+        this.certification = res.data.data;
+
+
+        this.number.certificationCoverItemNumTotal = +this.certificationCoverItemNumTotal;
+        this.number.certificationCoverCertifySysTotal = +this.certificationCoverCertifySysTotal;
 
         // '.panel-list-scroll' TODO: async data
         scroll('.panel-list-scroll')
