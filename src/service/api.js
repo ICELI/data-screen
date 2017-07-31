@@ -36,7 +36,7 @@ Api.install = () => {
   }, (err) => {
     // TODO: 接口404走mock数据
     if (mock[err.config.url]) {
-      return Promise.resolve(mock[err.config.url]);
+      return Promise.resolve({data: mock[err.config.url]});
     }
     // 判断请求是否被取消
     if (Vue.axios.isCancel(err)) {
@@ -92,144 +92,20 @@ Api.install = () => {
       });
     },
 
-    expertStyleBanner() {
-      return Vue.axios.get(`${API_ADDRESS2}/betweenExpertBanner.json`);
+    spotFuturesPrice() {
+      return Vue.axios.get(`/dataserviceEN/v1/price/getSpotFuturesPrice/dataType/spot/timeType/monthly`, {
+        apiName: '大数聚',
+      });
     },
-
-    expertList() {
-      return Vue.axios.get(`${API_ADDRESS2}/indexIndustryExp.json`);
-    },
-
-    // 底部轮播
-    bottomCarousel() {
-      return Vue.axios.get(`${API_ADDRESS2}/indexBannerBottom.json`);
-    },
-
-    technicianList(offset = 0, limit = 8) {
-      return Vue.axios.get(`${API_ADDRESS2}/pageExpertInfo.json`, {
-        params: {
-          t: Date.now(),
-        },
+    commodityPriceIndex() {
+      return Vue.axios.get(`/dataserviceEN/v1/home/getCommodityPriceIndex`, {
+        apiName: '大数聚commodityPriceIndex',
       });
     },
 
-    // 登录接口
-    doLogin(user, pwd) {
-      return Vue.axios.post(`${API_ADDRESS}/doLogin`, {
-        username: user,
-        password: pwd,
-      }, {
-        apiName: '用户登录',
-      });
-    },
-
-    // 获取RSA公钥
-    getRSA() {
-      return Vue.axios.get(`${API_ADDRESS}/getRSA`, {
-        params: {
-          t: Date.now(),
-        },
-      });
-    },
-
-    // 获取用户信息接口
-    getUserInfo() {
-      return Vue.axios.get(`${API_ADDRESS2}/userInfo.json`, {
-        params: {
-          t: Date.now(),
-        },
-      });
-    },
-
-    // 添加或取消专家收藏
-    expertFavo(expertId, favoType) {
-      const type = 1;
-      // favoType为操作类型：0表示取消收藏，1表示添加收藏
-      if (favoType) {
-        return Vue.axios.get(`${API_ADDRESS}/favorite/${type}/${expertId}`, {
-          params: {
-            t: Date.now(),
-          },
-        });
-      }
-      return Vue.axios.get(`${API_ADDRESS}/notFavorite/${type}/${expertId}`, {
-        params: {
-          t: Date.now(),
-        },
-      });
-    },
-
-    // 获取专家详情
-    getExpertDetail(expertId) {
-      return Vue.axios.get(`${API_ADDRESS2}/detailedExpertInfo.json`, {
-        params: {
-          t: Date.now(),
-        },
-      });
-    },
-
-    // 获取专家技能
-    getExpertAttribute(expertId) {
-      return Vue.axios.get(`${API_ADDRESS2}/expertAttribute.json`, {
-        params: {
-          t: Date.now(),
-        },
-      });
-    },
-
-    // 获取专家研报列表
-    getExpertResearch(expertId) {
-      return Vue.axios.get(`${API_ADDRESS2}/researchReport.json`, {
-        params: {
-          t: Date.now(),
-        },
-      });
-    },
-
-    // 发布联系单
-    contactBill(reqData) {
-      return Vue.axios.post(`${API_ADDRESS}/contactBill`, reqData);
-    },
-
-    // 发布联系单
-    interviewBill(reqData) {
-      return Vue.axios.post(`${API_ADDRESS}/InterviewBill`, reqData);
-    },
-
-    // 发布调研单
-    researchBill(reqData) {
-      return Vue.axios.post(`${API_ADDRESS}/surveyBill`, reqData);
-    },
-
-    detailedResearchReport() {
-      return Vue.axios.get(`${API_ADDRESS2}/detailedResearchReport.json`);
-    },
-
-    // 获取底部菜单
-    getFooterNavs() {
-      // return Vue.axios.get(`${API_ADDRESS}/indexBottomMenu`, {
-      return Vue.axios.get(`${API_ADDRESS2}/footerMenu.json`, {
-        params: {
-          t: Date.now(),
-        },
-      });
-    },
-
-    // 获取帮助详情数据
-    getArtDetail(artId) {
-      return Vue.axios.get(`${API_ADDRESS2}/artDetails.json`, {
-        params: {
-          t: Date.now(),
-        },
-      });
-    },
-
-    // 获取帮助侧栏数据
-    getArtLeftbar(artId) {
-      return Vue.axios.get(`${API_ADDRESS2}/artLeftList.json`, {
-        params: {
-          t: Date.now(),
-        },
+    technology() {
+      return Vue.axios.get(`${API_ADDRESS2}/en/technology(智能).json`, {
+        apiName: 'technology(智能)',
       });
     },
   };

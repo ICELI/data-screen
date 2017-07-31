@@ -1,1 +1,48 @@
-{"status":{"code":"200","message":"Successful!"},"data":[{"products":"Grease","index":"615.61","change":"-22.89%"},{"products":"Crude oil","index":"625.69","change":"3.32%"},{"products":"TDI","index":"1116.91","change":"2.30%"},{"products":"Wasted storage battery","index":"1117.43","change":"0.53%"},{"products":"Industrial naphthalene","index":"402.36","change":"-0.22%"},{"products":"Aromatic hydrocarbon","index":"790.66","change":"-0.20%"},{"products":"Wast copper","index":"875.81","change":"0.10%"},{"products":"Intermediate","index":"792.48","change":"-0.10%"}]}
+{
+  "status": {
+    "code": "200",
+    "message": "Successful!"
+  },
+  "data": [
+    {
+      "products": "Grease",
+      "index": "615.61",
+      "change": "-22.89%"
+    },
+    {
+      "products": "Crude oil",
+      "index": "625.69",
+      "change": "3.32%"
+    },
+    {
+      "products": "TDI",
+      "index": "1116.91",
+      "change": "2.30%"
+    },
+    {
+      "products": "Wasted storage battery",
+      "index": "1117.43",
+      "change": "0.53%"
+    },
+    {
+      "products": "Industrial naphthalene",
+      "index": "402.36",
+      "change": "-0.22%"
+    },
+    {
+      "products": "Aromatic hydrocarbon",
+      "index": "790.66",
+      "change": "-0.20%"
+    },
+    {
+      "products": "Wast copper",
+      "index": "875.81",
+      "change": "0.10%"
+    },
+    {
+      "products": "Intermediate",
+      "index": "792.48",
+      "change": "-0.10%"
+    }
+  ]
+}

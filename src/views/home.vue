@@ -168,45 +168,11 @@
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-danger">+111.48%</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-success">-11.48%</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-danger">+11.48%</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-success">-11.48%</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-danger">+11.48%</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-success">-11.48%</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-danger">+111.48%</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-success">-11.48%</div>
+                  <div class="pure-g" v-for="item in spotFuturesPrice">
+                    <div class="pure-u-9-24 pr20">{{item.commodity}}</div>
+                    <div class="pure-u-9-24 text-primary">{{item.dayPrice}}</div>
+                    <div class="pure-u-6-24 text-danger" v-if="item.change.indexOf('-') == -1">+{{item.change}}</div>
+                    <div class="pure-u-6-24 text-success" v-else="">{{item.change}}</div>
                   </div>
 
                 </div>
@@ -225,45 +191,11 @@
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-danger">+111.48%</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-success">-11.48%</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-danger">+11.48%</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-success">-11.48%</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-danger">+11.48%</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-success">-11.48%</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-danger">+111.48%</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">Dried cocoons</div>
-                    <div class="pure-u-9-24 text-primary">133500</div>
-                    <div class="pure-u-6-24 text-success">-11.48%</div>
+                  <div class="pure-g" v-for="item in commodityPriceIndex">
+                    <div class="pure-u-9-24 pr20">{{item.products}}</div>
+                    <div class="pure-u-9-24 text-primary">{{item.index}}</div>
+                    <div class="pure-u-6-24 text-danger" v-if="item.change.indexOf('-') == -1">+{{item.change}}</div>
+                    <div class="pure-u-6-24 text-success" v-else="">{{item.change}}</div>
                   </div>
 
                 </div>
@@ -287,55 +219,10 @@
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">工厂类</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">生产类</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">工厂类</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">生产类</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">工厂类</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">生产类</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">工厂类</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">生产类</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">工厂类</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">生产类</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
+                  <div class="pure-g" v-for="item in technology.demandNum.slice(0, -1)">
+                    <div class="pure-u-9-24 pr20">{{item.type}}</div>
+                    <div class="pure-u-6-24 text-primary">{{item.total}}</div>
+                    <div class="pure-u-9-24 text-danger">+{{item.increase}}</div>
                   </div>
 
                 </div>
@@ -345,7 +232,7 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">解决方案数 <span class="title-number">666</span></h3>
+            <h3 class="panel-title">解决方案数 <span class="title-number"><a num="technologySolutionNumTotal">{{technologySolutionNumTotal}}</a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
@@ -354,55 +241,10 @@
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能生产</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能管理</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能生产</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能管理</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能生产</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能管理</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能生产</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能管理</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能生产</div>
-                    <div class="pure-u-6-24 text-primary">80</div>
-                    <div class="pure-u-9-24 text-danger">+2</div>
-                  </div>
-                  <div class="pure-g">
-                    <div class="pure-u-9-24 pr20">智能管理</div>
-                    <div class="pure-u-6-24 text-primary">53</div>
-                    <div class="pure-u-9-24 text-danger">+1</div>
+                  <div class="pure-g" v-for="item in technology.solutionNum.slice(0, -1)">
+                    <div class="pure-u-9-24 pr20">{{item.type}}</div>
+                    <div class="pure-u-6-24 text-primary">{{item.total}}</div>
+                    <div class="pure-u-9-24 text-danger">+{{item.increase}}</div>
                   </div>
 
                 </div>
@@ -437,6 +279,7 @@
           transProportionTotal: 0,
           certificationCoverItemNumTotal: 0,
           certificationCoverCertifySysTotal: 0,
+          technologySolutionNumTotal: 0,
         },
         // 聚融通
         finance: [],
@@ -458,12 +301,22 @@
           coverItemNum: [],
           certifySys: []
         },
+        // 大数聚
+        spotFuturesPrice: [],
+        commodityPriceIndex: [],
+        // 聚智能
+        technology: {
+          demandNum: [],
+          solutionNum: [],
+        }
+
       };
     },
     computed: {
       financeTotal() {
         return this.finance.filter(v => v.name === '总计')[0] ? this.finance.filter(v => v.name === '总计')[0].value : ''
       },
+
       consultancyInquiriesIncrease() {
         return this.consultancy.inquiriesNum[0].increase || 0
       },
@@ -476,18 +329,27 @@
       consultationService() {
         return this.consultancy.consultationService.filter(v => v.type !== '总量')
       },
+
       transProportionTotal() {
         return this.linesNum.filter(v => v.line === '总计')[0] ? this.linesNum.filter(v => v.line === '总计')[0].amount : ''
       },
       transProportion() {
         return this.linesNum.filter(v => v.line !== '总计')
       },
+
       certificationCoverItemNumTotal() {
         return this.certification.coverItemNum.filter(v => v.industry === '总计')[0] ? this.certification.coverItemNum.filter(v => v.industry === '总计')[0].itemNum : ''
       },
       certificationCoverCertifySysTotal() {
         return this.certification.certifySys.filter(v => v.type === '总计')[0] ? this.certification.certifySys.filter(v => v.type === '总计')[0].total : ''
-      }
+      },
+
+      technologyDemandNumTotal() {
+        return this.technology.demandNum.filter(v => v.type === '总计')[0] ? this.technology.demandNum.filter(v => v.type === '总计')[0].itemNum : ''
+      },
+      technologySolutionNumTotal() {
+        return this.technology.solutionNum.filter(v => v.type === '总计')[0] ? this.technology.solutionNum.filter(v => v.type === '总计')[0].total : ''
+      },
     },
     components: {},
     created() {
@@ -597,20 +459,31 @@
         });
         this.barPolarStack.setData(transProportion);
         this.number.transProportionTotal = +this.transProportionTotal;
-
-        // '.panel-list-scroll' TODO: async data
-        scroll('.panel-list-scroll')
       });
 
       this.Api.certification().then((res) => {
         this.certification = res.data.data;
 
-
         this.number.certificationCoverItemNumTotal = +this.certificationCoverItemNumTotal;
         this.number.certificationCoverCertifySysTotal = +this.certificationCoverCertifySysTotal;
+      });
 
-        // '.panel-list-scroll' TODO: async data
-        scroll('.panel-list-scroll')
+      this.Api.technology().then((res) => {
+        this.technology = res.data.data;
+
+        this.number.technologySolutionNumTotal = +this.technologySolutionNumTotal;
+      });
+
+      this.Api.spotFuturesPrice().then((res) => {
+        this.spotFuturesPrice = res.data.data.futuresPriceBeanList;
+      });
+      this.Api.commodityPriceIndex().then((res) => {
+        this.commodityPriceIndex = res.data.data;
+
+        this.$nextTick(function () {
+          // '.panel-list-scroll' TODO: async data
+          scroll('.panel-list-scroll');
+        });
       });
     },
     methods: {},
