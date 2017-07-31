@@ -16,6 +16,13 @@ ul, li, p {
   @include list-unstyled;
 }
 
+.page-title {
+  margin: 44px 0 56px 20px;
+  font-size:44px;
+  color: $brand-info;
+  line-height:44px;
+}
+
 .panel-wrap {
   margin: 10px;
   border-radius: 4px;

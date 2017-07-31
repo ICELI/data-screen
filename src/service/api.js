@@ -108,6 +108,13 @@ Api.install = () => {
         apiName: 'technology(智能)',
       });
     },
+
+    // page2
+    worldMap() {
+      return Vue.axios.get(`${API_ADDRESS2}/en/worldMap(世界地图).json`, {
+        apiName: 'worldMap(世界地图)',
+      });
+    },
   };
 };
 
