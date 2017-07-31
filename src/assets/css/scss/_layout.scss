@@ -3,10 +3,17 @@
   font-family: "PingFang";
   //src: url(../fonts/PingFang.ttc); // todo 太大了超过30M
 }
+
 html, body {
   height: 100%;
   //font-family: 'PingFang', serif;
   color: $brand-default;
+}
+
+ul, li, p {
+  margin: 0;
+  padding: 0;
+  @include list-unstyled;
 }
 
 .panel-wrap {
@@ -25,6 +32,10 @@ html, body {
   color: $brand-info;
   font-size: $font-size-h3;
   line-height: 72px;
+}
+
+.panel-content {
+  text-align: center;
 }
 
 .title-number {
@@ -103,7 +114,119 @@ html, body {
   }
 }
 
+.doughnut-legend-wrap {
+  position: relative;
+  top: -100%;
+  margin-top: 72px;
+}
+
 .doughnut-legend-list {
+  @include clearfix;
+  @include list-unstyled;
   position: relative;
   height: 100%;
+  margin-right: -200px;
+
+  li {
+    float: left;
+    width: 160px;
+    margin: 20px 100px 100px 54px;
+    font-size: 20px;
+    line-height: 30px;
+    p {
+      margin: 0;
+    }
+    .text-primary {
+      font-size: 22px;
+    }
+  }
+}
+
+.pointer {
+  position: relative;
+  display: inline-block;
+  &::before {
+    position: absolute;
+    content: '';
+    width: 16px;
+    height: 16px;
+    left: -26px;
+    top: 7px;
+    border-radius: 50%;
+    background-color: transparent;
+  }
+}
+
+li.pointer:nth-child(1) {
+  &::before {
+    background-color: #ff3274;
+  }
+}
+
+li.pointer:nth-child(2) {
+  &::before {
+    background-color: #ffd366;
+  }
+}
+
+li.pointer:nth-child(3) {
+  &::before {
+    background-color: #6666ff;
+  }
+}
+
+li.pointer:nth-child(4) {
+  &::before {
+    background-color: #33e2ff;
+  }
+}
+
+li.pointer:nth-child(5) {
+  &::before {
+    background-color: #f2ff00;
+  }
+}
+
+.panel-ring-wrap {
+  padding: 20px 28px 0;
+  font-size: 20px;
+  line-height: 30px;
+  div {
+    overflow: hidden;
+  }
+  span {
+    display: block;
+  }
+  .ring-content {
+    padding-top: 53px;
+  }
+  .pointer {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+  }
+
+  .lab {
+    display: inline-block;
+    width: auto;
+  }
+
+  .val {
+    color: #00fff9;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    padding: 5px 0 0 20px;
+  }
+
+  .val2 {
+    color: #00fff9;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    display: inline-block;
+  }
+
 }

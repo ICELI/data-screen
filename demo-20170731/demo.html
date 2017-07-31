@@ -1,0 +1,179 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>DEMO</title>
+        <style>
+            html,body{background:#0b172d; padding:20px 30px;}
+            div{overflow:hidden;}
+            span{display:block;}
+            *{box-sizing:border-box;}
+            h1{color:#fff; margin:0; padding:0; font-weight:normal;}
+            h2{color:#fff; margin:0; padding:0; font-weight:normal; font-size:18px;}
+            ul, li{list-style-type:none; margin:5px 0;}
+            label{width:180px; display:inline-block; text-align:right; padding-right:10px;}
+            input{width:300px; display:inline-block; text-align:right; text-align:left;}
+            button{width:200px; height:60px; font-size:32px; color:#fff; background:#2589e9; border-radius:3px; text-align:center; line-height:60px; outline:none; border-width:0; margin-top:20px; -webkit-transition: all 0.5s ease;}
+            button:hover{cursor:pointer; background:#0E1F3A;}
+            .title{color:#eee; padding:0; margin:0; text-align:left; font-weight:normal; font-size:18px; padding-bottom:35px;}
+            .pointer{width:14px; height:14px; border-radius:14px; display:inline-block; margin-right:6px;}
+            .lab{display:inline-block; width:auto; color:#fff;}
+            .val{color:#00fff9; padding:0; margin:0; text-align:left; padding:5px 0 0 20px;}
+            .val2{color:#00fff9; padding:0; margin:0; text-align:left; display:inline-block;}
+            p{color:#fff;}
+            #demo_num a{color:#00fff9; display:inline-block; text-align:right;}
+            #demo_num2 a{color:#ff3273; display:inline-block; text-align:right; }
+        </style>
+        <script src="jquery.js"></script>
+        <script src="ring.js"></script>
+        <script src="number.js"></script>
+    </head>
+    <body>
+        <h1>跨境六大服务数据图表</h1>
+        <ul style="padding:50px 100px;">
+            <li style="float:left; margin-right:20px;">
+                <h2 onclick="renderBox()" style="cursor:pointer;">聚运通 (点击刷新随机数)</h2>
+                <div id="demo" style="width:450px; height:360px; text-align:center; background:#0E1F3B; margin-top:30px; padding:30px;"></div>
+            </li>
+            <li style="float:left; margin-right:20px;">
+                <h2>聚融通</h2>
+                <div id="demo2" style="width:450px; height:360px; text-align:center; background:#0E1F3B; margin-top:30px; padding:30px;"></div>
+            </li>
+            <li style="clear:both; overflow:hidden;">
+                <div id="demo3" style="width:920px; height:240px; text-align:center; background:#0E1F3B; margin-top:15px; padding:30px;"></div>
+            </li>
+        </ul>
+        <div id="demo_num">
+            <p>
+                在截至2017年4月1日的第二财季，苹果的净利润为<a num="a1"></a>亿美元，比去年同期增长<a num="a2"></a>%；每股摊薄收益<a num="a3"></a>美元，好于去年同期。2016财年第二财季，苹果的净利润为<a num="a4"></a>亿美元，每股摊薄收益<a num="a5"></a>美元。
+            </p>
+        </div>
+        <div id="demo_num2">
+            <p>
+                苹果第二财季运营利润为<a num="a6"></a>亿美元，高于去年同期的<a num="a7"></a>亿美元。苹果第二财季营收达到<a num="a8"></a>亿美元，比去年同期的<a num="a9"></a>亿美元增长<a num="a10"></a>%。
+            </p>
+        </div>
+    </body>
+    <script>
+        var data = {
+            a1: 110.29,
+            a2: 5,
+            a3: 2.10,
+            a4: 105.16,
+            a5: 1.90
+        }
+        var data2 = {
+            a6: 110.29,
+            a7: 5,
+            a8: 2.10,
+            a9: 105.16,
+            a10: 1.90
+        }
+        bindNumber(data, {
+            attr: 'num',    //属性名称 <a num='100.0'></a>
+            id: 'demo_num', //外层容器#id
+            decimals: 1,    //小数点个数
+            duration: 3,    //动画时长
+            size: '14px'
+        });
+
+        bindNumber(data2, {
+            attr: 'num',    //属性名称 <a num='100.0'></a>
+            id: 'demo_num2', //外层容器#id
+            decimals: 1,    //小数点个数
+            duration: 3,    //动画时长
+            size: '14px'
+        })
+
+
+
+        function renderBox(){
+            var arr = [Math.random(),Math.random(),Math.random(),Math.random(),Math.random()];
+            ring.setData([
+                {name:'海运', value:arr[0], display:(arr[0] * 100).toFixed(1), unit:'%'},
+                {name:'铁路', value:arr[1], display:(arr[1] * 100).toFixed(1), unit:'%'},
+                {name:'空运', value:arr[2], display:(arr[2] * 100).toFixed(1), unit:'%'},
+                {name:'公路', value:arr[3], display:(arr[3] * 100).toFixed(1), unit:'%'},
+                {name:'内河航运', value:arr[4], display:(arr[4] * 100).toFixed(1), unit:'%'}
+            ]);
+        }
+
+        var ring = new Rings({
+            el: 'demo',
+            title: {
+                name: '运输方式',
+                className: 'title'
+            },
+            size: 200, //圆环最外层尺寸(肯定是正方形)
+            colors: ['#2589e9','#08f6ff','#ff3273','#f3ff00','#fed267'], //颜色列表(必须等于数据数组长度)
+            width: 8,  //每一个内环的宽度
+            split: 5,   //内环与内环之间的间隔
+            alph: 0.2,  //内环底色透明度
+            duration: 2.0,  //数据动画过渡时长
+            label: '<div><span class="pointer" style="background:{{color}}"></span><label class="lab">{{name}}</label></div><h4 class="val" number="{{value}}"></h4>',  //自定义标注的单元内容
+            dir: ['RIGHT','RIGHT','RIGHT','LEFT','LEFT'],
+            smooth: true
+        }, document);
+
+        var ring2 = new Rings({
+            el: 'demo2',
+            title: {
+                name: '融资金额占比',
+                className: 'title'
+            },
+            size: 200,
+            colors: ['#2589e9','#08f6ff','#ff3273','#f3ff00','#fed267'],
+            width: 8,
+            split: 5,
+            alph: 0.2,
+            duration: 2.0,
+            label: '<div><span class="pointer" style="background:{{color}}"></span><label class="lab">{{name}}</label></div><h4 class="val" number="{{value}}"></h4>',
+            dir: ['RIGHT','RIGHT','RIGHT','RIGHT','RIGHT'],
+            smooth: true
+        }, document);
+
+        var ring3 = new Rings({
+            el: 'demo3',
+            size: 180,
+            colors: ['#06f9ff','#f2ff00','#ff3273'],
+            width: 16,
+            split: 8,
+            alph: 0.2,
+            duration: 2.0,
+            label: '<span class="pointer" style="background:{{color}}"></span><label class="lab">{{name}}</label><h4 class="val2" number="{{value}}"></h4>',
+            dir: ['LEFT','LEFT','LEFT','LEFT','LEFT'],
+            smooth: true
+        }, document);
+
+
+
+        /**
+         * 暂定的数据格式:
+         * name: 字段中文名
+         * value: 用于驱动圆环转动的数据(应该是不超过1的小数)
+         * display: 用于标注展示给别人看的
+         * unit: 标注的单位
+         */
+        ring.setData([
+            {name:'海运', value:0.45, display:45.0, unit:'%'},
+            {name:'铁路', value:0.2, display:20.0, unit:'%'},
+            {name:'空运', value:0.1, display:10.0, unit:'%'},
+            {name:'公路', value:0.15, display:15.0, unit:'%'},
+            {name:'内河航运', value:0.1, display:10.0, unit:'%'}
+        ]);
+
+        ring2.setData([
+            {name:'应收账款融资', value:0.35, display:35.0, unit:'%'},
+            {name:'担保融资', value:0.15, display:15.0, unit:'%'},
+            {name:'订单融资', value:0.25, display:25.0, unit:'%'},
+            {name:'其他', value:0.5, display:50.0, unit:'%'},
+            {name:'质押融资', value:0.2, display:20.0, unit:'%'}
+        ]);
+
+        ring3.setData([
+            {name:'累计意向订单数', value:0.90, display:90, unit:'万+'},
+            {name:'订单转化', value:0.3, display:8.05, unit:'%'},
+            {name:'昨日意向订单', value:0.15, display:9600, unit:''}
+        ]);
+    </script>
+</html>

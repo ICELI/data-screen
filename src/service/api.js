@@ -9,7 +9,7 @@ Vue.use(VueAxios, axios);
 // 引入api地址配置
 const API_ADDRESS = '/webapi/v2';
 // eslint-disable-next-line
-const API_ADDRESS2 = `${__webpack_require__.p}mock/data/en`;
+const API_ADDRESS2 = `${__webpack_require__.p}mock/data`;
 const Api = {};
 
 Api.install = () => {
@@ -17,7 +17,7 @@ Api.install = () => {
 
   // request请求拦截处理
   Vue.axios.interceptors.request.use((config) => {
-    console.log(config)
+    console.log(config);
     // 添加取消请求用的cancelToken
     config.cancelToken = new Vue.axios.CancelToken((c) => {
       apiCancelTokens.push(c);
@@ -35,7 +35,7 @@ Api.install = () => {
     return res;
   }, (err) => {
     // TODO: 接口404走mock数据
-    if(mock[err.config.url]) {
+    if (mock[err.config.url]) {
       return Promise.resolve(mock[err.config.url]);
     }
     // 判断请求是否被取消
@@ -62,15 +62,15 @@ Api.install = () => {
       apiCancelTokens = [];
     },
 
-    topCarousel() {
-      return Vue.axios.get(`${API_ADDRESS2}/certification（认证）.json`, {
+    enCarousel() {
+      return Vue.axios.get(`${API_ADDRESS2}/en/banner.json`, {
         apiName: '获取首页顶部banner',
       });
     },
 
-    expertStyle() {
-      return Vue.axios.get(`${API_ADDRESS2}/advantageExpertInfo.json`, {
-        apiName: '获取专家风采数据',
+    finance() {
+      return Vue.axios.get(`${API_ADDRESS2}/en/finance(金融).json`, {
+        apiName: 'finance(金融)',
       });
     },
 

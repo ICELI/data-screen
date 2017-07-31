@@ -40,4 +40,4 @@ export default {
   '/mock/data/cn/technology(智能).json': require('../mock/data/cn/technology(智能).json'),
   '/mock/data/cn/todayClearance(今日报关量).json': require('../mock/data/cn/todayClearance(今日报关量).json'),
   '/mock/data/cn/chianMap(中国地图).json': require('../mock/data/cn/chianMap(中国地图).json'),
-}
+};
