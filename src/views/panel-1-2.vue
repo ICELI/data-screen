@@ -2,6 +2,7 @@
   <div class="panel-1-2">
     <h1 class="page-title">覆盖全球各国、经营全品类</h1>
     <div class="world-map-wrap">
+      <div class="world-map-bg" :class="'world-map-bg' + currentIndex"></div>
       <div id="worldMap"></div>
       <div class="tips-list-wrap">
         <ul>
@@ -91,10 +92,10 @@
             spaceBetween: 32,
           });
         });
-        // fixme: 当swiper过渡动画时 切换大洲 跳动感明显
-        setTimeout(()=> {
-            this.changeMap();
-        }, specIdx ? 15 * 1000 : item * 2000);
+        // fixme: 当swiper过渡动画时 切换大洲 跳动感明显 2的倍数
+        setTimeout(() => {
+          this.changeMap();
+        }, specIdx ? 16000 : (item < 4 ? 4 : item) * 2000);
       }
     },
     mounted() {
@@ -108,7 +109,7 @@
 
       var geoCoordMap = countryGeoCoordMap;
 
-      geoCoordMap['HangZhou'] = [120.2, 30.3];
+      geoCoordMap['HangZhou'] = [116.2, 25.3];
 
       var JMDATA = [
         [{name: 'HangZhou'}, {name: 'Afghanistan', value: 95}],
@@ -149,8 +150,10 @@
             type: 'map',
             map: 'world',
             roam: false,
-            zoom: 1.2,
-            aspectScale: 0.7,
+            zoom: 1.25,
+            left: 80,
+            top: 230,
+//            aspectScale: 0.7,
             selectedMode: 'single',
             label: {
               normal: {
@@ -164,8 +167,9 @@
             },
             itemStyle: {
               normal: {
-                borderColor: 'rgba(221,221,221, .5)',
-                color: '#2788e8'
+                borderColor: 'rgba(221,221,221, 0)',
+                color: 'rgba(221,221,221, 0)'
+//                color: '#2788e8'
               }
             }
           }
@@ -259,6 +263,40 @@
   #worldMap {
     width: 100%;
     height: 100%;
+  }
+
+  .world-map-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
+    background-position: -90px -30px;
+  }
+  /*  TODO: 图片初次加载闪动 */
+  .world-map-bg0 {
+    background-image: url(../assets/img/worldMap/北美-交互.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
+  }
+
+  .world-map-bg1 {
+    background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲-交互.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
+  }
+
+  .world-map-bg2 {
+    background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲-交互.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
+  }
+
+  .world-map-bg3 {
+    background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美-交互.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
+  }
+
+  .world-map-bg4 {
+    background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲-交互.png), url(../assets/img/worldMap/大洋洲.png);
+  }
+
+  .world-map-bg5 {
+    background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲-交互.png);
   }
 
   .tips-list-wrap {
