@@ -3,19 +3,25 @@
     <h1 class="page-title">覆盖全球各国、经营全品类</h1>
     <div class="world-map-wrap">
       <div id="worldMap"></div>
+      <div class="tips-list-wrap">
+        <ul>
+          <li v-for="(item,index) in worldMapData" :class="{active: currentIndex == index}">
+            <h3>涉及品类 <span class="text-primary">{{item.typeNum}}</span></h3>
+            <p>{{item.detailType}}</p>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="panel-wrap" id="world-country">
       <h3 class="panel-title">入驻国家馆国家数累计 <span class="title-number"><a num="countryTotal">{{countryTotal}}</a></span>
       </h3>
-      <div class="panel-content panel-list-wrap">
-        <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
-          <li>6</li>
-        </ul>
+      <div class="panel-content panel-swiper-wrap">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="item in nationalPavilion[currentIndex]"><img
+              :src="'/mock/img/en/country/' + worldENSort[currentIndex]+ '/' + item.country + '.jpg'"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -29,37 +35,69 @@
   export default {
     data() {
       return {
-        currentIndex: 0,
-        worldMap: [],
+        currentIndex: 5,
+        worldSort: ['北美洲', '欧洲', '亚洲', '南美洲', '非洲', '大洋洲'],
+        worldENSort: ['NorthAmerica', 'Europe', 'Asian', 'SouthAmerica', 'Africa', 'Oceania'],
+        worldMapData: [],
         nationalPavilion: [],
         // 字体跳动
         number: {
           countryTotal: 0,
         },
+        swiper: null
 
       };
     },
     computed: {
       countryTotal() {
-        return this.worldMap[this.currentIndex] ? this.worldMap[this.currentIndex].countryNum : 0;
-      }
+        return this.worldMapData[this.currentIndex] ? this.worldMapData[this.currentIndex].countryNum : 0;
+      },
     },
     components: {},
     created() {
       this.Api.worldMap().then((res) => {
-        this.worldMap = res.data.data.worldMap;
-        this.nationalPavilion = res.data.data.nationalPavilion;
+        let worldMapData = [];
+        let nationalPavilion = [];
 
-        this.number.countryTotal = +this.worldMap[this.currentIndex].countryNum;
+        this.worldSort.forEach((v, i) => {
+          worldMapData[i] = res.data.data.worldMap.find(n => n.continent === v);
+          nationalPavilion[i] = res.data.data.nationalPavilion.find(n => n.continentInfo.continent === v).countryInfo;
+        });
+        this.worldMapData = worldMapData;
+        this.nationalPavilion = nationalPavilion;
+        this.changeMap(true);
       });
     },
     methods: {
-      changeCountryTotal(i) {
-        this.currentIndex = i;
+      changeMap(first) {
+        // 销毁swiper
+        this.swiper && this.swiper.destroy(true, true);
+
+        this.currentIndex = first ? this.currentIndex : (this.currentIndex === this.worldSort.length - 1) ? 0 : this.currentIndex + 1;
+        const idx = this.currentIndex;
+        const specIdx = false;
+//        const specIdx = idx === 2 || idx === 3;  // TODO: 指定模块 指定停留时间
+        const item = this.nationalPavilion[idx].length - 4;
+
+        this.number.countryTotal = +this.worldMapData[idx].countryNum;
+
+        console.log(this.swiper, idx, item);
+
+        this.$nextTick(function () {
+          this.swiper = new Swiper('.swiper-container', {
+            slidesPerView: 4,
+            autoplay: 2000,
+            speed: 800,
+            spaceBetween: 32,
+          });
+        });
+        // fixme: 当swiper过渡动画时 切换大洲 跳动感明显
+        setTimeout(()=> {
+            this.changeMap();
+        }, specIdx ? 15 * 1000 : item * 2000);
       }
     },
     mounted() {
-
       bindNumber(this.number, {
         attr: 'num',    //属性名称 <a num='100.0'></a>
         id: 'world-country', //外层容器#id
@@ -101,8 +139,6 @@
         return res;
       };
 
-      console.log('convertData',convertData(JMDATA));
-      var planePath = 'path://M1705.06,1318.313v-89.254l-319.9-221.799l0.073-208.063c0.521-84.662-26.629-121.796-63.961-121.491c-37.332-0.305-64.482,36.829-63.961,121.491l0.073,208.063l-319.9,221.799v89.254l330.343-157.288l12.238,241.308l-134.449,92.931l0.531,42.034l175.125-42.917l175.125,42.917l0.531-42.034l-134.449-92.931l12.238-241.308L1705.06,1318.313z';
       // 基于准备好的dom，初始化echarts实例
       var worldMap = echarts.init(document.getElementById('worldMap'));
       // 指定图表的配置项和数据
@@ -112,16 +148,24 @@
             name: '世界地图',
             type: 'map',
             map: 'world',
-            roam: true,
-            selectedMode : 'single',
-            label:{
+            roam: false,
+            zoom: 1.2,
+            aspectScale: 0.7,
+            selectedMode: 'single',
+            label: {
               normal: {
-                show:false,
+                show: false,
               },
               emphasis: {
-                label:{
-                  show:true
+                label: {
+                  show: true
                 }
+              }
+            },
+            itemStyle: {
+              normal: {
+                borderColor: 'rgba(221,221,221, .5)',
+                color: '#2788e8'
               }
             }
           }
@@ -140,7 +184,7 @@
             },
             lineStyle: {
               normal: {
-//                color: color[i],
+                color: '#08ffa0',
                 width: 0,
                 curveness: 0.2
               }
@@ -153,15 +197,14 @@
             symbol: ['none', 'arrow'],
             symbolSize: 10,
             effect: {
+              constantSpeed: 20,
               show: true,
-              period: 6,
-              trailLength: 0,
-              symbol: planePath,
-              symbolSize: 15
+              trailLength: 0.1,
+              symbolSize: 1.5
             },
             lineStyle: {
               normal: {
-//                color: color[i],
+                color: '#08ffa0',
                 width: 1,
                 opacity: 0.6,
                 curveness: 0.2
@@ -188,7 +231,7 @@
             },
             itemStyle: {
               normal: {
-//                color: color[i]
+                color: '#08ffa0',
               }
             },
             data: JMDATA.map(function (dataItem) {
@@ -207,12 +250,118 @@
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
+  $activeColor: #08ffa0 !default;
   .world-map-wrap {
+    position: relative;
     height: 806px;
   }
 
   #worldMap {
     width: 100%;
     height: 100%;
+  }
+
+  .tips-list-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    li {
+      position: absolute;
+      display: inline-block;
+      width: 180px;
+      height: 110px;
+      padding: 12px;
+      border: 2px solid #2788e8;
+      border-radius: 16px;
+      h3 {
+        margin: 0 0 10px;
+        font-size: 24px;
+        font-weight: normal;
+      }
+      p {
+        font-size: 20px;
+        line-height: 24px;
+      }
+      &.active {
+        border-color: $activeColor;
+        color: $activeColor !important;
+        .text-primary {
+          color: $activeColor !important;
+        }
+        &::before, &::after {
+          background: $activeColor;
+        }
+      }
+      &::before, &::after {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        content: '';
+        width: 1px;
+        height: 80px;
+        overflow: hidden;
+        background: #2788e8;
+      }
+      &::after {
+        margin-top: 80px;
+        transform: rotate(-45deg);
+        transform-origin: 0 0;
+      }
+      &:nth-child(1) {
+        top: 10px;
+        left: 60px;
+      }
+      &:nth-child(2) {
+        top: 10px;
+        left: 50%;
+        margin-left: -91px;
+      }
+      &:nth-child(3) {
+        top: 10px;
+        right: 45px;
+        &::after {
+          transform: rotate(45deg);
+        }
+      }
+      &:nth-child(1n+4) {
+        bottom: 20px;
+        &::before, &::after {
+          top: auto;
+          bottom: 100%;
+          left: 50%;
+        }
+        &::after {
+          margin-bottom: 80px;
+          transform: rotate(45deg);
+          transform-origin: 100% 100%;
+        }
+      }
+      &:nth-child(4) {
+        left: 60px;
+        &::after {
+          height: 200px;
+          transform: rotate(60deg);
+        }
+      }
+      &:nth-child(5) {
+        left: 50%;
+        margin-left: -91px;
+      }
+      &:nth-child(6) {
+        right: 45px;
+        &::after {
+          transform: rotate(0deg);
+        }
+      }
+    }
+  }
+
+  .panel-swiper-wrap {
+    height: 108px;
+    margin: 20px 0 30px;
+    padding: 0 28px;
+    overflow: hidden;
   }
 </style>
