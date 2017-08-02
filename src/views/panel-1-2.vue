@@ -180,7 +180,7 @@
             type: 'lines',
             zlevel: 1,
             effect: {
-              show: true,
+              show: false,  // TODO: 超级耗性能
               period: 6,
               trailLength: 0.7,
               color: '#fff',
@@ -274,7 +274,7 @@
     background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
     background-position: -90px -30px;
   }
-  /*  TODO: 图片初次加载闪动 */
+  /* TODO: 图片初次加载闪动 */
   .world-map-bg0 {
     background-image: url(../assets/img/worldMap/北美-交互.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
   }
@@ -379,7 +379,7 @@
       &:nth-child(4) {
         left: 60px;
         &::after {
-          height: 200px;
+          height: 150px;
           transform: rotate(60deg);
         }
       }
