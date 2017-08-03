@@ -115,6 +115,13 @@ Api.install = () => {
         apiName: 'worldMap(世界地图)',
       });
     },
+
+    // page3
+    realTimeTrade() {
+      return Vue.axios.get(`${API_ADDRESS2}/en/realTimeTrade(实时交易数据).json`, {
+        apiName: 'realTimeTrade(实时交易数据)',
+      });
+    },
   };
 };
 
