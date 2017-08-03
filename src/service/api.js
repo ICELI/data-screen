@@ -122,6 +122,21 @@ Api.install = () => {
         apiName: 'realTimeTrade(实时交易数据)',
       });
     },
+    todayCustomsClearance() {
+      return Vue.axios.get(`${API_ADDRESS2}/en/todayClearance(今日报关量).json`, {
+        apiName: 'todayClearance(今日报关量)',
+      });
+    },
+    realTimeVisitor() {
+      return Vue.axios.get(`${API_ADDRESS2}/en/realTimeVisitor(实时访客和今日新增商机).json`, {
+        apiName: 'realTimeVisitor(实时访客和今日新增商机)',
+      });
+    },
+    platformUser() {
+      return Vue.axios.get(`${API_ADDRESS2}/en/platformUser(平台用户累计数).json`, {
+        apiName: 'platformUser(平台用户累计数)',
+      });
+    },
   };
 };
 

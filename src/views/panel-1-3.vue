@@ -2,7 +2,7 @@
   <div id="transaction-data" class="panel-1-3">
     <h1 class="page-title">实时交易数据</h1>
 
-    <!-- 聚融通 start -->
+    <!-- transaction start -->
     <div class="pure-g transaction-top">
       <div class="pure-u-1-2">
         <div class="panel-wrap">
@@ -23,9 +23,9 @@
         </div>
       </div>
     </div>
-    <!-- 聚融通 end -->
+    <!-- transaction end -->
 
-    <!-- 聚咨询 start -->
+    <!-- transaction start -->
     <div class="pure-g transaction-middle">
       <div class="pure-u-1-2">
         <div class="panel-wrap">
@@ -36,19 +36,13 @@
       </div>
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h3 class="panel-title">咨询服务</h3>
+          <h3 class="panel-title clearfix"><span class="pull-right">出口国家</span>今日报关量</h3>
           <div class="panel-content panel-list-wrap">
-            <div class="pure-g panel-list-header">
-              <div class="pure-u-9-24">种类</div>
-              <div class="pure-u-6-24">数量</div>
-              <div class="pure-u-9-24">增量（2017）</div>
-            </div>
             <div class="panel-list-content">
               <div class="panel-list-scroll">
-                <div class="pure-g" v-for="item in []">
-                  <div class="pure-u-9-24 pr20">{{item.type}}</div>
-                  <div class="pure-u-6-24 text-primary">{{item.total}}</div>
-                  <div class="pure-u-9-24 text-danger">+{{item.increase}}</div>
+                <div class="clearfix" v-for="item in todayCustomsClearance">
+                  <span class="pull-right text-warning">{{item.area}}</span>
+                  {{item.goods}}
                 </div>
 
               </div>
@@ -57,26 +51,21 @@
         </div>
       </div>
     </div>
-    <!-- 聚咨询 end -->
+    <!-- transaction end -->
 
-    <!-- 聚运通 start -->
+    <!-- transaction start -->
     <div class="pure-g transaction-bottom">
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h3 class="panel-title">热门运力</h3>
+          <h3 class="panel-title clearfix">实时访客</h3>
           <div class="panel-content panel-list-wrap">
-            <div class="pure-g panel-list-header">
-              <div class="pure-u-14-24">跨境线路</div>
-              <div class="pure-u-4-24">数量</div>
-              <div class="pure-u-6-24">运输方式</div>
-            </div>
             <div class="panel-list-content">
               <div class="panel-list-scroll">
-                <div class="pure-g" v-for="item in []">
-                  <div class="pure-u-14-24 pr20">{{item.line}}</div>
-                  <div class="pure-u-4-24 text-primary">{{item.amount}}</div>
-                  <div class="pure-u-6-24">{{item.transMode}}</div>
+                <div class="clearfix" v-for="item in realTimeVisitor">
+                  <span class="panel-list-time pull-right">{{item.time}}</span>
+                  <span class="panel-list-label text-warning">访客</span>{{item.visitor}}
                 </div>
+
               </div>
             </div>
           </div>
@@ -84,21 +73,26 @@
       </div>
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h3 class="panel-title">运输方式</h3>
-          <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-          <div class="panel-content panel-chart-wrap panel-ring-wrap" id="barPolarStack"></div>
+          <h3 class="panel-title clearfix">今日新增商机累计 <span class="title-number"><a num="todayIncreaseBusiTotal">{{todayIncreaseBusiTotal}}</a></span></h3>
+          <div class="panel-content panel-list-wrap">
+            <div class="panel-list-content">
+              <div class="panel-list-scroll">
+                <div class="clearfix" v-for="item in todayIncreaseBusi">
+                  <span class="panel-list-label text-warning">{{item.type}}</span>{{item.business}}
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <!-- 聚运通 end -->
+    <!-- transaction end -->
   </div>
 </template>
 
 <script>
   import echarts from 'echarts';
-  import carousel from '../service/carousel';
   import scroll from '../service/scroll';
-  import Rings from '../service/ring';
   import {bindNumber} from '../service/number';
 
   export default {
@@ -106,17 +100,20 @@
       return {
         realTimeTrade: {},
         realTimeTradeTotal: {},
+        todayCustomsClearance: [],
+        realTimeVisitor: [],
+        todayIncreaseBusi: [],
+        todayIncreaseBusiTotal: 0,
+        // 字体跳动
+        number: {
+          todayVisitorNum: 0,
+          todayIntentionOrder: 0,
+          todayIncreaseUser: 0,
+          todayIncreaseBusiTotal: 0
+        },
       };
     },
     computed: {
-      // 字体跳动
-      number() {
-        return {
-          todayVisitorNum: +this.realTimeTradeTotal.todayVisitorNum,
-          todayIntentionOrder: +this.realTimeTradeTotal.todayIntentionOrder,
-          todayIncreaseUser: +this.realTimeTradeTotal.todayIncreaseUser
-        }
-      },
     },
     components: {},
     created() {
@@ -263,6 +260,23 @@
           ]
         };
       }
+
+      this.Api.todayCustomsClearance().then((res) => {
+        this.todayCustomsClearance = res.data.data.todayCustomsClearance;
+      });
+
+      this.Api.realTimeVisitor().then((res) => {
+        this.realTimeVisitor = res.data.data.realTimeVisitor;
+        this.todayIncreaseBusi = res.data.data.todayIncreaseBusi;
+        this.number.todayIncreaseBusiTotal = +res.data.todayIncreaseBusiTotal;
+        this.todayIncreaseBusiTotal = res.data.todayIncreaseBusiTotal;
+
+
+        this.$nextTick(function () {
+          // '.panel-list-scroll' TODO: async data
+          scroll('.panel-list-scroll');
+        });
+      });
     },
     methods: {},
     mounted() {
@@ -337,5 +351,27 @@
     .panel-chart-wrap {
       height: 164px;
     }
+    .panel-list-content {
+      height: 134px;
+    }
+  }
+
+  .transaction-bottom {
+    .panel-list-content {
+      height: 216px;
+    }
+  }
+  .panel-list-content {
+    line-height: 36px;
+    margin: 0 0 30px 0;
+  }
+  .panel-list-scroll {
+    padding-right: 28px;
+  }
+  .panel-list-label {
+    margin-right: 10px;
+  }
+  .panel-list-time {
+    margin-left: 20px;
   }
 </style>
