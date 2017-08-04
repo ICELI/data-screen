@@ -99,6 +99,7 @@
       }
     },
     mounted() {
+      // todo 动画从0开始
       bindNumber(this.number, {
         attr: 'num',    //属性名称 <a num='100.0'></a>
         id: 'world-country', //外层容器#id

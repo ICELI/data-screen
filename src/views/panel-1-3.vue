@@ -121,7 +121,8 @@
       this.Api.realTimeTrade().then((res) => {
         let realTimeTrade = res.data.data.realTimeTrade;
         let realTimeTradeTotal = realTimeTrade.pop();
-
+        // TODO: 2小时更新
+        realTimeTrade = realTimeTrade.slice(4,13);
         // TODO: 对象合并 ES6 只合并存在的属性
         this.number.todayVisitorNum = +realTimeTradeTotal.todayVisitorNum;
         this.number.todayIntentionOrder = +realTimeTradeTotal.todayIntentionOrder;
@@ -140,6 +141,9 @@
             bottom: 50,
           },
           xAxis: {
+            axisLabel: {
+              interval: 1
+            },
             axisLine: {
               show: false,
               onZero: false,
@@ -209,6 +213,11 @@
           xAxis: [
             {
               type: 'category',
+              minInterval: 2,
+              splitNumber: 5,
+              axisLabel: {
+                interval: 1
+              },
               axisLine: {
                 show: false,
                 lineStyle: {
@@ -229,6 +238,8 @@
           yAxis: [
             {
               type: 'value',
+              minInterval: 2,
+              splitNumber: 5,
               axisLine: {
                 show: false,
                 lineStyle: {
