@@ -50,7 +50,7 @@ export default function Sectors(para, doc){
       var radius = col.radius * (config.size - config.split);
       var value = col.percent || 0;
 
-      str += '<div deg="' + deg + '" name="sector" style="width:' + radius * 2 + 'px; z-index:' + (20 - idx) + '; transition-duration:1s; overflow:hidden; opacity:1; transition-property:all; transition-timing-function:ease; transform-origin:center center; transform:rotate(-' + deg + 'deg) scale(0,0); height:' + radius * 2 + 'px; border-radius:' + radius + 'px; position:absolute; margin:' + (config.size - radius) + 'px;">';
+      str += '<div deg="' + deg + '" name="sector" style="width:' + radius * 2 + 'px; z-index:' + (20 - idx) + '; transition-duration:1.8s; overflow:hidden; opacity:1; transition-property:all; transition-timing-function:ease; transform-origin:center center; transform:rotate(-' + deg + 'deg) scale(0,0); height:' + radius * 2 + 'px; border-radius:' + radius + 'px; position:absolute; margin:' + (config.size - radius) + 'px;">';
       if(value < 0.5){
         str += '<div style="width:' + radius + 'px; height:' + radius * 2 + 'px; float:left; overflow:hidden;">';
         str += '<span style="width:' + radius + 'px; height:' + radius * 2 + 'px; box-shadow:-2px 1px 16px #454545; display:block; transform-origin:left; transform:rotate(-' + 360 * col.percent + 'deg); margin-left:' + radius + 'px; border-radius:0 ' + radius + 'px ' + radius + 'px 0; background:' + config.colors[idx] + ';"></span>'
