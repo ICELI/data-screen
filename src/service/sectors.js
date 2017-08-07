@@ -39,9 +39,9 @@ export default function Sectors(para, doc){
       var _y = (config.size) - Math.cos(((0 - 360 * col.percent * 0.5) - deg) * (Math.PI / 180)) * (config.size) - 5;
       str += '<span name="sector_' + self.id + '_pointer" style="width:20px; transform:scale(0.5, 1); border-radius:40px; transition-duration:0.2s; transition-property:all; transition-timing-function:ease; height:10px; background:' + config.colors[idx] + '; top:' + _y + 'px; left:' + _x + 'PX; display:block; position:absolute; z-index:1000"></span>';
       if(_x < config.size){
-        str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:14px; text-align:right; left:' + (_x - 208) + 'px;"><a num="' + '">' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+        str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:14px; text-align:right; left:' + (_x - 208) + 'px;"><a num="' + '">' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
       }else{
-        str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:14px; padding-left:32px; text-align:left; left:' + _x + 'px;"><a>' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+        str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:14px; padding-left:32px; text-align:left; left:' + _x + 'px;"><a>' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
       }
       deg = deg + 360 * col.percent;
     });
