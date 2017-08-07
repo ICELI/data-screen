@@ -355,7 +355,7 @@
     created() {
       this.Api.Carousel().then((res) => {
         this.carousel = res.data;
-        carousel(this.carousel, this.barPolarStack);
+        carousel(this.carousel);
       });
 
       this.Api.finance().then((res) => {

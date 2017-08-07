@@ -50,13 +50,19 @@
     <!-- situation end -->
 
     <!-- situation start -->
-    <div class="pure-g situation-bottom">
+    <div class="pure-g situation-bottom" id="orderNumber">
       <div class="pure-u-1-1">
         <div class="panel-wrap">
           <div class="panel-content panel-ring-wrap">
-            <div id="ring"></div>
-            <div class="order-increase"><i></i> <span>较前一日上升</span> <span class="text-primary"><a
-              num="intentionOrder"></a>%</span></div>
+            <div class="order-number-wrap">
+              累计意向订单数
+              <span class="title-number"><a num="orderNumber"></a></span>
+            </div>
+            <ul class="order-increase">
+              <li>昨日意向订单 <span class="text-primary"><a num="yesterdayOrderNumber"></a></span></li>
+              <li>订单转化 <span class="text-primary"><a num="orderChangeNumber"></a>%</span></li>
+              <li><i></i> <span>较前一日上升</span> <span class="text-primary"><a num="intentionOrder"></a>%</span></li>
+            </ul>
           </div>
 
         </div>
@@ -90,6 +96,11 @@
         number: {
           platformUserNum: 0,
           goodsNum: 0,
+        },
+        orderNumber: {
+          orderNumber: 0,
+          yesterdayOrderNumber: 0,
+          orderChangeNumber: 0,
           intentionOrder: 0,
         },
         barGradient: null,
@@ -99,25 +110,11 @@
     computed: {},
     components: {},
     created() {
-
-      /*this.sectors.setData([
-       {name:'矿产', value:0.04, radius:0.60, unit:'%'},
-       {name:'农产品', value:0.10, radius:0.72, unit:'%'},
-       {name:'消费品', value:0.20, radius:0.90, unit:'%'},
-       {name:'机械', value:0.10, radius:0.72, unit:'%'},
-       {name:'化工', value:0.15, radius:0.80, unit:'%'},
-       {name:'食品', value:0.10, radius:0.90, unit:'%'},
-       {name:'石油', value:0.02, radius:0.40, unit:'%'},
-       {name:'钢', value:0.10, radius:0.5, unit:'%'},
-       {name:'煤', value:0.05, radius:0.62, unit:'%'},
-       {name:'有色', value:0.06, radius:0.85, unit:'%'},
-       {name:'工业品', value:0.08, radius:0.75, unit:'%'}
-       ]);*/
-      this.Api.industryPercent().then((res) => {
+      this.Api.industryPercent('cn').then((res) => {
         this.sectors.setData(res.data.data.industryPercent);
       });
 
-      this.Api.platformUser().then((res) => {
+      this.Api.platformUser('cn').then((res) => {
         this.platformUser = res.data.data.platformUserNum.slice(0, -3);
 
         setTimeout(() => {
@@ -134,9 +131,9 @@
         this.number.platformUserNum = +res.data.data.platformUserNum.slice(-1)[0].userNum.replace('万', '');
       });
 
-      this.Api.goods().then((res) => {
+      this.Api.goods('cn').then((res) => {
         this.goods = res.data.data.goodsNum.slice(0, -1);
-        this.number.goodsNum = +res.data.data.goodsNum.slice(-1)[0].num;
+        this.number.goodsNum = +res.data.data.goodsNum.slice(-1)[0].num.replace('万', '');
 
         var dataAxis = this.goods.map(v => v.industry);
         var data = this.goods.map(v => v.num);
@@ -231,21 +228,13 @@
         this.barGradient.setOption(option);
       });
 
-      this.Api.intentionOrder().then((res) => {
+      this.Api.intentionOrder('cn').then((res) => {
         this.intentionOrder = res.data.data.intentionOrder;
 
-        // fixme: 固定图表为达到视觉效果
-        let num0 = this.intentionOrder[0].num.replace('万+', '');
-        let num1 = this.intentionOrder[1].num.replace('%', '');
-        let num2 = this.intentionOrder[2].num;
-
-        this.ring.setData([
-          {name: '累计意向订单数', value: 0.75, display: num0, unit: '万+'},
-          {name: '昨日意向订单', value: 0.25, display: num2, unit: ''},
-          {name: '订单转化', value: num1 / 100, display: num1, unit: '%'}
-        ]);
-
-        this.number.intentionOrder = +this.intentionOrder[3].num.replace('%', '');
+        this.orderNumber.orderNumber = +this.intentionOrder[0].num.replace('万+', '');
+        this.orderNumber.orderChangeNumber = +this.intentionOrder[1].num.replace('%', '');
+        this.orderNumber.yesterdayOrderNumber = +this.intentionOrder[2].num;
+        this.orderNumber.intentionOrder = +this.intentionOrder[3].num.replace('%', '');
       });
     },
     methods: {},
@@ -262,6 +251,14 @@
         size: '36px'
       });
 
+      bindNumber(this.orderNumber, {
+        attr: 'num',    //属性名称 <a num='100.0'></a>
+        id: 'orderNumber', //外层容器#id
+        decimals: 0,    //小数点个数
+        duration: 2,    //动画时长
+        size: '30px'
+      });
+
       this.sectors = new Sectors({
         el: 'sectors',
         title: {
@@ -274,24 +271,11 @@
         split: 20,
         offset: 200
       }, document);
-
-      this.ring = new Rings({
-        el: 'ring',
-        size: 194,
-        colors: ['#06f9ff', '#f2ff00', '#ff3273'],
-        width: 14,
-        split: 4,
-        alph: 0.2,
-        duration: 2.0,
-        label: '<span class="pointer" style="background:{{color}}"></span><label class="lab">{{name}}</label><h4 class="val2" number="{{value}}"></h4>',
-        dir: ['RIGHT', 'RIGHT', 'RIGHT', 'RIGHT', 'RIGHT'],
-        smooth: true
-      }, document);
     },
   };
 </script>
 
-<style lang="scss" rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss" scoped>
   .top-bar {
     display: table;
     width: 100%;
@@ -393,16 +377,41 @@
 
   .order-increase {
     position: absolute;
-    width: 314px;
+    width: 392px;
     right: 28px;
-    bottom: 72px;
+    bottom: 40px;
     font-size: 22px;
     text-align: left;
-    i {
+    li {
       position: relative;
+      padding-left: 30px;
+      line-height: 56px;
+      &::before {
+        position: absolute;
+        content: '';
+        width: 16px;
+        height: 16px;
+        left: 0;
+        top: 22px;
+        border-radius: 50%;
+        background-color: transparent;
+      }
+      &:nth-child(1) {
+        &::before {
+          background-color: #3263ff;
+        }
+      }
+      &:nth-child(2) {
+        &::before {
+          background-color: #2788e8;
+        }
+      }
+    }
+    i {
+      position: absolute;
       display: inline-block;
-      left: 11px;
-      top: -5px;
+      left: 0;
+      top: 24px;
       margin-right: 16px;
       width: 14px;
       height: 8px;
@@ -417,6 +426,7 @@
         width: 16px;
         height: 3px;
         background-color: #06F9FF;
+        overflow: hidden;
 
       }
       &::after {
@@ -436,6 +446,36 @@
     }
     .text-primary {
       font-size: 30px;
+    }
+  }
+
+  .order-number-wrap {
+    position: absolute;
+    width: 196px;
+    height: 196px;
+    left: 174px;
+    padding: 60px 0;
+    border-radius: 100%;
+    background-color: #3263ff;
+    line-height: 38px;
+    overflow: visible !important;
+    &::before, &::after {
+      position: absolute;
+      content: '';
+      top: 60px;
+      right: -79px;
+      width: 75px;
+      height: 75px;
+      border-radius: 100%;
+      background-color: #2788e8;
+
+    }
+    &::after {
+      top: 127px;
+      right: -27px;
+      width: 35px;
+      height: 35px;
+      background-color: #4cadfc;
     }
   }
 

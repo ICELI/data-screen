@@ -36,7 +36,7 @@
       </div>
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h3 class="panel-title clearfix"><span class="pull-right">出口国家</span>今日报关量</h3>
+          <h3 class="panel-title clearfix"><span class="pull-right">进口省份</span>今日报关量</h3>
           <div class="panel-content panel-list-wrap">
             <div class="panel-list-content">
               <div class="panel-list-scroll">
@@ -118,7 +118,7 @@
     components: {},
     created() {
 
-      this.Api.realTimeTrade().then((res) => {
+      this.Api.realTimeTrade('cn').then((res) => {
         let realTimeTrade = res.data.data.realTimeTrade;
         let realTimeTradeTotal = realTimeTrade.pop();
         // TODO: 2小时更新
@@ -272,11 +272,11 @@
         };
       }
 
-      this.Api.todayCustomsClearance().then((res) => {
+      this.Api.todayCustomsClearance('cn').then((res) => {
         this.todayCustomsClearance = res.data.data.todayCustomsClearance;
       });
 
-      this.Api.realTimeVisitor().then((res) => {
+      this.Api.realTimeVisitor('cn').then((res) => {
         this.realTimeVisitor = res.data.data.realTimeVisitor;
         this.todayIncreaseBusi = res.data.data.todayIncreaseBusi;
         this.number.todayIncreaseBusiTotal = +res.data.todayIncreaseBusiTotal;

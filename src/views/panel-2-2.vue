@@ -1,6 +1,6 @@
 <template>
   <div class="panel-1-2">
-    <h1 class="page-title">覆盖全球各国、经营全品类</h1>
+    <h1 class="page-title">覆盖中国各省、经营全品类</h1>
     <div class="world-map-wrap">
       <div class="world-map-bg" :class="'world-map-bg' + currentIndex"></div>
       <div id="worldMap"></div>
@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="panel-wrap" id="world-country">
-      <h3 class="panel-title">入驻国家馆国家数累计 <span class="title-number"><a num="countryTotal">{{countryTotal}}</a></span>
+      <h3 class="panel-title">北部区域优秀企业累计 <span class="title-number"><a num="countryTotal">{{countryTotal}}</a></span>
       </h3>
       <div class="panel-content panel-swiper-wrap">
         <div class="swiper-container">
