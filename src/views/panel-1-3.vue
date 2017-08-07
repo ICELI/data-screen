@@ -291,6 +291,8 @@
     },
     methods: {},
     mounted() {
+      document.querySelector('body').className = document.querySelector('body').className.replace('e4b-bg', '');
+
       this.lineX = echarts.init(document.getElementById('lineX'));
       this.lineX2 = echarts.init(document.getElementById('lineX2'));
       this.scatter = echarts.init(document.getElementById('scatter'));

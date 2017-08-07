@@ -490,6 +490,7 @@
     mounted() {
       // carousel 背景光圈 todo：
       document.querySelector('body').className += ' e4b-bg';
+
       this.ring = new Rings({
         el: 'barPolarStack2',
         size: 127, //圆环最外层尺寸(肯定是正方形)

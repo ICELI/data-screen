@@ -4,7 +4,7 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 // 引入路由视图，懒加载处理
-const home = () => import(/* webpackChunkName: "home" */ 'views/panel-1-1');
+const page1 = () => import(/* webpackChunkName: "home" */ 'views/panel-1-1');
 const page2 = () => import(/* webpackChunkName: "page2" */ 'views/panel-1-2');
 const page3 = () => import(/* webpackChunkName: "page3" */ 'views/panel-1-3');
 const page4 = () => import(/* webpackChunkName: "page4" */ 'views/panel-1-4');
@@ -22,11 +22,11 @@ const router = new Router({
     // 首页
     {
       path: '/',
-      name: 'home',
-      component: home,
+      name: 'page1',
+      component: page1,
     },
     {
-      path: '/home',
+      path: '/page1',
       redirect: '/',
     },
     {

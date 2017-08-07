@@ -93,12 +93,14 @@
           });
         });
         // fixme: 当swiper过渡动画时 切换大洲 跳动感明显 2的倍数
-        setTimeout(() => {
+        this.timer = setTimeout(() => {
           this.changeMap();
         }, specIdx ? 16000 : (item < 4 ? 4 : item) * 2000);
       }
     },
     mounted() {
+      document.querySelector('body').className = document.querySelector('body').className.replace('e4b-bg', '');
+
       // todo 动画从0开始
       bindNumber(this.number, {
         attr: 'num',    //属性名称 <a num='100.0'></a>
@@ -251,6 +253,9 @@
       // 使用刚指定的配置项和数据显示图表。
       worldMap.setOption(worldMapOption);
     },
+    beforeDestroy() {
+        clearTimeout(this.timer);
+    }
   };
 </script>
 

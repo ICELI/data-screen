@@ -250,6 +250,8 @@
     },
     methods: {},
     mounted() {
+      document.querySelector('body').className = document.querySelector('body').className.replace('e4b-bg', '')
+
       this.barGradient = echarts.init(document.getElementById('bar-gradient'));
 
       bindNumber(this.number, {
