@@ -254,9 +254,9 @@
           name: '融资金额占比',
           className: 'title'
         },
-        size: 130,
+        size: 160,
         colors: ['#bf64ff','#ff6a66','#ff8b66','#ffaf66','#ffd366','#ffff67','#7eff66','#66ffe3','#66deff','#5f5ceb','#8766ff'],
-        innerSize: 35,
+        innerSize: 50,
         split: 20,
         offset: 200
       }, document);
