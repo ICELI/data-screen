@@ -132,9 +132,21 @@ Api.install = () => {
         apiName: 'realTimeVisitor(实时访客和今日新增商机)',
       });
     },
+
+    // page4
     platformUser() {
       return Vue.axios.get(`${API_ADDRESS2}/en/platformUser(平台用户累计数).json`, {
         apiName: 'platformUser(平台用户累计数)',
+      });
+    },
+    goods() {
+      return Vue.axios.get(`${API_ADDRESS2}/en/goods(商品累计数).json`, {
+        apiName: 'goods(商品累计数)',
+      });
+    },
+    intentionOrder() {
+      return Vue.axios.get(`${API_ADDRESS2}/en/intentionOrder(意向单累计).json`, {
+        apiName: 'intentionOrder(意向单累计)',
       });
     },
   };

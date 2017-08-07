@@ -488,7 +488,7 @@
     },
     methods: {},
     mounted() {
-      // carousel 背景光圈
+      // carousel 背景光圈 todo：
       document.querySelector('body').className += ' e4b-bg';
       this.ring = new Rings({
         el: 'barPolarStack2',
