@@ -10,8 +10,8 @@
     data() {
       return {
         nextPage: '',
-        firstScreen: ['page1', 'page2'],
-        secondScreen: ['page3', 'page4']
+        firstScreen: ['page1', 'page2', 'page3', 'page4'],
+        secondScreen: ['page5', 'page6', 'page7', 'page8']
       };
     },
     components: {},
