@@ -13,7 +13,9 @@
             <table class="top-bar">
               <tr v-for="(item, index) in platformUser">
                 <td class="t-bar">Top{{ index + 1 }} {{item.area}}</td>
-                <td class="t-bar"><div class="bar-wrap"><b :style="{width: 150 * item.percent + 'px'}">178</b></div></td>
+                <td class="t-bar">
+                  <div class="bar-wrap"><b :style="{width: 150 * item.percent + 'px'}">178</b></div>
+                </td>
                 <td class="t-bar">{{item.userNum}}</td>
               </tr>
             </table>
@@ -29,7 +31,7 @@
         <div class="panel-wrap">
           <h4 class="panel-title">行业交易占比</h4>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-          <div class="panel-content panel-chart-wrap" id="lineX2"></div>
+          <div class="panel-content panel-chart-wrap" id="sectors"></div>
         </div>
       </div>
     </div>
@@ -99,18 +101,18 @@
     created() {
 
       /*this.sectors.setData([
-        {name:'矿产', value:0.04, radius:0.60, unit:'%'},
-        {name:'农产品', value:0.10, radius:0.72, unit:'%'},
-        {name:'消费品', value:0.20, radius:0.90, unit:'%'},
-        {name:'机械', value:0.10, radius:0.72, unit:'%'},
-        {name:'化工', value:0.15, radius:0.80, unit:'%'},
-        {name:'食品', value:0.10, radius:0.90, unit:'%'},
-        {name:'石油', value:0.02, radius:0.40, unit:'%'},
-        {name:'钢', value:0.10, radius:0.5, unit:'%'},
-        {name:'煤', value:0.05, radius:0.62, unit:'%'},
-        {name:'有色', value:0.06, radius:0.85, unit:'%'},
-        {name:'工业品', value:0.08, radius:0.75, unit:'%'}
-      ]);*/
+       {name:'矿产', value:0.04, radius:0.60, unit:'%'},
+       {name:'农产品', value:0.10, radius:0.72, unit:'%'},
+       {name:'消费品', value:0.20, radius:0.90, unit:'%'},
+       {name:'机械', value:0.10, radius:0.72, unit:'%'},
+       {name:'化工', value:0.15, radius:0.80, unit:'%'},
+       {name:'食品', value:0.10, radius:0.90, unit:'%'},
+       {name:'石油', value:0.02, radius:0.40, unit:'%'},
+       {name:'钢', value:0.10, radius:0.5, unit:'%'},
+       {name:'煤', value:0.05, radius:0.62, unit:'%'},
+       {name:'有色', value:0.06, radius:0.85, unit:'%'},
+       {name:'工业品', value:0.08, radius:0.75, unit:'%'}
+       ]);*/
       this.Api.industryPercent().then((res) => {
         this.sectors.setData(res.data.data.industryPercent);
       });
@@ -118,7 +120,7 @@
       this.Api.platformUser().then((res) => {
         this.platformUser = res.data.data.platformUserNum.slice(0, -3);
 
-        setTimeout(()=>{
+        setTimeout(() => {
           this.platformUser = this.platformUser.map((v, i) => {
 
             return {
@@ -148,6 +150,11 @@
         }
         let colors = ['#0bff49', '#ff3274', '#c6ecff'];
         let option = {
+          grid: {
+            top: 10,
+            right: 28,
+            bottom: 72,
+          },
           xAxis: {
             data: dataAxis,
             type: 'category',
@@ -164,7 +171,12 @@
               show: false
             },
             nameLocation: 'middle',
-            nameGap: 100,
+            axisLabel: {
+              margin: 16,
+              textStyle: {
+                fontSize: 19 // todo: 20
+              }
+            },
             z: 10
           },
           yAxis: {
@@ -249,14 +261,14 @@
       });
 
       this.sectors = new Sectors({
-        el: 'lineX2',
+        el: 'sectors',
         title: {
           name: '融资金额占比',
           className: 'title'
         },
-        size: 160,
-        colors: ['#bf64ff','#ff6a66','#ff8b66','#ffaf66','#ffd366','#ffff67','#7eff66','#66ffe3','#66deff','#5f5ceb','#8766ff'],
-        innerSize: 50,
+        size: 115,
+        colors: ['#bf64ff', '#ff6a66', '#ff8b66', '#ffaf66', '#ffd366', '#ffff67', '#7eff66', '#66ffe3', '#66deff', '#5f5ceb', '#8766ff'],
+        innerSize: 35,
         split: 20,
         offset: 200
       }, document);
@@ -319,7 +331,7 @@
         width: 178px;
         height: 16px;
         margin: 0 10px;
-        background-color: rgba(198,236,255,0.16);
+        background-color: rgba(198, 236, 255, 0.16);
         vertical-align: middle;
         text-indent: 10000px;
         b {
@@ -423,5 +435,9 @@
     .text-primary {
       font-size: 30px;
     }
+  }
+
+  #test {
+    margin-top: 60px;
   }
 </style>
