@@ -1,4 +1,4 @@
-export default function (carouselData, barPolarStack) {
+export default function (carouselData, cb) {
   // TODO: carousel
   const M = carouselData.length;
   const oDiv = document.getElementById('carousel');
@@ -125,6 +125,8 @@ export default function (carouselData, barPolarStack) {
           e4bInfo[j].setAttribute('style', 'display:none!important');
         }
         e4bInfo[i].setAttribute('style', 'display:block!important');
+
+        cb && cb(i);
         // if (i === 2 && !barPolarStack.isInit) {
         //   barPolarStack.resize();
         //   barPolarStack.isInit = true;
@@ -136,7 +138,7 @@ export default function (carouselData, barPolarStack) {
   // todo
   let timer2 = null;
 
-  setTimeout(play, delay);
+  // setTimeout(play, delay);
 
   function play() {
     clearInterval(timer2);

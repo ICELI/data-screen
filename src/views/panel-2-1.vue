@@ -1,7 +1,7 @@
 <template>
   <div class="panel-1-1">
     <div class="e4b-title">
-      <img src="../assets/img/e4b-title-en.png" alt="聚贸E4B跨境电商全球体系">
+      <img src="../assets/img/e4b-title-cn.png" alt="聚贸E4B跨境电商全国布局">
     </div>
     <div id="carousel">
       <!--<div class="carousel-floor"></div>-->
@@ -39,7 +39,8 @@
       <div class="pure-g e4b-info">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">2017增量 <span class="title-number"><a num="consultancyInquiriesIncrease">{{consultancyInquiriesIncrease}}</a></span></h3>
+            <h3 class="panel-title">2017增量 <span class="title-number"><a num="consultancyInquiriesIncrease">{{consultancyInquiriesIncrease}}</a></span>
+            </h3>
             <div class="panel-content panel-list-wrap">
               <div class="panel-dashboard">
                 <h3 class="text-primary"><a num="consultancyInquiriesNum">{{consultancyInquiriesNum}}</a></h3>
@@ -50,7 +51,8 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">咨询服务 <span class="title-number"><a num="consultationServiceTotal">{{consultationServiceTotal}}</a></span></h3>
+            <h3 class="panel-title">咨询服务 <span class="title-number"><a num="consultationServiceTotal">{{consultationServiceTotal}}</a></span>
+            </h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
@@ -111,7 +113,8 @@
       <div class="pure-g e4b-info">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">覆盖品类数 <span class="title-number"><a num="certificationCoverItemNumTotal">{{certificationCoverItemNumTotal}}</a></span></h3>
+            <h3 class="panel-title">覆盖品类数 <span class="title-number"><a num="certificationCoverItemNumTotal">{{certificationCoverItemNumTotal}}</a></span>
+            </h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-7-24">名称</div>
@@ -132,7 +135,8 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">认证体系 <span class="title-number"><a num="certificationCoverCertifySysTotal">{{certificationCoverCertifySysTotal}}</a></span></h3>
+            <h3 class="panel-title">认证体系 <span class="title-number"><a num="certificationCoverCertifySysTotal">{{certificationCoverCertifySysTotal}}</a></span>
+            </h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
@@ -162,17 +166,16 @@
             <h3 class="panel-title">聚贸大宗商品交易价格</h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-9-24">名称</div>
-                <div class="pure-u-9-24">06/30（RMB）</div>
-                <div class="pure-u-6-24">幅度</div>
+                <div class="pure-u-13-24">名称</div>
+                <div class="pure-u-5-24">单位</div>
+                <div class="pure-u-6-24">周价格</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
-                  <div class="pure-g" v-for="item in spotFuturesPrice">
-                    <div class="pure-u-9-24 pr20">{{item.commodity}}</div>
-                    <div class="pure-u-9-24 text-primary">{{item.dayPrice}}</div>
-                    <div class="pure-u-6-24 text-danger" v-if="item.change.indexOf('-') == -1">+{{item.change}}</div>
-                    <div class="pure-u-6-24 text-success" v-else="">{{item.change}}</div>
+                  <div class="pure-g" v-for="item in commodityPriceList">
+                    <div class="pure-u-13-24 pr20">{{item.name}}</div>
+                    <div class="pure-u-5-24">{{item.unit}}</div>
+                    <div class="pure-u-6-24 text-primary">{{item.price2}}</div>
                   </div>
 
                 </div>
@@ -186,16 +189,16 @@
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
-                <div class="pure-u-9-24">06/30（RMB）</div>
-                <div class="pure-u-6-24">幅度</div>
+                <div class="pure-u-9-24">价格（月末）</div>
+                <div class="pure-u-6-24">月涨跌</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
                   <div class="pure-g" v-for="item in commodityPriceIndex">
-                    <div class="pure-u-9-24 pr20">{{item.products}}</div>
-                    <div class="pure-u-9-24 text-primary">{{item.index}}</div>
-                    <div class="pure-u-6-24 text-danger" v-if="item.change.indexOf('-') == -1">+{{item.change}}</div>
-                    <div class="pure-u-6-24 text-success" v-else="">{{item.change}}</div>
+                    <div class="pure-u-9-24 pr20">{{item.name}}</div>
+                    <div class="pure-u-9-24 text-primary">{{item.price}}</div>
+                    <div class="pure-u-6-24 text-danger" v-if="item.range.indexOf('-') == -1">+{{item.range}}</div>
+                    <div class="pure-u-6-24 text-success" v-else="">{{item.range}}</div>
                   </div>
 
                 </div>
@@ -232,7 +235,8 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">解决方案数 <span class="title-number"><a num="technologySolutionNumTotal">{{technologySolutionNumTotal}}</a></span></h3>
+            <h3 class="panel-title">解决方案数 <span class="title-number"><a num="technologySolutionNumTotal"></a></span>
+            </h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
@@ -254,6 +258,45 @@
         </div>
       </div>
       <!-- 聚智能 end -->
+
+      <!-- 聚贸通 start -->
+      <div class="pure-g e4b-info customsDeclaration">
+        <div class="pure-u-1-2">
+          <div class="panel-wrap">
+            <h3 class="panel-title">报关金额($) <span class="title-number"><a
+              num="customsDeclarationPriceTotal"></a>亿</span></h3>
+            <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+            <div class="panel-content panel-chart-wrap" id="doughnut2">
+            </div>
+            <div class="doughnut-legend-wrap">
+              <ul class="doughnut-legend-list ">
+                <li class="pointer" v-for="item in customsDeclaration">
+                  <p>{{item.name}} <span class="text-primary">{{item.value}}亿</span></p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="pure-u-1-2">
+          <div class="panel-wrap">
+            <h3 class="panel-title">出口国 <span class="title-number"><a num="customsDeclarationCountryTotal"></a></span>
+            </h3>
+            <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+            <div class="panel-content panel-bar-wrap">
+              <table class="top-bar">
+                <tr v-for="(item, index) in inOutArea">
+                  <td class="t-bar">{{item.area}}</td>
+                  <td class="t-bar">
+                    <div class="bar-wrap"><b :style="{width: 210 * item.percent + 'px'}">210</b></div>
+                  </td>
+                  <td class="t-bar">{{item.userNum}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 聚贸通 end -->
     </div>
   </div>
 </template>
@@ -280,10 +323,15 @@
           certificationCoverItemNumTotal: 0,
           certificationCoverCertifySysTotal: 0,
           technologySolutionNumTotal: 0,
+          customsDeclarationPriceTotal: 0,
+          customsDeclarationCountryTotal: 0,
         },
         // 聚融通
         finance: [],
+        customsDeclaration: [],
+        inOutArea: [],
         doughnut: null,
+        doughnut2: null,
         ring: null,
         // 聚咨询
         consultancy: {
@@ -302,7 +350,7 @@
           certifySys: []
         },
         // 大数聚
-        spotFuturesPrice: [],
+        commodityPriceList: [],
         commodityPriceIndex: [],
         // 聚智能
         technology: {
@@ -353,12 +401,17 @@
     },
     components: {},
     created() {
-      this.Api.enCarousel().then((res) => {
+      this.Api.Carousel('cn').then((res) => {
         this.carousel = res.data;
-        carousel(this.carousel, this.barPolarStack);
+        // 旋转木马 TODO：切屏动画
+        carousel(this.carousel, (index) => {
+          if (index === 6) {
+            this.doughnut2.resize();
+          }
+        });
       });
 
-      this.Api.finance().then((res) => {
+      this.Api.finance('cn').then((res) => {
         let doughnutData = [];
 
         res.data.data.serviceCompNum.forEach((v, i) => {
@@ -368,7 +421,7 @@
           };
         });
         this.finance = doughnutData;
-        doughnutData = doughnutData.slice(0, 4);
+        doughnutData = doughnutData.slice(0, -1);
 
         const doughnutOption = {
           tooltip: {
@@ -437,7 +490,7 @@
         this.number.financeTotal = +this.financeTotal;
       });
 
-      this.Api.consultancy().then((res) => {
+      this.Api.consultancy('cn').then((res) => {
         this.consultancy = res.data.data;
 
         this.number.consultancyInquiriesIncrease = +this.consultancyInquiriesIncrease;
@@ -445,7 +498,7 @@
         this.number.consultationServiceTotal = +this.consultationServiceTotal;
       });
 
-      this.Api.etransmore().then((res) => {
+      this.Api.etransmore('cn').then((res) => {
         this.linesNum = res.data.data.linesNum;
         let transProportion = [];
 
@@ -461,35 +514,125 @@
         this.number.transProportionTotal = +this.transProportionTotal;
       });
 
-      this.Api.certification().then((res) => {
+      this.Api.certification('cn').then((res) => {
         this.certification = res.data.data;
 
         this.number.certificationCoverItemNumTotal = +this.certificationCoverItemNumTotal;
         this.number.certificationCoverCertifySysTotal = +this.certificationCoverCertifySysTotal;
       });
 
-      this.Api.technology().then((res) => {
+      this.Api.technology('cn').then((res) => {
         this.technology = res.data.data;
 
         this.number.technologySolutionNumTotal = +this.technologySolutionNumTotal;
       });
 
-      this.Api.spotFuturesPrice().then((res) => {
-        this.spotFuturesPrice = res.data.data.futuresPriceBeanList;
+      this.Api.commodityPriceList('cn').then((res) => {
+        this.commodityPriceList = res.data.data.commoditypricelist.list;
       });
-      this.Api.commodityPriceIndex().then((res) => {
-        this.commodityPriceIndex = res.data.data;
+
+      this.Api.toTradePrice('cn').then((res) => {
+        this.commodityPriceIndex = res.data.data.tradePriceData;
 
         this.$nextTick(function () {
           // '.panel-list-scroll' TODO: async data
           scroll('.panel-list-scroll');
         });
       });
+
+      this.Api.customsDeclaration('cn').then((res) => {
+        this.declarationAmount = res.data.data.declarationAmount.slice(0, -1);
+        this.inOutArea = res.data.data.inOutArea.slice(0, -1);
+
+        this.number.customsDeclarationPriceTotal = +res.data.data.declarationAmount.slice(-1)[0].money;
+        this.number.customsDeclarationCountryTotal = +res.data.data.inOutArea.slice(-1)[0].money;
+
+
+        let doughnutData = [];
+
+        this.declarationAmount.forEach((v, i) => {
+          doughnutData[i] = {
+            name: v.type,
+            value: v.money
+          };
+        });
+        this.customsDeclaration = doughnutData.concat([]);
+        doughnutData.reverse(); // fix 顺序
+        const doughnutOption = {
+          color: ['#66baff', '#ffd366'],
+          tooltip: {
+            trigger: 'item',
+            formatter: '{b}: {c} ({d}%)',
+          },
+          legend: {
+            show: false,
+            orient: 'horizontal',
+            itemWidth: 16,
+            itemHeight: 16,
+            padding: [
+              10,  // 上
+              10, // 右
+              20,  // 下
+              28, // 左
+            ],
+            itemGap: 200,
+            x: 'left',
+            formatter(name) {
+              console.log(arguments); // TODO
+              return `${name}\n\n${doughnutData.filter(v => v.name === name)[0].value}`;
+            },
+            data: doughnutData.keys('name'),
+          },
+          series: [
+            {
+              name: '访问来源',
+              type: 'pie',
+              radius: ['35%', '50%'],
+              avoidLabelOverlap: false,
+              label: {
+                normal: {
+                  show: false,
+                  position: 'center',
+                },
+                emphasis: {
+                  show: true,
+                  textStyle: {
+                    fontSize: '30',
+                    fontWeight: 'bold',
+                  },
+                },
+              },
+              labelLine: {
+                normal: {
+                  show: false,
+                },
+              },
+              data: doughnutData,
+            },
+          ],
+        };
+        this.doughnut2.setOption(doughnutOption);
+
+        setTimeout(() => {
+          // TODO: 排序
+          this.inOutArea = this.inOutArea.map((v, i) => {
+
+            return {
+              area: v.area,
+              userNum: v.money,
+              percent: v.money / +res.data.data.inOutArea.slice(-1)[0].money
+            }
+          }).sort(function (a,b) {
+            return b.userNum - a.userNum;
+          });
+        }, 50);
+
+      });
     },
     methods: {},
     mounted() {
       // carousel 背景光圈 todo：
-      document.querySelector('body').className += ' e4b-bg';
+      document.querySelector('body').className = document.querySelector('body').className.replace('e4b-bg', '') + ' e4b-bg';
 
       this.ring = new Rings({
         el: 'barPolarStack2',
@@ -527,10 +670,100 @@
 
       // 圆环
       this.doughnut = echarts.init(document.getElementById('doughnut'));
+      this.doughnut2 = echarts.init(document.getElementById('doughnut2'));
     },
   };
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
+  .customsDeclaration {
+    li {
+      margin-top: 220px;
+      margin-right: 70px;
+      &.pointer:nth-child(1) {
+        &::before {
+          background-color: #ffd366;
+        }
+      }
+      &.pointer:nth-child(2) {
+        &::before {
+          background-color: #66baff;
+        }
+      }
+    }
+  }
 
+  .panel-bar-wrap {
+    padding: 0 28px;
+  }
+
+  .top-bar {
+    display: table;
+    width: 100%;
+    font-size: 20px;
+    line-height: 44px;
+    tr:nth-child(1) {
+      b {
+        background-color: #66baff !important;
+      }
+    }
+    tr:nth-child(2) {
+      b {
+        background-color: #66e9ff !important;
+      }
+    }
+    tr:nth-child(3) {
+      b {
+        background-color: #f2ff00 !important;
+      }
+    }
+    tr:nth-child(4) {
+      b {
+        background-color: #ffa766 !important;
+      }
+    }
+    tr:nth-child(5) {
+      b {
+        background-color: #ff6a66 !important;
+      }
+    }
+    tr:nth-child(6) {
+      b {
+        background-color: #6666ff !important;
+      }
+    }
+    .t-bar {
+      display: table-cell;
+      text-align: left;
+      width: 210px;
+      white-space: nowrap;
+      &:first-child {
+        width: 78px;
+      }
+      &:last-child {
+        width: 100px;
+        text-align: right;
+      }
+      .bar-wrap {
+        position: relative;
+        display: inline-block;
+        width: 210px;
+        height: 16px;
+        margin: 0 10px;
+        background-color: rgba(198, 236, 255, 0.16);
+        vertical-align: middle;
+        text-indent: 10000px;
+        b {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: inline-block;
+          width: 0; // 根据数据计算 相对于
+          height: 16px;
+          background-color: #2788e8;
+          transition: width cubic-bezier(0.22, 0.61, 0.36, 1) 2s;
+        }
+      }
+    }
+  }
 </style>

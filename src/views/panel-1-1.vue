@@ -353,7 +353,7 @@
     },
     components: {},
     created() {
-      this.Api.enCarousel().then((res) => {
+      this.Api.Carousel().then((res) => {
         this.carousel = res.data;
         carousel(this.carousel, this.barPolarStack);
       });
@@ -489,7 +489,7 @@
     methods: {},
     mounted() {
       // carousel 背景光圈 todo：
-      document.querySelector('body').className += ' e4b-bg';
+      document.querySelector('body').className = document.querySelector('body').className.replace('e4b-bg', '') + ' e4b-bg';
 
       this.ring = new Rings({
         el: 'barPolarStack2',
