@@ -67,6 +67,7 @@
 <script>
   import echarts from 'echarts';
   import scroll from '../service/scroll';
+  import Sectors from '../service/sectors';
   import Rings from '../service/ring';
   import {bindNumber} from '../service/number';
 
@@ -76,13 +77,13 @@
         platformUser: [],
         intentionOrder: {},
 
-
         realTimeTrade: {},
         realTimeTradeTotal: {},
         todayCustomsClearance: [],
         realTimeVisitor: [],
         todayIncreaseBusi: [],
         todayIncreaseBusiTotal: 0,
+        sectors: null,
         // 字体跳动
         number: {
           platformUserNum: 0,
@@ -96,6 +97,24 @@
     computed: {},
     components: {},
     created() {
+
+      /*this.sectors.setData([
+        {name:'矿产', value:0.04, radius:0.60, unit:'%'},
+        {name:'农产品', value:0.10, radius:0.72, unit:'%'},
+        {name:'消费品', value:0.20, radius:0.90, unit:'%'},
+        {name:'机械', value:0.10, radius:0.72, unit:'%'},
+        {name:'化工', value:0.15, radius:0.80, unit:'%'},
+        {name:'食品', value:0.10, radius:0.90, unit:'%'},
+        {name:'石油', value:0.02, radius:0.40, unit:'%'},
+        {name:'钢', value:0.10, radius:0.5, unit:'%'},
+        {name:'煤', value:0.05, radius:0.62, unit:'%'},
+        {name:'有色', value:0.06, radius:0.85, unit:'%'},
+        {name:'工业品', value:0.08, radius:0.75, unit:'%'}
+      ]);*/
+      this.Api.industryPercent().then((res) => {
+        this.sectors.setData(res.data.data.industryPercent);
+      });
+
       this.Api.platformUser().then((res) => {
         this.platformUser = res.data.data.platformUserNum.slice(0, -3);
 
@@ -228,6 +247,19 @@
         duration: 2,    //动画时长
         size: '36px'
       });
+
+      this.sectors = new Sectors({
+        el: 'lineX2',
+        title: {
+          name: '融资金额占比',
+          className: 'title'
+        },
+        size: 130,
+        colors: ['#bf64ff','#ff6a66','#ff8b66','#ffaf66','#ffd366','#ffff67','#7eff66','#66ffe3','#66deff','#5f5ceb','#8766ff'],
+        innerSize: 35,
+        split: 20,
+        offset: 200
+      }, document);
 
       this.ring = new Rings({
         el: 'ring',

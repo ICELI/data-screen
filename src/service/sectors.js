@@ -35,36 +35,36 @@ export default function Sectors(para, doc){
     var deg = 0 + config.offset;
 
     this.data && config.colors && (config.colors.length >= this.data.length) && this.data.forEach(function(col, idx){
-      var _x = Math.sin(((0 - 360 * col.value * 0.5) - deg) * (Math.PI / 180)) * (config.size) + (config.size) - 12;
-      var _y = (config.size) - Math.cos(((0 - 360 * col.value * 0.5) - deg) * (Math.PI / 180)) * (config.size) - 5;
+      var _x = Math.sin(((0 - 360 * col.percent * 0.5) - deg) * (Math.PI / 180)) * (config.size) + (config.size) - 12;
+      var _y = (config.size) - Math.cos(((0 - 360 * col.percent * 0.5) - deg) * (Math.PI / 180)) * (config.size) - 5;
       str += '<span name="sector_' + self.id + '_pointer" style="width:20px; transform:scale(0.5, 1); border-radius:40px; transition-duration:0.2s; transition-property:all; transition-timing-function:ease; height:10px; background:' + config.colors[idx] + '; top:' + _y + 'px; left:' + _x + 'PX; display:block; position:absolute; z-index:1000"></span>';
       if(_x < config.size){
-        str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:14px; text-align:right; left:' + (_x - 208) + 'px;"><a num="' + '">' + col.name + ' </a><a num="' + col.value * 100 + '"></a></div>';
+        str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:14px; text-align:right; left:' + (_x - 208) + 'px;"><a num="' + '">' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
       }else{
-        str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:14px; padding-left:32px; text-align:left; left:' + _x + 'px;"><a>' + col.name + ' </a><a num="' + col.value * 100 + '"></a></div>';
+        str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:14px; padding-left:32px; text-align:left; left:' + _x + 'px;"><a>' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
       }
-      deg = deg + 360 * col.value;
+      deg = deg + 360 * col.percent;
     });
     var deg = 0 + config.offset;
     this.data && config.colors && (config.colors.length >= this.data.length) && this.data.forEach(function(col, idx){
       var radius = col.radius * (config.size - config.split);
-      var value = col.value || 0;
+      var value = col.percent || 0;
 
       str += '<div deg="' + deg + '" name="sector" style="width:' + radius * 2 + 'px; z-index:' + (20 - idx) + '; transition-duration:1s; overflow:hidden; opacity:1; transition-property:all; transition-timing-function:ease; transform-origin:center center; transform:rotate(-' + deg + 'deg) scale(0,0); height:' + radius * 2 + 'px; border-radius:' + radius + 'px; position:absolute; margin:' + (config.size - radius) + 'px;">';
       if(value < 0.5){
         str += '<div style="width:' + radius + 'px; height:' + radius * 2 + 'px; float:left; overflow:hidden;">';
-        str += '<span style="width:' + radius + 'px; height:' + radius * 2 + 'px; box-shadow:-2px 1px 16px #454545; display:block; transform-origin:left; transform:rotate(-' + 360 * col.value + 'deg); margin-left:' + radius + 'px; border-radius:0 ' + radius + 'px ' + radius + 'px 0; background:' + config.colors[idx] + ';"></span>'
+        str += '<span style="width:' + radius + 'px; height:' + radius * 2 + 'px; box-shadow:-2px 1px 16px #454545; display:block; transform-origin:left; transform:rotate(-' + 360 * col.percent + 'deg); margin-left:' + radius + 'px; border-radius:0 ' + radius + 'px ' + radius + 'px 0; background:' + config.colors[idx] + ';"></span>'
         str += '</div>';
       }else{
         str += '<div style="width:' + radius + 'px; height:' + radius * 2 + 'px; float:left;">';
         str += '<span style="width:' + radius + 'px; height:' + radius * 2 + 'px; display:block; transform-origin:left; transform:rotate(180deg); margin-left:' + radius + 'px; border-radius:0 ' + radius + 'px ' + radius + 'px 0; background:' + config.colors[idx] + ';"></span>'
         str += '</div>';
         str += '<div style="width:' + radius + 'px; height:' + radius * 2 + 'px; float:left;">';
-        str += '<span style="width:' + radius + 'px; height:' + radius * 2 + 'px; display:block; transform-origin:right; transform:rotate(' + 360 * (col.value - 0.5) + 'deg); margin-left:-' + radius + 'px; border-radius:' + radius + 'px 0 0 ' + radius + 'px; background:' + config.colors[idx] + ';"></span>'
+        str += '<span style="width:' + radius + 'px; height:' + radius * 2 + 'px; display:block; transform-origin:right; transform:rotate(' + 360 * (col.percent - 0.5) + 'deg); margin-left:-' + radius + 'px; border-radius:' + radius + 'px 0 0 ' + radius + 'px; background:' + config.colors[idx] + ';"></span>'
         str += '</div>';
       }
       str += '</div>';
-      deg = deg + 360 * col.value;
+      deg = deg + 360 * col.percent;
     });
     str += '<div id="inner_' + this.id + '" style="width:' + config.innerSize * 2 + 'px; height:' + config.innerSize * 2 + 'px; transition-duration:0.6s; transition-timing-function:ease; transition-property:all; transform:scale(0,0); border-radius:' + config.innerSize * 2 + 'px; z-index:30; background:#0E1F3B; margin:' + (config.size - config.innerSize) + 'px; position:absolute;"></div>';
     str += '<span id="temp_' + this.id + '" style="display:none;"></span>';

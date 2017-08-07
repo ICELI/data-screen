@@ -149,6 +149,11 @@ Api.install = () => {
         apiName: 'intentionOrder(意向单累计)',
       });
     },
+    industryPercent() {
+      return Vue.axios.get(`${API_ADDRESS2}/en/industryPercent(行业交易占比).json`, {
+        apiName: 'industryPercent(行业交易占比)',
+      });
+    }
   };
 };
 
