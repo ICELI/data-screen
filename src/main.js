@@ -56,5 +56,5 @@ router.beforeEach((to, from, next) => {
 
 router.afterEach((to) => {
   // 修改标题
-  document.title = to.meta.title || 'vue-seed';
+  document.title = to.meta.title || '数据大屏';
 });

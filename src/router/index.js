@@ -4,6 +4,8 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 // 引入路由视图，懒加载处理
+const home = () => import(/* webpackChunkName: "home" */ 'views/home');
+
 const page1 = () => import(/* webpackChunkName: "page1" */ 'views/panel-1-1');
 const page2 = () => import(/* webpackChunkName: "page2" */ 'views/panel-1-2');
 const page3 = () => import(/* webpackChunkName: "page3" */ 'views/panel-1-3');
@@ -26,47 +28,75 @@ const router = new Router({
     // 首页
     {
       path: '/',
-      name: 'page1',
-      component: page1,
+      name: 'home',
+      component: home,
+      meta: {
+        title: 'home'
+      }
     },
     {
       path: '/page1',
-      redirect: '/',
+      name: 'page1',
+      component: page1,
+      meta: {
+        title: 'page1'
+      }
     },
     {
       path: '/page2',
       name: 'page2',
       component: page2,
+      meta: {
+        title: 'page2'
+      }
     },
     {
       path: '/page3',
       name: 'page3',
       component: page3,
+      meta: {
+        title: 'page3'
+      }
     },
     {
       path: '/page4',
       name: 'page4',
       component: page4,
+      meta: {
+        title: 'page4'
+      }
     },
     {
       path: '/page5',
       name: 'page5',
       component: page5,
+      meta: {
+        title: 'page5'
+      }
     },
     {
       path: '/page6',
       name: 'page6',
       component: page6,
+      meta: {
+        title: 'page6'
+      }
     },
     {
       path: '/page7',
       name: 'page7',
       component: page7,
+      meta: {
+        title: 'page7'
+      }
     },
     {
       path: '/page8',
       name: 'page8',
       component: page8,
+      meta: {
+        title: 'page8'
+      }
     },
     {
       path: '*',

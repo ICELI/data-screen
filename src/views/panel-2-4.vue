@@ -19,11 +19,6 @@
                 <td class="t-bar">{{item.userNum}}</td>
               </tr>
             </table>
-            <!--<div class="top-bar" v-for="(item, index) in platformUser">-->
-            <!--<span class="t-bar">Top{{ index + 1 }} {{item.area}}</span>-->
-            <!--<span class="t-bar bar-wrap"><b :style="{width: 150 * item.percent + 'px'}">178</b></span>-->
-            <!--<span class="t-bar">{{item.userNum}}</span>-->
-            <!--</div>-->
           </div>
         </div>
       </div>
