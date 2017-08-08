@@ -305,7 +305,7 @@
     background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲-交互.png);
   }
 
-  .tips-list-wrap {
+  .world-map-wrap .tips-list-wrap {
     position: absolute;
     top: 0;
     left: 0;

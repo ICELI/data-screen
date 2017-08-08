@@ -138,7 +138,7 @@ export default function (carouselData, cb) {
   // todo
   let timer2 = null;
 
-  setTimeout(play, delay);
+  // setTimeout(play, delay);
 
   function play() {
     clearInterval(timer2);

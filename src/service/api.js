@@ -126,6 +126,13 @@ Api.install = (language = 'en') => {
       });
     },
 
+    // page6
+    chinaMap(language = 'en') {
+      return Vue.axios.get(`${API_ADDRESS2}/${language}/chianMap(中国地图).json`, {
+        apiName: 'chianMap(中国地图)',
+      });
+    },
+
     // page3
     realTimeTrade(language = 'en') {
       return Vue.axios.get(`${API_ADDRESS2}/${language}/realTimeTrade(实时交易数据).json`, {
