@@ -71,7 +71,6 @@
   import echarts from 'echarts';
   import scroll from '../service/scroll';
   import Sectors from '../service/sectors';
-  import Rings from '../service/ring';
   import {bindNumber} from '../service/number';
 
   export default {
@@ -99,7 +98,6 @@
           intentionOrder: 0,
         },
         barGradient: null,
-        ring: null
       };
     },
     computed: {},
@@ -348,28 +346,7 @@
       padding: 28px;
     }
   }
-
-  .panel-ring-wrap {
-    position: relative;
-    font-size: 22px;
-    .ring-content {
-      padding-top: 0;
-    }
-    .val2 {
-      font-size: 30px;
-    }
-  }
-
-  #ring li {
-    top: 40px;
-    width: 306px !important;
-    margin-left: 20px;
-    text-align: left;
-    &:nth-child(1n+3) {
-      top: 24px;
-    }
-  }
-
+  
   .order-increase {
     position: absolute;
     width: 392px;

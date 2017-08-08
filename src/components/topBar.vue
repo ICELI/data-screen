@@ -207,7 +207,7 @@
 </script>
 
 <style lang="scss" rel="style/scss">
-  @import '../assets/css/common.scss';
+  @import '../assets/css/e4b';
 
   .layout-wrap {
     position: relative;

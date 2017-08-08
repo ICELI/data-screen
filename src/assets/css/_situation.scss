@@ -1,0 +1,137 @@
+// page1-panel4
+.top-bar {
+  display: table;
+  width: 100%;
+  font-size: 20px;
+  line-height: 38px;
+  tr:nth-child(1) {
+    color: #ff3274;
+    b {
+      background-color: #ff3274 !important;
+    }
+  }
+  tr:nth-child(2) {
+    color: #ffff33;
+    b {
+      background-color: #ffff33 !important;
+    }
+  }
+  tr:nth-child(3) {
+    color: #33ffff;
+    b {
+      background-color: #33ffff !important;
+    }
+  }
+  .t-bar {
+    display: table-cell;
+    text-align: left;
+    width: 178px;
+    white-space: nowrap;
+    &:first-child {
+      width: 110px;
+    }
+    &:last-child {
+      width: 100px;
+      text-align: right;
+    }
+    .bar-wrap {
+      position: relative;
+      display: inline-block;
+      width: 178px;
+      height: 16px;
+      margin: 0 10px;
+      background-color: rgba(198, 236, 255, 0.16);
+      vertical-align: middle;
+      text-indent: 10000px;
+      b {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        width: 0; // 根据数据计算 相对于
+        height: 16px;
+        background-color: #2788e8;
+        transition: width cubic-bezier(0.22, 0.61, 0.36, 1) 2s;
+      }
+    }
+  }
+}
+
+.situation-top {
+  .panel-bar-wrap, .panel-chart-wrap {
+    height: 358px;
+    padding: 0 28px;
+  }
+}
+
+.situation-middle {
+  .panel-chart-wrap {
+    height: 234px;
+  }
+}
+
+.situation-bottom {
+  .panel-content {
+    height: 250px;
+    padding: 28px;
+  }
+
+  .panel-ring-wrap {
+    position: relative;
+    font-size: 22px;
+    .ring-content {
+      padding-top: 0;
+    }
+    .val2 {
+      font-size: 30px;
+    }
+  }
+}
+
+.order-increase {
+  position: absolute;
+  width: 314px;
+  right: 28px;
+  bottom: 72px;
+  font-size: 22px;
+  text-align: left;
+  i {
+    position: relative;
+    display: inline-block;
+    left: 11px;
+    top: -5px;
+    margin-right: 16px;
+    width: 14px;
+    height: 8px;
+    border: 3px solid #06F9FF;
+    border-width: 0 0 3px 3px;
+    transform: rotate(-45deg);
+    &::before {
+      position: absolute;
+      content: '';
+      left: -16px;
+      top: 0;
+      width: 16px;
+      height: 3px;
+      background-color: #06F9FF;
+
+    }
+    &::after {
+      position: absolute;
+      content: '';
+      right: -10px;
+      bottom: -8px;
+      width: 0;
+      height: 0;
+      border: 6px solid transparent;
+      border-left-color: #06F9FF;
+      overflow: hidden;
+    }
+  }
+  span {
+    display: inline-block;
+  }
+  .text-primary {
+    font-size: 30px;
+  }
+}

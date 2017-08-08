@@ -58,7 +58,7 @@
 </script>
 
 <style lang="scss" rel="style/scss">
-  @import '../assets/css/common.scss';
+  @import '../assets/css/e4b';
 
   .yzk-footer {
     background: $bg-f5f5f5;

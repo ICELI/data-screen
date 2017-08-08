@@ -51,6 +51,7 @@
         number: {
           provinceTotal: 0,
         },
+        chinaMap: null,
         swiper: null
 
       };
@@ -122,7 +123,7 @@
       });
 
 
-      var chinaMap = echarts.init(document.getElementById('chinaMap'));
+      this.chinaMap = echarts.init(document.getElementById('chinaMap'));
 
       var geoCoordMap = {
         '上海': [121.4648, 31.2891],
@@ -243,17 +244,17 @@
       };
 
       var HZData = [
-        [{name: '杭州'}, {name: '北京', value: 30}],
+        [{name: '杭州'}, {name: '北京', value: 90}],
         [{name: '杭州'}, {name: '上海', value: 95}],
         [{name: '杭州'}, {name: '广州', value: 80}],
         [{name: '杭州'}, {name: '重庆', value: 50}],
-        [{name: '杭州'}, {name: '兰州', value: 40}],
-        [{name: '杭州'}, {name: '哈尔滨', value: 40}],
-        [{name: '杭州'}, {name: '南宁', value: 20}],
-        [{name: '杭州'}, {name: '昆明', value: 20}],
+        [{name: '杭州'}, {name: '兰州', value: 90}],
+        [{name: '杭州'}, {name: '哈尔滨', value: 90}],
+        [{name: '杭州'}, {name: '南宁', value: 90}],
+        [{name: '杭州'}, {name: '昆明', value: 90}],
         [{name: '杭州'}, {name: '乌鲁木齐', value: 90}],
         [{name: '杭州'}, {name: '拉萨', value: 90}],
-        [{name: '杭州'}, {name: '台湾', value: 10}]
+        [{name: '杭州'}, {name: '台湾', value: 90}]
       ];
 
       var convertData = function (data) {
@@ -281,7 +282,7 @@
             type: 'lines',
             zlevel: 1,
             effect: {
-              show: true,
+              show: false, // TODO: 超级耗性能
               period: 6,
               trailLength: 0.7,
               color: '#fff',
@@ -303,7 +304,7 @@
             symbol: ['none', 'arrow'],
             symbolSize: 10,
             effect: {
-              show: true,
+              show: false,
               period: 6,
               trailLength: 0,
 //              symbolSize: 15
@@ -328,7 +329,7 @@
             },
             label: {
               normal: {
-                show: true,
+                show: false,
                 position: 'right',
                 formatter: '{b}'
               }
@@ -371,10 +372,11 @@
         },
         series: series
       };
-      chinaMap.setOption(chinaMapOption);
+      this.chinaMap.setOption(chinaMapOption);
     },
     beforeDestroy() {
       clearTimeout(this.timer);
+      this.chinaMap.dispose();
     }
   };
 </script>

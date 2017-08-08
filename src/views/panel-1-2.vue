@@ -45,6 +45,7 @@
         number: {
           countryTotal: 0,
         },
+        worldMap: null,
         swiper: null
 
       };
@@ -144,7 +145,7 @@
       };
 
       // 基于准备好的dom，初始化echarts实例
-      var worldMap = echarts.init(document.getElementById('worldMap'));
+      this.worldMap = echarts.init(document.getElementById('worldMap'));
       // 指定图表的配置项和数据
       var worldMapOption = {
         geo: [
@@ -251,10 +252,11 @@
         ],
       };
       // 使用刚指定的配置项和数据显示图表。
-      worldMap.setOption(worldMapOption);
+      this.worldMap.setOption(worldMapOption);
     },
     beforeDestroy() {
-        clearTimeout(this.timer);
+      clearTimeout(this.timer);
+      this.worldMap.dispose();
     }
   };
 </script>
@@ -280,6 +282,7 @@
     background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
     background-position: -90px -30px;
   }
+
   /* TODO: 图片初次加载闪动 */
   .world-map-bg0 {
     background-image: url(../assets/img/worldMap/北美-交互.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
