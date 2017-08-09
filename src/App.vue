@@ -55,8 +55,15 @@
         }
       });
 
+      // TODO: 定时切换1，2屏
 
     }
   };
 
 </script>
+
+<style>
+  #app > div {
+    padding: 0 10px;
+  }
+</style>

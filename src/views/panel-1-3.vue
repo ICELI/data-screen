@@ -73,7 +73,8 @@
       </div>
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h3 class="panel-title clearfix">今日新增商机累计 <span class="title-number"><a num="todayIncreaseBusiTotal">{{todayIncreaseBusiTotal}}</a></span></h3>
+          <h3 class="panel-title clearfix">今日新增商机累计 <span class="title-number"><a num="todayIncreaseBusiTotal">{{todayIncreaseBusiTotal}}</a></span>
+          </h3>
           <div class="panel-content panel-list-wrap">
             <div class="panel-list-content">
               <div class="panel-list-scroll">
@@ -113,8 +114,7 @@
         },
       };
     },
-    computed: {
-    },
+    computed: {},
     components: {},
     created() {
 
@@ -122,7 +122,7 @@
         let realTimeTrade = res.data.data.realTimeTrade;
         let realTimeTradeTotal = realTimeTrade.pop();
         // TODO: 2小时更新
-        realTimeTrade = realTimeTrade.slice(4,13);
+        realTimeTrade = realTimeTrade.slice(4, 13);
         // TODO: 对象合并 ES6 只合并存在的属性
         this.number.todayVisitorNum = +realTimeTradeTotal.todayVisitorNum;
         this.number.todayIntentionOrder = +realTimeTradeTotal.todayIntentionOrder;
@@ -154,6 +154,11 @@
             axisTick: {
               show: false
             },
+            axisLabel: {
+              textStyle: {
+                fontSize: 20
+              }
+            },
             splitArea: {
               show: false
             },
@@ -163,6 +168,7 @@
             data: realTimeTrade.map(v => v.hour)
           },
           yAxis: {
+            splitNumber: 2,
             axisLine: {
               show: false,
               onZero: false,
@@ -210,62 +216,65 @@
             top: 30,
             bottom: 50,
           },
-          xAxis: [
-            {
-              type: 'category',
-              minInterval: 2,
-              splitNumber: 5,
-              axisLabel: {
-                interval: 1
-              },
-              axisLine: {
-                show: false,
-                lineStyle: {
-                  color: colors[2]
-                }
-              },
-              axisTick: {
-                show: false
-              },
-              splitArea: {
-                show: false
-              },
-              nameLocation: 'middle',
-              nameGap: 100,
-              data: data.map(v => v.hour)
-            }
+          xAxis: [{
+            type: 'category',
+            axisLine: {
+              show: false,
+              lineStyle: {
+                color: colors[2]
+              }
+            },
+            axisTick: {
+              show: false
+            },
+            axisLabel: {
+              textStyle: {
+                fontSize: 20
+              }
+            },
+            splitArea: {
+              show: false
+            },
+            nameLocation: 'middle',
+            nameGap: 100,
+            data: data.map(v => v.hour)
+          }
           ],
-          yAxis: [
-            {
-              type: 'value',
-              minInterval: 2,
-              splitNumber: 5,
-              axisLine: {
-                show: false,
-                lineStyle: {
-                  color: colors[2]
-                }
-              },
-              axisTick: {
-                show: false
-              },
-              splitArea: {
-                show: false
-              },
-              splitLine: {
-                lineStyle: {
-                  color: 'rgba(198,236,255,0.5)'
-                }
-              },
-            }
+          yAxis: [{
+            type: 'value',
+            splitNumber: 5,
+            axisLine: {
+              show: false,
+              lineStyle: {
+                color: colors[2]
+              }
+            },
+            axisTick: {
+              show: false
+            },
+            splitArea: {
+              show: false
+            },
+            splitLine: {
+              lineStyle: {
+                color: 'rgba(198,236,255,0.5)'
+              }
+            },
+          }
           ],
           series: [
             {
               type: 'line',
+              symbolSize: function (data) {
+                return 0;
+              },
               data: data.map(v => v[today])
             },
             {
               type: 'line',
+              symbolSize: function (data) {
+                return 0;
+              },
               data: data.map(v => v[yesterday])
             }
           ]
@@ -309,5 +318,7 @@
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
-
+center {
+  color: #c6ecff;
+}
 </style>

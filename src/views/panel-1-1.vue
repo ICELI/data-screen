@@ -388,10 +388,6 @@
             ],
             itemGap: 200,
             x: 'left',
-            formatter(name) {
-              console.log(arguments); // TODO
-              return `${name}\n\n${doughnutData.filter(v => v.name === name)[0].value}`;
-            },
             data: doughnutData.keys('name'),
           },
           series: [

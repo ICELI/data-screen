@@ -8,6 +8,9 @@ html, body {
   height: 100%;
   //font-family: 'PingFang', serif;
   color: $brand-default;
+  //width: 960px;
+  max-height: 1248px;
+  overflow: hidden;
 }
 
 ul, li, p {
@@ -17,7 +20,7 @@ ul, li, p {
 }
 
 .page-title {
-  margin: 44px 0 56px 20px;
+  margin: 44px 10px 56px;
   font-size:44px;
   color: $brand-info;
   line-height:44px;

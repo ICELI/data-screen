@@ -25,11 +25,9 @@
       <div class="panel-content panel-swiper-wrap">
         <div class="swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="item in provinces[currentIndex]">
-              <div class="text-center">
+            <div class="swiper-slide text-center" v-for="item in provinces[currentIndex]">
                 <div data-type="signleRing" style="width:100px; height:100px; margin:0 auto 35px auto;"></div>
                 <img :src="'/mock/img/cn/province/' + mapSort[currentIndex]+ '/' + item.province + '.jpg'">
-              </div>
             </div>
           </div>
         </div>
@@ -407,7 +405,7 @@
   $activeColor: #08ffa0 !default;
   .china-map-wrap {
     position: relative;
-    height: 822px;
+    height: 920px;
   }
 
   #chinaMap {
@@ -448,7 +446,7 @@
   .china-map-wrap .tips-list-wrap {
     position: absolute;
     top: 10px;
-    left: 28px;
+    left: 10px;
     width: 573px;
     height: 292px;
     padding: 13px 29px;
@@ -473,15 +471,18 @@
   }
 
   .panel-swiper-wrap {
-    height: 238px;
     margin: 20px 0 30px;
     padding: 0 28px;
     overflow: hidden;
   }
 
   #china-province {
-    margin-top: -162px;
+    margin-top: -260px;
     background-color: transparent;
     box-shadow: none;
+  }
+
+  [data-type=signleRing] {
+    margin-bottom: 74px !important;
   }
 </style>

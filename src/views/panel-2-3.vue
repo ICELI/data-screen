@@ -133,7 +133,7 @@
         let colors3 = ['#ff3274', '#0bff49', '#c6ecff'];
 
         this.lineX.setOption(genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors));
-        // TODO: 只显示2小时的柱状图
+        // TODO: 只显示每2小时的柱状图
         this.barX.setOption(genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2, 'bar'));
         // TODO: 散点图数据密度不够
         this.scatter.setOption(genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors3, 'scatter'));
@@ -151,11 +151,6 @@
           xAxis: [
             {
               type: 'category',
-              minInterval: 2,
-              splitNumber: 5,
-              axisLabel: {
-                interval: 1
-              },
               axisLine: {
                 show: false,
                 lineStyle: {
@@ -164,6 +159,11 @@
               },
               axisTick: {
                 show: false
+              },
+              axisLabel: {
+                textStyle: {
+                  fontSize: 20
+                }
               },
               splitArea: {
                 show: false
@@ -200,7 +200,11 @@
           series: [
             {
               type: type,
-              data: type === 'line' ? [] : data.map(v => v[yesterday]),
+              data: type === 'line' ?
+                [] : type === 'bar' ?
+                  data.map((v, i) => {
+                    return i % 2 !== 0 ? false : v[yesterday];
+                  }) : data.map(v => v[yesterday]),
               symbolSize: function (data) {
                 return type === 'scatter' ? Math.sqrt(data) / 4 : 0;
               },
@@ -213,7 +217,10 @@
             },
             {
               type: type,
-              data: data.map(v => v[today]),
+              data: type === 'bar' ?
+                data.map((v, i) => {
+                  return i % 2 !== 0 ? false : v[today];
+                }) : data.map(v => v[today]),
               symbolSize: function (data) {
                 return type === 'scatter' ? Math.sqrt(data) / 4 : 0;
               },
