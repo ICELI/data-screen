@@ -40,7 +40,7 @@
 
 <script>
   import echarts from 'echarts';
-  import SingleRing from '../service/ring2';
+  import SingleRing from '../assets/js/ring2';
   import countryGeoCoordMap from '../assets/js/echarts/countryGeoCoordMap.json';
   import {bindNumber} from '../assets/js/number';
 
