@@ -79,12 +79,6 @@
         platformUser: [],
         intentionOrder: {},
 
-        realTimeTrade: {},
-        realTimeTradeTotal: {},
-        todayCustomsClearance: [],
-        realTimeVisitor: [],
-        todayIncreaseBusi: [],
-        todayIncreaseBusiTotal: 0,
         // 字体跳动
         number: {
           platformUserNum: 0,

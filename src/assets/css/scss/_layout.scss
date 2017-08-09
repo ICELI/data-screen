@@ -47,6 +47,11 @@ ul, li, p {
 .title-number {
   font-size: $font-size-h1;
   color: $brand-primary;
+  // fix 数字单位左右跳动
+  a {
+    display: inline-block;
+    text-align: right;
+  }
 }
 
 .panel-list-header {
