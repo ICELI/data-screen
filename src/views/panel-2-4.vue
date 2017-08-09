@@ -69,9 +69,9 @@
 
 <script>
   import echarts from 'echarts';
-  import scroll from '../service/scroll';
-  import Sectors from '../service/sectors';
-  import {bindNumber} from '../service/number';
+  import scroll from '../assets/js/scroll';
+  import Sectors from '../assets/js/sectors';
+  import {bindNumber} from '../assets/js/number';
 
   export default {
     data() {

@@ -92,8 +92,8 @@
 
 <script>
   import echarts from 'echarts';
-  import scroll from '../service/scroll';
-  import {bindNumber} from '../service/number';
+  import scroll from '../assets/js/scroll';
+  import {bindNumber} from '../assets/js/number';
 
   export default {
     data() {

@@ -31,7 +31,7 @@
 <script>
   import echarts from 'echarts';
   import countryGeoCoordMap from '../assets/js/echarts/countryGeoCoordMap.json';
-  import {bindNumber} from '../service/number';
+  import {bindNumber} from '../assets/js/number';
 
   export default {
     data() {

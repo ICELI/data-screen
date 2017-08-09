@@ -303,10 +303,10 @@
 
 <script>
   import echarts from 'echarts';
-  import carousel from '../service/carousel';
-  import scroll from '../service/scroll';
-  import Rings from '../service/ring';
-  import {bindNumber} from '../service/number';
+  import carousel from '../assets/js/carousel';
+  import scroll from '../assets/js/scroll';
+  import Rings from '../assets/js/ring';
+  import {bindNumber} from '../assets/js/number';
 
   export default {
     data() {
