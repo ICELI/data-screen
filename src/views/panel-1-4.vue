@@ -99,20 +99,6 @@
     computed: {},
     components: {},
     created() {
-
-      /*this.sectors.setData([
-       {name:'矿产', value:0.04, radius:0.60, unit:'%'},
-       {name:'农产品', value:0.10, radius:0.72, unit:'%'},
-       {name:'消费品', value:0.20, radius:0.90, unit:'%'},
-       {name:'机械', value:0.10, radius:0.72, unit:'%'},
-       {name:'化工', value:0.15, radius:0.80, unit:'%'},
-       {name:'食品', value:0.10, radius:0.90, unit:'%'},
-       {name:'石油', value:0.02, radius:0.40, unit:'%'},
-       {name:'钢', value:0.10, radius:0.5, unit:'%'},
-       {name:'煤', value:0.05, radius:0.62, unit:'%'},
-       {name:'有色', value:0.06, radius:0.85, unit:'%'},
-       {name:'工业品', value:0.08, radius:0.75, unit:'%'}
-       ]);*/
       this.Api.industryPercent().then((res) => {
         this.sectors.setData(res.data.data.industryPercent);
       });
@@ -300,9 +286,5 @@
     &:nth-child(1n+3) {
       top: 24px;
     }
-  }
-
-  #test {
-    margin-top: 60px;
   }
 </style>

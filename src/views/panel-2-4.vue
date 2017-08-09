@@ -327,26 +327,6 @@
     }
   }
 
-  .situation-top {
-    .panel-bar-wrap, .panel-chart-wrap {
-      height: 358px;
-      padding: 0 28px;
-    }
-  }
-
-  .situation-middle {
-    .panel-chart-wrap {
-      height: 234px;
-    }
-  }
-
-  .situation-bottom {
-    .panel-content {
-      height: 250px;
-      padding: 28px;
-    }
-  }
-
   .order-increase {
     position: absolute;
     width: 392px;
@@ -449,9 +429,5 @@
       height: 35px;
       background-color: #4cadfc;
     }
-  }
-
-  #test {
-    margin-top: 60px;
   }
 </style>

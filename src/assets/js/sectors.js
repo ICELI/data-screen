@@ -63,7 +63,7 @@ export default function Sectors(para, doc){
     var id = this.el || '';
     this.el && (Object.prototype.toString.call(this.el) == '[object String]') && (this.el = doc.getElementById(this.el));
     this.el.style.textAlign = 'center';
-    var str = '<div id="test" style="width:' + (config.size * 2) + 'px; height:' + (config.size * 2) + 'px; transform:rotate(-90deg); opacity:0; transition-duration:2s; transition-property:all; transition-timing-function:ease; position:relative; overflow:visible; display:inline-block; border:solid 1px #999; border-radius:' + config.size * 2 + 'px;">';
+    var str = '<div id="test" style="width:' + (config.size * 2) + 'px; height:' + (config.size * 2) + 'px; margin-top: '+ (this.el.offsetHeight - config.size * 2)/2 +'px; transform:rotate(-90deg); opacity:0; transition-duration:2s; transition-property:all; transition-timing-function:ease; position:relative; overflow:visible; display:inline-block; border:solid 1px #999; border-radius:' + config.size * 2 + 'px;">';
     var deg = 0 + config.offset;
     var list = _getRect(this.data, config);
     var left_max = __getMaxOrMin(list.left, 1, list.left[0], 'max');

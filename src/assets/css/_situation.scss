@@ -58,8 +58,13 @@
 }
 
 .situation-top {
-  .panel-bar-wrap, .panel-chart-wrap {
+  .panel-bar-wrap {
     height: 358px;
+    padding: 0 28px;
+  }
+  .panel-chart-wrap {
+    height: 330px;
+    margin-bottom: 28px;
     padding: 0 28px;
   }
 }
