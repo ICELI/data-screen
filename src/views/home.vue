@@ -19,22 +19,22 @@
         window.open(
           "/page1",
           "_blank",
-          "left=0,top=0,width=500,height=700,fullscreen, resizable=no,scrollbars=no,status=no"
+          "left=0,top=0,width=480,height=640,fullscreen, resizable=no,scrollbars=no,status=no"
         );
         window.open(
           "/page2",
           "_blank",
-          "left=500,top=0,width=500,height=700,fullscreen, resizable=no,scrollbars=no,status=no"
+          "left=480,top=0,width=480,height=640,fullscreen, resizable=no,scrollbars=no,status=no"
         );
         window.open(
           "/page3",
           "_blank",
-          "left=1000,top=0,width=500,height=700,fullscreen, resizable=no,scrollbars=no,status=no"
+          "left=960,top=0,width=480,height=640,fullscreen, resizable=no,scrollbars=no,status=no"
         );
         window.open(
           "/page4",
           "_blank",
-          "left=1500,top=0,width=500,height=700,fullscreen, resizable=no,scrollbars=no,status=no"
+          "left=1440,top=0,width=480,height=640,fullscreen, resizable=no,scrollbars=no,status=no"
         );
       }
     },
@@ -46,12 +46,12 @@
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
-.home {
-  button {
-    margin: 20px;
-    padding: 5px 10px;
-    color: #2788e8;
-    background-color: #fff;
+  .home {
+    button {
+      margin: 20px;
+      padding: 5px 10px;
+      color: #2788e8;
+      background-color: #fff;
+    }
   }
-}
 </style>

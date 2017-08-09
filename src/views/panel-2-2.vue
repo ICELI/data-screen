@@ -51,8 +51,8 @@
         number: {
           provinceTotal: 0,
         },
-        chinaMap: null,
-        swiper: null
+//        chinaMap: null,
+//        swiper: null
 
       };
     },

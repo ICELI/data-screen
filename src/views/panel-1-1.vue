@@ -283,8 +283,9 @@
         },
         // 聚融通
         finance: [],
-        doughnut: null,
-        ring: null,
+//        doughnut: null,
+//        ring: null,
+//        barPolarStack: null,
         // 聚咨询
         consultancy: {
           consultationService: [],
@@ -295,7 +296,6 @@
         },
         // 聚运通
         linesNum: [],
-        barPolarStack: null,
         // 聚认证
         certification: {
           coverItemNum: [],

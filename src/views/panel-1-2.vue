@@ -45,8 +45,8 @@
         number: {
           countryTotal: 0,
         },
-        worldMap: null,
-        swiper: null
+//        worldMap: null,
+//        swiper: null
 
       };
     },

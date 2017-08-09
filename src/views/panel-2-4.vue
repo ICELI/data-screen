@@ -85,7 +85,6 @@
         realTimeVisitor: [],
         todayIncreaseBusi: [],
         todayIncreaseBusiTotal: 0,
-        sectors: null,
         // 字体跳动
         number: {
           platformUserNum: 0,
@@ -97,7 +96,8 @@
           orderChangeNumber: 0,
           intentionOrder: 0,
         },
-        barGradient: null,
+//        sectors: null,
+//        barGradient: null,
       };
     },
     computed: {},
@@ -346,7 +346,7 @@
       padding: 28px;
     }
   }
-  
+
   .order-increase {
     position: absolute;
     width: 392px;

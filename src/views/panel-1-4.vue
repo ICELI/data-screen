@@ -85,15 +85,15 @@
         realTimeVisitor: [],
         todayIncreaseBusi: [],
         todayIncreaseBusiTotal: 0,
-        sectors: null,
         // 字体跳动
         number: {
           platformUserNum: 0,
           goodsNum: 0,
           intentionOrder: 0,
         },
-        barGradient: null,
-        ring: null
+//        sectors: null,
+//        barGradient: null,
+//        ring: null
       };
     },
     computed: {},
