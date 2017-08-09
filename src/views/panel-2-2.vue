@@ -25,8 +25,12 @@
       <div class="panel-content panel-swiper-wrap">
         <div class="swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="item in provinces[currentIndex]"><img
-              :src="'/mock/img/cn/province/' + mapSort[currentIndex]+ '/' + item.province + '.jpg'"></div>
+            <div class="swiper-slide" v-for="item in provinces[currentIndex]">
+              <div style="text-align:center;">
+                <div data-type="signleRing" style="width:100px; height:100px; margin:0 auto 35px auto;"></div>
+                <img :src="'/mock/img/cn/province/' + mapSort[currentIndex]+ '/' + item.province + '.jpg'">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -36,6 +40,7 @@
 
 <script>
   import echarts from 'echarts';
+  import SingleRing from '../service/ring2';
   import countryGeoCoordMap from '../assets/js/echarts/countryGeoCoordMap.json';
   import {bindNumber} from '../service/number';
 
@@ -94,7 +99,7 @@
         const item = this.provinces[idx].length - 4;
         this.number.provinceTotal = +this.provincesTotal[idx];
 
-        console.log(this.swiper, idx, item);
+        var colors = ['#FFBB17','#2788E7','#40FF85','#F90056']
 
         this.$nextTick(function () {
           this.swiper = new Swiper('.swiper-container', {
@@ -104,6 +109,23 @@
             spaceBetween: 32,
           });
         });
+
+        window.setTimeout(function(){
+          var objs = document.querySelectorAll('div[data-type]');
+          objs && objs.forEach(function(ele, idx){
+            var ring = new SingleRing({
+              el: ele,
+              size: 110
+            });
+            ring.setData({
+              name: '地区名',
+              value: Math.random() * 2,
+              display: 2017,
+              color: colors[idx % 4]
+            });
+          });
+        }, 0);
+
         // fixme: 当swiper过渡动画时 切换大洲 跳动感明显 2的倍数
         this.timer = setTimeout(() => {
           this.changeMap();
@@ -451,7 +473,7 @@
   }
 
   .panel-swiper-wrap {
-    height: 108px;
+    height: 238px;
     margin: 20px 0 30px;
     padding: 0 28px;
     overflow: hidden;
