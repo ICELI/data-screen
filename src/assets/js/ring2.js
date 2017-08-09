@@ -12,6 +12,7 @@ export default function Rings(para, doc){
     colors: para.colors || '#2589e9', //颜色列表(必须大于等于数据数组长度)
     bgColor: para.bgColor || '#ffffff',
     width: para.width || 20,  //每一个内环的宽度
+    total: para.total,
     alph: 0.2  //内环底色透明度
   }
   this.vNodes = [];
@@ -35,8 +36,8 @@ export default function Rings(para, doc){
       }
     }
     str += '<div class="test" style="width:' + config.size + 'px; height:' + config.size + 'px; position:relative;">';
-    str += '<div style="width:100%; height:' + config.size + 'px; top:0; left:0; line-height:' + (config.size - 40) + 'px; font-size:14px; text-align:center; position:absolute; z-index:100">' + this.data.name + '</div>'
-    str += '<div style="width:100%; height:' + config.size + 'px; top:0; left:0; line-height:' + (config.size + 40) + 'px; font-size:14px; text-align:center; position:absolute; z-index:100">2017</div>';
+    str += '<div num="' + this.data.compNum + '" style="width:100%; height:' + config.size + 'px; top:0; left:0; line-height:' + (config.size - 30) + 'px; font-size:20px; text-align:center; position:absolute; z-index:100; color:' + this.data.color + '">' + this.data.name + '</div>'
+    str += '<div style="width:100%; height:' + config.size + 'px; top:0; left:0; line-height:' + (config.size + 30) + 'px; font-size:18px; text-align:center; position:absolute; z-index:100">' + this.data.display + '</div>';
     str += '<canvas id="can_' + id + '" width="' + config.size + '" height="' + config.size + '" style="background:transparent; transform:rotate(90deg) rotateY(180deg)"></canvas>';
     str += '</div>';
 
@@ -65,7 +66,7 @@ export default function Rings(para, doc){
             __move(start, curr, dist);
           }
         }, 10);
-      })(0, 0, self.data.value);
+      })(0, 0, self.data.display / self.data.total * 2);
     }, 0);
   }
 
