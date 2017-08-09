@@ -26,7 +26,7 @@
         <div class="swiper-container">
           <div class="swiper-wrapper">
             <div class="swiper-slide text-center" v-for="item in provinces[currentIndex]">
-                <div data-type="signleRing" style="width:100px; height:100px; margin:0 auto 35px auto;"></div>
+                <div data-type="signleRing" :name="item.province" :val2="provinceTotal" :value="item.compNum" style="width:100px; height:100px; margin:0 auto 35px auto;"></div>
                 <img :src="'/mock/img/cn/province/' + mapSort[currentIndex]+ '/' + item.province + '.jpg'">
             </div>
           </div>
@@ -108,6 +108,8 @@
           });
         });
 
+
+
         window.setTimeout(function(){
           var objs = document.querySelectorAll('div[data-type]');
           objs && objs.forEach(function(ele, idx){
@@ -116,10 +118,11 @@
               size: 110
             });
             ring.setData({
-              name: '地区名',
+              name: ele.getAttribute('name'),
               value: Math.random() * 2,
-              display: 2017,
-              color: colors[idx % 4]
+              display: ele.getAttribute('value'),
+              color: colors[idx % 4],
+              total: ele.getAttribute('val2')
             });
           });
         }, 0);
