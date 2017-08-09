@@ -21,6 +21,12 @@
     }
   }
 
+  .color-blue {
+    &::before {
+      background-color: #33e2ff;
+    }
+  }
+
   .color-green {
     &::before {
       background-color: #0bff49;

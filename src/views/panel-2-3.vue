@@ -10,16 +10,16 @@
           </h4>
           <h4 class="panel-title color-pink">昨日访客 <span> {{realTimeTradeTotal.yestodayVisitorNum}}</span></h4>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-          <div class="panel-content panel-chart-wrap" id="lineX"></div>
+          <div class="panel-content panel-chart-wrap" id="scatter"></div>
         </div>
       </div>
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h4 class="panel-title color-yellow">今日意向订单累计 <span class="title-number"><a
+          <h4 class="panel-title color-blue">今日意向订单累计 <span class="title-number"><a
             num="todayIntentionOrder"></a></span></h4>
           <h4 class="panel-title color-purple">昨日意向订单 <span> {{realTimeTradeTotal.yestodayIntentionOrder}}</span></h4>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-          <div class="panel-content panel-chart-wrap" id="lineX2"></div>
+          <div class="panel-content panel-chart-wrap" id="barX"></div>
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
         <div class="panel-wrap">
           <h3 class="panel-title">今日新增用户累计 <span class="title-number"><a num="todayIncreaseUser"></a></span></h3>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-          <div class="panel-content panel-chart-wrap" id="scatter"></div>
+          <div class="panel-content panel-chart-wrap" id="lineX"></div>
         </div>
       </div>
       <div class="pure-u-1-2">
@@ -73,7 +73,8 @@
       </div>
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h3 class="panel-title clearfix">今日新增商机累计 <span class="title-number"><a num="todayIncreaseBusiTotal">{{todayIncreaseBusiTotal}}</a></span></h3>
+          <h3 class="panel-title clearfix">今日新增商机累计 <span class="title-number"><a
+            num="todayIncreaseBusiTotal"></a></span></h3>
           <div class="panel-content panel-list-wrap">
             <div class="panel-list-content">
               <div class="panel-list-scroll">
@@ -103,7 +104,6 @@
         todayCustomsClearance: [],
         realTimeVisitor: [],
         todayIncreaseBusi: [],
-        todayIncreaseBusiTotal: 0,
         // 字体跳动
         number: {
           todayVisitorNum: 0,
@@ -113,8 +113,7 @@
         },
       };
     },
-    computed: {
-    },
+    computed: {},
     components: {},
     created() {
 
@@ -122,87 +121,26 @@
         let realTimeTrade = res.data.data.realTimeTrade;
         let realTimeTradeTotal = realTimeTrade.pop();
         // TODO: 2小时更新
-        realTimeTrade = realTimeTrade.slice(4,13);
+        realTimeTrade = realTimeTrade.slice(4, 13);
         // TODO: 对象合并 ES6 只合并存在的属性
         this.number.todayVisitorNum = +realTimeTradeTotal.todayVisitorNum;
         this.number.todayIntentionOrder = +realTimeTradeTotal.todayIntentionOrder;
         this.number.todayIncreaseUser = +realTimeTradeTotal.todayIncreaseUser;
         this.realTimeTradeTotal = realTimeTradeTotal;
 
-        let colors = ['#0bff49', '#ff3274', '#c6ecff'];
-        let colors2 = ['#f2ff00', '#9932ff', '#c6ecff'];
+        let colors = ['#ff3274', '#f2ff00', '#c6ecff'];
+        let colors2 = ['#9932ff', '#33e2ff', '#c6ecff'];
+        let colors3 = ['#ff3274', '#0bff49', '#c6ecff'];
 
         this.lineX.setOption(genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors));
-        this.lineX2.setOption(genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2));
-
-        let option = {
-          grid: {
-            top: 10,
-            bottom: 50,
-          },
-          xAxis: {
-            axisLabel: {
-              interval: 1
-            },
-            axisLine: {
-              show: false,
-              onZero: false,
-              lineStyle: {
-                color: colors[2]
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitArea: {
-              show: false
-            },
-            splitLine: {
-              show: false
-            },
-            data: realTimeTrade.map(v => v.hour)
-          },
-          yAxis: {
-            axisLine: {
-              show: false,
-              onZero: false,
-              lineStyle: {
-                color: colors[2]
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitArea: {
-              show: false
-            },
-            splitLine: {
-              lineStyle: {
-                color: 'rgba(198,236,255,0.5)'
-              }
-            }
-          },
-          series: [{
-            data: realTimeTrade.map(v => v.todayIncreaseUser),
-            type: 'scatter',
-            symbolSize: function (data) {
-              console.log(data, 'symbolSize')
-              return Math.sqrt(data) / 2;
-            },
-            itemStyle: {
-              normal: {
-                color: '#ff4d40'
-
-              }
-            }
-          }]
-        };
-
-        this.scatter.setOption(option);
+        // TODO: 只显示2小时的柱状图
+        this.barX.setOption(genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2, 'bar'));
+        // TODO: 散点图数据密度不够
+        this.scatter.setOption(genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors3, 'scatter'));
 
       });
 
-      function genOption(data, yesterday, today, colors) {
+      function genOption(data, yesterday, today, colors, type = 'line') {
 
         return {
           color: colors,
@@ -261,12 +199,29 @@
           ],
           series: [
             {
-              type: 'line',
-              data: data.map(v => v[today])
+              type: type,
+              data: type === 'line' ? [] : data.map(v => v[yesterday]),
+              symbolSize: function (data) {
+                return type === 'scatter' ? Math.sqrt(data) / 4 : 0;
+              },
+              itemStyle: {
+                normal: {
+                  color: colors[0]
+
+                }
+              }
             },
             {
-              type: 'line',
-              data: data.map(v => v[yesterday])
+              type: type,
+              data: data.map(v => v[today]),
+              symbolSize: function (data) {
+                return type === 'scatter' ? Math.sqrt(data) / 4 : 0;
+              },
+              itemStyle: {
+                normal: {
+                  color: colors[1]
+                }
+              }
             }
           ]
         };
@@ -280,8 +235,6 @@
         this.realTimeVisitor = res.data.data.realTimeVisitor;
         this.todayIncreaseBusi = res.data.data.todayIncreaseBusi;
         this.number.todayIncreaseBusiTotal = +res.data.todayIncreaseBusiTotal;
-        this.todayIncreaseBusiTotal = res.data.todayIncreaseBusiTotal;
-
 
         this.$nextTick(function () {
           // '.panel-list-scroll' TODO: async data
@@ -294,13 +247,13 @@
       document.querySelector('body').className = document.querySelector('body').className.replace('e4b-bg', '');
 
       this.lineX = echarts.init(document.getElementById('lineX'));
-      this.lineX2 = echarts.init(document.getElementById('lineX2'));
+      this.barX = echarts.init(document.getElementById('barX'));
       this.scatter = echarts.init(document.getElementById('scatter'));
       bindNumber(this.number, {
         attr: 'num',    //属性名称 <a num='100.0'></a>
         id: 'transaction-data', //外层容器#id
         decimals: 0,    //小数点个数
-        duration: 2,    //动画时长
+        duration: 1,    //动画时长
         size: '36px'
       });
 

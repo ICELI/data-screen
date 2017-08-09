@@ -1,206 +1,208 @@
 {
-    "data": {
-        "realTimeTrade": [
-            {
-                "hour": "0:00",
-                "todayVisitorNum": "1507",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "1326",
-                "yestodayIntentionOrder": "135",
-                "todayIncreaseUser": "91"
-            },
-            {
-                "hour": "1:00",
-                "todayVisitorNum": "1145",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "1007",
-                "yestodayIntentionOrder": "192",
-                "todayIncreaseUser": "134"
-            },
-            {
-                "hour": "2:00",
-                "todayVisitorNum": "1037",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "912",
-                "yestodayIntentionOrder": "95",
-                "todayIncreaseUser": "81"
-            },
-            {
-                "hour": "3:00",
-                "todayVisitorNum": "1496",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "1317",
-                "yestodayIntentionOrder": "176",
-                "todayIncreaseUser": "102"
-            },
-            {
-                "hour": "4:00",
-                "todayVisitorNum": "1500",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "1214",
-                "yestodayIntentionOrder": "180",
-                "todayIncreaseUser": "158"
-            },
-            {
-                "hour": "5:00",
-                "todayVisitorNum": "2783",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "2146",
-                "yestodayIntentionOrder": "135",
-                "todayIncreaseUser": "245"
-            },
-            {
-                "hour": "6:00",
-                "todayVisitorNum": "2381",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "2095",
-                "yestodayIntentionOrder": "276",
-                "todayIncreaseUser": "217"
-            },
-            {
-                "hour": "7:00",
-                "todayVisitorNum": "3244",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "2690",
-                "yestodayIntentionOrder": "547",
-                "todayIncreaseUser": "400"
-            },
-            {
-                "hour": "8:00",
-                "todayVisitorNum": "3534",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "3110",
-                "yestodayIntentionOrder": "696",
-                "todayIncreaseUser": "800"
-            },
-            {
-                "hour": "9:00",
-                "todayVisitorNum": "4258",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "3747",
-                "yestodayIntentionOrder": "1675",
-                "todayIncreaseUser": "761"
-            },
-            {
-                "hour": "10:00",
-                "todayVisitorNum": "9415",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "7568",
-                "yestodayIntentionOrder": "1807",
-                "todayIncreaseUser": "1426"
-            },
-            {
-                "hour": "11:00",
-                "todayVisitorNum": "7787",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "5796",
-                "yestodayIntentionOrder": "1237",
-                "todayIncreaseUser": "1089"
-            },
-            {
-                "hour": "12:00",
-                "todayVisitorNum": "5617",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "4943",
-                "yestodayIntentionOrder": "1632",
-                "todayIncreaseUser": "1142"
-            },
-            {
-                "hour": "13:00",
-                "todayVisitorNum": "4554",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "4008",
-                "yestodayIntentionOrder": "1864",
-                "todayIncreaseUser": "971"
-            },
-            {
-                "hour": "14:00",
-                "todayVisitorNum": "8273",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "6004",
-                "yestodayIntentionOrder": "2268",
-                "todayIncreaseUser": "1564"
-            },
-            {
-                "hour": "15:00",
-                "todayVisitorNum": "5873",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "6118",
-                "yestodayIntentionOrder": "1800",
-                "todayIncreaseUser": "1642"
-            },
-            {
-                "hour": "16:00",
-                "todayVisitorNum": "5237",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "4567",
-                "yestodayIntentionOrder": "1645",
-                "todayIncreaseUser": "1234"
-            },
-            {
-                "hour": "17:00",
-                "todayVisitorNum": "4187",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "3684",
-                "yestodayIntentionOrder": "1378",
-                "todayIncreaseUser": "1642"
-            },
-            {
-                "hour": "18:00",
-                "todayVisitorNum": "2136",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "3112",
-                "yestodayIntentionOrder": "764",
-                "todayIncreaseUser": "534"
-            },
-            {
-                "hour": "19:00",
-                "todayVisitorNum": "2374",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "2089",
-                "yestodayIntentionOrder": "1064",
-                "todayIncreaseUser": "467"
-            },
-            {
-                "hour": "20:00",
-                "todayVisitorNum": "3546",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "2618",
-                "yestodayIntentionOrder": "1032",
-                "todayIncreaseUser": "722"
-            },
-            {
-                "hour": "21:00",
-                "todayVisitorNum": "3354",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "2952",
-                "yestodayIntentionOrder": "756",
-                "todayIncreaseUser": "346"
-            },
-            {
-                "hour": "22:00",
-                "todayVisitorNum": "2148",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "2000",
-                "yestodayIntentionOrder": "400",
-                "todayIncreaseUser": "276"
-            },
-            {
-                "hour": "23:00",
-                "todayVisitorNum": "1235",
-                "yestodayVisitorNum": "",
-                "todayIntentionOrder": "1562",
-                "yestodayIntentionOrder": "150",
-                "todayIncreaseUser": "81"
-            },
-            {
-                "hour": "total",
-                "todayVisitorNum": "88621",
-                "yestodayVisitorNum": "76585",
-                "todayIntentionOrder": "21904",
-                "yestodayIntentionOrder": "16125",
-                "todayIncreaseUser": "13142"
-            }
-        ]
-    }
+  "statusCode": 200,
+  "message": "操作成功",
+  "data": {
+    "realTimeTrade": [
+      {
+        "hour": "0:00",
+        "todayVisitorNum": "1256",
+        "yestodayVisitorNum": "1105",
+        "todayIntentionOrder": "108",
+        "yestodayIntentionOrder": "76",
+        "todayIncreaseUser": "54"
+      },
+      {
+        "hour": "1:00",
+        "todayVisitorNum": "954",
+        "yestodayVisitorNum": "840",
+        "todayIntentionOrder": "160",
+        "yestodayIntentionOrder": "112",
+        "todayIncreaseUser": "80"
+      },
+      {
+        "hour": "2:00",
+        "todayVisitorNum": "864",
+        "yestodayVisitorNum": "760",
+        "todayIntentionOrder": "96",
+        "yestodayIntentionOrder": "67",
+        "todayIncreaseUser": "48"
+      },
+      {
+        "hour": "3:00",
+        "todayVisitorNum": "1247",
+        "yestodayVisitorNum": "1097",
+        "todayIntentionOrder": "122",
+        "yestodayIntentionOrder": "85",
+        "todayIncreaseUser": "61"
+      },
+      {
+        "hour": "4:00",
+        "todayVisitorNum": "1150",
+        "yestodayVisitorNum": "1012",
+        "todayIntentionOrder": "188",
+        "yestodayIntentionOrder": "132",
+        "todayIncreaseUser": "94"
+      },
+      {
+        "hour": "5:00",
+        "todayVisitorNum": "2145",
+        "yestodayVisitorNum": "1888",
+        "todayIntentionOrder": "96",
+        "yestodayIntentionOrder": "67",
+        "todayIncreaseUser": "48"
+      },
+      {
+        "hour": "6:00",
+        "todayVisitorNum": "1984",
+        "yestodayVisitorNum": "1746",
+        "todayIntentionOrder": "258",
+        "yestodayIntentionOrder": "181",
+        "todayIncreaseUser": "129"
+      },
+      {
+        "hour": "7:00",
+        "todayVisitorNum": "2547",
+        "yestodayVisitorNum": "2241",
+        "todayIntentionOrder": "296",
+        "yestodayIntentionOrder": "207",
+        "todayIncreaseUser": "148"
+      },
+      {
+        "hour": "8:00",
+        "todayVisitorNum": "2945",
+        "yestodayVisitorNum": "2592",
+        "todayIntentionOrder": "580",
+        "yestodayIntentionOrder": "406",
+        "todayIncreaseUser": "290"
+      },
+      {
+        "hour": "9:00",
+        "todayVisitorNum": "3548",
+        "yestodayVisitorNum": "3122",
+        "todayIntentionOrder": "1296",
+        "yestodayIntentionOrder": "907",
+        "todayIncreaseUser": "648"
+      },
+      {
+        "hour": "10:00",
+        "todayVisitorNum": "7846",
+        "yestodayVisitorNum": "6904",
+        "todayIntentionOrder": "1698",
+        "yestodayIntentionOrder": "1189",
+        "todayIncreaseUser": "849"
+      },
+      {
+        "hour": "11:00",
+        "todayVisitorNum": "6489",
+        "yestodayVisitorNum": "5710",
+        "todayIntentionOrder": "1296",
+        "yestodayIntentionOrder": "907",
+        "todayIncreaseUser": "648"
+      },
+      {
+        "hour": "12:00",
+        "todayVisitorNum": "4681",
+        "yestodayVisitorNum": "4119",
+        "todayIntentionOrder": "1360",
+        "yestodayIntentionOrder": "952",
+        "todayIncreaseUser": "680"
+      },
+      {
+        "hour": "13:00",
+        "todayVisitorNum": "3795",
+        "yestodayVisitorNum": "3340",
+        "todayIntentionOrder": "1156",
+        "yestodayIntentionOrder": "809",
+        "todayIncreaseUser": "578"
+      },
+      {
+        "hour": "14:00",
+        "todayVisitorNum": "6894",
+        "yestodayVisitorNum": "6067",
+        "todayIntentionOrder": "1890",
+        "yestodayIntentionOrder": "1323",
+        "todayIncreaseUser": "945"
+      },
+      {
+        "hour": "15:00",
+        "todayVisitorNum": "5794",
+        "yestodayVisitorNum": "5099",
+        "todayIntentionOrder": "1500",
+        "yestodayIntentionOrder": "1050",
+        "todayIncreaseUser": "750"
+      },
+      {
+        "hour": "16:00",
+        "todayVisitorNum": "4364",
+        "yestodayVisitorNum": "3840",
+        "todayIntentionOrder": "1298",
+        "yestodayIntentionOrder": "909",
+        "todayIncreaseUser": "649"
+      },
+      {
+        "hour": "17:00",
+        "todayVisitorNum": "3489",
+        "yestodayVisitorNum": "3070",
+        "todayIntentionOrder": "1094",
+        "yestodayIntentionOrder": "766",
+        "todayIncreaseUser": "547"
+      },
+      {
+        "hour": "18:00",
+        "todayVisitorNum": "2947",
+        "yestodayVisitorNum": "2593",
+        "todayIntentionOrder": "636",
+        "yestodayIntentionOrder": "445",
+        "todayIncreaseUser": "318"
+      },
+      {
+        "hour": "19:00",
+        "todayVisitorNum": "1978",
+        "yestodayVisitorNum": "1741",
+        "todayIntentionOrder": "1096",
+        "yestodayIntentionOrder": "767",
+        "todayIncreaseUser": "548"
+      },
+      {
+        "hour": "20:00",
+        "todayVisitorNum": "2479",
+        "yestodayVisitorNum": "2182",
+        "todayIntentionOrder": "860",
+        "yestodayIntentionOrder": "602",
+        "todayIncreaseUser": "430"
+      },
+      {
+        "hour": "21:00",
+        "todayVisitorNum": "2795",
+        "yestodayVisitorNum": "2460",
+        "todayIntentionOrder": "630",
+        "yestodayIntentionOrder": "441",
+        "todayIncreaseUser": "315"
+      },
+      {
+        "hour": "22:00",
+        "todayVisitorNum": "1790",
+        "yestodayVisitorNum": "1575",
+        "todayIntentionOrder": "328",
+        "yestodayIntentionOrder": "230",
+        "todayIncreaseUser": "164"
+      },
+      {
+        "hour": "23:00",
+        "todayVisitorNum": "1479",
+        "yestodayVisitorNum": "1302",
+        "todayIntentionOrder": "96",
+        "yestodayIntentionOrder": "67",
+        "todayIncreaseUser": "48"
+      },
+      {
+        "hour": "总计",
+        "todayVisitorNum": "75460",
+        "yestodayVisitorNum": "66405",
+        "todayIntentionOrder": "18138",
+        "yestodayIntentionOrder": "12697",
+        "todayIncreaseUser": "9069"
+      }
+    ]
+  }
 }

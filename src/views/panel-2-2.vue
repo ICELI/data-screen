@@ -26,7 +26,7 @@
         <div class="swiper-container">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="item in provinces[currentIndex]">
-              <div style="text-align:center;">
+              <div class="text-center">
                 <div data-type="signleRing" style="width:100px; height:100px; margin:0 auto 35px auto;"></div>
                 <img :src="'/mock/img/cn/province/' + mapSort[currentIndex]+ '/' + item.province + '.jpg'">
               </div>
