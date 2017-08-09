@@ -473,16 +473,19 @@
     }
   }
 
-  .panel-swiper-wrap {
-    margin: 20px 0 30px;
-    padding: 0 28px;
-    overflow: hidden;
-  }
-
   #china-province {
-    margin-top: -260px;
+    position: absolute;
+    top: 804px;
+    left: 10px;
+    right: 10px;
     background-color: transparent;
     box-shadow: none;
+    .panel-swiper-wrap {
+      height: 282px;
+      margin: 20px 0 0;
+      padding: 0 28px;
+      overflow: hidden;
+    }
   }
 
   [data-type=signleRing] {
