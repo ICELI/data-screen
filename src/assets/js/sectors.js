@@ -24,24 +24,72 @@ export default function Sectors(para, doc){
     this.render();
   }
 
+  function _getRect(data, config){
+    var list = {
+      left: [],
+      right: []
+    };
+    var deg = 0 + config.offset;
+    data && data.forEach(function(ele){
+      var _x = Math.sin(((0 - 360 * ele.percent * 0.5) - deg) * (Math.PI / 180)) * (config.size) + (config.size) - 12;
+      var _y = (config.size) - Math.cos(((0 - 360 * ele.percent * 0.5) - deg) * (Math.PI / 180)) * (config.size) - 5;
+      if(_x < config.size){
+        list.left.push(_y)
+      }else{
+        list.right.push(_y)
+      }
+      deg = deg + 360 * ele.percent;
+    });
+    return list;
+  }
+
+  function __getMaxOrMin(list, idx, init, type){
+    if(list.length < 2){
+      return list[0]
+    }else if(list.length == 2){
+      return Math[type](list[0], list[1]);
+    }else{
+      var rs = Math[type](init, list[idx]);
+      if(idx + 1 < list.length){
+        rs = __getMaxOrMin(list, idx + 1, rs, type);
+      }
+      return rs;
+    }
+  }
+
   function render(){
     var self = this;
     var config = self.config;
     var id = this.el || '';
     this.el && (Object.prototype.toString.call(this.el) == '[object String]') && (this.el = doc.getElementById(this.el));
     this.el.style.textAlign = 'center';
-
     var str = '<div id="test" style="width:' + (config.size * 2) + 'px; height:' + (config.size * 2) + 'px; transform:rotate(-90deg); opacity:0; transition-duration:2s; transition-property:all; transition-timing-function:ease; position:relative; overflow:visible; display:inline-block; border:solid 1px #999; border-radius:' + config.size * 2 + 'px;">';
     var deg = 0 + config.offset;
-
+    var list = _getRect(this.data, config);
+    var left_max = __getMaxOrMin(list.left, 1, list.left[0], 'max');
+    var left_min = __getMaxOrMin(list.left, 1, list.left[0], 'min');
+    var right_max = __getMaxOrMin(list.right, 1, list.right[0], 'max');
+    var right_min = __getMaxOrMin(list.right, 1, list.right[0], 'min');
     this.data && config.colors && (config.colors.length >= this.data.length) && this.data.forEach(function(col, idx){
       var _x = Math.sin(((0 - 360 * col.percent * 0.5) - deg) * (Math.PI / 180)) * (config.size) + (config.size) - 12;
       var _y = (config.size) - Math.cos(((0 - 360 * col.percent * 0.5) - deg) * (Math.PI / 180)) * (config.size) - 5;
       str += '<span name="sector_' + self.id + '_pointer" style="width:20px; transform:scale(0.5, 1); border-radius:40px; transition-duration:0.2s; transition-property:all; transition-timing-function:ease; height:10px; background:' + config.colors[idx] + '; top:' + _y + 'px; left:' + _x + 'PX; display:block; position:absolute; z-index:1000"></span>';
       if(_x < config.size){
-        str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:18px; text-align:right; left:' + (_x - 208) + 'px;"><a num="' + '">' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+        if(_y == left_min){
+          str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6 - 24) + 'px; font-size:18px; text-align:right; left:' + (_x - 208 + 30) + 'px;"><a num="' + '">' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+        }else if(_y == left_max){
+          str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6 + 24) + 'px; font-size:18px; text-align:right; left:' + (_x - 208 + 30) + 'px;"><a num="' + '">' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+        }else{
+          str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:18px; text-align:right; left:' + (_x - 208) + 'px;"><a num="' + '">' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+        }
       }else{
-        str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:18px; padding-left:32px; text-align:left; left:' + _x + 'px;"><a>' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+        if(_y == right_min){
+          str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6 - 24) + 'px; font-size:18px; padding-left:32px; text-align:left; left:' + (_x - 30) + 'px;"><a>' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+        }else if(_y == right_max){
+          str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6 + 24) + 'px; font-size:18px; padding-left:32px; text-align:left; left:' + (_x - 30) + 'px;"><a>' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+        }else{
+          str += '<div name="sector_' + self.id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:18px; padding-left:32px; text-align:left; left:' + _x + 'px;"><a>' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+        }
       }
       deg = deg + 360 * col.percent;
     });
