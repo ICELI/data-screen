@@ -56,6 +56,17 @@
   }
 }
 
+.transaction-middle,
+.transaction-bottom {
+  .panel-list-scroll {
+    padding-right: 28px;
+  }
+  .panel-list-content {
+    line-height: 36px;
+    margin: 0 0 30px 0;
+  }
+}
+
 .transaction-middle {
   .panel-chart-wrap {
     height: 164px;
@@ -70,16 +81,11 @@
     height: 216px;
   }
 }
-.panel-list-content {
-  line-height: 36px;
-  margin: 0 0 30px 0;
-}
-.panel-list-scroll {
-  padding-right: 28px;
-}
+
 .panel-list-label {
   margin-right: 10px;
 }
+
 .panel-list-time {
   margin-left: 20px;
 }
