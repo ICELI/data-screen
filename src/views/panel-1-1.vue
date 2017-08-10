@@ -8,7 +8,7 @@
     </div>
     <div id="e4b-content" class="e4b-content">
       <!-- 聚融通 start -->
-      <div class="pure-g e4b-info">
+      <div class="pure-g e4b-info" id="idx_0">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
             <h3 class="panel-title">服务企业数 <span class="title-number"><a num="financeTotal">{{financeTotal}}</a></span>
@@ -36,7 +36,7 @@
       <!-- 聚融通 end -->
 
       <!-- 聚咨询 start -->
-      <div class="pure-g e4b-info">
+      <div class="pure-g e4b-info" id="idx_1">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
             <h3 class="panel-title">2017增量 <span class="title-number"><a num="consultancyInquiriesIncrease">{{consultancyInquiriesIncrease}}</a></span></h3>
@@ -74,7 +74,7 @@
       <!-- 聚咨询 end -->
 
       <!-- 聚运通 start -->
-      <div class="pure-g e4b-info">
+      <div class="pure-g e4b-info" id="idx_2">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
             <h3 class="panel-title">热门运力 <span class="title-number"><a num="transProportionTotal">{{transProportionTotal}}</a></span>
@@ -108,7 +108,7 @@
       <!-- 聚运通 end -->
 
       <!-- 聚认证 start -->
-      <div class="pure-g e4b-info">
+      <div class="pure-g e4b-info" id="idx_3">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
             <h3 class="panel-title">覆盖品类数 <span class="title-number"><a num="certificationCoverItemNumTotal">{{certificationCoverItemNumTotal}}</a></span></h3>
@@ -156,7 +156,7 @@
       <!-- 聚认证 end -->
 
       <!-- 大数聚 start -->
-      <div class="pure-g e4b-info">
+      <div class="pure-g e4b-info" id="idx_4">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
             <h3 class="panel-title">聚贸大宗商品交易价格</h3>
@@ -207,7 +207,7 @@
       <!-- 大数聚 end -->
 
       <!-- 聚智能 start -->
-      <div class="pure-g e4b-info">
+      <div class="pure-g e4b-info" id="idx_5">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
             <h3 class="panel-title">需求数</h3>
@@ -536,7 +536,8 @@
       }, function(num){
         window.queue.push({
           type: 'number',
-          el: num
+          el: num,
+          container: 'idx_0'
         });
       });
 

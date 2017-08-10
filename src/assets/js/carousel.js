@@ -148,9 +148,12 @@ export default function (carouselData, cb) {
   setTimeout(play, delay);
 
   function play() {
-    window.queue && window.queue.forEach(function(ele, idx){
-      __animationNumber(ele)
-    });
+
+    window.setTimeout(function(){
+      window.queue && window.queue.forEach(function(ele, idx){
+        __animationNumber(ele)
+      });
+    }, 200);
 
     function __animationNumber(ele){
       if(ele.type == 'number'){
