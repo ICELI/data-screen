@@ -215,7 +215,7 @@ export default function CountUp(target, startVal, endVal, decimals, duration, op
     if (self.initialize()) self.printValue(self.startVal);
   };
 
-export function bindNumber(data, config){
+export function bindNumber(data, config, fn){
   if($('#temp_number').length == 0){
     $(document.body).append('<div id="temp_number" style="display:none;">1</div>');
   }
@@ -242,14 +242,14 @@ export function bindNumber(data, config){
           self.css({
             'font-size': config.size.replace('px', '') + 'px'
           })
-          __setNumber(self, attr, data);
+          __setNumber(self, attr, data, fn);
         });
         __define(data, attr);
       }
     }
   }
 
-  function __setNumber(obj, attr, data){
+  function __setNumber(obj, attr, data, fn){
     if(obj.attr((config.attr || 'num')) == attr){
       var number = new CountUp('temp_number', 0, (data[attr] || 0), config.decimals, config.duration, {
         useEasing : true,
@@ -265,7 +265,8 @@ export function bindNumber(data, config){
       numbers.push({
         attr: attr,
         value: number
-      })
+      });
+      fn && fn(number)
     }
   }
   function __setFontSize(value, obj){

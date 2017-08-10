@@ -353,6 +353,8 @@
     },
     components: {},
     created() {
+      window.queue || (window.queue = []);
+
       this.Api.Carousel().then((res) => {
         this.carousel = res.data;
         carousel(this.carousel);
@@ -517,12 +519,29 @@
         smooth: true
       }, document);
 
+      window.queue.push({
+        type: 'ring',
+        el: this.ring
+      });
+
+      window.rings = this.ring
+
+      window.queue.push({
+        type: 'ring',
+        el: this.barPolarStack
+      });
+
       bindNumber(this.number, {
         attr: 'num',    //属性名称 <a num='100.0'></a>
         id: 'e4b-content', //外层容器#id
         decimals: 0,    //小数点个数
         duration: 2,    //动画时长
         size: '36px'
+      }, function(num){
+        window.queue.push({
+          type: 'number',
+          el: num
+        });
       });
 
       // 圆环

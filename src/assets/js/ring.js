@@ -38,14 +38,16 @@ export default function Rings(para, doc){
     return (id != undefined) ? document.getElementById(id) : null;
   }
 
-  function render(){
+  function render(force){
     var self = this;
     var config = self.config;
     var str = '';
-    var id = this.el || '';
-    this.el && (Object.prototype.toString.call(this.el) == '[object String]') && (this.el = doc.getElementById(this.el));
+    var id = String(this.el || '');
+    var obj = null;
+    this.el && (Object.prototype.toString.call(this.el) == '[object String]') && (obj = doc.getElementById(this.el));
+    this.vNodes = [];
     //如果数组个数没有变,则不重构document
-    if(this.data && (this.data.length != this.vNodes.length)){
+    if(this.data && (this.data.length != this.vNodes.length || force)){
       this.data && config.colors && (config.colors.length >= this.data.length) && this.data.forEach(function(col, idx){
         self.vNodes.push(new VNode({
           value: col.value,
@@ -95,7 +97,7 @@ export default function Rings(para, doc){
         }
       });
       html += '<div class="ring-content" style="display:inline-block; width:' + config.size + 'px; height:' + config.size + 'px;">' + str + '</div></div>';
-      this.el.innerHTML = html;
+      obj.innerHTML = html;
 
       this.vNodes && this.vNodes.forEach(function(node){
         node.translate();
@@ -151,6 +153,7 @@ export default function Rings(para, doc){
       this.number.start();
     }
     this.render = function(config){
+
       var lo = this.nodes.left;
       var ro = this.nodes.right;
       var point = this.nodes.point;

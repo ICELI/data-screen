@@ -1,3 +1,5 @@
+import Number from './number'
+
 export default function (carouselData, cb) {
   // TODO: carousel
   const M = carouselData.length;
@@ -106,7 +108,12 @@ export default function (carouselData, cb) {
     clearInterval(timer);
   }
 
+  function __render(){
+
+  }
+
   function fixAll() {
+
     oDiv.style.transform = `perspective(1000px) rotateX(0deg) rotateY(${y}deg)`;
 
     for (let i = 0; i < aDiv.length; i++) {
@@ -141,6 +148,25 @@ export default function (carouselData, cb) {
   setTimeout(play, delay);
 
   function play() {
+    window.queue && window.queue.forEach(function(ele, idx){
+      __animationNumber(ele)
+    });
+
+    function __animationNumber(ele){
+      if(ele.type == 'number'){
+        var val = ele.el.endVal;
+        ele.el.endVal = '';
+        ele.el.frameVal = '';
+        window.setTimeout(function(){
+          ele.el.update(val);
+        }, 680);
+      }else{
+        window.setTimeout(function(){
+          ele.el.render(true);
+        }, 400)
+      }
+    }
+
     clearInterval(timer2);
     timer2 = setInterval(() => {
       y -= speedX2;
