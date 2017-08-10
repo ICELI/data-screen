@@ -265,11 +265,15 @@
   $activeColor: #08ffa0 !default;
   .world-map-wrap {
     position: relative;
+    width: 940px;
     height: 806px;
+    margin: 0 auto;
+    background: url(../assets/img/map-bg-world.png) no-repeat 3px 136px;
   }
 
   #worldMap {
-    width: 100%;
+    width: 940px;
+    margin: 0 auto;
     height: 100%;
   }
 
@@ -279,33 +283,32 @@
     left: 0;
     right: 0;
     height: 100%;
-    background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
     background-position: -100px -30px;
+    background-repeat: no-repeat;
   }
 
-  /* TODO: 图片初次加载闪动 */
   .world-map-bg0 {
-    background-image: url(../assets/img/worldMap/北美-交互.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
+    background-image: url(../assets/img/worldMap/北美-交互.png);
   }
 
   .world-map-bg1 {
-    background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲-交互.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
+    background-image: url(../assets/img/worldMap/欧洲-交互.png);
   }
 
   .world-map-bg2 {
-    background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲-交互.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
+    background-image: url(../assets/img/worldMap/亚洲-交互.png);
   }
 
   .world-map-bg3 {
-    background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美-交互.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
+    background-image: url(../assets/img/worldMap/南美-交互.png);
   }
 
   .world-map-bg4 {
-    background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲-交互.png), url(../assets/img/worldMap/大洋洲.png);
+    background-image: url(../assets/img/worldMap/非洲-交互.png);
   }
 
   .world-map-bg5 {
-    background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲-交互.png);
+    background-image: url(../assets/img/worldMap/大洋洲-交互.png);
   }
 
   .world-map-wrap .tips-list-wrap {
@@ -399,6 +402,7 @@
       &:nth-child(6) {
         right: 35px;
         &::after {
+          height: 30px;
           transform: rotate(0deg);
         }
       }

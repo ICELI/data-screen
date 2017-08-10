@@ -6,33 +6,28 @@ export default function (selector) {
     scroll(scrollList[i]);
   }
 
-  function scroll(selector, upOrDown) {
+  function scroll(selector, speed = -1) {
     const oUl = selector;
     let timer = null;
-    const speed = upOrDown || -1;
     oUl.innerHTML += oUl.innerHTML;
     setTimeout(move, 1500); // 先看两眼再滚动
     oUl.onmouseover = function () {
-      clearInterval(timer);
+      cancelAnimationFrame(timer);
     };
     oUl.onmouseout = function () {
       move();
     };
     function move() {
-      timer = setInterval(() => {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
         oUl.style.top = `${oUl.offsetTop + speed}px`;
         if (oUl.offsetTop <= -oUl.offsetHeight / 2) {
           oUl.style.top = '0';
         } else if (oUl.offsetTop >= 0) {
           oUl.style.top = `${-oUl.offsetHeight / 2}px`;
         }
-      }, 30);
+        timer = requestAnimationFrame(fn);
+      });
     }
-
-    function stop() {
-      clearInterval(timer);
-    }
-
-    return stop;
   }
 }

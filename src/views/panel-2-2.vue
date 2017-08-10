@@ -115,7 +115,7 @@
           objs && objs.forEach(function(ele, idx){
             var ring = new SingleRing({
               el: ele,
-              size: 110
+              size: 122
             });
             ring.setData({
               name: ele.getAttribute('name'),
@@ -409,10 +409,12 @@
   .china-map-wrap {
     position: relative;
     height: 920px;
+    background: url(../assets/img/map-bg-china.png) no-repeat center 98px;
   }
 
   #chinaMap {
-    width: 100%;
+    width: 940px;
+    margin: 0 auto;
     height: 100%;
   }
 

@@ -72,5 +72,7 @@
 <style>
   #app > div {
     padding: 0 10px;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
   }
 </style>
