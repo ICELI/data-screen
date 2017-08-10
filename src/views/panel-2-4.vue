@@ -14,7 +14,12 @@
               <tr v-for="(item, index) in platformUser">
                 <td class="t-bar">{{item.area}}</td>
                 <td class="t-bar">{{item.userNum}}</td>
-                <td class="t-bar"><span class="arrow-up">Top{{index + 1}}</span></td>
+                <td class="t-bar" style="text-align:left;">
+                  <span class="arrow-up">Top{{index + 1}}</span>
+                  <span class="arrow-scroll" v-show="index == 0" style="display:inline-block; height:38px; overflow:hidden;">
+                    <div>↑↑↑</div>
+                  </span>
+                </td>
               </tr>
             </table>
           </div>
@@ -47,10 +52,12 @@
       <div class="pure-u-1-1">
         <div class="panel-wrap">
           <div class="panel-content panel-ring-wrap">
-            <div class="order-number-wrap">
+            <section class="order-number-wrap ani-300" style="transform: translateY(250px); transition: all 1s ease-out; opacity:0;">
               累计意向订单数
               <span class="title-number"><a num="orderNumber"></a></span>
-            </div>
+            </section>
+            <section class="order-number-part1 ani-300" style="transform: translateY(250px); transition: all 0.45s ease-out; opacity:0;"></section>
+            <section class="order-number-part2 ani-300" style="transform: translateY(250px); transition: all 0.65s ease-out; opacity:0;"></section>
             <ul class="order-increase">
               <li>昨日意向订单 <span class="text-primary"><a num="yesterdayOrderNumber"></a></span></li>
               <li>订单转化 <span class="text-primary"><a num="orderChangeNumber"></a>%</span></li>
@@ -104,7 +111,6 @@
 
         setTimeout(() => {
           this.platformUser = this.platformUser.map((v, i) => {
-
             return {
               area: v.area,
               userNum: v.userNum,
@@ -114,6 +120,10 @@
         }, 50);
 
         this.number.platformUserNum = +res.data.data.platformUserNum.slice(-1)[0].userNum.replace('万', '');
+
+        window.setTimeout(function(){
+          scroll('.arrow-scroll');
+        }, 1000);
       });
 
       this.Api.goods('cn').then((res) => {
@@ -263,6 +273,29 @@
         split: 20,
         offset: 200
       }, document);
+
+      var circles = document.querySelectorAll('section');
+      circles.forEach(function(ele, idx){
+        if(idx == 0){
+          ele.style.transform = 'translateY(0px)';
+          ele.style.opacity = 1;
+          window.setTimeout(function(){
+            ele.className = ele.className + ' ani-1';
+          }, 1000);
+        }else if(idx == 1){
+          ele.style.transform = 'translateY(0px)';
+          ele.style.opacity = 1;
+          window.setTimeout(function(){
+            ele.className = ele.className + ' ani-1';
+          }, 450);
+        }else if(idx == 2){
+          ele.style.transform = 'translateY(0px)';
+          ele.style.opacity = 1;
+          window.setTimeout(function(){
+            ele.className = ele.className + ' ani-1';
+          }, 650);
+        }
+      });
     },
   };
 </script>
@@ -273,41 +306,11 @@
     width: 100%;
     font-size: 20px;
     line-height: 38px;
-    tr::after {
-      margin-left: 8px;
-      left: 100%;
-    }
-    tr:nth-child(1) {
-      color: #ff3274;
-      b {
-        background-color: #ff3274 !important;
-      }
-      &::after {
-        content: '↑↑↑';
-      }
-    }
-    tr:nth-child(2) {
-      color: #ffff33;
-      b {
-        background-color: #ffff33 !important;
-      }
-      &::after {
-        content: '↑↑';
-      }
-    }
-    tr:nth-child(3) {
-      color: #33ffff;
-      b {
-        background-color: #33ffff !important;
-      }
-      &::after {
-        content: '↑';
-      }
-    }
+
     .t-bar {
       display: table-cell;
       text-align: left;
-      width: 211px;
+      width: 260px;
       white-space: nowrap;
       &:first-child {
         width: 60px;
@@ -318,7 +321,7 @@
         font-size: 24px;
       }
       &:last-child {
-        width: 110px;
+        width: 90px;
         text-align: right;
       }
     }
@@ -398,17 +401,40 @@
     }
   }
 
+  .order-number-part1{
+    position: absolute;
+    content: '';
+    top: 60px;
+    left: 379px;
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    background-color: #2788e8;
+  }
+
+  .order-number-part2{
+    position: absolute;
+    content: '';
+    top: 135px;
+    left: 375px;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    background-color: #4cadfc;
+  }
+
   .order-number-wrap {
     position: absolute;
     width: 196px;
     height: 196px;
+    transform: translateY(30px);
     left: 174px;
     padding: 60px 0;
     border-radius: 100%;
     background-color: #3263ff;
     line-height: 38px;
     overflow: visible !important;
-    &::before, &::after {
+    /*&::before, &::after {
       position: absolute;
       content: '';
       top: 60px;
@@ -425,6 +451,44 @@
       width: 35px;
       height: 35px;
       background-color: #4cadfc;
+    }*/
+  }
+
+  @keyframes ani_1{
+    0%{
+      transform: translateY(0px);
+    }
+    50%{
+      transform: translateY(-20px);
+    }
+    100%{
+      transform: translateY(0px);
     }
   }
+
+  @keyframes ani_2{
+    0%{
+      top: 40px;
+      opacity: 0.8
+    }
+    100%{
+      top: 75px;
+      opacity: 1.0
+    }
+  }
+
+  @keyframes ani_3{
+    0%{
+      top: 120px;
+      opacity: 0.8
+    }
+    100%{
+      top: 145px;
+      opacity: 1.0
+    }
+  }
+
+  .ani-1{animation:ani_1 3s infinite;}
+  .ani-2{animation:ani_1 2.5s infinite;}
+  .ani-3{animation:ani_1 3s infinite;}
 </style>
