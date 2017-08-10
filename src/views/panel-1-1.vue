@@ -42,7 +42,7 @@
             <h3 class="panel-title">2017增量 <span class="title-number"><a num="consultancyInquiriesIncrease">{{consultancyInquiriesIncrease}}</a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="panel-dashboard">
-                <h3 class="text-primary"><a num="consultancyInquiriesNum">{{consultancyInquiriesNum}}</a></h3>
+                <h3 class="text-primary"><a num2="consultancyInquiriesNum">{{consultancyInquiriesNum}}</a></h3>
                 <p class="text-default">企业咨询次数</p>
               </div>
             </div>
@@ -538,6 +538,14 @@
           el: num,
           container: 'idx_0'
         });
+      });
+
+      bindNumber(this.number, {
+        attr: 'num2',    //属性名称 <a num='100.0'></a>
+        id: 'e4b-content', //外层容器#id
+        decimals: 0,    //小数点个数
+        duration: 2,    //动画时长
+        size: '50px'
       });
 
       // 圆环

@@ -243,10 +243,13 @@ export function bindNumber(data, config, fn){
             'font-size': config.size.replace('px', '') + 'px'
           })
           __setNumber(self, attr, data, fn);
+          if(self.attr(config.attr) == attr){
+            __define(data, attr);
+          }
         });
-        __define(data, attr);
       }
     }
+    console.log('************************')
   }
 
   function __setNumber(obj, attr, data, fn){
@@ -275,7 +278,6 @@ export function bindNumber(data, config, fn){
     if(String(value).indexOf('.') > -1){
       width = parseFloat($('#temp_leftter' + config.id).css('width')) * ((String((value || 0).toFixed(config.decimals || 0)).length - 1)) + parseFloat($('#temp_pointer' + config.id).css('width'));
     }else{
-      console.log(config.id)
       width = parseFloat($('#temp_leftter' + config.id).css('width')) * (String((value || 0).toFixed(config.decimals || 0)).length)
     }
     return width + padding;
