@@ -535,8 +535,7 @@
       }, function(num){
         window.queue.push({
           type: 'number',
-          el: num,
-          container: 'idx_0'
+          el: num
         });
       });
 
