@@ -11,7 +11,7 @@
       <div class="pure-g e4b-info" id="idx_0">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">服务企业数 <span class="title-number"><a num="financeTotal">{{financeTotal}}</a></span>
+            <h3 class="panel-title">服务企业数 <span class="title-number"><a num="financeTotal"></a></span>
             </h3>
             <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
             <div class="panel-content panel-chart-wrap" id="doughnut">
@@ -39,10 +39,10 @@
       <div class="pure-g e4b-info" id="idx_1">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">2017增量 <span class="title-number"><a num="consultancyInquiriesIncrease">{{consultancyInquiriesIncrease}}</a></span></h3>
+            <h3 class="panel-title">2017增量 <span class="title-number"><a num="consultancyInquiriesIncrease"></a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="panel-dashboard">
-                <h3 class="text-primary"><a num="consultancyInquiriesNum">{{consultancyInquiriesNum}}</a></h3>
+                <h3 class="text-primary"><a num="consultancyInquiriesNum"></a></h3>
                 <p class="text-default">企业咨询次数</p>
               </div>
             </div>
@@ -50,7 +50,7 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">咨询服务 <span class="title-number"><a num="consultationServiceTotal">{{consultationServiceTotal}}</a></span></h3>
+            <h3 class="panel-title">咨询服务 <span class="title-number"><a num="consultationServiceTotal"></a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
@@ -77,7 +77,7 @@
       <div class="pure-g e4b-info" id="idx_2">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">热门运力 <span class="title-number"><a num="transProportionTotal">{{transProportionTotal}}</a></span>
+            <h3 class="panel-title">热门运力 <span class="title-number"><a num="transProportionTotal"></a></span>
             </h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
@@ -111,7 +111,7 @@
       <div class="pure-g e4b-info" id="idx_3">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">覆盖品类数 <span class="title-number"><a num="certificationCoverItemNumTotal">{{certificationCoverItemNumTotal}}</a></span></h3>
+            <h3 class="panel-title">覆盖品类数 <span class="title-number"><a num="certificationCoverItemNumTotal"></a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-7-24">名称</div>
@@ -132,7 +132,7 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">认证体系 <span class="title-number"><a num="certificationCoverCertifySysTotal">{{certificationCoverCertifySysTotal}}</a></span></h3>
+            <h3 class="panel-title">认证体系 <span class="title-number"><a num="certificationCoverCertifySysTotal"></a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
@@ -232,7 +232,7 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">解决方案数 <span class="title-number"><a num="technologySolutionNumTotal">{{technologySolutionNumTotal}}</a></span></h3>
+            <h3 class="panel-title">解决方案数 <span class="title-number"><a num="technologySolutionNumTotal"></a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
