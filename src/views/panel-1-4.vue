@@ -131,7 +131,7 @@
         let colors = ['#0bff49', '#ff3274', '#c6ecff'];
         let option = {
           grid: {
-            top: 10,
+            top: 37,
             right: 28,
             bottom: 72,
           },
@@ -160,6 +160,7 @@
             z: 10
           },
           yAxis: {
+            splitNumber: 2,
             axisLine: {
               show: false,
               lineStyle: {
@@ -168,6 +169,13 @@
             },
             axisTick: {
               show: false
+            },
+            axisLabel: {
+              formatter: '{value}万',
+              textStyle: {
+//                align: 'right',
+                fontSize: 20
+              }
             },
             splitArea: {
               show: false

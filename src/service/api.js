@@ -17,7 +17,6 @@ Api.install = (language = 'en') => {
 
   // request请求拦截处理
   Vue.axios.interceptors.request.use((config) => {
-    console.log(config);
     // 添加取消请求用的cancelToken
     config.cancelToken = new Vue.axios.CancelToken((c) => {
       apiCancelTokens.push(c);

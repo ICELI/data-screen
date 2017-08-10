@@ -12,11 +12,9 @@
           <div class="panel-content panel-bar-wrap">
             <table class="top-bar">
               <tr v-for="(item, index) in platformUser">
-                <td class="t-bar">Top{{ index + 1 }} {{item.area}}</td>
-                <td class="t-bar">
-                  <div class="bar-wrap"><b :style="{width: 150 * item.percent + 'px'}">178</b></div>
-                </td>
+                <td class="t-bar">{{item.area}}</td>
                 <td class="t-bar">{{item.userNum}}</td>
+                <td class="t-bar"><span class="arrow-up">Top{{index + 1}}</span></td>
               </tr>
             </table>
           </div>
@@ -122,8 +120,18 @@
         this.goods = res.data.data.goodsNum.slice(0, -1);
         this.number.goodsNum = +res.data.data.goodsNum.slice(-1)[0].num.replace('万', '');
 
+        var barColors = ['#9b33ff', '#8233ff', '#5a33ff', '#3333ff', '#3263ff', '#3390ff', '#33c1ff', '#33ecff', '#33ffdd', '#33ffbb', '#33ff99'];
         var dataAxis = this.goods.map(v => v.industry);
-        var data = this.goods.map(v => v.num);
+        var data = this.goods.map((v, i) => {
+          return {
+            value: v.num,
+            itemStyle: {
+              normal: {
+                color: barColors[i]
+              }
+            }
+          }
+        });
         var dataShadow = [];
         var yMax = Math.max.apply(null, data);
         var len = Math.pow(10, ('' + yMax).length - 1);
@@ -135,7 +143,7 @@
         let colors = ['#0bff49', '#ff3274', '#c6ecff'];
         let option = {
           grid: {
-            top: 10,
+            top: 30,
             right: 28,
             bottom: 72,
           },
@@ -164,6 +172,7 @@
             z: 10
           },
           yAxis: {
+            splitNumber: 2,
             axisLine: {
               show: false,
               lineStyle: {
@@ -172,6 +181,13 @@
             },
             axisTick: {
               show: false
+            },
+            axisLabel: {
+              formatter: '{value}万',
+              textStyle: {
+//                align: 'right',
+                fontSize: 20
+              }
             },
             splitArea: {
               show: false
@@ -183,28 +199,17 @@
             },
           },
           series: [
-            { // For shadow
-              type: 'bar',
-              itemStyle: {
-                normal: {color: 'rgba(198,236,255,0.16)'}
-              },
-              barGap: '-100%',
-              barCategoryGap: '40%',
-              data: dataShadow,
-              animation: false
-            },
             {
-              type: 'bar',
+              type: 'pictorialBar',
+              barCategoryGap: '-20%',
+              symbolPosition: 'end',
+              symbol: 'path://M0,24.7c10.9-32.94,74.51-32.94,85.41,0Z',
               itemStyle: {
                 normal: {
-                  color: new echarts.graphic.LinearGradient(
-                    0, 0, 0, 1,
-                    [
-                      {offset: 0, color: '#00ffe6'},
-                      {offset: 0.87, color: '#2788e8'},
-                      {offset: 1, color: '#2788e8'}
-                    ]
-                  )
+                  opacity: 0.9
+                },
+                emphasis: {
+                  opacity: 1
                 }
               },
               data: data
@@ -268,10 +273,17 @@
     width: 100%;
     font-size: 20px;
     line-height: 38px;
+    tr::after {
+      margin-left: 8px;
+      left: 100%;
+    }
     tr:nth-child(1) {
       color: #ff3274;
       b {
         background-color: #ff3274 !important;
+      }
+      &::after {
+        content: '↑↑↑';
       }
     }
     tr:nth-child(2) {
@@ -279,44 +291,35 @@
       b {
         background-color: #ffff33 !important;
       }
+      &::after {
+        content: '↑↑';
+      }
     }
     tr:nth-child(3) {
       color: #33ffff;
       b {
         background-color: #33ffff !important;
       }
+      &::after {
+        content: '↑';
+      }
     }
     .t-bar {
       display: table-cell;
       text-align: left;
-      width: 178px;
+      width: 211px;
       white-space: nowrap;
       &:first-child {
-        width: 110px;
-      }
-      &:last-child {
-        width: 100px;
+        width: 60px;
+        padding-right: 24px;
         text-align: right;
       }
-      .bar-wrap {
-        position: relative;
-        display: inline-block;
-        width: 178px;
-        height: 16px;
-        margin: 0 10px;
-        background-color: rgba(198, 236, 255, 0.16);
-        vertical-align: middle;
-        text-indent: 10000px;
-        b {
-          position: absolute;
-          top: 0;
-          left: 0;
-          display: inline-block;
-          width: 0; // 根据数据计算 相对于
-          height: 16px;
-          background-color: #2788e8;
-          transition: width cubic-bezier(0.22, 0.61, 0.36, 1) 2s;
-        }
+      &:nth-child(2) {
+        font-size: 24px;
+      }
+      &:last-child {
+        width: 110px;
+        text-align: right;
       }
     }
   }

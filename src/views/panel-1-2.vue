@@ -280,7 +280,7 @@
     right: 0;
     height: 100%;
     background-image: url(../assets/img/worldMap/北美.png), url(../assets/img/worldMap/欧洲.png), url(../assets/img/worldMap/亚洲.png), url(../assets/img/worldMap/南美.png), url(../assets/img/worldMap/非洲.png), url(../assets/img/worldMap/大洋洲.png);
-    background-position: -90px -30px;
+    background-position: -100px -30px;
   }
 
   /* TODO: 图片初次加载闪动 */
@@ -358,7 +358,7 @@
       }
       &:nth-child(1) {
         top: 10px;
-        left: 60px;
+        left: 50px;
       }
       &:nth-child(2) {
         top: 10px;
@@ -367,7 +367,7 @@
       }
       &:nth-child(3) {
         top: 10px;
-        right: 45px;
+        right: 35px;
         &::after {
           transform: rotate(45deg);
         }
@@ -386,7 +386,7 @@
         }
       }
       &:nth-child(4) {
-        left: 60px;
+        left: 50px;
         &::after {
           height: 150px;
           transform: rotate(60deg);
@@ -397,7 +397,7 @@
         margin-left: -91px;
       }
       &:nth-child(6) {
-        right: 45px;
+        right: 35px;
         &::after {
           transform: rotate(0deg);
         }
