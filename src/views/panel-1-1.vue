@@ -353,7 +353,8 @@
     },
     components: {},
     created() {
-      window.queue || (window.queue = []);
+      window.clearTimeout(window._t);
+      window.queue = [];
 
       this.Api.Carousel().then((res) => {
         this.carousel = res.data;
@@ -519,8 +520,6 @@
         type: 'ring',
         el: this.ring
       });
-
-      window.rings = this.ring
 
       window.queue.push({
         type: 'ring',

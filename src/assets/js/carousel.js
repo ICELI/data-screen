@@ -145,10 +145,11 @@ export default function (carouselData, cb) {
   // todo
   let timer2 = null;
 
-  setTimeout(play, delay);
+  window._t = setTimeout(play, delay);
 
   function play() {
-
+    console.log('change!')
+    window.clearTimeout(window._t);
     window.setTimeout(function(){
       window.queue && window.queue.forEach(function(ele, idx){
         __animationNumber(ele)
@@ -182,7 +183,7 @@ export default function (carouselData, cb) {
         speedX2 = 5;
         y -= l;
         l = 360 / M;
-        setTimeout(play, delay);
+        window._t = setTimeout(play, delay);
       }
       fixAll();
     }, 30);

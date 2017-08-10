@@ -401,6 +401,9 @@
     },
     components: {},
     created() {
+      window.clearTimeout(window._t);
+      window.queue = [];
+
       this.Api.Carousel('cn').then((res) => {
         this.carousel = res.data;
         // 旋转木马 TODO：切屏动画
@@ -656,12 +659,28 @@
         smooth: true
       }, document);
 
+      window.queue.push({
+        type: 'ring',
+        el: this.ring
+      });
+
+      window.queue.push({
+        type: 'ring',
+        el: this.barPolarStack
+      });
+
       bindNumber(this.number, {
         attr: 'num',    //属性名称 <a num='100.0'></a>
         id: 'e4b-content', //外层容器#id
         decimals: 0,    //小数点个数
         duration: 2,    //动画时长
         size: '36px'
+      }, function(num){
+        window.queue.push({
+          type: 'number',
+          el: num,
+          container: 'idx_0'
+        });
       });
 
       // 圆环
