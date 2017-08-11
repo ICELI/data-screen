@@ -263,7 +263,7 @@
         '长治': [112.8625, 36.4746],
         '阳泉': [113.4778, 38.0951],
         '青岛': [120.4651, 36.3373],
-        '台湾': [122.4651, 25.3373],
+        '台湾': [123.0, 24.0],
         '韶关': [113.7964, 24.7028]
       };
 
@@ -376,7 +376,7 @@
       });
       var chinaMapOption = {
         geo: {
-          top: 98,
+          top: 110,
           left: 150,
           map: 'china',
           label: {
@@ -479,7 +479,7 @@
 
   #china-province {
     position: absolute;
-    top: 804px;
+    top: 754px;
     left: 10px;
     right: 10px;
     background-color: transparent;

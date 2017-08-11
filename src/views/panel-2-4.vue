@@ -15,18 +15,18 @@
                 <td class="t-bar">{{item.area}}</td>
                 <td class="t-bar">{{item.userNum}}</td>
                 <td class="t-bar" style="text-align:left;">
-                  <span class="arrow-up">Top{{index + 1}}</span>
-                  <div v-show="index == 0" style="display:inline-block; width:50px; height:26px; overflow:hidden; position:relative;">
+                  <span>Top{{index + 1}}</span>
+                  <div v-show="index == 0" class="arrow-up">
                     <div class="arrow-scroll" style="position:absolute;">
                       <div style="height:38px; overflow:hidden;">↑↑↑</div>
                     </div>
                   </div>
-                  <div v-show="index == 1" style="display:inline-block; width:50px; height:26px; overflow:hidden; position:relative;">
+                  <div v-show="index == 1" class="arrow-up">
                     <div class="arrow-scroll2" style="position:absolute;">
                       <div style="height:38px; overflow:hidden;">↑↑</div>
                     </div>
                   </div>
-                  <div v-show="index == 2" style="display:inline-block; width:50px; height:26px; overflow:hidden; position:relative;">
+                  <div v-show="index == 2" class="arrow-up">
                     <div class="arrow-scroll3" style="position:absolute;">
                       <div style="height:38px; overflow:hidden;">↑</div>
                     </div>
@@ -64,12 +64,15 @@
       <div class="pure-u-1-1">
         <div class="panel-wrap">
           <div class="panel-content panel-ring-wrap">
-            <section class="order-number-wrap ani-300" style="transform: translateY(250px); transition: all 1s ease-out; opacity:0;">
+            <section class="order-number-wrap ani-300"
+                     style="transform: translateY(250px); transition: all 1s ease-out; opacity:0;">
               累计意向订单数
               <span class="title-number"><a num="orderNumber"></a></span>
             </section>
-            <section class="order-number-part1 ani-300" style="transform: translateY(250px); transition: all 0.45s ease-out; opacity:0;"></section>
-            <section class="order-number-part2 ani-300" style="transform: translateY(250px); transition: all 0.65s ease-out; opacity:0;"></section>
+            <section class="order-number-part1 ani-300"
+                     style="transform: translateY(250px); transition: all 0.45s ease-out; opacity:0;"></section>
+            <section class="order-number-part2 ani-300"
+                     style="transform: translateY(250px); transition: all 0.65s ease-out; opacity:0;"></section>
             <ul class="order-increase">
               <li>昨日意向订单 <span class="text-primary"><a num="yesterdayOrderNumber"></a></span></li>
               <li>订单转化 <span class="text-primary"><a num="orderChangeNumber"></a>%</span></li>
@@ -133,7 +136,7 @@
 
         this.number.platformUserNum = +res.data.data.platformUserNum.slice(-1)[0].userNum.replace('万', '');
 
-        window.setTimeout(function(){
+        window.setTimeout(function () {
           scroll('.arrow-scroll', -1);
           scroll('.arrow-scroll2', -1);
           scroll('.arrow-scroll3', -1);
@@ -289,23 +292,23 @@
       }, document);
 
       var circles = document.querySelectorAll('section');
-      circles.forEach(function(ele, idx){
-        if(idx == 0){
+      circles.forEach(function (ele, idx) {
+        if (idx == 0) {
           ele.style.transform = 'translateY(0px)';
           ele.style.opacity = 1;
-          window.setTimeout(function(){
+          window.setTimeout(function () {
             ele.className = ele.className + ' ani-1';
           }, 1000);
-        }else if(idx == 1){
+        } else if (idx == 1) {
           ele.style.transform = 'translateY(0px)';
           ele.style.opacity = 1;
-          window.setTimeout(function(){
+          window.setTimeout(function () {
             ele.className = ele.className + ' ani-1';
           }, 450);
-        }else if(idx == 2){
+        } else if (idx == 2) {
           ele.style.transform = 'translateY(0px)';
           ele.style.opacity = 1;
-          window.setTimeout(function(){
+          window.setTimeout(function () {
             ele.className = ele.className + ' ani-1';
           }, 650);
         }
@@ -415,7 +418,7 @@
     }
   }
 
-  .order-number-part1{
+  .order-number-part1 {
     position: absolute;
     content: '';
     top: 60px;
@@ -426,7 +429,7 @@
     background-color: #2788e8;
   }
 
-  .order-number-part2{
+  .order-number-part2 {
     position: absolute;
     content: '';
     top: 135px;
@@ -468,41 +471,49 @@
     }*/
   }
 
-  @keyframes ani_1{
-    0%{
+  @keyframes ani_1 {
+    0% {
       transform: translateY(0px);
     }
-    50%{
+    50% {
       transform: translateY(-20px);
     }
-    100%{
+    100% {
       transform: translateY(0px);
     }
   }
 
-  @keyframes ani_2{
-    0%{
+  @keyframes ani_2 {
+    0% {
       top: 40px;
       opacity: 0.8
     }
-    100%{
+    100% {
       top: 75px;
       opacity: 1.0
     }
   }
 
-  @keyframes ani_3{
-    0%{
+  @keyframes ani_3 {
+    0% {
       top: 120px;
       opacity: 0.8
     }
-    100%{
+    100% {
       top: 145px;
       opacity: 1.0
     }
   }
 
-  .ani-1{animation:ani_1 3s infinite;}
-  .ani-2{animation:ani_1 2.5s infinite;}
-  .ani-3{animation:ani_1 3s infinite;}
+  .ani-1 {
+    animation: ani_1 3s infinite;
+  }
+
+  .ani-2 {
+    animation: ani_1 2.5s infinite;
+  }
+
+  .ani-3 {
+    animation: ani_1 3s infinite;
+  }
 </style>
