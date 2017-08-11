@@ -1,12 +1,17 @@
-export default function (selector) {
+export default function (selector, speed) {
+
+  speed || (speed = -1);
+
   // todo 重写 dom ready
   const scrollList = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
 
   for (let i = 0, l = scrollList.length; i < l; i++) {
-    scroll(scrollList[i]);
+    scroll(scrollList[i], speed);
   }
 
-  function scroll(selector, speed = -1) {
+  function scroll(selector, speed){
+
+    console.log(speed)
     const oUl = selector;
     let timer = null;
     oUl.innerHTML += oUl.innerHTML;

@@ -16,9 +16,21 @@
                 <td class="t-bar">{{item.userNum}}</td>
                 <td class="t-bar" style="text-align:left;">
                   <span class="arrow-up">Top{{index + 1}}</span>
-                  <span class="arrow-scroll" v-show="index == 0" style="display:inline-block; height:38px; overflow:hidden;">
-                    <div>↑↑↑</div>
-                  </span>
+                  <div v-show="index == 0" style="display:inline-block; width:50px; height:26px; overflow:hidden; position:relative;">
+                    <div class="arrow-scroll" style="position:absolute;">
+                      <div style="height:38px; overflow:hidden;">↑↑↑</div>
+                    </div>
+                  </div>
+                  <div v-show="index == 1" style="display:inline-block; width:50px; height:26px; overflow:hidden; position:relative;">
+                    <div class="arrow-scroll2" style="position:absolute;">
+                      <div style="height:38px; overflow:hidden;">↑↑</div>
+                    </div>
+                  </div>
+                  <div v-show="index == 2" style="display:inline-block; width:50px; height:26px; overflow:hidden; position:relative;">
+                    <div class="arrow-scroll3" style="position:absolute;">
+                      <div style="height:38px; overflow:hidden;">↑</div>
+                    </div>
+                  </div>
                 </td>
               </tr>
             </table>
@@ -122,8 +134,10 @@
         this.number.platformUserNum = +res.data.data.platformUserNum.slice(-1)[0].userNum.replace('万', '');
 
         window.setTimeout(function(){
-          scroll('.arrow-scroll');
-        }, 1000);
+          scroll('.arrow-scroll', -1);
+          scroll('.arrow-scroll2', -1);
+          scroll('.arrow-scroll3', -1);
+        }, 0);
       });
 
       this.Api.goods('cn').then((res) => {
