@@ -94,11 +94,15 @@
     components: {},
     created() {
       this.Api.industryPercent().then((res) => {
-        this.sectors.setData(res.data.data.industryPercent);
+        let tradeData = res.data.data.map(d=>({
+          ...d, percent: d.percent/100
+        }))
+        this.sectors.setData(tradeData);
       });
 
       this.Api.platformUser().then((res) => {
-        this.platformUser = res.data.data.platformUserNum.slice(0, -3);
+        let platformUserNum = res.data.data
+        this.platformUser = platformUserNum.slice(0, 8);
 
         setTimeout(() => {
           this.platformUser = this.platformUser.map((v, i) => {
@@ -111,12 +115,14 @@
           });
         }, 50);
 
-        this.number.platformUserNum = +res.data.data.platformUserNum.slice(-1)[0].userNum.replace('万', '');
+        this.number.platformUserNum = +platformUserNum.slice(-1)[0].userNum.replace('万', '');
       });
 
       this.Api.goods().then((res) => {
-        this.goods = res.data.data.goodsNum.slice(0, -1);
-        this.number.goodsNum = +res.data.data.goodsNum.slice(-1)[0].num;
+        let goodsNum = res.data.data
+        this.goods = goodsNum.slice(0, -1);
+        let totalNumber = goodsNum.slice(-1)[0].num.replace('万','')
+        this.number.goodsNum = +totalNumber;
 
         var dataAxis = this.goods.map(v => v.industry);
         var data = this.goods.map(v => v.num);
@@ -220,20 +226,21 @@
       });
 
       this.Api.intentionOrder().then((res) => {
-        this.intentionOrder = res.data.data.intentionOrder;
 
-        // todo: 固定图表为达到视觉效果
-        let num0 = this.intentionOrder[0].num.replace('万+', '');
-        let num1 = this.intentionOrder[1].num.replace('%', '');
-        let num2 = this.intentionOrder[2].num;
+        this.intentionOrder = res.data.data
+
+        // fixme: 固定图表为达到视觉效果
+        let totalOrder = +this.intentionOrder.totalOrder.replace('万+', '');
+        let convertRatio = this.intentionOrder.convertRatio.replace('%', '');
+        let yesterdayOrder = this.intentionOrder.yesterdayOrder;
 
         this.ring.setData([
-          {name: '累计意向订单数', value: 0.75, display: num0, unit: '万+'},
-          {name: '昨日意向订单', value: 0.25, display: num2, unit: ''},
-          {name: '订单转化', value: num1 / 100, display: num1, unit: '%'}
+          {name: '累计意向订单数', value: 0.75, display: totalOrder, unit: '万+'},
+          {name: '昨日意向订单', value: 0.25, display: yesterdayOrder, unit: ''},
+          {name: '订单转化', value: convertRatio / 100, display: convertRatio, unit: '%'}
         ]);
 
-        this.number.intentionOrder = +this.intentionOrder[3].num.replace('%', '');
+        this.number.intentionOrder = +this.intentionOrder.upgrateRatio.replace('%', '');
       });
     },
     methods: {},

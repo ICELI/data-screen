@@ -5,8 +5,15 @@
  */
 var address = {
   // api服务器
-  API_ADDRESS: 'http://192.168.26.119:1210',
+  API_ADDRESS: 'http://webapi.jumorebigscreen.test',
   // API_ADDRESS: "http://192.168.23.224",
+
+  // 大数据国际api服务器
+  API_BIGDATA_EN_ADDRESS: 'http://www.jumoredata.com',
+
+  // 大数据国内api服务器
+  API_BIGDATA_ADDRESS: 'http://www.jumoreshuju.com',
+
 
   // 中台服务器
   CENTER_ADDRESS: 'http://192.168.26.119:8082',
@@ -29,6 +36,8 @@ module.exports = {
   // 跨域设置
   api_proxy: {
     '/webapi/**': address.API_ADDRESS,
+    '/dataserviceEN/**': address.API_BIGDATA_EN_ADDRESS,
+    '/dataservice/**': address.API_BIGDATA_ADDRESS,
     '/sso': address.API_ADDRESS
   },
 };

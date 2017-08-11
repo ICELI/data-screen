@@ -306,10 +306,11 @@
       });
 
       this.Api.realTimeVisitor().then((res) => {
-        this.realTimeVisitor = res.data.data.realTimeVisitor;
-        this.todayIncreaseBusi = res.data.data.todayIncreaseBusi;
-        this.number.todayIncreaseBusiTotal = +res.data.todayIncreaseBusiTotal;
-        this.todayIncreaseBusiTotal = res.data.todayIncreaseBusiTotal;
+        let data = res.data.data
+        this.realTimeVisitor = data.realTimeVisitor;
+        this.todayIncreaseBusi = data.todayIncreaseBusi;
+        this.number.todayIncreaseBusiTotal = +data.todayIncreaseBusiTotal;
+        this.todayIncreaseBusiTotal = +data.todayIncreaseBusiTotal;
 
 
         this.$nextTick(function () {

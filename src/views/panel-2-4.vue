@@ -115,11 +115,12 @@
     components: {},
     created() {
       this.Api.industryPercent('cn').then((res) => {
-        this.sectors.setData(res.data.data.industryPercent);
+        this.sectors.setData(res.data.data);
       });
 
       this.Api.platformUser('cn').then((res) => {
-        this.platformUser = res.data.data.platformUserNum.slice(0, -3);
+        let platformUserNum = res.data.data
+        this.platformUser = platformUserNum.slice(0, -3);
 
         setTimeout(() => {
           this.platformUser = this.platformUser.map((v, i) => {
@@ -131,18 +132,13 @@
           });
         }, 50);
 
-        this.number.platformUserNum = +res.data.data.platformUserNum.slice(-1)[0].userNum.replace('万', '');
-
-        window.setTimeout(function(){
-          scroll('.arrow-scroll', -1);
-          scroll('.arrow-scroll2', -1);
-          scroll('.arrow-scroll3', -1);
-        }, 0);
+        this.number.platformUserNum = +platformUserNum.slice(-1)[0].userNum.replace('万', '');
       });
 
       this.Api.goods('cn').then((res) => {
-        this.goods = res.data.data.goodsNum.slice(0, -1);
-        this.number.goodsNum = +res.data.data.goodsNum.slice(-1)[0].num.replace('万', '');
+        let goodsNum = res.data.data
+        this.goods = goodsNum.slice(0, -1);
+        this.number.goodsNum = +goodsNum.slice(-1)[0].num.replace('万', '');
 
         var barColors = ['#9b33ff', '#8233ff', '#5a33ff', '#3333ff', '#3263ff', '#3390ff', '#33c1ff', '#33ecff', '#33ffdd', '#33ffbb', '#33ff99'];
         var dataAxis = this.goods.map(v => v.industry);
@@ -245,12 +241,11 @@
       });
 
       this.Api.intentionOrder('cn').then((res) => {
-        this.intentionOrder = res.data.data.intentionOrder;
-
-        this.orderNumber.orderNumber = +this.intentionOrder[0].num.replace('万+', '');
-        this.orderNumber.orderChangeNumber = +this.intentionOrder[1].num.replace('%', '');
-        this.orderNumber.yesterdayOrderNumber = +this.intentionOrder[2].num;
-        this.orderNumber.intentionOrder = +this.intentionOrder[3].num.replace('%', '');
+        this.intentionOrder = res.data.data;
+        this.orderNumber.orderNumber = +this.intentionOrder.totalOrder.replace('万+', '');
+        this.orderNumber.orderChangeNumber = +this.intentionOrder.convertRatio.replace('%', '');
+        this.orderNumber.yesterdayOrderNumber = +this.intentionOrder.yesterdayOrder;
+        this.orderNumber.intentionOrder = +this.intentionOrder.upgrateRatio.replace('%', '');
       });
     },
     methods: {},
