@@ -3,8 +3,10 @@
     <div class="e4b-title">
       <img src="../assets/img/e4b-title-en.png" alt="聚贸E4B跨境电商全球体系">
     </div>
-    <div id="carousel">
-      <!--<div class="carousel-floor"></div>-->
+    <div class="carousel-wrap">
+      <div id="carousel">
+        <!--<div class="carousel-floor"></div>-->
+      </div>
     </div>
     <div id="e4b-content" class="e4b-content">
       <!-- 聚融通 start -->
@@ -39,7 +41,8 @@
       <div class="pure-g e4b-info" id="idx_1">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">2017增量 <span class="title-number"><a num="consultancyInquiriesIncrease"></a></span></h3>
+            <h3 class="panel-title">2017增量 <span class="title-number"><a num="consultancyInquiriesIncrease"></a></span>
+            </h3>
             <div class="panel-content panel-list-wrap">
               <div class="panel-dashboard">
                 <h3 class="text-primary"><a num2="consultancyInquiriesNum">{{consultancyInquiriesNum}}</a></h3>
@@ -111,7 +114,8 @@
       <div class="pure-g e4b-info" id="idx_3">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">覆盖品类数 <span class="title-number"><a num="certificationCoverItemNumTotal"></a></span></h3>
+            <h3 class="panel-title">覆盖品类数 <span class="title-number"><a num="certificationCoverItemNumTotal"></a></span>
+            </h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-7-24">名称</div>
@@ -132,7 +136,8 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">认证体系 <span class="title-number"><a num="certificationCoverCertifySysTotal"></a></span></h3>
+            <h3 class="panel-title">认证体系 <span class="title-number"><a
+              num="certificationCoverCertifySysTotal"></a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
@@ -232,7 +237,8 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">解决方案数 <span class="title-number"><a num="technologySolutionNumTotal"></a></span></h3>
+            <h3 class="panel-title">解决方案数 <span class="title-number"><a num="technologySolutionNumTotal"></a></span>
+            </h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
@@ -324,10 +330,10 @@
         return this.consultancy.inquiriesNum[0].total || 0
       },
       consultationServiceTotal() {
-        return this.consultancy.consultationService.filter(v => v.type === '总量')[0] ? this.consultancy.consultationService.filter(v => v.type === '总量')[0].total : ''
+        return this.consultancy.consultationService.filter(v => v.type === '总计')[0] ? this.consultancy.consultationService.filter(v => v.type === '总计')[0].total : ''
       },
       consultationService() {
-        return this.consultancy.consultationService.filter(v => v.type !== '总量')
+        return this.consultancy.consultationService.filter(v => v.type !== '总计')
       },
 
       transProportionTotal() {
@@ -532,7 +538,7 @@
         decimals: 0,    //小数点个数
         duration: 2,    //动画时长
         size: '36px'
-      }, function(num){
+      }, function (num) {
         window.queue.push({
           type: 'number',
           el: num
@@ -554,5 +560,9 @@
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
-
+.carousel-wrap {
+  position: relative;
+  transform: perspective(-400px) rotateX(0deg) rotateY(0deg) translateZ(400px);
+  transform-style: preserve-3d;
+}
 </style>

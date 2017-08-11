@@ -21,7 +21,7 @@ function bigDataBaseUrl(language = 'en') {
       } else {
         baseUrl = address.API_BIGDATA_ADDRESS
   }
-  
+
   return baseUrl;
 }
 
@@ -65,7 +65,7 @@ Api.install = (language = 'en') => {
   // 接口列表
   Vue.prototype.Api = {
     // 取消页面当前请求
-    apiRequsetCancel(language = 'en') {
+    apiRequsetCancel() {
       // 依次取消请求
       apiCancelTokens.forEach((cancel) => {
         cancel('请求被取消');

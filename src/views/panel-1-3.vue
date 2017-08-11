@@ -93,7 +93,6 @@
 
 <script>
   import echarts from 'echarts';
-  import util from '../assets/js/util';
   import scroll from '../assets/js/scroll';
   import {bindNumber} from '../assets/js/number';
 
@@ -121,18 +120,9 @@
 
       this.Api.realTimeTrade().then((res) => {
         let realTimeTrade = res.data.data.realTimeTrade;
-        realTimeTrade && realTimeTrade.map(function(ele){
-          ele.todayVisitorNum = (parseFloat(ele.todayVisitorNum) * 0.0001).toFixed(1);
-          ele.yestodayVisitorNum = (parseFloat(ele.yestodayVisitorNum) * 0.0001).toFixed(1);
-          return ele;
-        });
         let realTimeTradeTotal = realTimeTrade.pop();
-
-        let hour = util.getCurrTime().hour % 2 == 0 ? util.getCurrTime().hour : util.getCurrTime().hour - 1;
-
-        //console.log(realTimeTradeTotal)
         // TODO: 2小时更新
-        realTimeTrade = realTimeTrade.slice(hour, hour + 14);
+        realTimeTrade = realTimeTrade.slice(4, 13);
         // TODO: 对象合并 ES6 只合并存在的属性
         this.number.todayVisitorNum = +realTimeTradeTotal.todayVisitorNum;
         this.number.todayIntentionOrder = +realTimeTradeTotal.todayIntentionOrder;
@@ -151,9 +141,6 @@
             bottom: 50,
           },
           xAxis: {
-            axisLabel: {
-              interval: 1
-            },
             axisLine: {
               show: false,
               onZero: false,
@@ -165,6 +152,7 @@
               show: false
             },
             axisLabel: {
+              interval: 1,
               textStyle: {
                 fontSize: 20
               }
@@ -202,6 +190,7 @@
             data: realTimeTrade.map(v => v.todayIncreaseUser),
             type: 'scatter',
             symbolSize: function (data) {
+              console.log(data, 'symbolSize')
               return Math.sqrt(data) / 2;
             },
             itemStyle: {
@@ -218,6 +207,7 @@
       });
 
       function genOption(data, yesterday, today, colors) {
+
         return {
           color: colors,
           grid: {
@@ -276,26 +266,14 @@
               symbolSize: function (data) {
                 return 0;
               },
-              data: data.map(v => v[today]),
-              label: {
-                normal: {
-                  show: true,
-                  formatter: '12'
-                }
-              }
+              data: data.map(v => v[today])
             },
             {
               type: 'line',
               symbolSize: function (data) {
                 return 0;
               },
-              data: data.map(v => v[yesterday]),
-              label: {
-                normal: {
-                  show: true,
-                    formatter: '12'
-                }
-              }
+              data: data.map(v => v[yesterday])
             }
           ]
         };
@@ -327,8 +305,6 @@
       this.lineX2 = echarts.init(document.getElementById('lineX2'));
       this.scatter = echarts.init(document.getElementById('scatter'));
 
-      console.dir(this.lineX2.getOption())
-
       bindNumber(this.number, {
         attr: 'num',    //属性名称 <a num='100.0'></a>
         id: 'transaction-data', //外层容器#id
@@ -342,7 +318,5 @@
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
-center {
-  color: #c6ecff;
-}
+
 </style>

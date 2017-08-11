@@ -93,11 +93,18 @@
     computed: {},
     components: {},
     created() {
+      const industryPercent = ['0.6', '0.72', '0.9', '0.62', '0.8', '0.9', '0.6', '0.5', '0.62', '0.85', '0.75'];
+
       this.Api.industryPercent().then((res) => {
-        let tradeData = res.data.data.map(d=>({
-          ...d, percent: d.percent/100
-        }))
-        this.sectors.setData(tradeData);
+        let data = res.data.data.map(function (v, i) {
+          return {
+            industry: v.industry,
+            percent: v.percent / 100,
+            radius: industryPercent[i],
+          }
+        });
+
+        this.sectors.setData(data);
       });
 
       this.Api.platformUser().then((res) => {

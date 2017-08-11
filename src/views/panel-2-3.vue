@@ -241,7 +241,7 @@
       this.Api.realTimeVisitor('cn').then((res) => {
         this.realTimeVisitor = res.data.data.realTimeVisitor;
         this.todayIncreaseBusi = res.data.data.todayIncreaseBusi;
-        this.number.todayIncreaseBusiTotal = +res.data.todayIncreaseBusiTotal;
+        this.number.todayIncreaseBusiTotal = +res.data.data.todayIncreaseBusiTotal;
 
         this.$nextTick(function () {
           // '.panel-list-scroll' TODO: async data

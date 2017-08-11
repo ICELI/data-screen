@@ -372,10 +372,10 @@
         return this.consultancy.inquiriesNum[0].total || 0
       },
       consultationServiceTotal() {
-        return this.consultancy.consultationService.filter(v => v.type === '总量')[0] ? this.consultancy.consultationService.filter(v => v.type === '总量')[0].total : ''
+        return this.consultancy.consultationService.filter(v => v.type === '总计')[0] ? this.consultancy.consultationService.filter(v => v.type === '总计')[0].total : ''
       },
       consultationService() {
-        return this.consultancy.consultationService.filter(v => v.type !== '总量')
+        return this.consultancy.consultationService.filter(v => v.type !== '总计')
       },
 
       transProportionTotal() {

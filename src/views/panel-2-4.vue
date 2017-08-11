@@ -117,8 +117,18 @@
     computed: {},
     components: {},
     created() {
+      const industryPercent = ['0.6', '0.72', '0.9', '0.62', '0.8', '0.9', '0.6', '0.5', '0.62', '0.85', '0.75'];
+
       this.Api.industryPercent('cn').then((res) => {
-        this.sectors.setData(res.data.data);
+        let data = res.data.data.map(function (v, i) {
+            return {
+              industry: v.industry,
+              percent: v.percent / 100,
+              radius: industryPercent[i],
+            }
+        });
+
+        this.sectors.setData(data);
       });
 
       this.Api.platformUser('cn').then((res) => {
@@ -138,9 +148,9 @@
         this.number.platformUserNum = +platformUserNum.slice(-1)[0].userNum.replace('万', '');
 
         window.setTimeout(function () {
-          scroll('.arrow-scroll', -1);
-          scroll('.arrow-scroll2', -1);
-          scroll('.arrow-scroll3', -1);
+          scroll('.arrow-scroll', -2);
+          scroll('.arrow-scroll2', -2);
+          scroll('.arrow-scroll3', -2);
         }, 0);
       });
 
@@ -251,7 +261,7 @@
 
       this.Api.intentionOrder('cn').then((res) => {
         this.intentionOrder = res.data.data;
-        this.orderNumber.orderNumber = +this.intentionOrder.totalOrder.replace('万+', '');
+        this.orderNumber.orderNumber = +this.intentionOrder.totalOrder.replace('万', '');
         this.orderNumber.orderChangeNumber = +this.intentionOrder.convertRatio.replace('%', '');
         this.orderNumber.yesterdayOrderNumber = +this.intentionOrder.yesterdayOrder;
         this.orderNumber.intentionOrder = +this.intentionOrder.upgrateRatio.replace('%', '');
