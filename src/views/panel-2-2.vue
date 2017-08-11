@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="panel-wrap" id="china-province">
-      <h3 class="panel-title">北部区域优秀企业累计 <span class="title-number"><a num="provinceTotal">{{provinceTotal}}</a></span>
+      <h3 class="panel-title">{{mapSort[currentIndex]}}区域优秀企业累计 <span class="title-number"><a num="provinceTotal">{{provinceTotal}}</a></span>
       </h3>
       <div class="panel-content panel-swiper-wrap">
         <div class="swiper-container">
@@ -78,7 +78,7 @@
             return sum + (+value.compNum);
           }, 0);
         });
-        console.log(provincesTotal)
+
         this.mapData = mapData;
         this.provinces = provinces;
         this.provincesTotal = provincesTotal;
@@ -102,9 +102,10 @@
         this.$nextTick(function () {
           this.swiper = new Swiper('.swiper-container', {
             slidesPerView: 4,
-            autoplay: 2000,
+            autoplay: 1000,
             speed: 800,
             spaceBetween: 32,
+            loop: true
           });
         });
 
@@ -385,10 +386,12 @@
           },
           itemStyle: {
             normal: {
+              show: false,
               areaColor: 'rgba(221,221,221, 0)',
               borderColor: 'rgba(221,221,221, 0)'
             },
             emphasis: {
+              show: false,
               areaColor: 'rgba(221,221,221, 0)'
             }
           }

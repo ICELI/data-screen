@@ -88,9 +88,10 @@
         this.$nextTick(function () {
           this.swiper = new Swiper('.swiper-container', {
             slidesPerView: 4,
-            autoplay: 2000,
+            autoplay: 1000,
             speed: 800,
             spaceBetween: 32,
+            loop: true
           });
         });
         // fixme: 当swiper过渡动画时 切换大洲 跳动感明显 2的倍数
