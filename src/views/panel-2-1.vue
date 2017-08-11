@@ -406,7 +406,7 @@
 
       this.Api.Carousel('cn').then((res) => {
         this.carousel = res.data;
-        // 旋转木马 TODO：切屏动画
+        // 旋转木马
         carousel(this.carousel, (index) => {
           if (index === 6) {
             this.doughnut2.resize();
@@ -444,10 +444,6 @@
             ],
             itemGap: 200,
             x: 'left',
-            formatter(name) {
-              console.log(arguments); // TODO
-              return `${name}\n\n${doughnutData.filter(v => v.name === name)[0].value}`;
-            },
             data: doughnutData.keys('name'),
           },
           series: [

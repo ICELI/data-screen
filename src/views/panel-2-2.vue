@@ -128,7 +128,7 @@
           });
         }, 0);
 
-        // fixme: 当swiper过渡动画时 切换大洲 跳动感明显 2的倍数
+        // todo: 当swiper过渡动画时 切换大洲 跳动感明显 2的倍数
         this.timer = setTimeout(() => {
           this.changeMap();
         }, specIdx ? 16000 : (item < 4 ? 4 : item) * 2000);
@@ -430,7 +430,6 @@
     background: url(../assets/img/chinaMap/东部.png) no-repeat center 98px;
   }
 
-  /* TODO: 图片初次加载闪动 */
   .china-map-bg0 {
     background-image: url(../assets/img/chinaMap/东部.png);
   }

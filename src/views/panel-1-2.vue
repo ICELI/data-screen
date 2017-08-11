@@ -94,7 +94,7 @@
             loop: true
           });
         });
-        // fixme: 当swiper过渡动画时 切换大洲 跳动感明显 2的倍数
+        // todo: 当swiper过渡动画时 切换大洲 跳动感明显 2的倍数
         this.timer = setTimeout(() => {
           this.changeMap();
         }, specIdx ? 16000 : (item < 4 ? 4 : item) * 2000);

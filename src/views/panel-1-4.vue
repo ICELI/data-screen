@@ -222,7 +222,7 @@
       this.Api.intentionOrder().then((res) => {
         this.intentionOrder = res.data.data.intentionOrder;
 
-        // fixme: 固定图表为达到视觉效果
+        // todo: 固定图表为达到视觉效果
         let num0 = this.intentionOrder[0].num.replace('万+', '');
         let num1 = this.intentionOrder[1].num.replace('%', '');
         let num2 = this.intentionOrder[2].num;
