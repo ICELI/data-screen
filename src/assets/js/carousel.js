@@ -22,7 +22,7 @@ export default function (carouselData, cb) {
 
     (function (oNewDiv, i) {
       setTimeout(() => {
-        oNewDiv.style.transform = `rotateY(${360 * (i - 1) / M}deg) translateZ(800px)`;
+        oNewDiv.style.transform = `rotateY(${360 * (i - 1) / M}deg) translateZ(400px)`;
 
         setTimeout(() => {
           if (i == M) fixAll();
@@ -114,7 +114,7 @@ export default function (carouselData, cb) {
 
   function fixAll() {
 
-    oDiv.style.transform = `perspective(600px) rotateX(0deg) rotateY(${y}deg) translateZ(-800px)`;
+    oDiv.style.transform = `perspective(1000px) rotateX(0deg) rotateY(${y}deg)`;
 
     for (let i = 0; i < aDiv.length; i++) {
       const deg = aDiv[i].degY + y;
@@ -145,7 +145,7 @@ export default function (carouselData, cb) {
   // todo
   let timer2 = null;
 
-  // window._t = setTimeout(play, delay);
+  window._t = setTimeout(play, delay);
 
   function play() {
     console.log('change!')

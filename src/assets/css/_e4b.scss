@@ -40,28 +40,45 @@
   width: 200px;
   height: 200px;
   position: relative;
-  margin: 190px auto 324px;
+  margin: 210px auto 304px;
   background: none;
 
-  transform: perspective(600px) rotateX(0deg) rotateY(0deg) translateZ(-800px);
+  -webkit-transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  -moz-transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  -ms-transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  -o-transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  transform-origin: 50% 50% 0;
 }
 
 #carousel div.hid {
   position: absolute;
   left: 50%;
-  margin-left: -271px;
-  margin-top: -171px;
+  margin-left: -136px;
+  margin-top: -86px;
   top: 50%;
-  padding: 14px;
+  padding: 8px;
   border: 2px solid #2788e8;
   background-size: 100% 100%;
   font-size: 50px;
+  -webkit-transition: 1s all ease;
+  -moz-transition: 1s all ease;
+  -ms-transition: 1s all ease;
+  -o-transition: 1s all ease;
   transition: 1s all ease;
 
-  width: 542px;
-  height: 342px;
+  width: 276px;
+  height: 176px;
+
+  -webkit-transform: rotateY(0deg) translateZ(0px);
+  -moz-transform: rotateY(0deg) translateZ(0px);
+  -ms-transform: rotateY(0deg) translateZ(0px);
+  -o-transform: rotateY(0deg) translateZ(0px);
   transform: rotateY(0deg) translateZ(0px);
 
   background-color: #102542;
@@ -98,10 +115,10 @@
 #carousel div.img {
   position: absolute;
   margin: 0;
-  top: 14px;
-  left: 14px;
-  width: 510px;
-  height: 310px;
+  top: 10px;
+  left: 10px;
+  width: 254px;
+  height: 154px;
   background-size: cover;
   background-origin: content-box;
   background-repeat: no-repeat;
@@ -109,11 +126,11 @@
     position: absolute;
     left: 50%;
     top: 100%;
-    width: 164px;
-    height: 164px;
-    margin-top: 49px;
-    margin-left: -82px;
-    padding: 17px;
+    width: 76px;
+    height: 76px;
+    margin-top: 34px;
+    margin-left: -41px;
+    padding: 6px;
     background-color: #2788e8;
     border-radius: 50%;
     background-size: contain;
