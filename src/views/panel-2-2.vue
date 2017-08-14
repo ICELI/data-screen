@@ -12,7 +12,7 @@
                 <span class="text-warning">{{item.region}}: </span> {{item.industries}}
               </div>
               <div class="pure-u-9-24">
-                发布商机数 <span class="text-primary">{{item.goods}}</span>
+                发布商机数 <span class="text-primary">{{item.goods | rmStr('发布商品')}}</span>
               </div>
             </div>
           </li>

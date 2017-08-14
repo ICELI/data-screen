@@ -81,3 +81,8 @@ export function subStr(val, length, addEllipsis = true) {
 export function imgCdn(val) {
   return siteConfig.address.IMG_ADDRESS + val;
 }
+
+// 发布商品
+export function rmStr(val, str) {
+  return val.replace(str, '');
+}
