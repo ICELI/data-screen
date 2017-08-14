@@ -41,8 +41,8 @@ Api.install = (language = 'en') => {
   Vue.axios.interceptors.response.use((res) => {
     // 请求成功，但是操作不成功时显示后端返回的错误信息
     if (res.status !== 200) {
-      const msg = Message(res.data.desc || `${res.config.apiName || '获取数据'}失败`);
-      console.error(msg.message);
+      // const msg = Message(res.data.desc || `${res.config.apiName || '获取数据'}失败`);
+      // console.error(msg.message);
     }
     return res;
   }, (err) => {
@@ -55,8 +55,8 @@ Api.install = (language = 'en') => {
       console.log('Request canceled', err.message);
     } else {
       // 如果请求未被取消，则处理错误信息
-      const msg = Message(`${err.config.apiName || '获取数据'}失败`);
-      console.error(msg.message);
+      // const msg = Message(`${err.config.apiName || '获取数据'}失败`);
+      // console.error(msg.message);
     }
     return Promise.reject(err);
   });
