@@ -96,7 +96,7 @@
       const industryPercent = ['0.6', '0.72', '0.9', '0.62', '0.8', '0.9', '0.6', '0.5', '0.62', '0.85', '0.75'];
 
       this.Api.industryPercent().then((res) => {
-        let data = res.data.data.map(function (v, i) {
+        let data = res.data.data.slice(0, 11).map(function (v, i) {
           return {
             industry: v.industry,
             percent: v.percent / 100,
@@ -237,7 +237,7 @@
         this.intentionOrder = res.data.data
 
         // fixme: 固定图表为达到视觉效果
-        let totalOrder = +this.intentionOrder.totalOrder.replace('万+', '');
+        let totalOrder = +this.intentionOrder.totalOrder.replace('万', '');
         let convertRatio = this.intentionOrder.convertRatio.replace('%', '');
         let yesterdayOrder = this.intentionOrder.yesterdayOrder;
 

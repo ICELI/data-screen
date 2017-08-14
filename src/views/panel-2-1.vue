@@ -306,7 +306,7 @@
   import carousel from '../assets/js/carousel';
   import scroll from '../assets/js/scroll';
   import Rings from '../assets/js/ring';
-  import {bindNumber} from '../assets/js/number';
+  import { bindNumber } from '../assets/js/number';
 
   export default {
     data() {
@@ -337,10 +337,11 @@
         // 聚咨询
         consultancy: {
           consultationService: [],
-          inquiriesNum: [{
-            total: 0,
-            increase: 0
-          }]
+          inquiriesNum: [
+            {
+              total: 0,
+              increase: 0
+            }]
         },
         // 聚运通
         linesNum: [],
@@ -372,7 +373,9 @@
         return this.consultancy.inquiriesNum[0].total || 0
       },
       consultationServiceTotal() {
-        return this.consultancy.consultationService.filter(v => v.type === '总计')[0] ? this.consultancy.consultationService.filter(v => v.type === '总计')[0].total : ''
+        return this.consultancy.consultationService.filter(v => v.type === '总计')[0]
+          ? this.consultancy.consultationService.filter(v => v.type === '总计')[0].total
+          : ''
       },
       consultationService() {
         return this.consultancy.consultationService.filter(v => v.type !== '总计')
@@ -386,17 +389,22 @@
       },
 
       certificationCoverItemNumTotal() {
-        return this.certification.coverItemNum.filter(v => v.industry === '总计')[0] ? this.certification.coverItemNum.filter(v => v.industry === '总计')[0].itemNum : ''
+        return this.certification.coverItemNum.filter(v => v.industry === '总计')[0]
+          ? this.certification.coverItemNum.filter(v => v.industry === '总计')[0].itemNum
+          : ''
       },
       certificationCoverCertifySysTotal() {
-        return this.certification.certifySys.filter(v => v.type === '总计')[0] ? this.certification.certifySys.filter(v => v.type === '总计')[0].total : ''
+        return this.certification.certifySys.filter(v => v.type === '总计')[0] ? this.certification.certifySys.filter(
+          v => v.type === '总计')[0].total : ''
       },
 
       technologyDemandNumTotal() {
-        return this.technology.demandNum.filter(v => v.type === '总计')[0] ? this.technology.demandNum.filter(v => v.type === '总计')[0].itemNum : ''
+        return this.technology.demandNum.filter(v => v.type === '总计')[0] ? this.technology.demandNum.filter(
+          v => v.type === '总计')[0].itemNum : ''
       },
       technologySolutionNumTotal() {
-        return this.technology.solutionNum.filter(v => v.type === '总计')[0] ? this.technology.solutionNum.filter(v => v.type === '总计')[0].total : ''
+        return this.technology.solutionNum.filter(v => v.type === '总计')[0] ? this.technology.solutionNum.filter(
+          v => v.type === '总计')[0].total : ''
       },
     },
     components: {},
@@ -477,7 +485,7 @@
         this.doughnut.setOption(doughnutOption);
 
         let ringData = [];
-        res.data.data.financialProdNum.map(function (v, i) {
+        res.data.data.financialProdNum.map(function(v, i) {
           ringData[i] = {
             name: v.financeType,
             value: +v.percent.replace('%', '') / 100,
@@ -501,7 +509,7 @@
         this.linesNum = res.data.data.linesNum;
         let transProportion = [];
 
-        res.data.data.transProportion.map(function (v, i) {
+        res.data.data.transProportion.map(function(v, i) {
           transProportion[i] = {
             name: v.type,
             value: +v.percent.replace('%', '') / 100,
@@ -533,7 +541,7 @@
       this.Api.toTradePrice('cn').then((res) => {
         this.commodityPriceIndex = res.data.data.tradePriceData;
 
-        this.$nextTick(function () {
+        this.$nextTick(function() {
           // '.panel-list-scroll' TODO: async data
           scroll('.panel-list-scroll');
         });
@@ -545,7 +553,6 @@
 
         this.number.customsDeclarationPriceTotal = +res.data.data.declarationAmount.slice(-1)[0].money;
         this.number.customsDeclarationCountryTotal = +res.data.data.inOutArea.slice(-1)[0].money;
-
 
         let doughnutData = [];
 
@@ -617,7 +624,7 @@
               userNum: v.money,
               percent: v.money / +res.data.data.inOutArea.slice(-1)[0].money
             }
-          }).sort(function (a,b) {
+          }).sort(function(a, b) {
             return b.userNum - a.userNum;
           });
         }, 50);
@@ -627,7 +634,8 @@
     methods: {},
     mounted() {
       // carousel 背景光圈 todo：
-      document.querySelector('body').className = document.querySelector('body').className.replace('e4b-bg', '') + ' e4b-bg';
+      document.querySelector('body').className = document.querySelector('body').className.replace('e4b-bg', '') +
+        ' e4b-bg';
 
       this.ring = new Rings({
         el: 'barPolarStack2',
@@ -671,7 +679,7 @@
         decimals: 0,    //小数点个数
         duration: 2,    //动画时长
         size: '36px'
-      }, function(num){
+      }, function(num) {
         window.queue.push({
           type: 'number',
           el: num,

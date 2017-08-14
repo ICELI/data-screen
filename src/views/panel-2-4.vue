@@ -117,10 +117,11 @@
     computed: {},
     components: {},
     created() {
+      // 玫瑰图扇区大小 目前固定11条，如要自定义条数，industryPercent、colors、data.slice(0, 11) 长度需要统一
       const industryPercent = ['0.6', '0.72', '0.9', '0.62', '0.8', '0.9', '0.6', '0.5', '0.62', '0.85', '0.75'];
 
       this.Api.industryPercent('cn').then((res) => {
-        let data = res.data.data.map(function (v, i) {
+        let data = res.data.data.slice(0, 11).map(function (v, i) {
             return {
               industry: v.industry,
               percent: v.percent / 100,
@@ -132,15 +133,17 @@
       });
 
       this.Api.platformUser('cn').then((res) => {
-        let platformUserNum = res.data.data
-        this.platformUser = platformUserNum.slice(0, -3);
+        let platformUserNum = res.data.data;
+        let topOneNum = platformUserNum.slice(0, 1).userNum; // 第一条数值作为百分比的基准
+
+        this.platformUser = platformUserNum.slice(0, 8);
 
         setTimeout(() => {
           this.platformUser = this.platformUser.map((v, i) => {
             return {
               area: v.area,
               userNum: v.userNum,
-              percent: v.userNum / this.platformUser[0].userNum
+              percent: v.userNum / topOneNum // 第一条数值作为百分比的基准
             }
           });
         }, 50);
@@ -155,7 +158,7 @@
       });
 
       this.Api.goods('cn').then((res) => {
-        let goodsNum = res.data.data
+        let goodsNum = res.data.data;
         this.goods = goodsNum.slice(0, -1);
         this.number.goodsNum = +goodsNum.slice(-1)[0].num.replace('万', '');
 
