@@ -132,7 +132,7 @@
         let colors2 = ['#9932ff', '#33e2ff', '#c6ecff'];
         let colors3 = ['#ff3274', '#0bff49', '#c6ecff'];
 
-        this.lineX.setOption(genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors));
+        this.lineX.setOption(genOption(realTimeTrade, '', 'todayIncreaseUser', colors));
         // TODO: 只显示每2小时的柱状图
         this.barX.setOption(genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2, 'bar'));
         // TODO: 散点图数据密度不够
