@@ -6,6 +6,8 @@ export default function (carouselData, cb) {
   const oDiv = document.getElementById('carousel');
   const aDiv = oDiv.getElementsByClassName('hid');
   const e4bInfo = document.querySelectorAll('.e4b-content .e4b-info');
+  const radius = 800;
+
   let x = -5;
   let y = 0;
   const delay = 5000;
@@ -22,7 +24,8 @@ export default function (carouselData, cb) {
 
     (function (oNewDiv, i) {
       setTimeout(() => {
-        oNewDiv.style.transform = `rotateY(${360 * (i - 1) / M}deg) translateZ(400px)`;
+        oNewDiv.style.transform = `rotateY(${360 * (i - 1) / M}deg) translateZ(${radius}px)`;
+        oNewDiv.style.opacity = 1;
 
         setTimeout(() => {
           if (i == M) fixAll();
@@ -31,7 +34,7 @@ export default function (carouselData, cb) {
             oNewDiv.style.transition = 'none';
           }, 1000);
         }, 3000);
-      }, (M + 3 - i) * 200);
+      }, (M + 3 - i) * 20);
     }(oNewDiv, i));
 
     oNewDiv.degY = 360 * (i - 1) / M;
@@ -88,6 +91,7 @@ export default function (carouselData, cb) {
   let timer = null;
 
   function startMove() {
+
     clearInterval(timer);
     timer = setInterval(() => {
       x -= speedY;
@@ -114,7 +118,9 @@ export default function (carouselData, cb) {
 
   function fixAll() {
 
-    oDiv.style.transform = `perspective(1000px) rotateX(0deg) rotateY(${y}deg)`;
+    var offsetX = Math.sin(y * Math.PI / 180) * radius;
+    var offsetZ = (0 - radius) + (radius - Math.cos(y * Math.PI / 180) * radius);
+    oDiv.style.transform = `perspective(600px) rotateX(0deg) rotateY(${y}deg) translateX(${offsetX}px) translateZ(${offsetZ}px)`;
 
     for (let i = 0; i < aDiv.length; i++) {
       const deg = aDiv[i].degY + y;
