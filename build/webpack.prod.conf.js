@@ -42,7 +42,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     // 压缩css资源
     new OptimizeCssAssetsPlugin(),
     // 压缩图片
-    new ImageminPlugin(),
+    // new ImageminPlugin(),
     // 将模块Id转为hash值，解决模块id为数字时不稳定的问题，对应开发环境HashedModuleIdsPlugin
     new webpack.HashedModuleIdsPlugin(),
     // new webpack.NamedModulesPlugin(), // 调试用
