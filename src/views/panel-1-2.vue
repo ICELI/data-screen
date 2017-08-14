@@ -114,19 +114,25 @@
 
       var geoCoordMap = countryGeoCoordMap;
 
-      geoCoordMap['HangZhou'] = [116.2, 25.3];
+      geoCoordMap['HangZhou'] = [118.2, 38.3];
 
       var JMDATA = [
-        [{name: 'HangZhou'}, {name: 'Afghanistan', value: 95}],
-        [{name: 'HangZhou'}, {name: 'Angola', value: 90}],
-        [{name: 'HangZhou'}, {name: 'Albania', value: 80}],
-        [{name: 'HangZhou'}, {name: 'Argentina', value: 70}],
-        [{name: 'HangZhou'}, {name: 'Armenia', value: 60}],
-        [{name: 'HangZhou'}, {name: 'Australia', value: 50}],
-        [{name: 'HangZhou'}, {name: 'Benin', value: 40}],
-        [{name: 'HangZhou'}, {name: 'Cuba', value: 30}],
-        [{name: 'HangZhou'}, {name: 'Guinea', value: 20}],
-        [{name: 'HangZhou'}, {name: 'Libya', value: 10}]
+        [{name: 'HangZhou'}, {name: 'United States of America', value: 100}],
+        [{name: 'HangZhou'}, {name: 'Canada', value: 100}],
+
+        [{name: 'HangZhou'}, {name: 'Brazil', value: 100}],
+        [{name: 'HangZhou'}, {name: 'Chile', value: 100}],
+
+        [{name: 'HangZhou'}, {name: 'Australia', value: 100}],
+
+        [{name: 'HangZhou'}, {name: 'United Kingdom', value: 100}],
+        [{name: 'HangZhou'}, {name: 'Germany', value: 100}],
+
+        [{name: 'HangZhou'}, {name: 'South Africa', value: 100}],
+        [{name: 'HangZhou'}, {name: 'Egypt', value: 100}],
+
+        [{name: 'HangZhou'}, {name: 'Japan', value: 100}],
+        [{name: 'HangZhou'}, {name: 'Kazakhstan', value: 100}]
       ];
       var convertData = function (data) {
         var res = [];
@@ -157,7 +163,7 @@
             roam: false,
             zoom: 1.25,
             left: 80,
-            top: 230,
+            top: 260,
 //            aspectScale: 0.7,
             selectedMode: 'single',
             label: {
@@ -209,7 +215,7 @@
               constantSpeed: 20,
               show: true,
               trailLength: 0.1,
-              symbolSize: 1.5
+              symbolSize: 1
             },
             lineStyle: {
               normal: {
@@ -226,11 +232,12 @@
             coordinateSystem: 'geo',
             zlevel: 2,
             rippleEffect: {
+              scale: 3,
               brushType: 'stroke'
             },
             label: {
               normal: {
-                show: true,
+                show: false,
                 position: 'right',
                 formatter: '{b}'
               }
