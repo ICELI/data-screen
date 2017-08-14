@@ -36,7 +36,7 @@
   export default {
     data() {
       return {
-        currentIndex: 5,
+        currentIndex: 0,
         worldSort: ['北美洲', '欧洲', '亚洲', '南美洲', '非洲', '大洋洲'],
         worldENSort: ['NorthAmerica', 'Europe', 'Asian', 'SouthAmerica', 'Africa', 'Oceania'],
         worldMapData: [],
@@ -232,7 +232,8 @@
             coordinateSystem: 'geo',
             zlevel: 2,
             rippleEffect: {
-              scale: 3,
+              period: 4,
+              scale: 20,
               brushType: 'stroke'
             },
             label: {
@@ -243,7 +244,7 @@
               }
             },
             symbolSize: function (val) {
-              return val[2] / 8;
+              return 2;
             },
             itemStyle: {
               normal: {
