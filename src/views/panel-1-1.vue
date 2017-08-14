@@ -3,10 +3,8 @@
     <div class="e4b-title">
       <img src="../assets/img/e4b-title-en.png" alt="聚贸E4B跨境电商全球体系">
     </div>
-    <div class="carousel-wrap">
-      <div id="carousel">
-        <!--<div class="carousel-floor"></div>-->
-      </div>
+    <div id="carousel">
+      <!--<div class="carousel-floor"></div>-->
     </div>
     <div id="e4b-content" class="e4b-content">
       <!-- 聚融通 start -->
@@ -562,7 +560,7 @@
 <style lang="scss" rel="stylesheet/scss">
 .carousel-wrap {
   position: relative;
-  transform: perspective(-400px) rotateX(0deg) rotateY(0deg) translateZ(400px);
   transform-style: preserve-3d;
+  transform: perspective(400px) rotateY(0deg) translateZ(0px);
 }
 </style>
