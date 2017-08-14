@@ -24,17 +24,6 @@ Vue.use(Api);
 Vue.use(Util);
 Vue.use(lazyLoad);
 
-const app = new Vue({
-  el: '#app',
-  data() {
-    return {};
-  },
-  router,
-  store,
-  template: '<App/>',
-  components: { App },
-});
-
 // 设置路由钩子
 router.beforeEach((to, from, next) => {
   const userIsLogin = store.state.User.isLogin;
@@ -57,4 +46,15 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to) => {
   // 修改标题
   document.title = to.meta.title || '数据大屏';
+});
+
+const app = new Vue({
+  el: '#app',
+  data() {
+    return {};
+  },
+  router,
+  store,
+  template: '<App/>',
+  components: { App },
 });
