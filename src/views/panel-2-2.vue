@@ -102,7 +102,7 @@
         this.$nextTick(function () {
           this.swiper = new Swiper('.swiper-container', {
             slidesPerView: 4,
-            autoplay: 1000,
+            autoplay: 2000,
             speed: 800,
             spaceBetween: 32,
             loop: true
