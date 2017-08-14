@@ -7,8 +7,6 @@ export default function (selector, speed = -1) {
   }
 
   function scroll(selector, speed){
-
-    console.log(speed)
     const oUl = selector;
     let timer = null;
     oUl.innerHTML += oUl.innerHTML;
