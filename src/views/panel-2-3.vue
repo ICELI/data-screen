@@ -146,7 +146,7 @@
           color: colors,
           grid: {
             top: 30,
-            right: 50,
+            right: 28,
             bottom: 50,
           },
           xAxis: [

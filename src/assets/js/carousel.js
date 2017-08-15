@@ -149,7 +149,7 @@ export default function (carouselData, cb) {
   // todo
   let timer2 = null;
 
-  // window._t = setTimeout(play, delay);
+  window._t = setTimeout(play, delay);
 
   function play() {
     console.log('change!')
