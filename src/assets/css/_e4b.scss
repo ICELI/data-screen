@@ -74,6 +74,7 @@
     height: 30px;
     content: '';
     background: url(../img/border-light.png) no-repeat 0 -68px;
+    mix-blend-mode: screen; // fix 图片灰色渐变效果
   }
   &::before {
     left: -144px;
