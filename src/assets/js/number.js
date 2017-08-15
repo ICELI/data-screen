@@ -254,7 +254,15 @@ export function bindNumber(data, config, fn){
 
   function __setNumber(obj, attr, data, fn){
     if(obj.attr((config.attr || 'num')) == attr){
-      var number = new CountUp('temp_number', 0, (data[attr] || 0), config.decimals, config.duration, {
+      var val = String(data[attr] || 0);
+      var decimals = 0;
+      if(val.indexOf('.') > -1){
+        decimals = val.substring(val.indexOf('.') + 1, val.length).length;
+        if(decimals.length > 2){
+          decimals = parseFloat(decimals).toFixed(2);
+        }
+      }
+      var number = new CountUp('temp_number', 0, (data[attr] || 0), decimals, config.duration, {
         useEasing : true,
         useGrouping : true,
         separator : config.separator || '',
