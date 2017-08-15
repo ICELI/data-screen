@@ -12,7 +12,7 @@
                 <span class="text-warning">{{item.region}}: </span> {{item.industries}}
               </div>
               <div class="pure-u-9-24">
-                发布商机数 <span class="text-primary">{{item.goods}}</span>
+                发布商机数 <span class="text-primary">{{item.goods | rmStr('发布商品')}}</span>
               </div>
             </div>
           </li>
@@ -102,7 +102,7 @@
         this.$nextTick(function () {
           this.swiper = new Swiper('.swiper-container', {
             slidesPerView: 4,
-            autoplay: 1000,
+            autoplay: 2000,
             speed: 800,
             spaceBetween: 32,
             loop: true
@@ -268,17 +268,17 @@
       };
 
       var HZData = [
-        [{name: '杭州'}, {name: '北京', value: 90}],
-        [{name: '杭州'}, {name: '上海', value: 95}],
-        [{name: '杭州'}, {name: '广州', value: 80}],
-        [{name: '杭州'}, {name: '重庆', value: 50}],
-        [{name: '杭州'}, {name: '兰州', value: 90}],
-        [{name: '杭州'}, {name: '哈尔滨', value: 90}],
-        [{name: '杭州'}, {name: '南宁', value: 90}],
-        [{name: '杭州'}, {name: '昆明', value: 90}],
-        [{name: '杭州'}, {name: '乌鲁木齐', value: 90}],
-        [{name: '杭州'}, {name: '拉萨', value: 90}],
-        [{name: '杭州'}, {name: '台湾', value: 90}]
+        [{name: '杭州'}, {name: '北京', value: 100}],
+        [{name: '杭州'}, {name: '上海', value: 100}],
+        [{name: '杭州'}, {name: '广州', value: 100}],
+        [{name: '杭州'}, {name: '重庆', value: 100}],
+        [{name: '杭州'}, {name: '兰州', value: 100}],
+        [{name: '杭州'}, {name: '哈尔滨', value: 100}],
+        [{name: '杭州'}, {name: '南宁', value: 100}],
+        [{name: '杭州'}, {name: '昆明', value: 100}],
+        [{name: '杭州'}, {name: '乌鲁木齐', value: 100}],
+        [{name: '杭州'}, {name: '拉萨', value: 100}],
+        [{name: '杭州'}, {name: '台湾', value: 100}]
       ];
 
       var convertData = function (data) {
@@ -328,14 +328,14 @@
             symbol: ['none', 'arrow'],
             symbolSize: 10,
             effect: {
-              show: false,
-              period: 6,
-              trailLength: 0,
-//              symbolSize: 15
+              constantSpeed: 20,
+              show: true,
+              trailLength: 0.1,
+              symbolSize: 1
             },
             lineStyle: {
               normal: {
-                color: color[i],
+                color: '#08ffa0',
                 width: 1,
                 opacity: 0.6,
                 curveness: 0.2
@@ -349,6 +349,8 @@
             coordinateSystem: 'geo',
             zlevel: 2,
             rippleEffect: {
+              period: 4,
+              scale: 20,
               brushType: 'stroke'
             },
             label: {
@@ -359,7 +361,7 @@
               }
             },
             symbolSize: function (val) {
-              return val[2] / 8;
+              return 2;
             },
             itemStyle: {
               normal: {

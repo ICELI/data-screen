@@ -26,21 +26,7 @@ Vue.use(lazyLoad);
 
 // 设置路由钩子
 router.beforeEach((to, from, next) => {
-  const userIsLogin = store.state.User.isLogin;
-
-  app.Api.apiRequsetCancel();
-  // 限制访问 releaseReasearch 路由
-  if (userIsLogin !== 'true' && '/releaseResearch/'.match(`/${to.name}/`)) {
-    app.$emit('showLoginDialog');
-    if (!from.name) {
-      app.$router.push({ path: '/' });
-    }
-  } else {
-    app.showFooter = false;
-    next();
-  }
-  // for SEO
-  window.prerenderReady = false;
+  next();
 });
 
 router.afterEach((to) => {
