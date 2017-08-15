@@ -27,7 +27,7 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide text-center" v-for="item in provinces[currentIndex]">
                 <div data-type="signleRing" :name="item.province" :val2="provinceTotal" :value="item.compNum" style="width:100px; height:100px; margin:0 auto 35px auto;"></div>
-                <img :src="item.logo" :alt="item.country" />
+                <img :src="item.logo || ('/mock/img/cn/province/' + mapSort[currentIndex]+ '/' + item.province + '.jpg')" :alt="item.province" />
             </div>
           </div>
         </div>
