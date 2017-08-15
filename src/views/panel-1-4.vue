@@ -40,9 +40,12 @@
     <!-- situation start -->
     <div class="pure-g situation-middle">
       <div class="pure-u-1-1">
-        <div class="panel-wrap">
+        <div class="panel-wrap" style="position:relative;">
           <h3 class="panel-title">商品数累计 <span class="title-number"><a num="goodsNum"></a>万</span></h3>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+          <!--<div id="bar-gradient-masker" style="width:100%; opacity:0.9; position:absolute; height:234px; padding:50px 50px 70px 160px;">
+            <div style="width:100%; height:100%; background:#ff0000;"></div>
+          </div>-->
           <div class="panel-content panel-chart-wrap" id="bar-gradient"></div>
         </div>
       </div>
@@ -130,6 +133,14 @@
         this.goods = goodsNum.slice(0, -1);
         let totalNumber = goodsNum.slice(-1)[0].num.replace('万','')
         this.number.goodsNum = +totalNumber;
+        var markArrs = [];
+        goodsNum && goodsNum.forEach(ele => {
+          markArrs.push({
+            xAxis: ele.industry,
+            yAxis: ele.num
+          })
+        });
+
 
         var dataAxis = this.goods.map(v => v.industry);
         var data = this.goods.map(v => v.num);
@@ -141,10 +152,12 @@
         for (var i = 0; i < data.length; i++) {
           dataShadow.push(yMax);
         }
+
+        window.w_dataAxis = dataAxis;
         let colors = ['#0bff49', '#ff3274', '#c6ecff'];
         let option = {
           grid: {
-            top: 37,
+            top: 50,
             right: 28,
             bottom: 72,
           },
@@ -208,7 +221,33 @@
               barGap: '-100%',
               barCategoryGap: '40%',
               data: dataShadow,
-              animation: false
+              animation: false,
+              markPoint:{},
+              animationEasing: 'cubicOut',
+
+              /*markPoint: {
+                data: markArrs,
+                symbolSize: [55, 60],
+                symbolOffset: [0, -5],
+                itemStyle: {
+                  normal: {
+                    color: '#FF3273'
+                  }
+                },
+                effect : {
+                  show: true,
+                  shadowBlur : 0
+                },
+                label:{
+                  normal:{
+                    textStyle: {
+                      color: '#fff',
+                      fontSize: 14
+                    },
+                    offset: [0, -2]
+                  }
+                }
+              }*/
             },
             {
               type: 'bar',
@@ -230,6 +269,50 @@
         };
 
         this.barGradient.setOption(option);
+        var self = this;
+
+        var xArrs = option.xAxis.data;
+
+      (function __repeatAnimation(){
+          for(let i=0; i<xArrs.length; i++){
+            window.setTimeout(function(){
+              option.series[0].markPoint = {
+                data: [markArrs[i]],
+                symbolSize: [55, 60],
+                symbolOffset: [0, -5],
+                itemStyle: {
+                  normal: {
+                    color: '#FF3273',
+                    shadowBlur: 10,
+                    shadowColor: 'rgba(0,0,0,0.7)',
+                    shadowOffsetX: 5,
+                    shadowOffsetY: 5
+                  }
+                },
+                label:{
+                  normal:{
+                    textStyle: {
+                      color: '#fff',
+                      fontSize: 14
+                    },
+                    offset: [0, -2]
+                  }
+                },
+                animationEasing: 'cubicOut',
+                animationDelayUpdate: function(){
+                  console.log(arguments)
+                }
+              };
+              self.barGradient.setOption(option);
+              if(i == xArrs.length - 1){
+                window.setTimeout(function(){
+                  __repeatAnimation();
+                }, 2000);
+              }
+            }, 2000 * i);
+          }
+        })();
+
       });
 
       this.Api.intentionOrder().then((res) => {
