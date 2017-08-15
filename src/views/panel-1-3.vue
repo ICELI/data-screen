@@ -94,7 +94,7 @@
 <script>
   import echarts from 'echarts';
   import scroll from '../assets/js/scroll';
-  import {bindNumber} from '../assets/js/number';
+  import { bindNumber } from '../assets/js/number';
 
   export default {
     data() {
@@ -121,9 +121,9 @@
       this.Api.realTimeTrade().then((res) => {
         let realTimeTrade = res.data.data.realTimeTrade;
         let realTimeTradeTotal = realTimeTrade.pop();
-        // TODO: 2小时更新
-        realTimeTrade = realTimeTrade.slice(4, 13);
-        // TODO: 对象合并 ES6 只合并存在的属性
+        let currentHour = this.Util.getCurrTime().hour;
+
+        realTimeTrade = realTimeTrade.slice(currentHour * 2 - 16, currentHour * 2 + 2);
         this.number.todayVisitorNum = +realTimeTradeTotal.todayVisitorNum;
         this.number.todayIntentionOrder = +realTimeTradeTotal.todayIntentionOrder;
         this.number.todayIncreaseUser = +realTimeTradeTotal.todayIncreaseUser;
@@ -153,7 +153,6 @@
               show: false
             },
             axisLabel: {
-              interval: 1,
               textStyle: {
                 fontSize: 20
               }
@@ -188,23 +187,24 @@
               }
             }
           },
-          series: [{
-            data: realTimeTrade.map(v => v.todayIncreaseUser),
-            type:'line',
-            smooth:false,
-            symbol: 'none',
-            sampling: 'average',
-            itemStyle: {
-              normal: {
-                color: '#ff4d40'
-              }
-            },
-            areaStyle: {
-              normal: {
-                color: '#ff4d40'
-              }
-            },
-          }]
+          series: [
+            {
+              data: realTimeTrade.map(v => v.todayIncreaseUser),
+              type: 'line',
+              smooth: false,
+              symbol: 'none',
+              sampling: 'average',
+              itemStyle: {
+                normal: {
+                  color: '#ff4d40'
+                }
+              },
+              areaStyle: {
+                normal: {
+                  color: '#ff4d40'
+                }
+              },
+            }]
         };
 
         this.scatter.setOption(option);
@@ -220,64 +220,66 @@
             right: 28,
             bottom: 50,
           },
-          xAxis: [{
-            type: 'category',
-            axisLine: {
-              show: false,
-              lineStyle: {
-                color: colors[2]
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            axisLabel: {
-              textStyle: {
-                fontSize: 20
-              }
-            },
-            splitArea: {
-              show: false
-            },
-            nameLocation: 'middle',
-            nameGap: 100,
-            boundaryGap: false,
-            data: data.map(v => v.hour)
-          }
+          xAxis: [
+            {
+              type: 'category',
+              axisLine: {
+                show: false,
+                lineStyle: {
+                  color: colors[2]
+                }
+              },
+              axisTick: {
+                show: false
+              },
+              axisLabel: {
+                textStyle: {
+                  fontSize: 20
+                }
+              },
+              splitArea: {
+                show: false
+              },
+              nameLocation: 'middle',
+              nameGap: 100,
+              boundaryGap: false,
+              data: data.map(v => v.hour.replace(/\s*$/ig, ' '))
+            }
           ],
-          yAxis: [{
-            type: 'value',
-            splitNumber: 5,
-            axisLine: {
-              show: false,
-              lineStyle: {
-                color: colors[2]
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            splitArea: {
-              show: false
-            },
-            splitLine: {
-              lineStyle: {
-                color: 'rgba(198,236,255,0.5)'
-              }
-            },
-          }
+          yAxis: [
+            {
+              type: 'value',
+              splitNumber: 5,
+              axisLine: {
+                show: false,
+                lineStyle: {
+                  color: colors[2]
+                }
+              },
+              axisTick: {
+                show: false
+              },
+              splitArea: {
+                show: false
+              },
+              splitLine: {
+                lineStyle: {
+                  color: 'rgba(198,236,255,0.5)'
+                }
+              },
+            }
           ],
           series: [
             {
               type: 'line',
-              symbolSize: function (data) {
+              symbolSize: function(data) {
                 return 0;
               },
               data: data.map(v => v[today])
             },
             {
               type: 'line',
-              symbolSize: function (data) {
+              symbolSize: function(data) {
                 return 0;
               },
               data: data.map(v => v[yesterday])
@@ -297,8 +299,7 @@
         this.number.todayIncreaseBusiTotal = +data.todayIncreaseBusiTotal;
         this.todayIncreaseBusiTotal = +data.todayIncreaseBusiTotal;
 
-
-        this.$nextTick(function () {
+        this.$nextTick(function() {
           // '.panel-list-scroll' TODO: async data
           scroll('.panel-list-scroll');
         });

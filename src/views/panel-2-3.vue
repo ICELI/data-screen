@@ -94,7 +94,7 @@
 <script>
   import echarts from 'echarts';
   import scroll from '../assets/js/scroll';
-  import {bindNumber} from '../assets/js/number';
+  import { bindNumber } from '../assets/js/number';
 
   export default {
     data() {
@@ -120,8 +120,9 @@
       this.Api.realTimeTrade('cn').then((res) => {
         let realTimeTrade = res.data.data.realTimeTrade;
         let realTimeTradeTotal = realTimeTrade.pop();
-        // TODO: 2小时更新
-        realTimeTrade = realTimeTrade.slice(4, 13);
+        let currentHour = this.Util.getCurrTime().hour;
+
+        realTimeTrade = realTimeTrade.slice(currentHour * 2 - 16, currentHour * 2 + 2);
         // TODO: 对象合并 ES6 只合并存在的属性
         this.number.todayVisitorNum = +realTimeTradeTotal.todayVisitorNum;
         this.number.todayIntentionOrder = +realTimeTradeTotal.todayIntentionOrder;
@@ -133,15 +134,19 @@
         let colors3 = ['#ff3274', '#0bff49', '#c6ecff'];
 
         this.lineX.setOption(genOption(realTimeTrade, '', 'todayIncreaseUser', colors));
-        // TODO: 只显示每2小时的柱状图
         this.barX.setOption(genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2, 'bar'));
-        // TODO: 散点图数据密度不够
         this.scatter.setOption(genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors3, 'scatter'));
 
       });
 
-      function genOption(data, yesterday, today, colors, type = 'line') {
-
+      function genOption(data1, yesterday, today, colors, type = 'line') {
+        let symbolSize = function(data) {
+          return type === 'scatter' ? Math.sqrt(data) / 4 : 0;
+        };
+        let data = type === 'bar' ? data1.filter((v, i) => {
+          return i % 4 === 0;
+        }) : data1;
+        let hourData = data.map(v => v.hour.replace(/\s*$/ig, ''));
         return {
           color: colors,
           grid: {
@@ -172,14 +177,14 @@
               nameLocation: 'middle',
               nameGap: 100,
               boundaryGap: type === 'bar',
-              data: data.map(v => v.hour)
+              data: data.map(v => v.hour.replace(/\s*$/ig, ' '))
             }
           ],
           yAxis: [
             {
               type: 'value',
               minInterval: 2,
-              splitNumber: 5,
+              splitNumber: type === 'line' ? 2 : 5,
               axisLine: {
                 show: false,
                 lineStyle: {
@@ -202,14 +207,8 @@
           series: [
             {
               type: type,
-              data: type === 'line' ?
-                [] : type === 'bar' ?
-                  data.map((v, i) => {
-                    return i % 2 !== 0 ? false : v[yesterday];
-                  }) : data.map(v => v[yesterday]),
-              symbolSize: function (data) {
-                return type === 'scatter' ? Math.sqrt(data) / 4 : 0;
-              },
+              data: type === 'line' ? [] : data.map(v => v[yesterday]),
+              symbolSize: symbolSize,
               itemStyle: {
                 normal: {
                   color: colors[0]
@@ -219,13 +218,8 @@
             },
             {
               type: type,
-              data: type === 'bar' ?
-                data.map((v, i) => {
-                  return i % 2 !== 0 ? false : v[today];
-                }) : data.map(v => v[today]),
-              symbolSize: function (data) {
-                return type === 'scatter' ? Math.sqrt(data) / 4 : 0;
-              },
+              data: data.map(v => v[today]),
+              symbolSize: symbolSize,
               itemStyle: {
                 normal: {
                   color: colors[1]
@@ -245,7 +239,7 @@
         this.todayIncreaseBusi = res.data.data.todayIncreaseBusi;
         this.number.todayIncreaseBusiTotal = +res.data.data.todayIncreaseBusiTotal;
 
-        this.$nextTick(function () {
+        this.$nextTick(function() {
           // '.panel-list-scroll' TODO: async data
           scroll('.panel-list-scroll');
         });
