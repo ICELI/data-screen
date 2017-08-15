@@ -277,7 +277,7 @@
     width: 940px;
     height: 806px;
     margin: 0 auto;
-    background: url(../assets/img/map-bg-world.png) no-repeat 3px 136px;
+    background: url(../assets/img/map-bg-world.png) no-repeat -100px -165px;
   }
 
   #worldMap {
@@ -292,7 +292,7 @@
     left: 0;
     right: 0;
     height: 100%;
-    background-position: -100px -30px;
+    background-position: -100px -165px;
     background-repeat: no-repeat;
   }
 

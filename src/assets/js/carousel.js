@@ -20,7 +20,7 @@ export default function (carouselData, cb) {
   for (let i = 1; i <= M; i++) {
     let oNewDiv = document.createElement('div');
 
-    oNewDiv.className = 'hid';
+    oNewDiv.className = i === 1 ? 'hid anima' : 'hid';
 
     (function (oNewDiv, i) {
       setTimeout(() => {
@@ -33,7 +33,7 @@ export default function (carouselData, cb) {
           setTimeout(() => {
             oNewDiv.style.transition = 'none';
           }, 1000);
-        }, 3000);
+        }, 5000);
       }, (M + 3 - i) * 20);
     }(oNewDiv, i));
 
@@ -133,17 +133,15 @@ export default function (carouselData, cb) {
       if (d < 0.2) d = 0.2;
 
       aDiv[i].style.opacity = d;
+      aDiv[i].className = aDiv[i].className.replace(' anima', '');
       if (d > 0.99) {
+        aDiv[i].className += ' anima';
         for (let j = 0; j < e4bInfo.length; j++) {
           e4bInfo[j].setAttribute('style', 'display:none!important');
         }
         e4bInfo[i].setAttribute('style', 'display:block!important');
 
         cb && cb(i);
-        // if (i === 2 && !barPolarStack.isInit) {
-        //   barPolarStack.resize();
-        //   barPolarStack.isInit = true;
-        // }
       }
     }
   }
@@ -151,7 +149,7 @@ export default function (carouselData, cb) {
   // todo
   let timer2 = null;
 
-  window._t = setTimeout(play, delay);
+  // window._t = setTimeout(play, delay);
 
   function play() {
     console.log('change!')

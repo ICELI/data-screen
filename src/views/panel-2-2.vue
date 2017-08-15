@@ -414,7 +414,7 @@
   .china-map-wrap {
     position: relative;
     height: 920px;
-    background: url(../assets/img/map-bg-china.png) no-repeat center 98px;
+    background: url(../assets/img/map-bg-china.png) no-repeat center -60px;
   }
 
   #chinaMap {
@@ -429,7 +429,7 @@
     left: 0;
     right: 0;
     height: 100%;
-    background: url(../assets/img/chinaMap/东部.png) no-repeat center 98px;
+    background: url(../assets/img/chinaMap/东部.png) no-repeat center -60px;
   }
 
   .china-map-bg0 {

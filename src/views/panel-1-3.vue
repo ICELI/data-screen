@@ -138,6 +138,7 @@
         let option = {
           grid: {
             top: 10,
+            right: 28,
             bottom: 50,
           },
           xAxis: {
@@ -163,6 +164,7 @@
             splitLine: {
               show: false
             },
+            boundaryGap: false,
             data: realTimeTrade.map(v => v.hour)
           },
           yAxis: {
@@ -188,17 +190,20 @@
           },
           series: [{
             data: realTimeTrade.map(v => v.todayIncreaseUser),
-            type: 'scatter',
-            symbolSize: function (data) {
-              console.log(data, 'symbolSize')
-              return Math.sqrt(data) / 2;
-            },
+            type:'line',
+            smooth:false,
+            symbol: 'none',
+            sampling: 'average',
             itemStyle: {
               normal: {
                 color: '#ff4d40'
-
               }
-            }
+            },
+            areaStyle: {
+              normal: {
+                color: '#ff4d40'
+              }
+            },
           }]
         };
 
@@ -212,6 +217,7 @@
           color: colors,
           grid: {
             top: 30,
+            right: 50,
             bottom: 50,
           },
           xAxis: [{
@@ -235,6 +241,7 @@
             },
             nameLocation: 'middle',
             nameGap: 100,
+            boundaryGap: false,
             data: data.map(v => v.hour)
           }
           ],
