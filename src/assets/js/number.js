@@ -36,7 +36,7 @@ export default function CountUp(target, startVal, endVal, decimals, duration, op
     self.version = function () { return '1.8.5'; };
 
     function formatNumber(num) {
-      num = num.toFixed(self.decimals);
+      num = parseFloat(num).toFixed(parseInt(self.decimals));
       num += '';
       var x, x1, x2, rgx;
       x = num.split('.');
@@ -152,7 +152,7 @@ export default function CountUp(target, startVal, endVal, decimals, duration, op
       }
 
       // decimal
-      self.frameVal = Math.round(self.frameVal*self.dec)/self.dec;
+      //self.frameVal = Math.round(self.frameVal*self.dec)/self.dec;
 
       // format and print value
       self.printValue(self.frameVal);
@@ -207,7 +207,12 @@ export default function CountUp(target, startVal, endVal, decimals, duration, op
       delete self.startTime;
       self.startVal = self.frameVal;
       self.endVal = newEndVal;
+      var _val = self.endVal + '';
       self.countDown = (self.startVal > self.endVal);
+      if(_val.indexOf('.') > -1){
+        self.decimals = _val.substring(_val.indexOf('.') + 1, _val.length).length;
+      }
+
       self.rAF = requestAnimationFrame(self.count);
     };
 
@@ -216,6 +221,7 @@ export default function CountUp(target, startVal, endVal, decimals, duration, op
   };
 
 export function bindNumber(data, config, fn){
+
   if($('#temp_number').length == 0){
     $(document.body).append('<div id="temp_number" style="display:none;">1</div>');
   }
@@ -241,7 +247,7 @@ export function bindNumber(data, config, fn){
           var self = $(this);
           self.css({
             'font-size': config.size.replace('px', '') + 'px'
-          })
+          });
           __setNumber(self, attr, data, fn);
           if(self.attr(config.attr) == attr){
             __define(data, attr);
@@ -249,12 +255,11 @@ export function bindNumber(data, config, fn){
         });
       }
     }
-    console.log('************************')
   }
 
   function __setNumber(obj, attr, data, fn){
     if(obj.attr((config.attr || 'num')) == attr){
-      var val = String(data[attr] || 0);
+      var val = (data[attr] || 0) + '';
       var decimals = 0;
       if(val.indexOf('.') > -1){
         decimals = val.substring(val.indexOf('.') + 1, val.length).length;
@@ -269,6 +274,7 @@ export function bindNumber(data, config, fn){
         decimal : '.',
         //suffix: config.unit ? data[config.unit] : ''
       });
+      number.decimals = ((number.endVal + '').indexOf('.') > -1) ? (number.endVal + '').substring((number.endVal + '').indexOf('.') + 1, (number.endVal + '').length) : 0
       number.d = obj[0];
       number.d.style.width = __setFontSize(data[attr], number.d) + 'px'
       number._attr = attr;
@@ -277,6 +283,7 @@ export function bindNumber(data, config, fn){
         attr: attr,
         value: number
       });
+
       fn && fn(number)
     }
   }
@@ -308,6 +315,14 @@ export function bindNumber(data, config, fn){
     numbers && numbers.forEach(function(ele){
       if(ele.attr == attr){
         rs = ele.value;
+        var val = rs.endVal + "";
+        var decimals = 0;
+        if(val.indexOf('.') > -1){
+          //console.log(val.substring(val.indexOf('.') + 1, val.length))
+          decimals = val.substring(val.indexOf('.') + 1, val.length).length;
+        }
+        //rs.frameVal = '23.12'
+        rs.decimals = decimals;
       }
     });
     return rs;

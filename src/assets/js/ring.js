@@ -108,7 +108,7 @@ export default function Rings(para, doc){
           document.getElementById('ring' + (idx + id)).style.transform = 'scale(1.0, 1.0)';
           if(idx == self.data.length - 1){
             window.setTimeout(function(){
-              self.vNodes && self.vNodes.forEach(function(node){
+              self.vNodes && self.vNodes.forEach(function(node, idx2){
                 node.render(self.config);
               });
             }, 500);

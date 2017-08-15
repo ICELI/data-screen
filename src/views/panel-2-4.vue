@@ -276,6 +276,7 @@
 
       this.barGradient = echarts.init(document.getElementById('bar-gradient'));
 
+      console.log(this.number)
       bindNumber(this.number, {
         attr: 'num',    //属性名称 <a num='100.0'></a>
         id: 'situation-data', //外层容器#id

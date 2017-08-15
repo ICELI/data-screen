@@ -331,6 +331,7 @@
         ]);
 
         this.number.intentionOrder = +this.intentionOrder.upgrateRatio.replace('%', '');
+        console.log(+this.intentionOrder.upgrateRatio.replace('%', ''))
       });
     },
     methods: {},

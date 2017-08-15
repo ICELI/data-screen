@@ -233,6 +233,7 @@
             splitArea: {
               show: false
             },
+            boundaryGap: true,
             nameLocation: 'middle',
             nameGap: 100,
             data: data.map(v => v.hour)
