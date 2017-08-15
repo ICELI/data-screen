@@ -19,8 +19,9 @@
       <div class="panel-content panel-swiper-wrap">
         <div class="swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" v-for="item in nationalPavilion[currentIndex]"><img
-              :src="'/mock/img/en/country/' + worldENSort[currentIndex]+ '/' + item.country + '.jpg'"></div>
+            <div class="swiper-slide" v-for="item in nationalPavilion[currentIndex]">
+              <img :src="item.logo" :alt="item.country" />
+            </div>
           </div>
         </div>
       </div>
