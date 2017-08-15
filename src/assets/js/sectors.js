@@ -94,14 +94,15 @@ export default function Sectors(para, doc){
       deg = deg + 360 * col.percent;
     });
     var deg = 0 + config.offset;
+    str += '<div id="test_inner" style="width:' + (config.size * 2) + 'px; height:' + (config.size * 2) + 'px; transition-duration:4s; transition-property:all; transition-timing-function:ease-out;">'
     this.data && config.colors && (config.colors.length >= this.data.length) && this.data.forEach(function(col, idx){
       var radius = col.radius * (config.size - config.split);
       var value = col.percent || 0;
 
-      str += '<div deg="' + deg + '" name="sector" style="width:' + radius * 2 + 'px; z-index:' + (20 - idx) + '; transition-duration:1.8s; overflow:hidden; opacity:1; transition-property:all; transition-timing-function:ease; transform-origin:center center; transform:rotate(-' + deg + 'deg) scale(0,0); height:' + radius * 2 + 'px; border-radius:' + radius + 'px; position:absolute; margin:' + (config.size - radius) + 'px;">';
+      str += '<div deg="' + deg + '" name="sector" style="width:' + radius * 2 + 'px; z-index:' + (20 - idx) + '; transition-duration:1.8s; overflow:hidden; opacity:1; transition-property:all; transition-timing-function:linear; transform-origin:center center; transform:rotate(-' + deg + 'deg) scale(0,0); height:' + radius * 2 + 'px; border-radius:' + radius + 'px; position:absolute; margin:' + (config.size - radius) + 'px;">';
       if(value < 0.5){
         str += '<div style="width:' + radius + 'px; height:' + radius * 2 + 'px; float:left; overflow:hidden;">';
-        str += '<span style="width:' + radius + 'px; height:' + radius * 2 + 'px; box-shadow:-2px 1px 16px #454545; display:block; transform-origin:left; transform:rotate(-' + 360 * col.percent + 'deg); margin-left:' + radius + 'px; border-radius:0 ' + radius + 'px ' + radius + 'px 0; background:' + config.colors[idx] + ';"></span>'
+        str += '<span style="width:' + radius + 'px; height:' + radius * 2 + 'px; box-shadow:-1px 1px 16px #666; display:block; transform-origin:left; transform:rotate(-' + 360 * col.percent + 'deg); margin-left:' + radius + 'px; border-radius:0 ' + radius + 'px ' + radius + 'px 0; background:' + config.colors[idx] + ';"></span>'
         str += '</div>';
       }else{
         str += '<div style="width:' + radius + 'px; height:' + radius * 2 + 'px; float:left;">';
@@ -114,9 +115,11 @@ export default function Sectors(para, doc){
       str += '</div>';
       deg = deg + 360 * col.percent;
     });
+
     str += '<div id="inner_' + this.id + '" style="width:' + config.innerSize * 2 + 'px; height:' + config.innerSize * 2 + 'px; transition-duration:0.6s; transition-timing-function:ease; transition-property:all; transform:scale(0,0); border-radius:' + config.innerSize * 2 + 'px; z-index:30; background:#0E1F3B; margin:' + (config.size - config.innerSize) + 'px; position:absolute;"></div>';
     str += '<span id="temp_' + this.id + '" style="display:none;"></span>';
     str += '</div>';
+    str += '</div>'
     this.el.innerHTML = str;
 
     var pointers = document.getElementsByName('sector_' + this.id + '_pointer');
@@ -145,14 +148,59 @@ export default function Sectors(para, doc){
 
       window.setTimeout(function(){
         var divs = document.getElementsByName('sector');
+        var innerDiv = document.getElementById('test_inner');
+
+        for(var i=0; i<divs.length; i++){
+          divs[i].style.webkitTransitionDuration = '0.3s';
+        }
+
         for(var i=0; i<divs.length; i++){
           (function(){
             var div = divs[i];
             window.setTimeout(function(){
               div.style.opacity = 1.0;
-              div.style.transform = 'rotate(-' + div.getAttribute('deg') + 'deg) scale(1,1)';
+              div.style.transform = 'rotate(-' + div.getAttribute('deg') + 'deg) scale(1, 1)';
             }, 200 + i * 75);
           })();
+          if(i == divs.length - 1){
+            window.setTimeout(function(){
+
+              __animation();
+
+              window.setInterval(function(){
+                __animation();
+              }, 7000);
+
+              function __animation(){
+                for(var ii=0; ii<divs.length; ii++){
+                  (function(){
+                    var div = divs[ii];
+                    if(ii == 0){
+                      div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
+                    }else if(ii == divs.length - 1){
+                      (function(idx){
+                        window.setTimeout(function(){
+                          div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
+                          divs[idx - 1].style.transform = divs[idx - 1].style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)');
+                          window.setTimeout(function(){
+                            div.style.transform = div.style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)');
+                          }, 500);
+                        }, 300 * idx + 100);
+                      })(ii);
+                    }else{
+                      (function(idx){
+                        window.setTimeout(function(){
+                          div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
+                          divs[idx - 1].style.transform = divs[idx - 1].style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)');
+                        }, 300 * idx + 100);
+                      })(ii);
+                    }
+                  })();
+                }
+              }
+
+            }, 4000);
+          }
         }
         var numbers = self.el.querySelectorAll('a[num]');
         for(var i=0; i<numbers.length; i++){
