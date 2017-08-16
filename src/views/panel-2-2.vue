@@ -306,7 +306,7 @@
             type: 'lines',
             zlevel: 1,
             effect: {
-              show: true, // TODO: 超级耗性能
+              show: true,
               period: 6,
               trailLength: 0.7,
               color: '#fff',

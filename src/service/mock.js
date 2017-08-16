@@ -20,8 +20,7 @@ export default {
   '/webapi/v1/todayClearance/en': require('../mock/data/en/todayClearance(今日报关量).json'),
   '/webapi/v1/worldMap': require('../mock/data/en/worldMap(世界地图).json'),
 
-
-  // todo: cn
+  // todo: 更新json数据
   // 聚贸大宗商品交易价格取name ， price2， dayRange 取前六条
   '/dataservice/v1/home/commodityPriceList.pad': require('../mock/data/cn/commodityPriceList.json'),
   // 聚贸行情指数取 name， unit ，price值取前六条

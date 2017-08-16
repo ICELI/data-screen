@@ -496,7 +496,7 @@
     },
     methods: {},
     mounted() {
-      // carousel 背景光圈 todo：
+      // carousel 背景光圈
       document.querySelector('body').className = document.querySelector('body').className.replace('e4b-bg', '') + ' e4b-bg';
 
       this.ring = new Rings({

@@ -1,5 +1,4 @@
 export default function (selector, speed = -1) {
-  // todo 重写 dom ready
   const scrollList = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
 
   for (let i = 0, l = scrollList.length; i < l; i++) {

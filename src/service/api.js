@@ -46,7 +46,7 @@ Api.install = (language = 'en') => {
     }
     return res;
   }, (err) => {
-    // TODO: 接口404走mock数据
+    // 接口404走mock数据
     if (mock[err.config.url]) {
       return Promise.resolve({ data: mock[err.config.url] });
     }

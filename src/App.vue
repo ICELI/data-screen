@@ -17,7 +17,7 @@
     components: {},
     watch: {
       $route() {
-        let times = 15;// 切屏时长 分钟
+        let times = 5;// 切屏时长 分钟
         let isFirstScreen = this.firstScreen.indexOf(this.$route.name) > -1;
         let currentPage = isFirstScreen ? this.firstScreen.indexOf(this.$route.name) : this.secondScreen.indexOf(this.$route.name);
         this.nextPage = !isFirstScreen ? this.firstScreen[currentPage] : this.secondScreen[currentPage];

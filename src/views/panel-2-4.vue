@@ -177,7 +177,7 @@
         var dataShadow = [];
         var yMax = Math.max.apply(null, data);
         var len = Math.pow(10, ('' + yMax).length - 1);
-        yMax = (~~(yMax / len) + 1) * len; // TODO: 柱状图阴影
+        yMax = (~~(yMax / len) + 1) * len;
 
         for (var i = 0; i < data.length; i++) {
           dataShadow.push(yMax);

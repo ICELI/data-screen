@@ -126,7 +126,7 @@ $btn-absolute-icon-lg: 20px !default; //== 表单
 $input-bg: #fff !default; //** `<input disabled>` 背景色
 $input-bg-disabled: $gray-lighter !default; //**  `<input>`文本色
 $input-color: $gray !default; //** `<input>` 边框色
-$input-border: #ccc !default; // TODO: Rename `$input-border-radius` to `$input-border-radius-base` in v4
+$input-border: #ccc !default; // Rename `$input-border-radius` to `$input-border-radius-base` in v4
 //** 默认`.form-control`圆角半径
 // 这在一些浏览器中对`<select>`没有影响，因为CSS中`<select>`s的可限制性。
 $input-border-radius: $border-radius-base !default; //** `.form-control`大的圆角半径

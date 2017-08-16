@@ -147,12 +147,11 @@
         var yMax = Math.max.apply(null, data);
         var len = Math.pow(10, ('' + yMax).length - 1);
         var intY =  ~~(yMax / len);
-        yMax = (intY % 2 === 0 ? intY + 2 : intY + 1) * len; // TODO: 柱状图阴影
+        yMax = (intY % 2 === 0 ? intY + 2 : intY + 1) * len;
 
         for (var i = 0; i < data.length; i++) {
           dataShadow.push(yMax);
         }
-console.log('yMax', yMax);
 
         window.w_dataAxis = dataAxis;
         let colors = ['#0bff49', '#ff3274', '#c6ecff'];

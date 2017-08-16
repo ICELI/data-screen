@@ -1,7 +1,6 @@
 import Number from './number'
 
 export default function (carouselData, cb) {
-  // TODO: carousel
   const M = carouselData.length;
   const oDiv = document.getElementById('carousel');
   const aDiv = oDiv.getElementsByClassName('hid');
@@ -146,7 +145,6 @@ export default function (carouselData, cb) {
     }
   }
 
-  // todo
   let timer2 = null;
 
   window._t = setTimeout(play, delay);
