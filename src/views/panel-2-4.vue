@@ -91,7 +91,7 @@
   import echarts from 'echarts';
   import scroll from '../assets/js/scroll';
   import Sectors from '../assets/js/sectors';
-  import {bindNumber} from '../assets/js/number';
+  import { bindNumber } from '../assets/js/number';
 
   export default {
     data() {
@@ -130,12 +130,12 @@
       const industryPercent = ['0.6', '0.72', '0.9', '0.62', '0.8', '0.9', '0.6', '0.5', '0.62', '0.85', '0.75'];
 
       this.Api.industryPercent('cn').then((res) => {
-        let data = res.data.data.slice(0, 11).map(function (v, i) {
-            return {
-              industry: v.industry,
-              percent: v.percent / 100,
-              radius: industryPercent[i],
-            }
+        let data = res.data.data.slice(0, 11).map(function(v, i) {
+          return {
+            industry: v.industry,
+            percent: v.percent / 100,
+            radius: industryPercent[i],
+          }
         });
 
         this.sectors2.setData(data);
@@ -159,7 +159,7 @@
 
         this.number.platformUserNum = +platformUserNum.slice(-1)[0].userNum.replace('万', '');
 
-        window.setTimeout(function () {
+        window.setTimeout(function() {
           scroll('.arrow-scroll', -1.5);
           scroll('.arrow-scroll2', -1.5);
           scroll('.arrow-scroll3', -1.5);
@@ -170,8 +170,25 @@
         let goodsNum = res.data.data;
         this.goods = goodsNum.slice(0, -1);
         this.number.goodsNum = +goodsNum.slice(-1)[0].num.replace('万', '');
-
-        var barColors = ['#9b33ff', '#8233ff', '#5a33ff', '#3333ff', '#3263ff', '#3390ff', '#33c1ff', '#33ecff', '#33ffdd', '#33ffbb', '#33ff99'];
+        var markArrs = [];
+        goodsNum && goodsNum.forEach(ele => {
+          markArrs.push({
+            xAxis: ele.industry,
+            yAxis: ele.num
+          })
+        });
+        var barColors = [
+          '#9b33ff',
+          '#8233ff',
+          '#5a33ff',
+          '#3333ff',
+          '#3263ff',
+          '#3390ff',
+          '#33c1ff',
+          '#33ecff',
+          '#33ffdd',
+          '#33ffbb',
+          '#33ff99'];
         var dataAxis = this.goods.map(v => v.industry);
         var data = this.goods.map((v, i) => {
           return {
@@ -270,6 +287,51 @@
         };
 
         this.barGradient.setOption(option);
+        var self = this;
+
+        var xArrs = option.xAxis.data;
+
+        (function __repeatAnimation() {
+          for (let i = 0; i < xArrs.length; i++) {
+            window.setTimeout(function() {
+              option.series[0].markPoint = {
+                data: [markArrs[i]],
+                symbolSize: [55, 60],
+                symbolOffset: [0, 15],
+                itemStyle: {
+                  normal: {
+                    color: 'rgba(0,0,0,0)',
+                    shadowColor: 'rgba(0,0,0,0.7)',
+                    shadowOffsetX: 5,
+                    shadowOffsetY: 5
+                  }
+                },
+                label: {
+                  normal: {
+                    formatter: function(params) {
+                      return params.data.yAxis + '万';
+                    },
+                    textStyle: {
+                      color: '#ebebeb',
+                      fontSize: 22
+                    },
+                    offset: [0, -2]
+                  }
+                },
+                animationEasing: 'cubicOut',
+                animationDelayUpdate: function() {
+                  console.log(arguments)
+                }
+              };
+              self.barGradient.setOption(option);
+              if (i == xArrs.length - 1) {
+                window.setTimeout(function() {
+                  __repeatAnimation();
+                }, 2000);
+              }
+            }, 2000 * i);
+          }
+        })();
       });
 
       this.Api.intentionOrder('cn').then((res) => {
@@ -310,30 +372,41 @@
           className: 'title'
         },
         size: 115,
-        colors: ['#bf64ff', '#ff6a66', '#ff8b66', '#ffaf66', '#ffd366', '#ffff67', '#7eff66', '#66ffe3', '#66deff', '#5f5ceb', '#8766ff'],
+        colors: [
+          '#bf64ff',
+          '#ff6a66',
+          '#ff8b66',
+          '#ffaf66',
+          '#ffd366',
+          '#ffff67',
+          '#7eff66',
+          '#66ffe3',
+          '#66deff',
+          '#5f5ceb',
+          '#8766ff'],
         innerSize: 35,
         split: 20,
         offset: 200
       }, document);
 
       var circles = document.querySelectorAll('section');
-      circles.forEach(function (ele, idx) {
+      circles.forEach(function(ele, idx) {
         if (idx == 0) {
           ele.style.transform = 'translateY(0px)';
           ele.style.opacity = 1;
-          window.setTimeout(function () {
+          window.setTimeout(function() {
             ele.className = ele.className + ' ani-1';
           }, 1000);
         } else if (idx == 1) {
           ele.style.transform = 'translateY(0px)';
           ele.style.opacity = 1;
-          window.setTimeout(function () {
+          window.setTimeout(function() {
             ele.className = ele.className + ' ani-1';
           }, 450);
         } else if (idx == 2) {
           ele.style.transform = 'translateY(0px)';
           ele.style.opacity = 1;
-          window.setTimeout(function () {
+          window.setTimeout(function() {
             ele.className = ele.className + ' ani-1';
           }, 650);
         }
