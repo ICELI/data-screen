@@ -252,6 +252,7 @@
           series: [
             {
               type: 'pictorialBar',
+              barMinHeight: 20,
               barCategoryGap: '-20%',
               symbolPosition: 'end',
               symbol: 'path://M0,24.7c10.9-32.94,74.51-32.94,85.41,0Z',
