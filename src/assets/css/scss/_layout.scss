@@ -228,6 +228,8 @@ li.pointer:nth-child(5) {
   .lab {
     display: inline-block;
     width: auto;
+    min-width: 80px;
+    text-align: left;
     margin-right: 10px;
   }
 
