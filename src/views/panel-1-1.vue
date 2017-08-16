@@ -189,7 +189,7 @@
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
-                <div class="pure-u-9-24">{{timeEnd}}（RMB）</div>
+                <div class="pure-u-9-24">数值</div>
                 <div class="pure-u-6-24">幅度</div>
               </div>
               <div class="panel-list-content">

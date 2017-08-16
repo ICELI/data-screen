@@ -166,16 +166,16 @@
             <h3 class="panel-title">聚贸大宗商品交易价格</h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-13-24">名称</div>
+                <div class="pure-u-12-24">名称</div>
                 <div class="pure-u-5-24">单位</div>
-                <div class="pure-u-6-24">周价格</div>
+                <div class="pure-u-7-24">周价格</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
                   <div class="pure-g" v-for="item in commodityPriceList">
-                    <div class="pure-u-13-24 pr20">{{item.name}}</div>
+                    <div class="pure-u-12-24 pr20">{{item.name}}</div>
                     <div class="pure-u-5-24">{{item.unit}}</div>
-                    <div class="pure-u-6-24 text-primary">{{item.price2}}</div>
+                    <div class="pure-u-7-24 text-primary">{{item.price2}}</div>
                   </div>
 
                 </div>
@@ -188,15 +188,15 @@
             <h3 class="panel-title">聚贸行情指数</h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-9-24">种类</div>
-                <div class="pure-u-9-24">价格（月末）</div>
-                <div class="pure-u-6-24">月涨跌</div>
+                <div class="pure-u-12-24">种类</div>
+                <div class="pure-u-6-24">数值</div>
+                <div class="pure-u-6-24">幅度</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
                   <div class="pure-g" v-for="item in commodityPriceIndex">
-                    <div class="pure-u-9-24 pr20">{{item.name}}</div>
-                    <div class="pure-u-9-24 text-primary">{{item.price}}</div>
+                    <div class="pure-u-12-24 pr20">{{item.name}}</div>
+                    <div class="pure-u-6-24 text-primary">{{item.price}}</div>
                     <div class="pure-u-6-24 text-danger" v-if="item.range.indexOf('-') == -1">+{{item.range}}</div>
                     <div class="pure-u-6-24 text-success" v-else="">{{item.range}}</div>
                   </div>
