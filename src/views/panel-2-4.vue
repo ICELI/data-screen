@@ -151,9 +151,9 @@
         this.number.platformUserNum = +platformUserNum.slice(-1)[0].userNum.replace('万', '');
 
         window.setTimeout(function () {
-          scroll('.arrow-scroll', -2);
-          scroll('.arrow-scroll2', -2);
-          scroll('.arrow-scroll3', -2);
+          scroll('.arrow-scroll', -1.5);
+          scroll('.arrow-scroll2', -1.5);
+          scroll('.arrow-scroll3', -1.5);
         }, 0);
       });
 

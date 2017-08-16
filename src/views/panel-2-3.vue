@@ -156,6 +156,7 @@
               top: 30,
               right: 28,
               bottom: 50,
+              left: type === 'lineArea' ? 56 : 86
             },
             xAxis: [
               {
@@ -171,7 +172,7 @@
                 },
                 axisLabel: {
                   textStyle: {
-                    fontSize: 20
+                    fontSize: 18
                   }
                 },
                 splitArea: {
@@ -196,6 +197,14 @@
                 },
                 axisTick: {
                   show: false
+                },
+                axisLabel: {
+               /*   formatter: function(val) {
+                    return val / 10000 + '万';
+                  },*/
+                  textStyle: {
+                    fontSize: 18
+                  }
                 },
                 splitArea: {
                   show: false
@@ -223,7 +232,6 @@
                 type: type === 'lineArea' ? 'line' : type,
                 data: data.map(v => v[today]),
                 symbolSize: symbolSize,
-                smooth: type !== 'lineArea',
                 symbol: 'none',
                 sampling: 'average',
                 itemStyle: {

@@ -136,6 +136,7 @@
             top: 10,
             right: 28,
             bottom: 50,
+            left: 56
           },
           xAxis: {
             axisLine: {
@@ -150,7 +151,7 @@
             },
             axisLabel: {
               textStyle: {
-                fontSize: 20
+                fontSize: 18
               }
             },
             splitArea: {
@@ -174,6 +175,11 @@
             axisTick: {
               show: false
             },
+            axisLabel: {
+              textStyle: {
+                fontSize: 18
+              }
+            },
             splitArea: {
               show: false
             },
@@ -187,7 +193,6 @@
             {
               data: realTimeTrade.map(v => v.todayIncreaseUser),
               type: 'line',
-              smooth: false,
               symbol: 'none',
               sampling: 'average',
               itemStyle: {
@@ -215,6 +220,7 @@
               top: 30,
               right: 28,
               bottom: 50,
+              left: 86
             },
             xAxis: [
               {
@@ -230,7 +236,7 @@
                 },
                 axisLabel: {
                   textStyle: {
-                    fontSize: 20
+                    fontSize: 18
                   }
                 },
                 splitArea: {
@@ -255,6 +261,11 @@
                 },
                 axisTick: {
                   show: false
+                },
+                axisLabel: {
+                  textStyle: {
+                    fontSize: 18
+                  }
                 },
                 splitArea: {
                   show: false

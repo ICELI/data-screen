@@ -2,7 +2,7 @@ export default function (selector, speed = -1) {
   const scrollList = typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
 
   for (let i = 0, l = scrollList.length; i < l; i++) {
-    scroll(scrollList[i], speed);
+    scroll(scrollList[i]);
   }
 
   function scroll(selector) {
