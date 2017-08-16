@@ -128,6 +128,7 @@
         this.number.todayIntentionOrder = +realTimeTradeTotal.todayIntentionOrder;
         this.number.todayIncreaseUser = +realTimeTradeTotal.todayIncreaseUser;
         this.realTimeTradeTotal = realTimeTradeTotal;
+        var self = this;
 
         let colors = ['#0bff49', '#ff3274', '#c6ecff'];
         let colors2 = ['#f2ff00', '#9932ff', '#c6ecff'];
@@ -207,10 +208,23 @@
               },
             }]
         };
+        var op1 = genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors);
+        var op2 = genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2);
 
-        this.lineX.setOption(genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors));
-        this.lineX2.setOption(genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2));
+        this.lineX.setOption(op1);
+        this.lineX2.setOption(op2);
         this.scatter.setOption(option);
+
+        window.setInterval(function(){
+          self.scatter.clear();
+          self.scatter.setOption(option);
+
+          self.lineX.clear();
+          self.lineX.setOption(op1);
+
+          self.lineX2.clear();
+          self.lineX2.setOption(op2);
+        }, 4000);
 
         function genOption(data, yesterday, today, colors) {
 

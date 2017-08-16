@@ -121,6 +121,7 @@
         let realTimeTrade = res.data.data.realTimeTrade;
         let realTimeTradeTotal = realTimeTrade.pop();
         let currentHour = this.Util.getCurrTime().hour;
+        var self = this;
 
         realTimeTrade = realTimeTrade.slice(currentHour * 2 - 16, currentHour * 2 + 2);
         // TODO: 对象合并 ES6 只合并存在的属性
@@ -133,9 +134,24 @@
         let colors2 = ['#9932ff', '#33e2ff', '#c6ecff'];
         let colors3 = ['#ff3274', '#0bff49', '#c6ecff'];
 
-        this.lineX.setOption(genOption(realTimeTrade, '', 'todayIncreaseUser', colors, 'lineArea'));
-        this.barX.setOption(genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2, 'bar'));
-        this.scatter.setOption(genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors3));
+        var op1 = genOption(realTimeTrade, '', 'todayIncreaseUser', colors, 'lineArea');
+        var op2 = genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2, 'bar');
+        var op3 = genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors3);
+
+        this.lineX.setOption(op1);
+        this.barX.setOption(op2);
+        this.scatter.setOption(op3);
+
+      window.setInterval(function(){
+        self.lineX.clear();
+        self.lineX.setOption(op1);
+
+        self.barX.clear();
+        self.barX.setOption(op2);
+
+        self.scatter.clear();
+        self.scatter.setOption(op3);
+      }, 4000);
 
         function genOption(data1, yesterday, today, colors, type = 'line') {
           let symbolSize = function(data) {
