@@ -18,7 +18,7 @@
             </div>
             <div class="doughnut-legend-wrap">
               <ul class="doughnut-legend-list">
-                <li class="pointer" v-for="item in finance"><p>{{item.name}}</p>
+                <li class="pointer" v-for="item in finance.slice(0, -1)"><p>{{item.name}}</p>
                   <p class="text-primary">{{item.value}}</p></li>
               </ul>
             </div>
@@ -39,7 +39,7 @@
       <div class="pure-g e4b-info" id="idx_1">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">2017增量 <span class="title-number"><a num="consultancyInquiriesIncrease"></a></span>
+            <h3 class="panel-title">{{currentYear}}增量 <span class="title-number"><a num="consultancyInquiriesIncrease"></a></span>
             </h3>
             <div class="panel-content panel-list-wrap">
               <div class="panel-dashboard">
@@ -56,7 +56,7 @@
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
                 <div class="pure-u-6-24">数量</div>
-                <div class="pure-u-9-24">增量（2017）</div>
+                <div class="pure-u-9-24">增量（{{currentYear}}）</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
@@ -140,7 +140,7 @@
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
                 <div class="pure-u-6-24">数量</div>
-                <div class="pure-u-9-24">增量（2017）</div>
+                <div class="pure-u-9-24">增量（{{currentYear}}）</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-line5">
@@ -166,7 +166,7 @@
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">名称</div>
-                <div class="pure-u-9-24">06/30（RMB）</div>
+                <div class="pure-u-9-24">价格（月末）</div>
                 <div class="pure-u-6-24">幅度</div>
               </div>
               <div class="panel-list-content">
@@ -189,7 +189,7 @@
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
-                <div class="pure-u-9-24">06/30（RMB）</div>
+                <div class="pure-u-9-24">{{timeEnd}}（RMB）</div>
                 <div class="pure-u-6-24">幅度</div>
               </div>
               <div class="panel-list-content">
@@ -218,7 +218,7 @@
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
                 <div class="pure-u-6-24">数量</div>
-                <div class="pure-u-9-24">增量（2017）</div>
+                <div class="pure-u-9-24">增量（{{currentYear}}）</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
@@ -241,7 +241,7 @@
               <div class="pure-g panel-list-header">
                 <div class="pure-u-9-24">种类</div>
                 <div class="pure-u-6-24">数量</div>
-                <div class="pure-u-9-24">增量（2017）</div>
+                <div class="pure-u-9-24">增量（{{currentYear}}）</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
@@ -306,6 +306,7 @@
           certifySys: []
         },
         // 大数聚
+        timeEnd: '',
         spotFuturesPrice: [],
         commodityPriceIndex: [],
         // 聚智能
@@ -321,6 +322,9 @@
         return this.finance.filter(v => v.name === '总计')[0] ? this.finance.filter(v => v.name === '总计')[0].value : ''
       },
 
+      currentYear() {
+        return this.consultancy.inquiriesNum[0].currentYear || 0
+      },
       consultancyInquiriesIncrease() {
         return this.consultancy.inquiriesNum[0].increase || 0
       },
@@ -479,6 +483,7 @@
 
       this.Api.spotFuturesPrice().then((res) => {
         this.spotFuturesPrice = res.data.data.futuresPriceBeanList;
+        this.timeEnd = res.data.data.timeEnd;
       });
       this.Api.commodityPriceIndex().then((res) => {
         this.commodityPriceIndex = res.data.data;

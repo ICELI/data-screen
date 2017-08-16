@@ -141,17 +141,18 @@
           })
         });
 
-
         var dataAxis = this.goods.map(v => v.industry);
         var data = this.goods.map(v => v.num);
         var dataShadow = [];
         var yMax = Math.max.apply(null, data);
         var len = Math.pow(10, ('' + yMax).length - 1);
-        yMax = (~~(yMax / len) + 1) * len; // TODO: 柱状图阴影
+        var intY =  ~~(yMax / len);
+        yMax = (intY % 2 === 0 ? intY + 2 : intY + 1) * len; // TODO: 柱状图阴影
 
         for (var i = 0; i < data.length; i++) {
           dataShadow.push(yMax);
         }
+console.log('yMax', yMax);
 
         window.w_dataAxis = dataAxis;
         let colors = ['#0bff49', '#ff3274', '#c6ecff'];
@@ -186,6 +187,7 @@
             z: 10
           },
           yAxis: {
+            max: yMax,
             splitNumber: 2,
             axisLine: {
               show: false,

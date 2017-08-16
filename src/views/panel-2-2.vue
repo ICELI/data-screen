@@ -27,7 +27,7 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide text-center" v-for="item in provinces[currentIndex]">
                 <div data-type="signleRing" :name="item.province" :val2="provinceTotal" :value="item.compNum" style="width:100px; height:100px; margin:0 auto 35px auto;"></div>
-                <img :src="'/mock/img/cn/province/' + mapSort[currentIndex]+ '/' + item.province + '.jpg'">
+                <img :src="item.logo || ('/mock/img/cn/province/' + mapSort[currentIndex]+ '/' + item.province + '.jpg')" :alt="item.province" />
             </div>
           </div>
         </div>
@@ -414,7 +414,7 @@
   .china-map-wrap {
     position: relative;
     height: 920px;
-    background: url(../assets/img/map-bg-china.png) no-repeat center 98px;
+    background: url(../assets/img/map-bg-china.png) no-repeat center -60px;
   }
 
   #chinaMap {
@@ -429,7 +429,7 @@
     left: 0;
     right: 0;
     height: 100%;
-    background: url(../assets/img/chinaMap/东部.png) no-repeat center 98px;
+    background: url(../assets/img/chinaMap/东部.png) no-repeat center -60px;
   }
 
   .china-map-bg0 {

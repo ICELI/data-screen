@@ -146,6 +146,7 @@
           color: colors,
           grid: {
             top: 30,
+            right: 28,
             bottom: 50,
           },
           xAxis: [
@@ -170,6 +171,7 @@
               },
               nameLocation: 'middle',
               nameGap: 100,
+              boundaryGap: type === 'bar',
               data: data.map(v => v.hour)
             }
           ],
