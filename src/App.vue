@@ -37,6 +37,14 @@
     computed: {},
     methods: {
       goNext(name) {
+        window.clearTimeout(window._time0);
+        window.clearTimeout(window._time7);
+        window.clearTimeout(window._time02);
+        window.clearTimeout(window._time);
+        window.clearTimeout(window._time2);
+        window.clearTimeout(window._time21);
+        window.clearTimeout(window._time3);
+
         this.$router.push(name);
         clearTimeout(this.timer);
         console.log('goNext', name);

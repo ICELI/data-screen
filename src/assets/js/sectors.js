@@ -58,10 +58,13 @@ export default function Sectors(para, doc){
   }
 
   function render(){
+
     var self = this;
     var config = self.config;
     var id = this.el || '';
     this.el && (Object.prototype.toString.call(this.el) == '[object String]') && (this.el = doc.getElementById(this.el));
+    console.log(this.el.innerHTML)
+    //this.el.innerHTML = '';
     this.el.style.textAlign = 'center';
     var str = '<div id="test" style="width:' + (config.size * 2) + 'px; height:' + (config.size * 2) + 'px; margin: '+ (this.el.offsetHeight - config.size * 2)/2 +'px 20px 0 0; transform:rotate(-90deg); opacity:0; transition-duration:2s; transition-property:all; transition-timing-function:ease; position:relative; overflow:visible; display:inline-block; border:solid 1px #999; border-radius:' + config.size * 2 + 'px;">';
     var deg = 0 + config.offset;
@@ -125,12 +128,12 @@ export default function Sectors(para, doc){
     var pointers = document.getElementsByName('sector_' + this.id + '_pointer');
     var tips = document.getElementsByName('sector_' + this.id + '_tip');
 
-    window.setTimeout(function(){
+    window._time3 = window.setTimeout(function(){
       var ring = document.getElementById('test');
       ring.style.transform = 'rotate(0)';
       ring.style.opacity = 1.0;
 
-      window.setTimeout(function(){
+      window._time7 = window.setTimeout(function(){
         if(pointers){
           for(var i=0; i<pointers.length; i++){
             pointers[i].style.transform = 'scale(1, 1)';
@@ -146,7 +149,7 @@ export default function Sectors(para, doc){
         }, 500);
       }, 2000);
 
-      window.setTimeout(function(){
+      window._time0 = window.setTimeout(function(){
         var divs = document.getElementsByName('sector');
         var innerDiv = document.getElementById('test_inner');
 
@@ -154,20 +157,21 @@ export default function Sectors(para, doc){
           divs[i].style.webkitTransitionDuration = '0.3s';
         }
 
+        var _time6;
         for(var i=0; i<divs.length; i++){
           (function(){
             var div = divs[i];
-            window.setTimeout(function(){
+            window._time02 = window.setTimeout(function(){
               div.style.opacity = 1.0;
               div.style.transform = 'rotate(-' + div.getAttribute('deg') + 'deg) scale(1, 1)';
             }, 200 + i * 75);
           })();
           if(i == divs.length - 1){
-            window.setTimeout(function(){
-
+            _time6 = window.setTimeout(function(){
               __animation();
 
-              window.setInterval(function(){
+              window._time = window.setInterval(function(){
+
                 __animation();
               }, 7000);
 
@@ -179,19 +183,19 @@ export default function Sectors(para, doc){
                       div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
                     }else if(ii == divs.length - 1){
                       (function(idx){
-                        window.setTimeout(function(){
+                        window._time2 = window.setTimeout(function(){
                           div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
                           divs[idx - 1].style.transform = divs[idx - 1].style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)');
-                          window.setTimeout(function(){
+                          window._time21 = window.setTimeout(function(){
                             div.style.transform = div.style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)');
-                          }, 500);
+                          }, 400);
                         }, 300 * idx + 100);
                       })(ii);
                     }else{
                       (function(idx){
-                        window.setTimeout(function(){
+                        window._time2 = window.setTimeout(function(){
                           div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
-                          divs[idx - 1].style.transform = divs[idx - 1].style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)');
+                          divs[idx - 1] && (divs[idx - 1].style.transform = divs[idx - 1].style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)'));
                         }, 300 * idx + 100);
                       })(ii);
                     }

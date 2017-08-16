@@ -335,6 +335,15 @@
       });
     },
     methods: {},
+    beforeDestroy() {
+      window.clearTimeout(window._time0);
+      window.clearTimeout(window._time7);
+      window.clearTimeout(window._time02);
+      window.clearInterval(window._time);
+      window.clearTimeout(window._time2);
+      window.clearTimeout(window._time21);
+      window.clearTimeout(window._time3);
+    },
     mounted() {
       document.querySelector('body').className = document.querySelector('body').className.replace('e4b-bg', '')
 

@@ -41,7 +41,7 @@
         <div class="panel-wrap">
           <h4 class="panel-title">行业交易占比</h4>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-          <div class="panel-content panel-chart-wrap" id="sectors"></div>
+          <div class="panel-content panel-chart-wrap" id="sectors2"></div>
         </div>
       </div>
     </div>
@@ -116,6 +116,15 @@
     },
     computed: {},
     components: {},
+    beforeDestroy() {
+      window.clearTimeout(window._time0);
+      window.clearTimeout(window._time7);
+      window.clearTimeout(window._time02);
+      window.clearInterval(window._time);
+      window.clearTimeout(window._time2);
+      window.clearTimeout(window._time21);
+      window.clearTimeout(window._time3);
+    },
     created() {
       // 玫瑰图扇区大小 目前固定11条，如要自定义条数，industryPercent、colors、data.slice(0, 11) 长度需要统一
       const industryPercent = ['0.6', '0.72', '0.9', '0.62', '0.8', '0.9', '0.6', '0.5', '0.62', '0.85', '0.75'];
@@ -129,7 +138,7 @@
             }
         });
 
-        this.sectors.setData(data);
+        this.sectors2.setData(data);
       });
 
       this.Api.platformUser('cn').then((res) => {
@@ -293,8 +302,8 @@
         size: '30px'
       });
 
-      this.sectors = new Sectors({
-        el: 'sectors',
+      this.sectors2 = new Sectors({
+        el: 'sectors2',
         title: {
           name: '融资金额占比',
           className: 'title'
