@@ -94,7 +94,7 @@
 <script>
   import echarts from 'echarts';
   import scroll from '../assets/js/scroll';
-  import {bindNumber} from '../assets/js/number';
+  import { bindNumber } from '../assets/js/number';
 
   export default {
     data() {
@@ -120,8 +120,9 @@
       this.Api.realTimeTrade('cn').then((res) => {
         let realTimeTrade = res.data.data.realTimeTrade;
         let realTimeTradeTotal = realTimeTrade.pop();
-        // TODO: 2小时更新
-        realTimeTrade = realTimeTrade.slice(4, 13);
+        let currentHour = this.Util.getCurrTime().hour;
+
+        realTimeTrade = realTimeTrade.slice(currentHour * 2 - 16, currentHour * 2 + 2);
         // TODO: 对象合并 ES6 只合并存在的属性
         this.number.todayVisitorNum = +realTimeTradeTotal.todayVisitorNum;
         this.number.todayIntentionOrder = +realTimeTradeTotal.todayIntentionOrder;
@@ -132,109 +133,115 @@
         let colors2 = ['#9932ff', '#33e2ff', '#c6ecff'];
         let colors3 = ['#ff3274', '#0bff49', '#c6ecff'];
 
-        this.lineX.setOption(genOption(realTimeTrade, '', 'todayIncreaseUser', colors));
-        // TODO: 只显示每2小时的柱状图
+        this.lineX.setOption(genOption(realTimeTrade, '', 'todayIncreaseUser', colors, 'lineArea'));
         this.barX.setOption(genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2, 'bar'));
-        // TODO: 散点图数据密度不够
-        this.scatter.setOption(genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors3, 'scatter'));
+        this.scatter.setOption(genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors3));
+
+        function genOption(data1, yesterday, today, colors, type = 'line') {
+          let symbolSize = function(data) {
+            return type === 'scatter' ? Math.sqrt(data) / 4 : 0;
+          };
+          let data = type === 'bar' ? data1.filter((v, i) => {
+            return i % 4 === 0;
+          }) : data1;
+          let hourData = data.map(v => (type === 'bar'
+            ? v.hour // fix 柱状图不能加
+            : currentHour < 11
+              ? ' ' + v.hour + ' '
+              : v.hour.replace(/\s*$/ig, ' ')));
+
+          return {
+            color: colors,
+            grid: {
+              top: 30,
+              right: 28,
+              bottom: 50,
+            },
+            xAxis: [
+              {
+                type: 'category',
+                axisLine: {
+                  show: false,
+                  lineStyle: {
+                    color: colors[2]
+                  }
+                },
+                axisTick: {
+                  show: false
+                },
+                axisLabel: {
+                  textStyle: {
+                    fontSize: 20
+                  }
+                },
+                splitArea: {
+                  show: false
+                },
+                nameLocation: 'middle',
+                nameGap: 100,
+                boundaryGap: type === 'bar',
+                data: hourData
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value',
+                minInterval: 2,
+                splitNumber: type === 'lineArea' ? 2 : 5,
+                axisLine: {
+                  show: false,
+                  lineStyle: {
+                    color: colors[2]
+                  }
+                },
+                axisTick: {
+                  show: false
+                },
+                splitArea: {
+                  show: false
+                },
+                splitLine: {
+                  lineStyle: {
+                    color: 'rgba(198,236,255,0.5)'
+                  }
+                },
+              }
+            ],
+            series: [
+              {
+                type: type === 'lineArea' ? 'line' : type,
+                data: type === 'lineArea' ? [] : data.map(v => v[yesterday]),
+                symbolSize: symbolSize,
+                itemStyle: {
+                  normal: {
+                    color: colors[0]
+
+                  }
+                }
+              },
+              {
+                type: type === 'lineArea' ? 'line' : type,
+                data: data.map(v => v[today]),
+                symbolSize: symbolSize,
+                smooth: type !== 'lineArea',
+                symbol: 'none',
+                sampling: 'average',
+                itemStyle: {
+                  normal: {
+                    color: colors[1]
+                  }
+                },
+                areaStyle: {
+                  normal: {
+                    color: type === 'lineArea' ? colors[1] : 'rgba(0,0,0,0)'
+                  }
+                },
+              }
+            ]
+          };
+        }
 
       });
-
-      function genOption(data, yesterday, today, colors, type = 'line') {
-
-        return {
-          color: colors,
-          grid: {
-            top: 30,
-            right: 28,
-            bottom: 50,
-          },
-          xAxis: [
-            {
-              type: 'category',
-              axisLine: {
-                show: false,
-                lineStyle: {
-                  color: colors[2]
-                }
-              },
-              axisTick: {
-                show: false
-              },
-              axisLabel: {
-                textStyle: {
-                  fontSize: 20
-                }
-              },
-              splitArea: {
-                show: false
-              },
-              nameLocation: 'middle',
-              nameGap: 100,
-              boundaryGap: type === 'bar',
-              data: data.map(v => v.hour)
-            }
-          ],
-          yAxis: [
-            {
-              type: 'value',
-              minInterval: 2,
-              splitNumber: 5,
-              axisLine: {
-                show: false,
-                lineStyle: {
-                  color: colors[2]
-                }
-              },
-              axisTick: {
-                show: false
-              },
-              splitArea: {
-                show: false
-              },
-              splitLine: {
-                lineStyle: {
-                  color: 'rgba(198,236,255,0.5)'
-                }
-              },
-            }
-          ],
-          series: [
-            {
-              type: type,
-              data: type === 'line' ?
-                [] : type === 'bar' ?
-                  data.map((v, i) => {
-                    return i % 2 !== 0 ? false : v[yesterday];
-                  }) : data.map(v => v[yesterday]),
-              symbolSize: function (data) {
-                return type === 'scatter' ? Math.sqrt(data) / 4 : 0;
-              },
-              itemStyle: {
-                normal: {
-                  color: colors[0]
-
-                }
-              }
-            },
-            {
-              type: type,
-              data: type === 'bar' ?
-                data.map((v, i) => {
-                  return i % 2 !== 0 ? false : v[today];
-                }) : data.map(v => v[today]),
-              symbolSize: function (data) {
-                return type === 'scatter' ? Math.sqrt(data) / 4 : 0;
-              },
-              itemStyle: {
-                normal: {
-                  color: colors[1]
-                }
-              }
-            }
-          ]
-        };
-      }
 
       this.Api.todayCustomsClearance('cn').then((res) => {
         this.todayCustomsClearance = res.data.data.todayCustomsClearance;
@@ -245,7 +252,7 @@
         this.todayIncreaseBusi = res.data.data.todayIncreaseBusi;
         this.number.todayIncreaseBusiTotal = +res.data.data.todayIncreaseBusiTotal;
 
-        this.$nextTick(function () {
+        this.$nextTick(function() {
           // '.panel-list-scroll' TODO: async data
           scroll('.panel-list-scroll');
         });

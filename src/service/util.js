@@ -60,6 +60,14 @@ Util.install = function install(Vue) {
         return arr.length;
       },
     },
+    getCurrTime(){
+      var date = new Date();
+      return {
+        hour: date.getHours(),
+        min: date.getMinutes(),
+        sec: date.getSeconds()
+      }
+    },
 
   };
 };
