@@ -131,10 +131,6 @@
 
         let colors = ['#0bff49', '#ff3274', '#c6ecff'];
         let colors2 = ['#f2ff00', '#9932ff', '#c6ecff'];
-
-        this.lineX.setOption(genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors));
-        this.lineX2.setOption(genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2));
-
         let option = {
           grid: {
             top: 10,
@@ -164,7 +160,7 @@
               show: false
             },
             boundaryGap: false,
-            data: realTimeTrade.map(v => v.hour)
+            data: realTimeTrade.map(v => (currentHour < 11 ? ' ' + v.hour + ' ' : v.hour.replace(/\s*$/ig, ' ')))
           },
           yAxis: {
             splitNumber: 2,
@@ -207,86 +203,89 @@
             }]
         };
 
+        this.lineX.setOption(genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors));
+        this.lineX2.setOption(genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2));
         this.scatter.setOption(option);
 
-      });
+        function genOption(data, yesterday, today, colors) {
 
-      function genOption(data, yesterday, today, colors) {
-
-        return {
-          color: colors,
-          grid: {
-            top: 30,
-            right: 28,
-            bottom: 50,
-          },
-          xAxis: [
-            {
-              type: 'category',
-              axisLine: {
-                show: false,
-                lineStyle: {
-                  color: colors[2]
-                }
-              },
-              axisTick: {
-                show: false
-              },
-              axisLabel: {
-                textStyle: {
-                  fontSize: 20
-                }
-              },
-              splitArea: {
-                show: false
-              },
-              nameLocation: 'middle',
-              nameGap: 100,
-              boundaryGap: false,
-              data: data.map(v => v.hour.replace(/\s*$/ig, ' '))
-            }
-          ],
-          yAxis: [
-            {
-              type: 'value',
-              splitNumber: 5,
-              axisLine: {
-                show: false,
-                lineStyle: {
-                  color: colors[2]
-                }
-              },
-              axisTick: {
-                show: false
-              },
-              splitArea: {
-                show: false
-              },
-              splitLine: {
-                lineStyle: {
-                  color: 'rgba(198,236,255,0.5)'
-                }
-              },
-            }
-          ],
-          series: [
-            {
-              type: 'line',
-              symbolSize: function(data) {
-                return 0;
-              },
-              data: data.map(v => v[today])
+          return {
+            color: colors,
+            grid: {
+              top: 30,
+              right: 28,
+              bottom: 50,
             },
-            {
-              type: 'line',
-              symbolSize: function(data) {
-                return 0;
+            xAxis: [
+              {
+                type: 'category',
+                axisLine: {
+                  show: false,
+                  lineStyle: {
+                    color: colors[2]
+                  }
+                },
+                axisTick: {
+                  show: false
+                },
+                axisLabel: {
+                  textStyle: {
+                    fontSize: 20
+                  }
+                },
+                splitArea: {
+                  show: false
+                },
+                nameLocation: 'middle',
+                nameGap: 100,
+                boundaryGap: false,
+                data: data.map(v => (currentHour < 11 ? ' ' + v.hour + ' ' : v.hour.replace(/\s*$/ig, ' ')))
+
+              }
+            ],
+            yAxis: [
+              {
+                type: 'value',
+                splitNumber: 5,
+                axisLine: {
+                  show: false,
+                  lineStyle: {
+                    color: colors[2]
+                  }
+                },
+                axisTick: {
+                  show: false
+                },
+                splitArea: {
+                  show: false
+                },
+                splitLine: {
+                  lineStyle: {
+                    color: 'rgba(198,236,255,0.5)'
+                  }
+                },
+              }
+            ],
+            series: [
+              {
+                type: 'line',
+                symbolSize: function(data) {
+                  return 0;
+                },
+                data: data.map(v => v[today])
               },
-              data: data.map(v => v[yesterday])
-            }
-          ]
-        };
-      }
+              {
+                type: 'line',
+                symbolSize: function(data) {
+                  return 0;
+                },
+                data: data.map(v => v[yesterday])
+              }
+            ]
+          };
+        }
+
+      });
 
       this.Api.todayCustomsClearance().then((res) => {
         this.todayCustomsClearance = res.data.data.todayCustomsClearance;
