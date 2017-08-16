@@ -237,6 +237,7 @@
                 type: type === 'lineArea' ? 'line' : type,
                 data: type === 'lineArea' ? [] : data.map(v => v[yesterday]),
                 symbolSize: symbolSize,
+                barMaxWidth: 19,
                 itemStyle: {
                   normal: {
                     color: colors[0]
@@ -250,6 +251,7 @@
                 symbolSize: symbolSize,
                 symbol: 'none',
                 sampling: 'average',
+                barMaxWidth: 19,
                 itemStyle: {
                   normal: {
                     color: colors[1]
