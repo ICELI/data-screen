@@ -44,7 +44,7 @@
         window.clearTimeout(window._time2);
         window.clearTimeout(window._time21);
         window.clearTimeout(window._time3);
-
+        window.clearTimeout(window._time8);
         this.$router.push(name);
         clearTimeout(this.timer);
         console.log('goNext', name);

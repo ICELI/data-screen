@@ -219,35 +219,14 @@
                 normal: {color: 'rgba(198,236,255,0.16)'}
               },
               barGap: '-100%',
+              symbol: 'path://M0,24.7c10.9-32.94,74.51-32.94,85.41,0Z',
               barCategoryGap: '40%',
               data: dataShadow,
               animation: false,
               markPoint:{},
               animationEasing: 'cubicOut',
-
-              /*markPoint: {
-                data: markArrs,
-                symbolSize: [55, 60],
-                symbolOffset: [0, -5],
-                itemStyle: {
-                  normal: {
-                    color: '#FF3273'
-                  }
-                },
-                effect : {
-                  show: true,
-                  shadowBlur : 0
-                },
-                label:{
-                  normal:{
-                    textStyle: {
-                      color: '#fff',
-                      fontSize: 14
-                    },
-                    offset: [0, -2]
-                  }
-                }
-              }*/
+              symbolPosition: 'end',
+              symbol: 'path://M0,24.7c10.9-32.94,74.51-32.94,85.41,0Z',
             },
             {
               type: 'bar',
@@ -264,6 +243,7 @@
                   )
                 }
               },
+              animationEasing: 'cubicOut',
               data: data
             }
           ]
@@ -337,13 +317,16 @@
     },
     methods: {},
     beforeDestroy() {
+      console.log('page1-4')
       window.clearTimeout(window._time0);
+      window.clearTimeout(window._time6);
       window.clearTimeout(window._time7);
       window.clearTimeout(window._time02);
       window.clearInterval(window._time);
       window.clearTimeout(window._time2);
       window.clearTimeout(window._time21);
       window.clearTimeout(window._time3);
+      window.clearTimeout(window._time8);
     },
     mounted() {
       document.querySelector('body').className = document.querySelector('body').className.replace('e4b-bg', '')

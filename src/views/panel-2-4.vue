@@ -117,13 +117,16 @@
     computed: {},
     components: {},
     beforeDestroy() {
+      console.log('page2-4')
       window.clearTimeout(window._time0);
+      window.clearTimeout(window._time6);
       window.clearTimeout(window._time7);
       window.clearTimeout(window._time02);
       window.clearInterval(window._time);
       window.clearTimeout(window._time2);
       window.clearTimeout(window._time21);
       window.clearTimeout(window._time3);
+      window.clearTimeout(window._time8);
     },
     created() {
       // 玫瑰图扇区大小 目前固定11条，如要自定义条数，industryPercent、colors、data.slice(0, 11) 长度需要统一

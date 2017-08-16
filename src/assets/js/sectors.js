@@ -58,13 +58,10 @@ export default function Sectors(para, doc){
   }
 
   function render(){
-
     var self = this;
     var config = self.config;
     var id = this.el || '';
     this.el && (Object.prototype.toString.call(this.el) == '[object String]') && (this.el = doc.getElementById(this.el));
-    console.log(this.el.innerHTML)
-    //this.el.innerHTML = '';
     this.el.style.textAlign = 'center';
     var str = '<div id="test" style="width:' + (config.size * 2) + 'px; height:' + (config.size * 2) + 'px; margin: '+ (this.el.offsetHeight - config.size * 2)/2 +'px 20px 0 0; transform:rotate(-90deg); opacity:0; transition-duration:2s; transition-property:all; transition-timing-function:ease; position:relative; overflow:visible; display:inline-block; border:solid 1px #999; border-radius:' + config.size * 2 + 'px;">';
     var deg = 0 + config.offset;
@@ -140,7 +137,7 @@ export default function Sectors(para, doc){
             pointers[i].style.borderRadius = 0;
           }
         }
-        window.setTimeout(function(){
+        window._time8 = window.setTimeout(function(){
           if(tips){
             for(var i=0; i<tips.length; i++){
               tips[i].style.opacity = 1.0;
@@ -167,11 +164,10 @@ export default function Sectors(para, doc){
             }, 200 + i * 75);
           })();
           if(i == divs.length - 1){
-            _time6 = window.setTimeout(function(){
+            window._time6 = window.setTimeout(function(){
               __animation();
 
               window._time = window.setInterval(function(){
-
                 __animation();
               }, 7000);
 
