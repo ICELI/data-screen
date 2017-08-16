@@ -185,7 +185,7 @@ export default function Sectors(para, doc){
                           window._time21 = window.setTimeout(function(){
                             div.style.transform = div.style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)');
                           }, 400);
-                        }, 300 * idx + 100);
+                        }, 300 * idx + 101);
                       })(ii);
                     }else{
                       (function(idx){
