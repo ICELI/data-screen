@@ -177,11 +177,10 @@ console.log('yMax', yMax);
             splitArea: {
               show: false
             },
-            nameLocation: 'middle',
             axisLabel: {
               margin: 16,
               textStyle: {
-                fontSize: 19 // todo: 20
+                fontSize: 18 // todo: 20
               }
             },
             z: 10
