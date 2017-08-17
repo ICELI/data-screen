@@ -140,3 +140,33 @@
   }
 }
 
+.ring-border0{
+  animation:ringRotate0 3s linear 2s infinite;
+}
+.ring-border1{
+  animation:ringRotate11 3s linear 2s infinite;
+}
+
+@keyframes ringRotate0{
+  0%{
+    transform:rotateY(0deg)
+  }
+  50%{
+    transform:rotateY(180deg)
+  }
+  100%{
+    transform:rotateY(360deg)
+  }
+}
+@keyframes ringRotate11{
+  0%{
+    transform:rotateY(0deg)
+  }
+  50%{
+    transform:rotateY(-180deg)
+  }
+  100%{
+    transform:rotateY(-360deg)
+  }
+}
+

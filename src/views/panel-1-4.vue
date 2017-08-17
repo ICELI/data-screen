@@ -317,7 +317,7 @@
     },
     methods: {},
     beforeDestroy() {
-      console.log('page1-4')
+      window.clearInterval(window._ringTimer);
       window.clearTimeout(window._time0);
       window.clearTimeout(window._time6);
       window.clearTimeout(window._time7);
@@ -364,7 +364,8 @@
         duration: 2.0,
         label: '<span class="pointer" style="background:{{color}}"></span><label class="lab">{{name}}</label><h4 class="val2" number="{{value}}"></h4>',
         dir: ['RIGHT', 'RIGHT', 'RIGHT', 'RIGHT', 'RIGHT'],
-        smooth: true
+        smooth: true,
+        rotate: true
       }, document);
     },
   };

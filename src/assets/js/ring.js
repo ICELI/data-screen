@@ -17,7 +17,8 @@ export default function Rings(para, doc){
     duration: para.duration || 2.0,  //数据动画过渡时长
     dir: para.dir || 'DIR',  //是否要分左右方向转动: DIR=左右分; LEFT=只往左; RIGHT=只往右
     smooth: para.smooth,
-    label: para.label
+    label: para.label,
+    rotate: !!para.rotate
   }
   this.vNodes = [];
   this.el = para.el || '';
@@ -60,8 +61,7 @@ export default function Rings(para, doc){
         var size = (idx == 0) ? config.size : config.size - idx * (config.width + config.split) * 2;
         var inner_size = size - config.width * 2;
         var zIdx = idx * 10;
-        str += '<div id="ring' + (idx + id) + '" style="-webkit-transition: all 0.5s ease; transform:scale(0, 0); border-radius:' + config.size + 'px; z-index:' + zIdx + '; position:absolute; margin:' + top + 'px; width:' + size + 'px; height:' + size + 'px; background:' + self.formatColor(config.colors[idx], config.alph) + '">';
-
+        str += '<div name="ring" id="ring' + (idx + id) + '" style="-webkit-transition: all 2s ease; transform-origin: center center; border-radius:' + config.size + 'px; z-index:' + zIdx + '; position:absolute; left:' + top + 'px; top:' + top + 'px; width:' + size + 'px; height:' + size + 'px; background:' + self.formatColor(config.colors[idx], config.alph) + '">';
         if(config.smooth){
           str += '<div id="sp' + (idx + id) + '_pointer" style="width:' + size + 'px; transition-property:all; transition-timing-function:linear; transform-origin:center center; height:' + size + 'px; position:absolute; z-index:' + (zIdx + 3) + ';">';
           str += '<span style="width:' + config.width + 'px; left:50%; margin-left:-' + config.width * 0.5 + 'px; height:' + config.width + 'px; border-radius:' + config.width + 'px; background:' + config.colors[idx] + '; position:absolute; z-index:"></span>';
@@ -96,16 +96,39 @@ export default function Rings(para, doc){
           html += '<li style="position:absolute; right:0; width:auto; height:auto; margin-top:' + ((idx - 1) / 2) * 90 + 'px">' + label + '</li>';
         }
       });
-      html += '<div class="ring-content" style="display:inline-block; width:' + config.size + 'px; height:' + config.size + 'px;">' + str + '</div></div>';
+      html += '<div class="ring-content" style="display:inline-block; position:relative; width:' + config.size + 'px; height:' + config.size + 'px; transform-style:preserve-3d;">' + str + '</div></div>';
       obj.innerHTML = html;
 
       this.vNodes && this.vNodes.forEach(function(node){
         node.translate();
       });
 
+      var rings = document.getElementsByName('ring');
+
+      var flag = 0;
+      if(config.rotate){
+
+        window._ringTimer = window.setInterval(function(){
+          var deg = 0;
+          if(flag % 2 == 0){
+            deg = 0;
+          }else{
+            deg = 360;
+          }
+          console.log(deg)
+          rings[0].style.transform = 'rotateY(' + deg + 'deg)';
+          window.setTimeout(function(){
+            rings[1].style.transform = 'rotateY(-' + deg + 'deg)';
+          }, 100);
+          rings[2].style.transform = 'rotateY(' + deg + 'deg)';
+          flag = flag + 1;
+
+        }, 5000);
+      }
+
       self.data && self.data.forEach(function(col, idx){
         window.setTimeout(function(){
-          document.getElementById('ring' + (idx + id)).style.transform = 'scale(1.0, 1.0)';
+          //document.getElementById('ring' + (idx + id)).style.transform = 'scale(1.0, 1.0)';
           if(idx == self.data.length - 1){
             window.setTimeout(function(){
               self.vNodes && self.vNodes.forEach(function(node, idx2){
