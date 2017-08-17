@@ -7,7 +7,8 @@
  * @param type
  * @returns {{color: *, grid: {top: number, right: number, bottom: number, left: number}, xAxis: [*], yAxis: [*], series: [*,*]}}
  */
-export default function genOption(array, yesterday, today, colors, type = 'line') {
+export default function genOption(
+  array, yesterday, today, colors, type = 'line') {
   let currentHour = new Date().getHours();
   let data = type === 'bar' ? array.filter((v, i) => {
     return i % 4 === 0;
@@ -23,7 +24,8 @@ export default function genOption(array, yesterday, today, colors, type = 'line'
   let maxLabel = '' + Math.max.apply(null, todayData.concat(yesterdayData));
   let fixNum = type === 'lineArea' ? 1 : 2;
   let y = +(maxLabel).substr(0, fixNum); // 取前2位向上取5的倍数
-  let yMax = (type === 'lineArea' ? y + 2 - y % 2 : y + 4 - y % 4) * Math.pow(10, maxLabel.length - fixNum);
+  let yMax = (type === 'lineArea' ? y + 2 - y % 2 : y + 4 - y % 4) *
+    Math.pow(10, maxLabel.length - fixNum);
 
   return {
     color: colors,
@@ -89,14 +91,16 @@ export default function genOption(array, yesterday, today, colors, type = 'line'
           lineStyle: {
             color: 'rgba(198,236,255,0.25)'
           }
-        },
+        }
       }
     ],
     series: [
       {
         type: type === 'lineArea' ? 'line' : type,
         data: yesterdayData,
-        symbolSize: 0,
+        symbol: 'none',
+        smooth: true,
+        sampling: 'average',
         barMaxWidth: 19,
         itemStyle: {
           normal: {
@@ -108,8 +112,8 @@ export default function genOption(array, yesterday, today, colors, type = 'line'
       {
         type: type === 'lineArea' ? 'line' : type,
         data: todayData,
-        symbolSize: 0,
         symbol: 'none',
+        smooth: true,
         sampling: 'average',
         barMaxWidth: 19,
         itemStyle: {
@@ -121,7 +125,7 @@ export default function genOption(array, yesterday, today, colors, type = 'line'
           normal: {
             color: type === 'lineArea' ? colors[1] : 'rgba(0,0,0,0)'
           }
-        },
+        }
       }
     ]
   };
