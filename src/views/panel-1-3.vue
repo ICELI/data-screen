@@ -31,7 +31,7 @@
         <div class="panel-wrap">
           <h3 class="panel-title">今日新增用户累计 <span class="title-number"><a num="todayIncreaseUser"></a></span></h3>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-          <div class="panel-content panel-chart-wrap" id="scatter"></div>
+          <div class="panel-content panel-chart-wrap" id="lineArea"></div>
         </div>
       </div>
       <div class="pure-u-1-2">
@@ -93,6 +93,7 @@
 
 <script>
   import echarts from 'echarts';
+  import genOption from '../service/genEchartOption';
   import scroll from '../assets/js/scroll';
   import { bindNumber } from '../assets/js/number';
 
@@ -128,187 +129,29 @@
         this.number.todayIntentionOrder = +realTimeTradeTotal.todayIntentionOrder;
         this.number.todayIncreaseUser = +realTimeTradeTotal.todayIncreaseUser;
         this.realTimeTradeTotal = realTimeTradeTotal;
-        var self = this;
 
-        let colors = ['#0bff49', '#ff3274', '#c6ecff'];
-        let colors2 = ['#f2ff00', '#9932ff', '#c6ecff'];
-        let option = {
-          grid: {
-            top: 10,
-            right: 28,
-            bottom: 50,
-            left: 56
-          },
-          xAxis: {
-            axisLine: {
-              show: false,
-              onZero: false,
-              lineStyle: {
-                color: colors[2]
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            axisLabel: {
-              textStyle: {
-                fontSize: 18
-              }
-            },
-            splitArea: {
-              show: false
-            },
-            splitLine: {
-              show: false
-            },
-            boundaryGap: false,
-            data: realTimeTrade.map(v => (currentHour < 11 ? ' ' + v.hour + ' ' : v.hour.replace(/\s*$/ig, ' ')))
-          },
-          yAxis: {
-            splitNumber: 2,
-            axisLine: {
-              show: false,
-              onZero: false,
-              lineStyle: {
-                color: colors[2]
-              }
-            },
-            axisTick: {
-              show: false
-            },
-            axisLabel: {
-              textStyle: {
-                fontSize: 18
-              }
-            },
-            splitArea: {
-              show: false
-            },
-            splitLine: {
-              lineStyle: {
-                color: 'rgba(198,236,255,0.5)'
-              }
-            }
-          },
-          series: [
-            {
-              data: realTimeTrade.map(v => v.todayIncreaseUser),
-              type: 'line',
-              symbol: 'none',
-              sampling: 'average',
-              itemStyle: {
-                normal: {
-                  color: '#ff4d40'
-                }
-              },
-              areaStyle: {
-                normal: {
-                  color: '#ff4d40'
-                }
-              },
-            }]
-        };
-        var op1 = genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors);
-        var op2 = genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2);
+        // 图表
+        let colors1 = ['#ff3274', '#0bff49', '#c6ecff'];
+        let colors2 = ['#9932ff', '#f2ff00', '#c6ecff'];
+        let colors3 = ['#ff3274', '#ff4d40', '#c6ecff'];
+        let op1 = genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors1);
+        let op2 = genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2);
+        let op3 = genOption(realTimeTrade, '', 'todayIncreaseUser', colors3, 'lineArea');
 
         this.lineX.setOption(op1);
         this.lineX2.setOption(op2);
-        this.scatter.setOption(option);
+        this.lineArea.setOption(op3);
 
-        window.setInterval(function(){
-          self.scatter.clear();
-          self.scatter.setOption(option);
+        setInterval(() => {
+          this.lineX.clear();
+          this.lineX.setOption(op1);
 
-          self.lineX.clear();
-          self.lineX.setOption(op1);
+          this.lineX2.clear();
+          this.lineX2.setOption(op2);
 
-          self.lineX2.clear();
-          self.lineX2.setOption(op2);
+          this.lineArea.clear();
+          this.lineArea.setOption(op3);
         }, 4000);
-
-        function genOption(data, yesterday, today, colors) {
-
-          return {
-            color: colors,
-            grid: {
-              top: 30,
-              right: 28,
-              bottom: 50,
-              left: 86
-            },
-            xAxis: [
-              {
-                type: 'category',
-                axisLine: {
-                  show: false,
-                  lineStyle: {
-                    color: colors[2]
-                  }
-                },
-                axisTick: {
-                  show: false
-                },
-                axisLabel: {
-                  textStyle: {
-                    fontSize: 18
-                  }
-                },
-                splitArea: {
-                  show: false
-                },
-                nameLocation: 'middle',
-                nameGap: 100,
-                boundaryGap: false,
-                data: data.map(v => (currentHour < 11 ? ' ' + v.hour + ' ' : v.hour.replace(/\s*$/ig, ' ')))
-
-              }
-            ],
-            yAxis: [
-              {
-                type: 'value',
-                splitNumber: 5,
-                axisLine: {
-                  show: false,
-                  lineStyle: {
-                    color: colors[2]
-                  }
-                },
-                axisTick: {
-                  show: false
-                },
-                axisLabel: {
-                  textStyle: {
-                    fontSize: 18
-                  }
-                },
-                splitArea: {
-                  show: false
-                },
-                splitLine: {
-                  lineStyle: {
-                    color: 'rgba(198,236,255,0.5)'
-                  }
-                },
-              }
-            ],
-            series: [
-              {
-                type: 'line',
-                symbolSize: function(data) {
-                  return 0;
-                },
-                data: data.map(v => v[today])
-              },
-              {
-                type: 'line',
-                symbolSize: function(data) {
-                  return 0;
-                },
-                data: data.map(v => v[yesterday])
-              }
-            ]
-          };
-        }
 
       });
 
@@ -335,7 +178,7 @@
 
       this.lineX = echarts.init(document.getElementById('lineX'));
       this.lineX2 = echarts.init(document.getElementById('lineX2'));
-      this.scatter = echarts.init(document.getElementById('scatter'));
+      this.lineArea = echarts.init(document.getElementById('lineArea'));
 
       bindNumber(this.number, {
         attr: 'num',    //属性名称 <a num='100.0'></a>

@@ -10,7 +10,7 @@
           </h4>
           <h4 class="panel-title color-pink">昨日访客 <span> {{realTimeTradeTotal.yestodayVisitorNum}}</span></h4>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-          <div class="panel-content panel-chart-wrap" id="scatter"></div>
+          <div class="panel-content panel-chart-wrap" id="lineX"></div>
         </div>
       </div>
       <div class="pure-u-1-2">
@@ -31,7 +31,7 @@
         <div class="panel-wrap">
           <h3 class="panel-title">今日新增用户累计 <span class="title-number"><a num="todayIncreaseUser"></a></span></h3>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-          <div class="panel-content panel-chart-wrap" id="lineX"></div>
+          <div class="panel-content panel-chart-wrap" id="lineArea"></div>
         </div>
       </div>
       <div class="pure-u-1-2">
@@ -93,6 +93,7 @@
 
 <script>
   import echarts from 'echarts';
+  import genOption from '../service/genEchartOption';
   import scroll from '../assets/js/scroll';
   import { bindNumber } from '../assets/js/number';
 
@@ -121,151 +122,35 @@
         let realTimeTrade = res.data.data.realTimeTrade;
         let realTimeTradeTotal = realTimeTrade.pop();
         let currentHour = this.Util.getCurrTime().hour;
-        var self = this;
 
         realTimeTrade = realTimeTrade.slice(currentHour * 2 - 16, currentHour * 2 + 2);
-        // TODO: 对象合并 ES6 只合并存在的属性
         this.number.todayVisitorNum = +realTimeTradeTotal.todayVisitorNum;
         this.number.todayIntentionOrder = +realTimeTradeTotal.todayIntentionOrder;
         this.number.todayIncreaseUser = +realTimeTradeTotal.todayIncreaseUser;
         this.realTimeTradeTotal = realTimeTradeTotal;
 
-        let colors = ['#ff3274', '#f2ff00', '#c6ecff'];
+        // 图表
+        let colors1 = ['#ff3274', '#0bff49', '#c6ecff'];
         let colors2 = ['#9932ff', '#33e2ff', '#c6ecff'];
-        let colors3 = ['#ff3274', '#0bff49', '#c6ecff'];
-
-        var op1 = genOption(realTimeTrade, '', 'todayIncreaseUser', colors, 'lineArea');
-        var op2 = genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2, 'bar');
-        var op3 = genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors3);
+        let colors3 = ['#ff3274', '#f2ff00', '#c6ecff'];
+        let op1 = genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors1);
+        let op2 = genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2, 'bar');
+        let op3 = genOption(realTimeTrade, '', 'todayIncreaseUser', colors3, 'lineArea');
 
         this.lineX.setOption(op1);
         this.barX.setOption(op2);
-        this.scatter.setOption(op3);
+        this.lineArea.setOption(op3);
 
-      window.setInterval(function(){
-        self.lineX.clear();
-        self.lineX.setOption(op1);
+        setInterval(() => {
+          this.lineX.clear();
+          this.lineX.setOption(op1);
 
-        self.barX.clear();
-        self.barX.setOption(op2);
+          this.barX.clear();
+          this.barX.setOption(op2);
 
-        self.scatter.clear();
-        self.scatter.setOption(op3);
-      }, 4000);
-
-        function genOption(data1, yesterday, today, colors, type = 'line') {
-          let symbolSize = function(data) {
-            return type === 'scatter' ? Math.sqrt(data) / 4 : 0;
-          };
-          let data = type === 'bar' ? data1.filter((v, i) => {
-            return i % 4 === 0;
-          }) : data1;
-          let hourData = data.map(v => (type === 'bar'
-            ? v.hour // fix 柱状图不能加
-            : currentHour < 11
-              ? ' ' + v.hour + ' '
-              : v.hour.replace(/\s*$/ig, ' ')));
-
-          return {
-            color: colors,
-            grid: {
-              top: 30,
-              right: 28,
-              bottom: 50,
-              left: type === 'lineArea' ? 56 : 86
-            },
-            xAxis: [
-              {
-                type: 'category',
-                axisLine: {
-                  show: false,
-                  lineStyle: {
-                    color: colors[2]
-                  }
-                },
-                axisTick: {
-                  show: false
-                },
-                axisLabel: {
-                  textStyle: {
-                    fontSize: 18
-                  }
-                },
-                splitArea: {
-                  show: false
-                },
-                nameLocation: 'middle',
-                nameGap: 100,
-                boundaryGap: type === 'bar',
-                data: hourData
-              }
-            ],
-            yAxis: [
-              {
-                type: 'value',
-                minInterval: 2,
-                splitNumber: type === 'lineArea' ? 2 : 5,
-                axisLine: {
-                  show: false,
-                  lineStyle: {
-                    color: colors[2]
-                  }
-                },
-                axisTick: {
-                  show: false
-                },
-                axisLabel: {
-               /*   formatter: function(val) {
-                    return val / 10000 + '万';
-                  },*/
-                  textStyle: {
-                    fontSize: 18
-                  }
-                },
-                splitArea: {
-                  show: false
-                },
-                splitLine: {
-                  lineStyle: {
-                    color: 'rgba(198,236,255,0.5)'
-                  }
-                },
-              }
-            ],
-            series: [
-              {
-                type: type === 'lineArea' ? 'line' : type,
-                data: type === 'lineArea' ? [] : data.map(v => v[yesterday]),
-                symbolSize: symbolSize,
-                barMaxWidth: 19,
-                itemStyle: {
-                  normal: {
-                    color: colors[0]
-
-                  }
-                }
-              },
-              {
-                type: type === 'lineArea' ? 'line' : type,
-                data: data.map(v => v[today]),
-                symbolSize: symbolSize,
-                symbol: 'none',
-                sampling: 'average',
-                barMaxWidth: 19,
-                itemStyle: {
-                  normal: {
-                    color: colors[1]
-                  }
-                },
-                areaStyle: {
-                  normal: {
-                    color: type === 'lineArea' ? colors[1] : 'rgba(0,0,0,0)'
-                  }
-                },
-              }
-            ]
-          };
-        }
+          this.lineArea.clear();
+          this.lineArea.setOption(op3);
+        }, 4000);
 
       });
 
@@ -290,7 +175,7 @@
 
       this.lineX = echarts.init(document.getElementById('lineX'));
       this.barX = echarts.init(document.getElementById('barX'));
-      this.scatter = echarts.init(document.getElementById('scatter'));
+      this.lineArea = echarts.init(document.getElementById('lineArea'));
       bindNumber(this.number, {
         attr: 'num',    //属性名称 <a num='100.0'></a>
         id: 'transaction-data', //外层容器#id
