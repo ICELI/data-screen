@@ -107,7 +107,6 @@ export default function Rings(para, doc){
 
       var flag = 0;
       if(config.rotate){
-
         window._ringTimer = window.setInterval(function(){
           var deg = 0;
           if(flag % 2 == 0){
@@ -115,7 +114,6 @@ export default function Rings(para, doc){
           }else{
             deg = 360;
           }
-          console.log(deg)
           rings[0].style.transform = 'rotateY(' + deg + 'deg)';
           window.setTimeout(function(){
             rings[1].style.transform = 'rotateY(-' + deg + 'deg)';
