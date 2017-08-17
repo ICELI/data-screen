@@ -144,7 +144,7 @@
                 <div class="pure-u-9-24">增量（{{currentYear}}）</div>
               </div>
               <div class="panel-list-content">
-                <div class="panel-list-line5">
+                <div :class="certification.certifySys.length < 7 ? 'panel-list-line5' : 'panel-list-scroll'">
                   <div class="pure-g" v-for="item in certification.certifySys.slice(0, -1)">
                     <div class="pure-u-9-24 pr20">{{item.type}}</div>
                     <div class="pure-u-6-24 text-primary">{{item.total}}</div>
