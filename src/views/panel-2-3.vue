@@ -123,7 +123,7 @@
         let realTimeTradeTotal = realTimeTrade.pop();
         let currentHour = this.Util.getCurrTime().hour;
 
-        realTimeTrade = realTimeTrade.slice(currentHour * 2 - 16, currentHour * 2 + 2);
+        realTimeTrade = realTimeTrade.slice(currentHour * 2 - 16, currentHour * 2 + 1);
         this.number.todayVisitorNum = +realTimeTradeTotal.todayVisitorNum;
         this.number.todayIntentionOrder = +realTimeTradeTotal.todayIntentionOrder;
         this.number.todayIncreaseUser = +realTimeTradeTotal.todayIncreaseUser;
@@ -141,16 +141,34 @@
         this.barX.setOption(op2);
         this.lineArea.setOption(op3);
 
-        setInterval(() => {
+        let times = 5; // 秒
+        // TODO: 代码优化
+        this.timer1 = setTimeout(() => {
           this.lineX.clear();
           this.lineX.setOption(op1);
+          this.timer11 = setInterval(() => {
+            this.lineX.clear();
+            this.lineX.setOption(op1);
+          }, times * 3 * 1000);
+        }, times * 1 * 1000);
 
+        this.timer2 = setTimeout(() => {
           this.barX.clear();
           this.barX.setOption(op2);
+          this.timer22 = setInterval(() => {
+            this.barX.clear();
+            this.barX.setOption(op2);
+          }, times * 3 * 1000);
+        }, times * 2 * 1000);
 
+        this.timer3 = setTimeout(() => {
           this.lineArea.clear();
           this.lineArea.setOption(op3);
-        }, 4000);
+          this.timer33 = setInterval(() => {
+            this.lineArea.clear();
+            this.lineArea.setOption(op3);
+          }, times * 3 * 1000);
+        }, times * 3 * 1000);
 
       });
 
@@ -165,7 +183,7 @@
 
         this.$nextTick(function() {
           // '.panel-list-scroll' TODO: async data
-          scroll('.panel-list-scroll');
+          this.scrollTimers = scroll('.panel-list-scroll');
         });
       });
     },
@@ -185,6 +203,15 @@
       });
 
     },
+    beforeDestroy() {
+      clearInterval(this.timer1);
+      clearInterval(this.timer11);
+      clearInterval(this.timer2);
+      clearInterval(this.timer22);
+      clearInterval(this.timer3);
+      clearInterval(this.timer33);
+      this.scrollTimers();
+    }
   };
 </script>
 

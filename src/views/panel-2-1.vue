@@ -546,7 +546,7 @@
 
         this.$nextTick(function() {
           // '.panel-list-scroll' TODO: async data
-          scroll('.panel-list-scroll');
+          this.scrollTimers = scroll('.panel-list-scroll');
         });
       });
 
@@ -694,6 +694,9 @@
       this.doughnut = echarts.init(document.getElementById('doughnut'));
       this.doughnut2 = echarts.init(document.getElementById('doughnut2'));
     },
+    beforeDestroy() {
+      this.scrollTimers();
+    }
   };
 </script>
 

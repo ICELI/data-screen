@@ -16,8 +16,8 @@ export default function genOption(
   let hourData = data.map(v => (type === 'bar'
     ? v.hour // fix 柱状图不能加
     : currentHour < 11
-      ? ' ' + v.hour + ' '
-      : v.hour.replace(/\s*$/ig, ' ')));
+      ? '  ' + v.hour.replace(/\s*$/ig, '') + '  '
+      : v.hour.replace(/\s*$/ig, '') + ' '));
 
   let todayData = data.map(v => v[today]);
   let yesterdayData = type === 'lineArea' ? [] : data.map(v => v[yesterday]);
@@ -33,7 +33,7 @@ export default function genOption(
       top: type === 'lineArea' ? 10 : 30,
       right: 28,
       bottom: 50,
-      left: type === 'lineArea' ? 56 : 86
+      left: type === 'lineArea' ? 86 : 86
     },
     xAxis: [
       {

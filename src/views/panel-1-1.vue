@@ -490,7 +490,7 @@
 
         this.$nextTick(function () {
           // '.panel-list-scroll' TODO: async data
-          scroll('.panel-list-scroll');
+          this.scrollTimers = scroll('.panel-list-scroll');
         });
       });
     },
@@ -559,6 +559,9 @@
       // 圆环
       this.doughnut = echarts.init(document.getElementById('doughnut'));
     },
+    beforeDestroy() {
+      this.scrollTimers();
+    }
   };
 </script>
 
