@@ -332,6 +332,9 @@
       document.querySelector('body').className = document.querySelector('body').className.replace('e4b-bg', '')
 
       this.barGradient = echarts.init(document.getElementById('bar-gradient'));
+      window.onresize = () => {
+        this.barGradient.resize();
+      };
 
       bindNumber(this.number, {
         attr: 'num',    //属性名称 <a num='100.0'></a>

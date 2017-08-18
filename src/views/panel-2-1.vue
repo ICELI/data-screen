@@ -693,6 +693,11 @@
       // 圆环
       this.doughnut = echarts.init(document.getElementById('doughnut'));
       this.doughnut2 = echarts.init(document.getElementById('doughnut2'));
+      window.onresize = () => {
+        this.doughnut.resize();
+        this.doughnut2.resize();
+      };
+
     },
     beforeDestroy() {
       this.scrollTimers();

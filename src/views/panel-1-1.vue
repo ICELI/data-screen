@@ -558,6 +558,9 @@
 
       // 圆环
       this.doughnut = echarts.init(document.getElementById('doughnut'));
+      window.onresize = () => {
+        this.doughnut.resize();
+      };
     },
     beforeDestroy() {
       this.scrollTimers();

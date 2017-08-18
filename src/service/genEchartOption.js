@@ -41,7 +41,7 @@ export default function genOption(
         axisLine: {
           show: false,
           lineStyle: {
-            color: colors[2]
+            color: '#c6ecff'
           }
         },
         axisTick: {
@@ -70,7 +70,7 @@ export default function genOption(
         axisLine: {
           show: false,
           lineStyle: {
-            color: colors[2]
+            color: '#c6ecff'
           }
         },
         axisTick: {

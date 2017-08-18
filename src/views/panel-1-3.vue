@@ -94,6 +94,7 @@
 <script>
   import echarts from 'echarts';
   import genOption from '../service/genEchartOption';
+  import chartAnimation from '../service/chartAnimation';
   import scroll from '../assets/js/scroll';
   import { bindNumber } from '../assets/js/number';
 
@@ -135,43 +136,22 @@
         let colors1 = ['#ff3274', '#0bff49', '#c6ecff'];
         let colors2 = ['#9932ff', '#f2ff00', '#c6ecff'];
         let colors3 = ['#ff3274', '#ff4d40', '#c6ecff'];
-        let op1 = genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors1);
-        let op2 = genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2);
-        let op3 = genOption(realTimeTrade, '', 'todayIncreaseUser', colors3, 'lineArea');
+        let charts = [
+          {
+            chart: 'lineX',
+            option: genOption(realTimeTrade, 'yestodayVisitorNum', 'todayVisitorNum', colors1),
+          },
+          {
+            chart: 'lineX2',
+            option: genOption(realTimeTrade, 'yestodayIntentionOrder', 'todayIntentionOrder', colors2),
+          },
+          {
+            chart: 'lineArea',
+            option: genOption(realTimeTrade, '', 'todayIncreaseUser', colors3, 'lineArea'),
+          }
+        ];
 
-        this.lineX.setOption(op1);
-        this.lineX2.setOption(op2);
-        this.lineArea.setOption(op3);
-
-        let times = 5; // 秒
-        // TODO: 代码优化
-        this.timer1 = setTimeout(() => {
-          this.lineX.clear();
-          this.lineX.setOption(op1);
-          this.timer11 = setInterval(() => {
-            this.lineX.clear();
-            this.lineX.setOption(op1);
-          }, times * 3 * 1000);
-        }, times * 1 * 1000);
-
-        this.timer2 = setTimeout(() => {
-          this.lineX2.clear();
-          this.lineX2.setOption(op2);
-          this.timer22 = setInterval(() => {
-            this.lineX2.clear();
-            this.lineX2.setOption(op2);
-          }, times * 3 * 1000);
-        }, times * 2 * 1000);
-
-        this.timer3 = setTimeout(() => {
-          this.lineArea.clear();
-          this.lineArea.setOption(op3);
-          this.timer33 = setInterval(() => {
-            this.lineArea.clear();
-            this.lineArea.setOption(op3);
-          }, times * 3 * 1000);
-        }, times * 3 * 1000);
-
+        this.echartTimers = chartAnimation(charts, 5, this);
       });
 
       this.Api.todayCustomsClearance().then((res) => {
@@ -199,6 +179,12 @@
       this.lineX2 = echarts.init(document.getElementById('lineX2'));
       this.lineArea = echarts.init(document.getElementById('lineArea'));
 
+      window.onresize = () => {
+        this.lineX.resize();
+        this.lineX2.resize();
+        this.lineArea.resize();
+      };
+
       bindNumber(this.number, {
         attr: 'num',    //属性名称 <a num='100.0'></a>
         id: 'transaction-data', //外层容器#id
@@ -209,12 +195,7 @@
 
     },
     beforeDestroy() {
-      clearInterval(this.timer1);
-      clearInterval(this.timer11);
-      clearInterval(this.timer2);
-      clearInterval(this.timer22);
-      clearInterval(this.timer3);
-      clearInterval(this.timer33);
+      this.echartTimers();
       this.scrollTimers();
     }
   };
