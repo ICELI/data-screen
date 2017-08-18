@@ -200,7 +200,7 @@
         '无锡': [120.3442, 31.5527],
         '日照': [119.2786, 35.5023],
         '昆明': [99.9199, 23.4663],
-        '杭州': [119.5313, 29.8773],
+        '杭州': [120.5313, 29.8773],
         '枣庄': [117.323, 34.8926],
         '柳州': [109.3799, 24.9774],
         '株洲': [113.5327, 27.0319],
@@ -373,7 +373,21 @@
                 name: dataItem[1].name,
                 value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
               };
-            })
+            }),
+            markPoint: {
+              symbol: 'circle',
+              symbolSize: 6,
+              label: {
+                normal: {
+                  show: false
+                }
+              },
+              data: [
+                {
+                  name: 'HangZhou',
+                  coord: geoCoordMap['杭州']
+                }]
+            }
           });
       });
       var chinaMapOption = {

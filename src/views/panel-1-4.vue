@@ -208,7 +208,7 @@
             },
             splitLine: {
               lineStyle: {
-                color: 'rgba(198,236,255,0.25)'
+                color: 'rgba(198,236,255,0.5)'
               }
             },
           },

@@ -20,7 +20,9 @@
         <div class="swiper-container">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="item in nationalPavilion[currentIndex]">
-              <img :src="item.logo || ('/mock/img/en/country/' + worldENSort[currentIndex]+ '/' + item.country + '.jpg')" :alt="item.country" />
+              <img
+                :src="item.logo || ('/mock/img/en/country/' + worldENSort[currentIndex]+ '/' + item.country + '.jpg')"
+                :alt="item.country"/>
             </div>
           </div>
         </div>
@@ -32,7 +34,7 @@
 <script>
   import echarts from 'echarts';
   import countryGeoCoordMap from '../assets/js/echarts/countryGeoCoordMap.json';
-  import {bindNumber} from '../assets/js/number';
+  import { bindNumber } from '../assets/js/number';
 
   export default {
     data() {
@@ -76,7 +78,11 @@
         // 销毁swiper
         this.swiper && this.swiper.destroy(true, true);
 
-        this.currentIndex = first ? this.currentIndex : (this.currentIndex === this.worldSort.length - 1) ? 0 : this.currentIndex + 1;
+        this.currentIndex = first
+          ? this.currentIndex
+          : (this.currentIndex === this.worldSort.length - 1)
+            ? 0
+            : this.currentIndex + 1;
         const idx = this.currentIndex;
         const specIdx = false;
 //        const specIdx = idx === 2 || idx === 3;  // TODO: 指定模块 指定停留时间
@@ -86,7 +92,7 @@
 
         console.log(this.swiper, idx, item);
 
-        this.$nextTick(function () {
+        this.$nextTick(function() {
           this.swiper = new Swiper('.swiper-container', {
             slidesPerView: 4,
             autoplay: 2000,
@@ -115,27 +121,27 @@
 
       var geoCoordMap = countryGeoCoordMap;
 
-      geoCoordMap['HangZhou'] = [118.2, 38.3];
+      geoCoordMap['HangZhou'] = [122.2, 30.3];
 
       var JMDATA = [
-        [{name: 'HangZhou'}, {name: 'United States of America', value: 100}],
-        [{name: 'HangZhou'}, {name: 'Canada', value: 100}],
+        [{ name: 'HangZhou' }, { name: 'United States of America', value: 100 }],
+        [{ name: 'HangZhou' }, { name: 'Canada', value: 100 }],
 
-        [{name: 'HangZhou'}, {name: 'Brazil', value: 100}],
-        [{name: 'HangZhou'}, {name: 'Chile', value: 100}],
+        [{ name: 'HangZhou' }, { name: 'Brazil', value: 100 }],
+        [{ name: 'HangZhou' }, { name: 'Chile', value: 100 }],
 
-        [{name: 'HangZhou'}, {name: 'Australia', value: 100}],
+        [{ name: 'HangZhou' }, { name: 'Australia', value: 100 }],
 
-        [{name: 'HangZhou'}, {name: 'United Kingdom', value: 100}],
-        [{name: 'HangZhou'}, {name: 'Germany', value: 100}],
+        [{ name: 'HangZhou' }, { name: 'United Kingdom', value: 100 }],
+        [{ name: 'HangZhou' }, { name: 'Germany', value: 100 }],
 
-        [{name: 'HangZhou'}, {name: 'South Africa', value: 100}],
-        [{name: 'HangZhou'}, {name: 'Egypt', value: 100}],
+        [{ name: 'HangZhou' }, { name: 'South Africa', value: 100 }],
+        [{ name: 'HangZhou' }, { name: 'Egypt', value: 100 }],
 
-        [{name: 'HangZhou'}, {name: 'Japan', value: 100}],
-        [{name: 'HangZhou'}, {name: 'Kazakhstan', value: 100}]
+        [{ name: 'HangZhou' }, { name: 'Japan', value: 100 }],
+        [{ name: 'HangZhou' }, { name: 'Kazakhstan', value: 100 }]
       ];
-      var convertData = function (data) {
+      var convertData = function(data) {
         var res = [];
         for (var i = 0; i < data.length; i++) {
           var dataItem = data[i];
@@ -244,7 +250,7 @@
                 formatter: '{b}'
               }
             },
-            symbolSize: function (val) {
+            symbolSize: function(val) {
               return 2;
             },
             itemStyle: {
@@ -252,12 +258,26 @@
                 color: '#08ffa0',
               }
             },
-            data: JMDATA.map(function (dataItem) {
+            data: JMDATA.map(function(dataItem) {
               return {
                 name: dataItem[1].name,
                 value: geoCoordMap[dataItem[1].name].concat([dataItem[1].value])
               };
-            })
+            }),
+            markPoint: {
+              symbol: 'circle',
+              symbolSize: 6,
+              label: {
+                normal: {
+                  show: false
+                }
+              },
+              data: [
+                {
+                  name: 'HangZhou',
+                  coord: geoCoordMap['HangZhou']
+                }]
+            }
           }
         ],
       };
