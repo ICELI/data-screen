@@ -6,10 +6,10 @@ export default function (carouselData, cb) {
   const aDiv = oDiv.getElementsByClassName('hid');
   const e4bInfo = document.querySelectorAll('.e4b-content .e4b-info');
   const radius = 800;
+  const delay = 8000;
 
   let x = -5;
   let y = 0;
-  const delay = 5000;
   let speedX2 = 5;
   let l = 360 / M;
 
@@ -32,7 +32,7 @@ export default function (carouselData, cb) {
           setTimeout(() => {
             oNewDiv.style.transition = 'none';
           }, 1000);
-        }, 5000);
+        }, 8000);
       }, (M + 3 - i) * 20);
     }(oNewDiv, i));
 

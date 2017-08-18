@@ -77,20 +77,20 @@
     mix-blend-mode: screen; // fix 图片灰色渐变效果
   }
   &::before {
-    left: -144px;
+    left: -160px;
     top: -15px;
   }
   &::after {
-    right: -144px;
+    right: -160px;
     bottom: -17px;
   }
   &.anima::before {
     display: block;
-    animation: bounceInLeft ease-out 2s infinite;
+    animation: bounceInLeft ease-out 5s infinite;
   }
   &.anima::after {
     display: block;
-    animation: bounceInRight ease-out 2s infinite;
+    animation: bounceInRight ease-out 5s infinite;
   }
 }
 
