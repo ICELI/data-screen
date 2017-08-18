@@ -754,6 +754,19 @@
         background-color: #6666ff !important;
       }
     }
+    b {
+      overflow: hidden;
+      &::after {
+        position: absolute;
+        content: '';
+        width: 50px;
+        height: 100%;
+        top: -14px;
+        left: 0;
+        background: -webkit-linear-gradient(left, transparent, rgba(255, 255, 255, .8) 50%, transparent);
+        animation: runInLeft ease-in-out infinite 2s;
+      }
+    }
     .t-bar {
       display: table-cell;
       text-align: left;

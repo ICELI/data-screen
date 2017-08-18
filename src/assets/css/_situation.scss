@@ -1,82 +1,84 @@
 // page1-panel4
-.top-bar {
-  display: table;
-  width: 100%;
-  font-size: 20px;
-  line-height: 38px;
-  tr {
-    &:nth-child(1) {
-      color: #ff3274;
-      b {
-        background-color: #ff3274 !important;
-      }
-    }
-    &:nth-child(2) {
-      color: #FFD366;
-      b {
-        background-color: #FFD366 !important;
-      }
-    }
-    &:nth-child(3) {
-      color: #33C1FF;
-      b {
-        background-color: #33C1FF !important;
-      }
-    }
-    b {
-      overflow: hidden;
-      &::after {
-        position: absolute;
-        content: '';
-        width: 50px;
-        height: 100%;
-        top: -14px;
-        left: 0;
-        background: -webkit-linear-gradient(left, transparent, rgba(255, 255, 255, .8) 50%, transparent);
-        animation: runInLeft ease-in-out infinite 1s;
-      }
-    }
-  }
-  .t-bar {
-    display: table-cell;
-    text-align: left;
-    width: 178px;
-    white-space: nowrap;
-    &:first-child {
-      width: 110px;
-    }
-    &:last-child {
-      width: 100px;
-      text-align: right;
-    }
-    .bar-wrap {
-      position: relative;
-      display: inline-block;
-      width: 178px;
-      height: 16px;
-      margin: 0 10px;
-      background-color: rgba(198, 236, 255, 0.16);
-      vertical-align: middle;
-      text-indent: 10000px;
-      b {
-        position: absolute;
-        top: 0;
-        left: 0;
-        display: inline-block;
-        width: 0; // 根据数据计算 相对于
-        height: 16px;
-        background-color: #2788e8;
-        transition: width cubic-bezier(0.22, 0.61, 0.36, 1) 2s;
-      }
-    }
-  }
-}
-
 .situation-top {
+
+  .top-bar {
+    display: table;
+    width: 100%;
+    font-size: 20px;
+    line-height: 38px;
+    tr {
+      &:nth-child(1) {
+        color: #ff3274;
+        b {
+          background-color: #ff3274 !important;
+        }
+      }
+      &:nth-child(2) {
+        color: #FFD366;
+        b {
+          background-color: #FFD366 !important;
+        }
+      }
+      &:nth-child(3) {
+        color: #33C1FF;
+        b {
+          background-color: #33C1FF !important;
+        }
+      }
+      b {
+        overflow: hidden;
+        &::after {
+          position: absolute;
+          content: '';
+          width: 50px;
+          height: 100%;
+          top: -14px;
+          left: 0;
+          background: -webkit-linear-gradient(left, transparent, rgba(255, 255, 255, .8) 50%, transparent);
+          animation: runInLeft ease-in-out infinite 2s;
+        }
+      }
+    }
+    .t-bar {
+      display: table-cell;
+      text-align: left;
+      width: 178px;
+      white-space: nowrap;
+      &:first-child {
+        width: 110px;
+      }
+      &:last-child {
+        width: 100px;
+        text-align: right;
+      }
+      .bar-wrap {
+        position: relative;
+        display: inline-block;
+        width: 178px;
+        height: 16px;
+        margin: 0 10px;
+        background-color: rgba(198, 236, 255, 0.16);
+        vertical-align: middle;
+        text-indent: 10000px;
+        b {
+          position: absolute;
+          top: 0;
+          left: 0;
+          display: inline-block;
+          width: 0; // 根据数据计算 相对于
+          height: 16px;
+          background-color: #2788e8;
+          transition: width cubic-bezier(0.22, 0.61, 0.36, 1) 2s;
+        }
+      }
+    }
+  }
+
   .panel-bar-wrap {
     height: 358px;
     padding: 5px 28px;
   }
+
   .panel-chart-wrap {
     height: 330px;
     margin-bottom: 28px;
