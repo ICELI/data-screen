@@ -2,6 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import 'assets/js/echarts';
+import 'assets/js/swiper/swiper.min.css';
+import 'assets/js/swiper/swiper.min';
 // import 'assets/js/element-ui';
 import 'assets/css/index.scss';
 
