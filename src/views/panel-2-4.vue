@@ -323,7 +323,6 @@
                 },
                 animationEasing: 'cubicOut',
                 animationDelayUpdate: function() {
-                  console.log(arguments)
                 }
               };
               self.barGradient.setOption(option);
