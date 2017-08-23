@@ -327,9 +327,18 @@
       window.clearTimeout(window._time21);
       window.clearTimeout(window._time3);
       window.clearTimeout(window._time8);
+
     },
     mounted() {
       document.querySelector('body').className = document.querySelector('body').className.replace('e4b-bg', '')
+
+      /*var divs = document.getElementsByName('sector');
+      for(var ii=0; ii<divs.length; ii++){
+        var div = divs[ii];
+        var pointer = document.getElementById(div.id.replace('sector_id_', 'sector_point_id_'));
+        var left = pointer.getAttribute('left');
+        pointer.style.left = left + 'px';
+      }*/
 
       this.barGradient = echarts.init(document.getElementById('bar-gradient'));
       window.onresize = () => {
