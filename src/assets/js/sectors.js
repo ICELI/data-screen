@@ -191,9 +191,11 @@ export default function Sectors(para, doc){
                       div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
                       pointer.style.transform = 'scale(1.5, 1.5)';
                       if(dir == 'left'){
-                        pointer.style.left = parseInt(pointer.style.left) - 60 + 'px'
+                        //pointer.style.left = parseInt(pointer.style.left) - 60 + 'px'
+                        pointer.style.transform = 'scale(1.5, 1.5) translateX(-35px)';
                       }else{
-                        pointer.style.left = parseInt(pointer.style.left) + 30 + 'px'
+                        //pointer.style.left = parseInt(pointer.style.left) + 30 + 'px'
+                        pointer.style.transform = 'scale(1.5, 1.5) translateX(30px)';
                       }
                       //
                     }else if(ii == divs.length - 1){
@@ -204,25 +206,31 @@ export default function Sectors(para, doc){
                           div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
                           pointer.style.transform = 'scale(1.5, 1.5)';
                           if(dir == 'left'){
-                            pointer.style.left = parseInt(pointer.style.left) - 60 + 'px'
+                            //pointer.style.left = parseInt(pointer.style.left) - 60 + 'px'
+                            pointer.style.transform = 'scale(1.5, 1.5) translateX(-35px)';
                           }else{
-                            pointer.style.left = parseInt(pointer.style.left) + 30 + 'px'
+                            //pointer.style.left = parseInt(pointer.style.left) + 30 + 'px'
+                            pointer.style.transform = 'scale(1.5, 1.5) translateX(30px)';
                           }
 
                           divs[idx - 1].style.transform = divs[idx - 1].style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)');
                           pre_pointer.style.transform = 'scale(1, 1)';
                           if(pre_dir == 'left'){
-                            pre_pointer.style.left = parseInt(pre_pointer.style.left) + 60 + 'px'
+                            //pre_pointer.style.left = parseInt(pre_pointer.style.left) + 60 + 'px'
+                            pre_pointer.style.transform = 'scale(1, 1) translateX(0)';
                           }else{
-                            pre_pointer.style.left = parseInt(pre_pointer.style.left) - 30 + 'px'
+                            //pre_pointer.style.left = parseInt(pre_pointer.style.left) - 30 + 'px'
+                            pre_pointer.style.transform = 'scale(1, 1) translateX(0px)';
                           }
                           window._time21 = window.setTimeout(function(){
                             div.style.transform = div.style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)');
                             pointer.style.transform = 'scale(1, 1)';
                             if(dir == 'left'){
-                              pointer.style.left = parseInt(pointer.style.left) + 60 + 'px'
+                              //pointer.style.left = parseInt(pointer.style.left) + 60 + 'px'
+                              pointer.style.transform = 'scale(1, 1) translateX(0)';
                             }else{
-                              pointer.style.left = parseInt(pointer.style.left) - 30 + 'px'
+                              //pointer.style.left = parseInt(pointer.style.left) - 30 + 'px'
+                              pointer.style.transform = 'scale(1, 1) translateX(0px)';
                             }
                           }, 3000);
                         }, 3000 * idx + 101);
@@ -235,17 +243,21 @@ export default function Sectors(para, doc){
                           div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
                           pointer.style.transform = 'scale(1.5, 1.5)';
                           if(dir == 'left'){
-                            pointer.style.left = parseInt(pointer.style.left) - 60 + 'px'
+                            //pointer.style.left = parseInt(pointer.style.left) - 60 + 'px'
+                            pointer.style.transform = 'scale(1.5, 1.5) translateX(-35px)';
                           }else{
-                            pointer.style.left = parseInt(pointer.style.left) + 30 + 'px'
+                            //pointer.style.left = parseInt(pointer.style.left) + 30 + 'px'
+                            pointer.style.transform = 'scale(1.5, 1.5) translateX(30px)';
                           }
 
                           divs[idx - 1] && (divs[idx - 1].style.transform = divs[idx - 1].style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)'));
                           pre_pointer.style.transform = 'scale(1, 1)';
                           if(pre_dir == 'left'){
-                            pre_pointer.style.left = parseInt(pre_pointer.style.left) + 60 + 'px'
+                            //pre_pointer.style.left = parseInt(pre_pointer.style.left) + 60 + 'px'
+                            pre_pointer.style.transform = 'scale(1, 1) translateX(0)';
                           }else{
-                            pre_pointer.style.left = parseInt(pre_pointer.style.left) - 30 + 'px'
+                            //pre_pointer.style.left = parseInt(pre_pointer.style.left) - 30 + 'px'
+                            pre_pointer.style.transform = 'scale(1, 1) translateX(0)';
                           }
                         }, 3000 * idx + 100);
                       })(ii);
