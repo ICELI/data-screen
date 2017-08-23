@@ -65,7 +65,7 @@ export default function Sectors(para, doc){
     this.el.style.textAlign = 'center';
     this.el.innerHTML = '';
 
-    var str = '<div id="test" style="width:' + (config.size * 2) + 'px; height:' + (config.size * 2) + 'px; margin: '+ (this.el.offsetHeight - config.size * 2)/2 +'px 20px 0 0; transform:rotate(-90deg); opacity:0; transition-duration:2s; transition-property:all; transition-timing-function:ease; position:relative; overflow:visible; display:inline-block; border:solid 1px #999; border-radius:' + config.size * 2 + 'px;">';
+    var str = '<div id="test" style="width:' + (config.size * 2) + 'px; backface-visibility:hidden; height:' + (config.size * 2) + 'px; margin: '+ (this.el.offsetHeight - config.size * 2)/2 +'px 20px 0 0; transform:rotate(-90deg); opacity:0; transition-duration:2s; transition-property:all; transition-timing-function:ease; position:relative; overflow:visible; display:inline-block; border:solid 1px #999; border-radius:' + config.size * 2 + 'px;">';
     var deg = 0 + config.offset;
     var list = _getRect(this.data, config);
     var left_max = __getMaxOrMin(list.left, 1, list.left[0], 'max');
@@ -79,19 +79,19 @@ export default function Sectors(para, doc){
       str += '<span name="sector_' + id + '_pointer" style="width:20px; transform:scale(0.5, 1); border-radius:40px; transition-duration:0.2s; transition-property:all; transition-timing-function:ease; height:10px; background:' + config.colors[idx] + '; top:' + _y + 'px; left:' + _x + 'PX; display:block; position:absolute; z-index:1000"></span>';
       if(_x < config.size){
         if(_y == left_min){
-          str += '<div id="sector_point_' + id + '_' + idx + '" left="' + (_x - 208 + 30) + '" dir="left" name="sector_' + id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6 - 24) + 'px; font-size:18px; text-align:right; left:' + (_x - 208 + 30) + 'px;"><a num="' + '">' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+          str += '<div id="sector_point_' + id + '_' + idx + '" left="' + (_x - 208 + 30) + '" dir="left" name="sector_' + id + '_tip" style="height:24px; backface-visibility:hidden; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6 - 24) + 'px; font-size:16px; text-align:right; left:' + (_x - 208 + 30) + 'px;"><a num="' + '">' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
         }else if(_y == left_max){
-          str += '<div id="sector_point_' + id + '_' + idx + '" left="' + (_x - 208 + 30) + '" dir="left" name="sector_' + id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6 + 24) + 'px; font-size:18px; text-align:right; left:' + (_x - 208 + 30) + 'px;"><a num="' + '">' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+          str += '<div id="sector_point_' + id + '_' + idx + '" left="' + (_x - 208 + 30) + '" dir="left" name="sector_' + id + '_tip" style="height:24px; backface-visibility:hidden; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6 + 24) + 'px; font-size:16px; text-align:right; left:' + (_x - 208 + 30) + 'px;"><a num="' + '">' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
         }else{
-          str += '<div id="sector_point_' + id + '_' + idx + '" left="' + (_x - 208) + '" dir="left" name="sector_' + id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:18px; text-align:right; left:' + (_x - 208) + 'px;"><a num="' + '">' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+          str += '<div id="sector_point_' + id + '_' + idx + '" left="' + (_x - 208) + '" dir="left" name="sector_' + id + '_tip" style="height:24px; backface-visibility:hidden; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:16px; text-align:right; left:' + (_x - 208) + 'px;"><a num="' + '">' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
         }
       }else{
         if(_y == right_min){
-          str += '<div id="sector_point_' + id + '_' + idx + '" left="' + (_x - 30) + '" dir="right" name="sector_' + id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6 - 24) + 'px; font-size:18px; padding-left:32px; text-align:left; left:' + (_x - 30) + 'px;"><a>' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+          str += '<div id="sector_point_' + id + '_' + idx + '" left="' + (_x - 30) + '" dir="right" name="sector_' + id + '_tip" style="height:24px; backface-visibility:hidden; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6 - 24) + 'px; font-size:16px; padding-left:32px; text-align:left; left:' + (_x - 30) + 'px;"><a>' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
         }else if(_y == right_max){
-          str += '<div id="sector_point_' + id + '_' + idx + '" left="' + (_x - 30) + '" dir="right" name="sector_' + id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6 + 24) + 'px; font-size:18px; padding-left:32px; text-align:left; left:' + (_x - 30) + 'px;"><a>' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+          str += '<div id="sector_point_' + id + '_' + idx + '" left="' + (_x - 30) + '" dir="right" name="sector_' + id + '_tip" style="height:24px; backface-visibility:hidden; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6 + 24) + 'px; font-size:16px; padding-left:32px; text-align:left; left:' + (_x - 30) + 'px;"><a>' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
         }else{
-          str += '<div id="sector_point_' + id + '_' + idx + '" left="' + (_x) + '" dir="right" name="sector_' + id + '_tip" style="height:24px; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:18px; padding-left:32px; text-align:left; left:' + _x + 'px;"><a>' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
+          str += '<div id="sector_point_' + id + '_' + idx + '" left="' + (_x) + '" dir="right" name="sector_' + id + '_tip" style="height:24px; backface-visibility:hidden; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6) + 'px; font-size:16px; padding-left:32px; text-align:left; left:' + _x + 'px;"><a>' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
         }
       }
       deg = deg + 360 * col.percent;
@@ -189,13 +189,13 @@ export default function Sectors(para, doc){
                     var dir = pointer.getAttribute('dir');
                     if(ii == 0){
                       div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
-                      pointer.style.transform = 'scale(1.5, 1.5)';
+                      pointer.style.transform = 'scale(1.2, 1.2)';
                       if(dir == 'left'){
                         //pointer.style.left = parseInt(pointer.style.left) - 60 + 'px'
-                        pointer.style.transform = 'scale(1.5, 1.5) translateX(-35px)';
+                        pointer.style.transform = 'scale(1.2, 1.2) translateX(-15px)';
                       }else{
                         //pointer.style.left = parseInt(pointer.style.left) + 30 + 'px'
-                        pointer.style.transform = 'scale(1.5, 1.5) translateX(30px)';
+                        pointer.style.transform = 'scale(1.2, 1.2) translateX(10px)';
                       }
                       //
                     }else if(ii == divs.length - 1){
@@ -204,13 +204,13 @@ export default function Sectors(para, doc){
                           var pre_pointer = document.getElementById('sector_point_' + id + '_' + (idx - 1));
                           var pre_dir = pre_pointer.getAttribute('dir');
                           div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
-                          pointer.style.transform = 'scale(1.5, 1.5)';
+                          pointer.style.transform = 'scale(1.2, 1.2)';
                           if(dir == 'left'){
                             //pointer.style.left = parseInt(pointer.style.left) - 60 + 'px'
-                            pointer.style.transform = 'scale(1.5, 1.5) translateX(-35px)';
+                            pointer.style.transform = 'scale(1.2, 1.2) translateX(-15px)';
                           }else{
                             //pointer.style.left = parseInt(pointer.style.left) + 30 + 'px'
-                            pointer.style.transform = 'scale(1.5, 1.5) translateX(30px)';
+                            pointer.style.transform = 'scale(1.2, 1.2) translateX(10px)';
                           }
 
                           divs[idx - 1].style.transform = divs[idx - 1].style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)');
@@ -241,13 +241,13 @@ export default function Sectors(para, doc){
                           var pre_pointer = document.getElementById('sector_point_' + id + '_' + (idx - 1));
                           var pre_dir = pre_pointer.getAttribute('dir');
                           div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
-                          pointer.style.transform = 'scale(1.5, 1.5)';
+                          pointer.style.transform = 'scale(1.2, 1.2)';
                           if(dir == 'left'){
                             //pointer.style.left = parseInt(pointer.style.left) - 60 + 'px'
-                            pointer.style.transform = 'scale(1.5, 1.5) translateX(-35px)';
+                            pointer.style.transform = 'scale(1.2, 1.2) translateX(-15px)';
                           }else{
                             //pointer.style.left = parseInt(pointer.style.left) + 30 + 'px'
-                            pointer.style.transform = 'scale(1.5, 1.5) translateX(30px)';
+                            pointer.style.transform = 'scale(1.2, 1.2) translateX(10px)';
                           }
 
                           divs[idx - 1] && (divs[idx - 1].style.transform = divs[idx - 1].style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)'));
