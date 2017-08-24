@@ -1,4 +1,8 @@
- /**
+function $(selector) {
+  return typeof selector === 'string' ? document.querySelectorAll(selector) : selector;
+}
+
+/**
  * 数字跳动
  * @param target
  * @param startVal
@@ -221,35 +225,44 @@ export default function CountUp(target, startVal, endVal, decimals, duration, op
   };
 
 export function bindNumber(data, config, fn){
+  if($('#temp_number').length === 0){
+    let div = document.createElement('div');
+    div.id = 'temp_number';
+    div.innerHTML = '1';
+    div.setAttribute('style', 'display:none;');
 
-  if($('#temp_number').length == 0){
-    $(document.body).append('<div id="temp_number" style="display:none;">1</div>');
+    $(document.body).appendChild(div);
   }
-  if($('#temp_leftter' + config.id).length == 0){
-    $(document.body).append('<div id="temp_leftter'  + config.id + '" style="opacity:0; width:auto; display:inline-block; height:auto; position:fixed; bottom:0;">1</div>');
+  if($('#temp_leftter' + config.id).length === 0){
+    let div = document.createElement('div');
+    div.id = 'temp_leftter' + config.id;
+    div.innerHTML = '1';
+    div.setAttribute('style', 'opacity:0; width:auto; display:inline-block; height:auto; position:fixed; bottom:0;');
+
+    $(document.body).appendChild(div);
   }
-  if($('#temp_pointer' + config.id).length == 0){
-    $(document.body).append('<div id="temp_pointer'  + config.id + '" style="opacity:0; width:auto; display:inline-block; height:auto; position:fixed; bottom:0;">.</div>');
+  if($('#temp_pointer' + config.id).length === 0){
+    let div = document.createElement('div');
+    div.id = 'temp_pointer' + config.id;
+    div.innerHTML = '.';
+    div.setAttribute('style', 'opacity:0; width:auto; display:inline-block; height:auto; position:fixed; bottom:0;');
+
+    $(document.body).appendChild(div);
   }
-  $('#temp_leftter' + config.id).css({
-    'font-size': config.size.replace('px', '') + 'px'
-  });
-  $('#temp_pointer' + config.id).css({
-    'font-size': config.size.replace('px', '') + 'px'
-  });
+  $('#temp_leftter' + config.id)[0].style.fontSize = config.size.replace('px', '') + 'px';
+  $('#temp_pointer' + config.id)[0].style.fontSize = config.size.replace('px', '') + 'px';
+
   var numbers = [];
-  var els = $('#' + (config.id || '')).find('a[' + (config.attr || 'num') + ']');
+  var els = $('#' + (config.id || '') + ' a[' + (config.attr || 'num') + ']');
 
-  if(data && (typeof data == 'object')){
+  if(data && (typeof data === 'object')){
     for(var attr in data){
       if(data.hasOwnProperty(attr)){
-        els.each(function(){
-          var self = $(this);
-          self.css({
-            'font-size': config.size.replace('px', '') + 'px'
-          });
+        els.forEach(function(v){
+          var self = v;
+          self.style.fontSize = config.size.replace('px', '') + 'px';
           __setNumber(self, attr, data, fn);
-          if(self.attr(config.attr) == attr){
+          if(self.getAttribute(config.attr) === attr){
             __define(data, attr);
           }
         });
@@ -258,7 +271,7 @@ export function bindNumber(data, config, fn){
   }
 
   function __setNumber(obj, attr, data, fn){
-    if(obj.attr((config.attr || 'num')) == attr){
+    if(obj.getAttribute((config.attr || 'num')) === attr){
       var val = (data[attr] || 0) + '';
       var decimals = 0;
       if(val.indexOf('.') > -1){
@@ -275,7 +288,7 @@ export function bindNumber(data, config, fn){
         //suffix: config.unit ? data[config.unit] : ''
       });
       number.decimals = ((number.endVal + '').indexOf('.') > -1) ? (number.endVal + '').substring((number.endVal + '').indexOf('.') + 1, (number.endVal + '').length) : 0
-      number.d = obj[0];
+      number.d = obj;
       number.d.style.width = __setFontSize(data[attr], number.d) + 'px'
       number._attr = attr;
       number.start();
@@ -291,9 +304,9 @@ export function bindNumber(data, config, fn){
     var width = 0;
     var padding = parseInt(obj.style.paddingLeft || 0) + parseInt(obj.style.paddingRight || 0);
     if(String(value).indexOf('.') > -1){
-      width = parseFloat($('#temp_leftter' + config.id).css('width')) * ((String((value || 0).toFixed(config.decimals || 0)).length - 1)) + parseFloat($('#temp_pointer' + config.id).css('width'));
+      width = parseFloat($('#temp_leftter' + config.id)[0].style.width) * ((String((value || 0).toFixed(config.decimals || 0)).length - 1)) + parseFloat($('#temp_pointer' + config.id)[0].style.width);
     }else{
-      width = parseFloat($('#temp_leftter' + config.id).css('width')) * (String((value || 0).toFixed(config.decimals || 0)).length)
+      width = parseFloat($('#temp_leftter' + config.id)[0].style.width) * (String((value || 0).toFixed(config.decimals || 0)).length)
     }
     return width + padding;
   }
@@ -313,7 +326,7 @@ export function bindNumber(data, config, fn){
   function __getNumber(attr){
     var rs = null;
     numbers && numbers.forEach(function(ele){
-      if(ele.attr == attr){
+      if(ele.attr === attr){
         rs = ele.value;
         var val = rs.endVal + "";
         var decimals = 0;
