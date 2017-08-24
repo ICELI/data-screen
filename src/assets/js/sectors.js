@@ -76,7 +76,7 @@ export default function Sectors(para, doc){
     this.data && config.colors && (config.colors.length >= this.data.length) && this.data.forEach(function(col, idx){
       var _x = Math.sin(((0 - 360 * col.percent * 0.5) - deg) * (Math.PI / 180)) * (config.size) + (config.size) - 12;
       var _y = (config.size) - Math.cos(((0 - 360 * col.percent * 0.5) - deg) * (Math.PI / 180)) * (config.size) - 5;
-      str += '<span name="sector_' + id + '_pointer" style="width:20px; transform:scale(0.5, 1); border-radius:40px; transition-duration:0.2s; transition-property:all; transition-timing-function:ease; height:10px; background:' + config.colors[idx] + '; top:' + _y + 'px; left:' + _x + 'PX; display:block; position:absolute; z-index:1000"></span>';
+      str += '<span name="sector_' + id + '_pointer" style="width:20px; transform:scale(0.5, 1); border-radius:40px; transition-duration:0.5s; transition-property:all; transition-timing-function:ease; height:10px; background:' + config.colors[idx] + '; top:' + _y + 'px; left:' + _x + 'PX; display:block; position:absolute; z-index:1000"></span>';
       if(_x < config.size){
         if(_y == left_min){
           str += '<div id="sector_point_' + id + '_' + idx + '" left="' + (_x - 208 + 30) + '" dir="left" name="sector_' + id + '_tip" style="height:24px; backface-visibility:hidden; opacity:0; width:200px; transition-duration:1s; transition-property:all; transition-timing-function:ease; color:#C9ECFF; position:absolute; top:' + (_y - 6 - 24) + 'px; font-size:16px; text-align:right; left:' + (_x - 208 + 30) + 'px;"><a num="' + '">' + col.industry + ' </a><a num="' + col.percent * 100 + '"></a></div>';
