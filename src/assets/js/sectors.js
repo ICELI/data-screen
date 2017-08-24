@@ -173,7 +173,6 @@ export default function Sectors(para, doc){
           if(i == divs.length - 1){
             window._time6 = window.setTimeout(function(){
               __animation();
-
               window._time = window.setInterval(function(){
                 __animation();
               }, 33000);
@@ -190,6 +189,7 @@ export default function Sectors(para, doc){
                     if(ii == 0){
                       div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
                       pointer.style.transform = 'scale(1.2, 1.2)';
+                      pointers[ii].style.transform = 'scale(1.3, 1.3)';
                       if(dir == 'left'){
                         //pointer.style.left = parseInt(pointer.style.left) - 60 + 'px'
                         pointer.style.transform = 'scale(1.2, 1.2) translateX(-15px)';
@@ -205,6 +205,7 @@ export default function Sectors(para, doc){
                           var pre_dir = pre_pointer.getAttribute('dir');
                           div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
                           pointer.style.transform = 'scale(1.2, 1.2)';
+                          pointers[idx].style.transform = 'scale(1.3, 1.3)';
                           if(dir == 'left'){
                             //pointer.style.left = parseInt(pointer.style.left) - 60 + 'px'
                             pointer.style.transform = 'scale(1.2, 1.2) translateX(-15px)';
@@ -215,6 +216,7 @@ export default function Sectors(para, doc){
 
                           divs[idx - 1].style.transform = divs[idx - 1].style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)');
                           pre_pointer.style.transform = 'scale(1, 1)';
+                          pointers[idx - 1].style.transform = 'scale(1, 1)';
                           if(pre_dir == 'left'){
                             //pre_pointer.style.left = parseInt(pre_pointer.style.left) + 60 + 'px'
                             pre_pointer.style.transform = 'scale(1, 1) translateX(0)';
@@ -225,6 +227,7 @@ export default function Sectors(para, doc){
                           window._time21 = window.setTimeout(function(){
                             div.style.transform = div.style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)');
                             pointer.style.transform = 'scale(1, 1)';
+                            pointers[idx].style.transform = 'scale(1, 1)';
                             if(dir == 'left'){
                               //pointer.style.left = parseInt(pointer.style.left) + 60 + 'px'
                               pointer.style.transform = 'scale(1, 1) translateX(0)';
@@ -239,9 +242,10 @@ export default function Sectors(para, doc){
                       (function(idx){
                         window._time2 = window.setTimeout(function(){
                           var pre_pointer = document.getElementById('sector_point_' + id + '_' + (idx - 1));
-                          var pre_dir = pre_pointer.getAttribute('dir');
+                          var pre_dir = pre_pointer ? pre_pointer.getAttribute('dir') : 'left';
                           div.style.transform = div.style.transform.replace('scale(1, 1)', 'scale(1.2, 1.2)');
                           pointer.style.transform = 'scale(1.2, 1.2)';
+                          pointers[idx].style.transform = 'scale(1.3, 1.3)';
                           if(dir == 'left'){
                             //pointer.style.left = parseInt(pointer.style.left) - 60 + 'px'
                             pointer.style.transform = 'scale(1.2, 1.2) translateX(-15px)';
@@ -252,6 +256,7 @@ export default function Sectors(para, doc){
 
                           divs[idx - 1] && (divs[idx - 1].style.transform = divs[idx - 1].style.transform.replace('scale(1.2, 1.2)', 'scale(1, 1)'));
                           pre_pointer.style.transform = 'scale(1, 1)';
+                          pointers[idx - 1].style.transform = 'scale(1, 1)';
                           if(pre_dir == 'left'){
                             //pre_pointer.style.left = parseInt(pre_pointer.style.left) + 60 + 'px'
                             pre_pointer.style.transform = 'scale(1, 1) translateX(0)';
