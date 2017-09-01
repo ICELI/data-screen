@@ -103,7 +103,7 @@
           return {
             industry: v.industry,
             percent: v.percent / 100,
-            radius: industryPercent[i],
+            radius: v.radius > 0.5 ? v.radius : (0.4 + 0.1 * v.radius), // 保证所有扇区可见又能用老数据（0.4 开始可见），小于0.5的按比例控制在0.4~0.5范围内
           }
         });
 
