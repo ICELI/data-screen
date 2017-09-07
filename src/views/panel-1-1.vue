@@ -44,7 +44,7 @@
             <div class="panel-content panel-list-wrap">
               <div class="panel-dashboard">
                 <h3 class="text-primary"><a num2="consultancyInquiriesNum">{{consultancyInquiriesNum}}</a></h3>
-                <p class="text-default">企业咨询次数</p>
+                <p class="text-default">主动咨询企业数</p>
               </div>
             </div>
           </div>
