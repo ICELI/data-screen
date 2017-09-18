@@ -19,11 +19,6 @@
                 <td class="t-bar">{{item.userNum}}</td>
               </tr>
             </table>
-            <!--<div class="top-bar" v-for="(item, index) in platformUser">-->
-            <!--<span class="t-bar">Top{{ index + 1 }} {{item.area}}</span>-->
-            <!--<span class="t-bar bar-wrap"><b :style="{width: 150 * item.percent + 'px'}">178</b></span>-->
-            <!--<span class="t-bar">{{item.userNum}}</span>-->
-            <!--</div>-->
           </div>
         </div>
       </div>
@@ -43,9 +38,6 @@
         <div class="panel-wrap" style="position:relative;">
           <h3 class="panel-title">Total Amount of Goods <span class="title-number"><a num="goodsNum"></a></span></h3>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-          <!--<div id="bar-gradient-masker" style="width:100%; opacity:0.9; position:absolute; height:234px; padding:50px 50px 70px 160px;">
-            <div style="width:100%; height:100%; background:#ff0000;"></div>
-          </div>-->
           <div class="panel-content panel-chart-wrap" id="bar-gradient"></div>
         </div>
       </div>
@@ -197,7 +189,7 @@
               show: false
             },
             axisLabel: {
-              formatter: '{value}万',
+              formatter: '{value}',
               textStyle: {
 //                align: 'right',
                 fontSize: 20
@@ -219,7 +211,6 @@
                 normal: {color: 'rgba(198,236,255,0.16)'}
               },
               barGap: '-100%',
-              symbol: 'path://M0,24.7c10.9-32.94,74.51-32.94,85.41,0Z',
               barCategoryGap: '40%',
               data: dataShadow,
               animation: false,
@@ -332,14 +323,6 @@
     mounted() {
       document.querySelector('body').className = document.querySelector('body').className.replace('e4b-bg', '')
 
-      /*var divs = document.getElementsByName('sector');
-      for(var ii=0; ii<divs.length; ii++){
-        var div = divs[ii];
-        var pointer = document.getElementById(div.id.replace('sector_id_', 'sector_point_id_'));
-        var left = pointer.getAttribute('left');
-        pointer.style.left = left + 'px';
-      }*/
-
       this.barGradient = echarts.init(document.getElementById('bar-gradient'));
       window.onresize = () => {
         this.barGradient.resize();
@@ -391,6 +374,9 @@
     text-align: left;
     &:nth-child(1n+3) {
       top: 24px;
+    }
+    .lab {
+      margin-right: 10px;
     }
   }
 </style>
