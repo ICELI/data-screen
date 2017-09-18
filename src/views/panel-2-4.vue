@@ -1,5 +1,5 @@
 <template>
-  <div id="situation-data" class="panel-1-4">
+  <div id="situation-data" class="panel-2-4">
     <h1 class="page-title">运营概况</h1>
 
     <!-- situation start -->

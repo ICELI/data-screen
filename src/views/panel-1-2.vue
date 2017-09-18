@@ -1,20 +1,20 @@
 <template>
-  <div class="panel-1-2">
-    <h1 class="page-title">覆盖全球各国、经营全品类</h1>
+  <div class="panel-1-2 lang-en">
+    <h1 class="page-title">GLOBAL REACH ＆ FULL-LINE</h1>
     <div class="world-map-wrap">
       <div class="world-map-bg" :class="'world-map-bg' + currentIndex"></div>
       <div id="worldMap"></div>
       <div class="tips-list-wrap">
         <ul>
           <li v-for="(item,index) in worldMapData" :class="{active: currentIndex == index}">
-            <h3>涉及品类 <span class="text-primary">{{item.typeNum}}</span></h3>
+            <h3>Categories <span class="text-primary">{{item.typeNum}}</span></h3>
             <p>{{item.detailType}}</p>
           </li>
         </ul>
       </div>
     </div>
     <div class="panel-wrap" id="world-country">
-      <h3 class="panel-title">入驻国家馆国家数累计 <span class="title-number"><a num="countryTotal">{{countryTotal}}</a></span>
+      <h3 class="panel-title">Countries in JUMORE National Pavilion <span class="title-number"><a num="countryTotal">{{countryTotal}}</a></span>
       </h3>
       <div class="panel-content panel-swiper-wrap">
         <div class="swiper-container">
@@ -350,19 +350,19 @@
     li {
       position: absolute;
       display: inline-block;
-      width: 180px;
-      height: 110px;
+      width: 198px;
+      height: 112px;
       padding: 12px;
       border: 2px solid #2788e8;
       border-radius: 16px;
       h3 {
-        margin: 0 0 10px;
+        margin: 0 0 6px;
         font-size: 24px;
         font-weight: normal;
       }
       p {
-        font-size: 20px;
-        line-height: 24px;
+        font-size: 18px;
+        line-height: 18px;
       }
       &.active {
         border-color: $activeColor;

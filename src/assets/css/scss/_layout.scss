@@ -144,9 +144,9 @@ ul, li, p {
   margin-right: -200px;
 
   li {
-    float: left;
-    width: 160px;
-    margin: 20px 100px 100px 54px;
+    display: inline-block;
+    min-width: 210px;
+    margin: 20px 0 100px 54px;
     font-size: 20px;
     line-height: 30px;
     p {
@@ -252,4 +252,19 @@ li.pointer:nth-child(5) {
 
 .pr20 {
   padding-right: 20px;
+}
+
+.lang-en {
+  * {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  }
+  .panel-title {
+    font-size: 22px;
+  }
+  .panel-list-header {
+    font-size: 18px;
+  }
+  .page-title {
+    font-size: 38px;
+  }
 }

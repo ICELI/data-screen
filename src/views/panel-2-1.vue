@@ -1,5 +1,5 @@
 <template>
-  <div class="panel-1-1">
+  <div class="panel-2-1">
     <div class="e4b-title">
       <img src="../assets/img/e4b-title-cn.png" alt="聚贸E4B跨境电商全国布局">
     </div>

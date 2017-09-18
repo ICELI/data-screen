@@ -1,5 +1,5 @@
 <template>
-  <div class="panel-1-2">
+  <div class="panel-2-2">
     <h1 class="page-title">覆盖中国各省、经营全品类</h1>
     <div class="china-map-wrap">
       <div class="china-map-bg" :class="'china-map-bg' + currentIndex"></div>

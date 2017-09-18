@@ -1,12 +1,12 @@
 <template>
-  <div id="situation-data" class="panel-1-4">
-    <h1 class="page-title">运营概况</h1>
+  <div id="situation-data" class="panel-1-4 lang-en">
+    <h1 class="page-title">OPERATIONS OVERVIEW</h1>
 
     <!-- situation start -->
     <div class="pure-g situation-top">
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h3 class="panel-title">平台用户数累计 <span class="title-number"><a num="platformUserNum"></a>万</span>
+          <h3 class="panel-title">Total Users <span class="title-number"><a num="platformUserNum"></a></span>
           </h3>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
           <div class="panel-content panel-bar-wrap">
@@ -29,7 +29,7 @@
       </div>
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h4 class="panel-title">行业交易占比</h4>
+          <h4 class="panel-title">Transaction% of 11 Platforms</h4>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
           <div class="panel-content panel-chart-wrap" id="sectors"></div>
         </div>
@@ -41,7 +41,7 @@
     <div class="pure-g situation-middle">
       <div class="pure-u-1-1">
         <div class="panel-wrap" style="position:relative;">
-          <h3 class="panel-title">商品数累计 <span class="title-number"><a num="goodsNum"></a>万</span></h3>
+          <h3 class="panel-title">Total Amount of Goods <span class="title-number"><a num="goodsNum"></a></span></h3>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
           <!--<div id="bar-gradient-masker" style="width:100%; opacity:0.9; position:absolute; height:234px; padding:50px 50px 70px 160px;">
             <div style="width:100%; height:100%; background:#ff0000;"></div>
@@ -58,7 +58,7 @@
         <div class="panel-wrap">
           <div class="panel-content panel-ring-wrap">
             <div id="ring"></div>
-            <div class="order-increase"><i></i> <span>较前一日上升</span> <span class="text-primary"><a
+            <div class="order-increase"><i></i> <span>Up from Yesterday</span> <span class="text-primary"><a
               num="intentionOrder"></a>%</span></div>
           </div>
 
@@ -306,9 +306,9 @@
         let yesterdayOrder = this.intentionOrder.yesterdayOrder;
 
         this.ring.setData([
-          {name: '累计意向订单数', value: 0.75, display: totalOrder, unit: '万+'},
-          {name: '昨日意向订单', value: 0.25, display: yesterdayOrder, unit: ''},
-          {name: '订单转化', value: convertRatio / 100, display: convertRatio, unit: '%'}
+          {name: 'Total Orders', value: 0.75, display: totalOrder, unit: '+'},
+          {name: 'Yesterday’s Orders', value: 0.25, display: yesterdayOrder, unit: ''},
+          {name: 'Conversion Rate', value: convertRatio / 100, display: convertRatio, unit: '%'}
         ]);
 
         this.number.intentionOrder = +this.intentionOrder.upgrateRatio.replace('%', '');

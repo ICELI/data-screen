@@ -1,5 +1,5 @@
 <template>
-  <div id="transaction-data" class="panel-1-3">
+  <div id="transaction-data" class="panel-2-3">
     <h1 class="page-title">实时交易数据</h1>
 
     <!-- transaction start -->

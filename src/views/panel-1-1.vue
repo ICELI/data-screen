@@ -1,5 +1,5 @@
 <template>
-  <div class="panel-1-1">
+  <div class="panel-1-1 lang-en">
     <div class="e4b-title">
       <img src="../assets/img/e4b-title-en.png" alt="聚贸E4B跨境电商全球体系">
     </div>
@@ -11,7 +11,7 @@
       <div class="pure-g e4b-info" id="idx_0">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">服务企业数 <span class="title-number"><a num="financeTotal"></a></span>
+            <h3 class="panel-title">Companies We Serve <span class="title-number"><a num="financeTotal"></a></span>
             </h3>
             <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
             <div class="panel-content panel-chart-wrap" id="doughnut">
@@ -26,7 +26,7 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">融资金额占比</h3>
+            <h3 class="panel-title">Proportion by Financing Type</h3>
             <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
             <div class="panel-content panel-chart-wrap panel-ring-wrap" id="barPolarStack2">
             </div>
@@ -39,24 +39,24 @@
       <div class="pure-g e4b-info" id="idx_1">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">{{currentYear}}增量 <span class="title-number"><a num="consultancyInquiriesIncrease"></a></span>
+            <h3 class="panel-title">New Consultations in {{currentYear}} <span class="title-number"><a num="consultancyInquiriesIncrease"></a></span>
             </h3>
             <div class="panel-content panel-list-wrap">
               <div class="panel-dashboard">
                 <h3 class="text-primary"><a num2="consultancyInquiriesNum">{{consultancyInquiriesNum}}</a></h3>
-                <p class="text-default">主动咨询企业数</p>
+                <p class="text-default">Consultations</p>
               </div>
             </div>
           </div>
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">咨询服务 <span class="title-number"><a num="consultationServiceTotal"></a></span></h3>
+            <h3 class="panel-title">Consultations in {{currentYear}} <span class="title-number"><a num="consultationServiceTotal"></a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-9-24">种类</div>
-                <div class="pure-u-6-24">数量</div>
-                <div class="pure-u-9-24">增量（{{currentYear}}）</div>
+                <div class="pure-u-9-24">Type</div>
+                <div class="pure-u-6-24">Amt.</div>
+                <div class="pure-u-9-24">Increment</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
@@ -78,13 +78,13 @@
       <div class="pure-g e4b-info" id="idx_2">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">热门运力 <span class="title-number"><a num="transProportionTotal"></a></span>
+            <h3 class="panel-title">Hot Lines <span class="title-number"><a num="transProportionTotal"></a></span>
             </h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-14-24">跨境线路</div>
-                <div class="pure-u-4-24">数量</div>
-                <div class="pure-u-6-24">运输方式</div>
+                <div class="pure-u-14-24">Cross-border Route</div>
+                <div class="pure-u-4-24">Amt.</div>
+                <div class="pure-u-6-24">Transport</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
@@ -100,7 +100,7 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">运输方式</h3>
+            <h3 class="panel-title">Transportation in %</h3>
             <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
             <div class="panel-content panel-chart-wrap panel-ring-wrap" id="barPolarStack"></div>
           </div>
@@ -112,20 +112,20 @@
       <div class="pure-g e4b-info" id="idx_3">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">覆盖品类数 <span class="title-number"><a num="certificationCoverItemNumTotal"></a></span>
+            <h3 class="panel-title">Certified Products <span class="title-number"><a num="certificationCoverItemNumTotal"></a></span>
             </h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-7-24">名称</div>
-                <div class="pure-u-9-24">覆盖品类数</div>
-                <div class="pure-u-8-24">认证企业数</div>
+                <div class="pure-u-7-24">Industry</div>
+                <div class="pure-u-8-24">Category</div>
+                <div class="pure-u-9-24">Cert. Companies</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
                   <div class="pure-g" v-for="item in certification.coverItemNum.slice(0, -1)">
                     <div class="pure-u-7-24 pr20">{{item.industry}}</div>
-                    <div class="pure-u-9-24 text-primary">{{item.itemNum}}</div>
-                    <div class="pure-u-8-24 text-primary">{{item.companyNum}}</div>
+                    <div class="pure-u-8-24 text-primary">{{item.itemNum}}</div>
+                    <div class="pure-u-9-24 text-primary">{{item.companyNum}}</div>
                   </div>
                 </div>
               </div>
@@ -134,13 +134,13 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">认证体系 <span class="title-number"><a
+            <h3 class="panel-title">Certification in {{currentYear}} <span class="title-number"><a
               num="certificationCoverCertifySysTotal"></a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-9-24">种类</div>
-                <div class="pure-u-6-24">数量</div>
-                <div class="pure-u-9-24">增量（{{currentYear}}）</div>
+                <div class="pure-u-9-24">Category</div>
+                <div class="pure-u-6-24">Amt.</div>
+                <div class="pure-u-9-24">Increment</div>
               </div>
               <div class="panel-list-content">
                 <div :class="certification.certifySys.length < 7 ? 'panel-list-line5' : 'panel-list-scroll'">
@@ -162,12 +162,12 @@
       <div class="pure-g e4b-info" id="idx_4">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">聚贸大宗商品交易价格</h3>
+            <h3 class="panel-title">JUMORE Commodity Price</h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-9-24">名称</div>
-                <div class="pure-u-9-24">价格（月末）</div>
-                <div class="pure-u-6-24">幅度</div>
+                <div class="pure-u-9-24">Commodity</div>
+                <div class="pure-u-9-24">Price (E.O.M)</div>
+                <div class="pure-u-6-24">Change</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
@@ -185,12 +185,12 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">聚贸行情指数</h3>
+            <h3 class="panel-title">JUMORE Price Index</h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-9-24">种类</div>
-                <div class="pure-u-9-24">数值</div>
-                <div class="pure-u-6-24">幅度</div>
+                <div class="pure-u-9-24">Commodity</div>
+                <div class="pure-u-9-24">Index</div>
+                <div class="pure-u-6-24">Change</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
@@ -213,12 +213,12 @@
       <div class="pure-g e4b-info" id="idx_5">
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">需求数</h3>
+            <h3 class="panel-title">Problem Classification</h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-9-24">种类</div>
-                <div class="pure-u-6-24">数量</div>
-                <div class="pure-u-9-24">增量（{{currentYear}}）</div>
+                <div class="pure-u-9-24">Category</div>
+                <div class="pure-u-6-24">Amt.</div>
+                <div class="pure-u-9-24">Increment</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
@@ -235,13 +235,13 @@
         </div>
         <div class="pure-u-1-2">
           <div class="panel-wrap">
-            <h3 class="panel-title">解决方案数 <span class="title-number"><a num="technologySolutionNumTotal"></a></span>
+            <h3 class="panel-title">Resolutions <span class="title-number"><a num="technologySolutionNumTotal"></a></span>
             </h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-9-24">种类</div>
-                <div class="pure-u-6-24">数量</div>
-                <div class="pure-u-9-24">增量（{{currentYear}}）</div>
+                <div class="pure-u-9-24">Category</div>
+                <div class="pure-u-6-24">Amt.</div>
+                <div class="pure-u-9-24">Increment</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
@@ -405,7 +405,7 @@
             {
               name: '访问来源',
               type: 'pie',
-              radius: ['35%', '50%'],
+              radius: ['38%', '50%'],
               avoidLabelOverlap: false,
               label: {
                 normal: {
@@ -574,4 +574,17 @@
   transform-style: preserve-3d;
   transform: perspective(400px) rotateY(0deg) translateZ(0px);
 }
+
+.panel-1-1 {
+  .e4b-title {
+    padding-top: 16px;
+  }
+  #doughnut {
+    height: 240px;
+  }
+  .doughnut-legend-wrap {
+    padding-top: 38px;
+  }
+}
+
 </style>

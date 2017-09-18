@@ -1,23 +1,23 @@
 <template>
-  <div id="transaction-data" class="panel-1-3">
-    <h1 class="page-title">实时交易数据</h1>
+  <div id="transaction-data" class="panel-1-3 lang-en">
+    <h1 class="page-title">REAL-TIME PLATFORM TRAFFIC</h1>
 
     <!-- transaction start -->
     <div class="pure-g transaction-top">
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h4 class="panel-title color-green">今日访客累计 <span class="title-number"><a num="todayVisitorNum"></a></span>
+          <h4 class="panel-title color-green">Today’s Visitors <span class="title-number"><a num="todayVisitorNum"></a></span>
           </h4>
-          <h4 class="panel-title color-pink">昨日访客 <span> {{realTimeTradeTotal.yestodayVisitorNum}}</span></h4>
+          <h4 class="panel-title color-pink">Yesterday’s Visitors <span> {{realTimeTradeTotal.yestodayVisitorNum}}</span></h4>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
           <div class="panel-content panel-chart-wrap" id="lineX"></div>
         </div>
       </div>
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h4 class="panel-title color-yellow">今日意向订单累计 <span class="title-number"><a
+          <h4 class="panel-title color-yellow">Today’s Intended Orders <span class="title-number"><a
             num="todayIntentionOrder"></a></span></h4>
-          <h4 class="panel-title color-purple">昨日意向订单 <span> {{realTimeTradeTotal.yestodayIntentionOrder}}</span></h4>
+          <h4 class="panel-title color-purple">Yesterday’s Intended Orders <span> {{realTimeTradeTotal.yestodayIntentionOrder}}</span></h4>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
           <div class="panel-content panel-chart-wrap" id="lineX2"></div>
         </div>
@@ -29,14 +29,14 @@
     <div class="pure-g transaction-middle">
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h3 class="panel-title">今日新增用户累计 <span class="title-number"><a num="todayIncreaseUser"></a></span></h3>
+          <h3 class="panel-title">Today’s New Users <span class="title-number"><a num="todayIncreaseUser"></a></span></h3>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
           <div class="panel-content panel-chart-wrap" id="lineArea"></div>
         </div>
       </div>
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h3 class="panel-title clearfix"><span class="pull-right">出口国家</span>今日报关量</h3>
+          <h3 class="panel-title clearfix"><span class="pull-right">Destination</span>Today’s  Declarations</h3>
           <div class="panel-content panel-list-wrap">
             <div class="panel-list-content">
               <div class="panel-list-scroll">
@@ -57,13 +57,13 @@
     <div class="pure-g transaction-bottom">
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h3 class="panel-title clearfix">实时访客</h3>
+          <h3 class="panel-title clearfix">Real-time Visitors</h3>
           <div class="panel-content panel-list-wrap">
             <div class="panel-list-content">
               <div class="panel-list-scroll">
                 <div class="clearfix" v-for="item in realTimeVisitor">
                   <span class="panel-list-time pull-right">{{item.time}}</span>
-                  <span class="panel-list-label text-warning">访客</span>{{item.visitor}}
+                  <span class="panel-list-label text-warning">Visitor</span>{{item.visitor}}
                 </div>
 
               </div>
@@ -73,7 +73,7 @@
       </div>
       <div class="pure-u-1-2">
         <div class="panel-wrap">
-          <h3 class="panel-title clearfix">今日新增商机累计 <span class="title-number"><a num="todayIncreaseBusiTotal">{{todayIncreaseBusiTotal}}</a></span>
+          <h3 class="panel-title clearfix">Today’s New Leads <span class="title-number"><a num="todayIncreaseBusiTotal">{{todayIncreaseBusiTotal}}</a></span>
           </h3>
           <div class="panel-content panel-list-wrap">
             <div class="panel-list-content">
