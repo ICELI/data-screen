@@ -16,7 +16,7 @@
                 <td class="t-bar">
                   <div class="bar-wrap"><b :style="{width: 150 * item.percent + 'px'}">178</b></div>
                 </td>
-                <td class="t-bar">{{item.userNum}}</td>
+                <td class="t-bar">{{item.userNum | formatNumber}}</td>
               </tr>
             </table>
           </div>

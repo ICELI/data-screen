@@ -62,8 +62,8 @@
                 <div class="panel-list-scroll">
                   <div class="pure-g" v-for="item in consultationService">
                     <div class="pure-u-9-24 pr20">{{item.type}}</div>
-                    <div class="pure-u-6-24 text-primary">{{item.total}}</div>
-                    <div class="pure-u-9-24 text-danger">+{{item.increase}}</div>
+                    <div class="pure-u-6-24 text-primary">{{item.total | formatNumber}}</div>
+                    <div class="pure-u-9-24 text-danger">+{{item.increase | formatNumber}}</div>
                   </div>
 
                 </div>
@@ -125,7 +125,7 @@
                   <div class="pure-g" v-for="item in certification.coverItemNum.slice(0, -1)">
                     <div class="pure-u-7-24 pr20">{{item.industry}}</div>
                     <div class="pure-u-8-24 text-primary">{{item.itemNum}}</div>
-                    <div class="pure-u-9-24 text-primary">{{item.companyNum}}</div>
+                    <div class="pure-u-9-24 text-primary">{{item.companyNum | formatNumber}}</div>
                   </div>
                 </div>
               </div>
@@ -146,7 +146,7 @@
                 <div :class="certification.certifySys.length < 7 ? 'panel-list-line5' : 'panel-list-scroll'">
                   <div class="pure-g" v-for="item in certification.certifySys.slice(0, -1)">
                     <div class="pure-u-9-24 pr20">{{item.type}}</div>
-                    <div class="pure-u-6-24 text-primary">{{item.total}}</div>
+                    <div class="pure-u-6-24 text-primary">{{item.total | formatNumber}}</div>
                     <div class="pure-u-9-24 text-danger">+{{item.increase}}</div>
                   </div>
 
@@ -173,7 +173,7 @@
                 <div class="panel-list-scroll">
                   <div class="pure-g" v-for="item in spotFuturesPrice">
                     <div class="pure-u-9-24 pr20">{{item.commodity}}</div>
-                    <div class="pure-u-9-24 text-primary">{{item.dayPrice}}</div>
+                    <div class="pure-u-9-24 text-primary">{{item.dayPrice | formatNumber}}</div>
                     <div class="pure-u-6-24 text-danger" v-if="item.change.indexOf('-') == -1">+{{item.change}}</div>
                     <div class="pure-u-6-24 text-success" v-else="">{{item.change}}</div>
                   </div>
@@ -196,7 +196,7 @@
                 <div class="panel-list-scroll">
                   <div class="pure-g" v-for="item in commodityPriceIndex">
                     <div class="pure-u-11-24 pr20">{{item.products}}</div>
-                    <div class="pure-u-7-24 text-primary">{{item.index}}</div>
+                    <div class="pure-u-7-24 text-primary">{{item.index | formatNumber}}</div>
                     <div class="pure-u-6-24 text-danger" v-if="item.change.indexOf('-') == -1">+{{item.change}}</div>
                     <div class="pure-u-6-24 text-success" v-else="">{{item.change}}</div>
                   </div>
@@ -224,7 +224,7 @@
                 <div class="panel-list-scroll">
                   <div class="pure-g" v-for="item in technology.demandNum.slice(0, -1)">
                     <div class="pure-u-9-24 pr20">{{item.type}}</div>
-                    <div class="pure-u-6-24 text-primary">{{item.total}}</div>
+                    <div class="pure-u-6-24 text-primary">{{item.total | formatNumber}}</div>
                     <div class="pure-u-9-24 text-danger">+{{item.increase}}</div>
                   </div>
 
@@ -247,7 +247,7 @@
                 <div class="panel-list-scroll">
                   <div class="pure-g" v-for="item in technology.solutionNum.slice(0, -1)">
                     <div class="pure-u-9-24 pr20">{{item.type}}</div>
-                    <div class="pure-u-6-24 text-primary">{{item.total}}</div>
+                    <div class="pure-u-6-24 text-primary">{{item.total | formatNumber}}</div>
                     <div class="pure-u-9-24 text-danger">+{{item.increase}}</div>
                   </div>
 
