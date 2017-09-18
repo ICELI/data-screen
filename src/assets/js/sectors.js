@@ -280,7 +280,7 @@ export default function Sectors(para, doc){
             var num = new CountUp('temp_' + id, 0, parseFloat(numbers[i].getAttribute('num')), 0, 2, {
               useEasing : true,
               useGrouping : true,
-              separator : '',
+              separator : ',',
               decimal : '.',
               suffix: '%'
             });

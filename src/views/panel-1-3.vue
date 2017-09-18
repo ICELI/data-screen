@@ -8,7 +8,7 @@
         <div class="panel-wrap">
           <h4 class="panel-title color-green">Today’s Visitors <span class="title-number"><a num="todayVisitorNum"></a></span>
           </h4>
-          <h4 class="panel-title color-pink">Yesterday’s Visitors <span> {{realTimeTradeTotal.yestodayVisitorNum}}</span></h4>
+          <h4 class="panel-title color-pink">Yesterday’s Visitors <span> {{realTimeTradeTotal.yestodayVisitorNum | formatNumber}}</span></h4>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
           <div class="panel-content panel-chart-wrap" id="lineX"></div>
         </div>
@@ -17,7 +17,7 @@
         <div class="panel-wrap">
           <h4 class="panel-title color-yellow">Today’s Intended Orders <span class="title-number"><a
             num="todayIntentionOrder"></a></span></h4>
-          <h4 class="panel-title color-purple">Yesterday’s Intended Orders <span> {{realTimeTradeTotal.yestodayIntentionOrder}}</span></h4>
+          <h4 class="panel-title color-purple">Yesterday’s Intended Orders <span> {{realTimeTradeTotal.yestodayIntentionOrder | formatNumber}}</span></h4>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
           <div class="panel-content panel-chart-wrap" id="lineX2"></div>
         </div>

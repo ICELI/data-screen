@@ -19,7 +19,7 @@
             <div class="doughnut-legend-wrap">
               <ul class="doughnut-legend-list">
                 <li class="pointer" v-for="item in finance.slice(0, -1)"><p>{{item.name}}</p>
-                  <p class="text-primary">{{item.value}}</p></li>
+                  <p class="text-primary">{{item.value | formatNumber}}</p></li>
               </ul>
             </div>
           </div>

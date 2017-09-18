@@ -342,7 +342,7 @@
           name: '融资金额占比',
           className: 'title'
         },
-        size: 115,
+        size: 112,
         colors: ['#bf64ff', '#ff6a66', '#ff8b66', '#ffaf66', '#ffd366', '#ffff67', '#7eff66', '#66ffe3', '#66deff', '#5f5ceb', '#8766ff'],
         innerSize: 35,
         split: 20,
@@ -369,7 +369,7 @@
 <style lang="scss" rel="stylesheet/scss">
   #ring li {
     top: 40px;
-    width: 306px !important;
+    width: 322px !important;
     margin-left: 20px;
     text-align: left;
     &:nth-child(1n+3) {

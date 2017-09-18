@@ -86,3 +86,23 @@ export function imgCdn(val) {
 export function rmStr(val, str) {
   return val.replace(str, '');
 }
+
+// 数字千分号
+export function formatNumber(num) {
+  if(!num) {
+    return false;
+  }
+  num = parseFloat(num);
+  num += '';
+  var x, x1, x2, rgx;
+  x = num.split('.');
+  x1 = x[0];
+  x2 = x.length > 1 ? '.' + x[1] : '';
+  rgx = /(\d+)(\d{3})/;
+
+  while (rgx.test(x1)) {
+    x1 = x1.replace(rgx, '$1,$2');
+  }
+
+  return x1 + x2
+}

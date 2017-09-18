@@ -86,7 +86,7 @@ export default function Rings(para, doc){
     this.number = new CountUp(this.id, 0, (this.display), decimals, 3, {
       useEasing : true,
       useGrouping : true,
-      separator : '',
+      separator : ',',
       decimal : '.',
       suffix: this.unit
     });

@@ -283,7 +283,7 @@ export function bindNumber(data, config, fn){
       var number = new CountUp('temp_number', 0, (data[attr] || 0), decimals, config.duration, {
         useEasing : true,
         useGrouping : true,
-        separator : config.separator || '',
+        separator : config.separator || ',',
         decimal : '.',
         //suffix: config.unit ? data[config.unit] : ''
       });
