@@ -461,7 +461,7 @@
             {
               name: '访问来源',
               type: 'pie',
-              radius: ['35%', '50%'],
+              radius: ['38%', '50%'],
               avoidLabelOverlap: false,
               label: {
                 normal: {

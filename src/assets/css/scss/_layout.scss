@@ -267,4 +267,11 @@ li.pointer:nth-child(5) {
   .page-title {
     font-size: 38px;
   }
+  .panel-ring-wrap {
+    font-size: 18px;
+    .lab {
+      min-width: 98px;
+      margin-right: 0;
+    }
+  }
 }

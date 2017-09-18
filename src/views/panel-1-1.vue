@@ -188,15 +188,15 @@
             <h3 class="panel-title">JUMORE Price Index</h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-9-24">Commodity</div>
-                <div class="pure-u-9-24">Index</div>
+                <div class="pure-u-11-24">Commodity</div>
+                <div class="pure-u-7-24">Index</div>
                 <div class="pure-u-6-24">Change</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
                   <div class="pure-g" v-for="item in commodityPriceIndex">
-                    <div class="pure-u-9-24 pr20">{{item.products}}</div>
-                    <div class="pure-u-9-24 text-primary">{{item.index}}</div>
+                    <div class="pure-u-11-24 pr20">{{item.products}}</div>
+                    <div class="pure-u-7-24 text-primary">{{item.index}}</div>
                     <div class="pure-u-6-24 text-danger" v-if="item.change.indexOf('-') == -1">+{{item.change}}</div>
                     <div class="pure-u-6-24 text-success" v-else="">{{item.change}}</div>
                   </div>
