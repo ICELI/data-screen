@@ -583,7 +583,7 @@
     height: 240px;
   }
   .doughnut-legend-wrap {
-    padding-top: 38px;
+    padding-top: 48px;
   }
 }
 

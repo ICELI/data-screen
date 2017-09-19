@@ -129,17 +129,18 @@
         goodsNum && goodsNum.forEach(ele => {
           markArrs.push({
             xAxis: ele.industry,
-            yAxis: ele.num
+            yAxis: ele.num/100
           })
         });
 
         var dataAxis = this.goods.map(v => v.industry);
         var data = this.goods.map(v => v.num);
+        var dataM = this.goods.map(v => v.num/100);
         var dataShadow = [];
         var yMax = Math.max.apply(null, data);
         var len = Math.pow(10, ('' + yMax).length - 1);
         var intY =  ~~(yMax / len);
-        yMax = (intY % 2 === 0 ? intY + 2 : intY + 1) * len;
+        yMax = (intY % 2 === 0 ? intY + 2 : intY + 1) * len/100;
 
         for (var i = 0; i < data.length; i++) {
           dataShadow.push(yMax);
@@ -177,6 +178,7 @@
             z: 10
           },
           yAxis: {
+            name: 'Million',
             max: yMax,
             splitNumber: 2,
             axisLine: {
@@ -189,7 +191,7 @@
               show: false
             },
             axisLabel: {
-              formatter: '{value}',
+              formatter: '{value} M',
               textStyle: {
 //                align: 'right',
                 fontSize: 20
@@ -235,7 +237,7 @@
                 }
               },
               animationEasing: 'cubicOut',
-              data: data
+              data: dataM
             }
           ]
         };
