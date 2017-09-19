@@ -50,6 +50,7 @@ ul, li, p {
 }
 
 .title-number {
+  margin-left: 10px;
   font-size: $font-size-h1;
   color: $brand-primary;
   // fix 数字单位左右跳动

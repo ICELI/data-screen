@@ -36,7 +36,7 @@
     <div class="pure-g situation-middle">
       <div class="pure-u-1-1">
         <div class="panel-wrap" style="position:relative;">
-          <h3 class="panel-title">Total Amount of Goods <span class="title-number"><a num="goodsNum"></a></span></h3>
+          <h3 class="panel-title">Total Amount of Goods (million) <span class="title-number"><a num="goodsNum"></a></span></h3>
           <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
           <div class="panel-content panel-chart-wrap" id="bar-gradient"></div>
         </div>
@@ -124,7 +124,7 @@
         let goodsNum = res.data.data
         this.goods = goodsNum.slice(0, -1);
         let totalNumber = goodsNum.slice(-1)[0].num.replace('万','')
-        this.number.goodsNum = +totalNumber;
+        this.number.goodsNum = +totalNumber/100;
         var markArrs = [];
         goodsNum && goodsNum.forEach(ele => {
           markArrs.push({
@@ -150,8 +150,8 @@
         let colors = ['#0bff49', '#ff3274', '#c6ecff'];
         let option = {
           grid: {
-            top: 50,
-            right: 28,
+            top: 40,
+            right: 18,
             bottom: 72,
           },
           xAxis: {
@@ -172,13 +172,12 @@
             axisLabel: {
               margin: 16,
               textStyle: {
-                fontSize: 18 // todo: 20
+                fontSize: 17 // todo: 20
               }
             },
             z: 10
           },
           yAxis: {
-            name: 'Million',
             max: yMax,
             splitNumber: 2,
             axisLine: {
@@ -191,7 +190,9 @@
               show: false
             },
             axisLabel: {
-              formatter: '{value} M',
+              formatter: function (value) {
+                return value === 0 ? 0 : value + ' M'
+              },
               textStyle: {
 //                align: 'right',
                 fontSize: 20
