@@ -352,7 +352,7 @@
       display: inline-block;
       width: 198px;
       height: 112px;
-      padding: 12px;
+      padding: 12px 8px 12px 12px;
       border: 2px solid #2788e8;
       border-radius: 16px;
       h3 {
