@@ -257,8 +257,9 @@
             window.setTimeout(function(){
               option.series[0].markPoint = {
                 data: [markArrs[i]],
-                symbolSize: [55, 60],
-                symbolOffset: [0, -5],
+                symbol: 'path://M3165.852,715.372 C3165.852,727.619 3153.191,740.816 3147.804,745.877 C3146.466,747.129 3144.386,747.129 3143.048,745.877 C3137.663,740.816 3125,727.62 3125,715.372 C3125,699.814 3134.147,694 3145.427,694 C3156.708,694 3165.852,699.812 3165.852,715.372',
+                symbolSize: [40, 52],
+                symbolOffset: [0, -30],
                 itemStyle: {
                   normal: {
                     color: '#FF3273',
@@ -272,9 +273,9 @@
                   normal:{
                     textStyle: {
                       color: '#fff',
-                      fontSize: 14
+                      fontSize: 16
                     },
-                    offset: [0, -2]
+                    offset: [0, -8]
                   }
                 },
                 animationEasing: 'cubicOut',
