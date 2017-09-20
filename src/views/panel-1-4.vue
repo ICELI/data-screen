@@ -150,7 +150,7 @@
         let colors = ['#0bff49', '#ff3274', '#c6ecff'];
         let option = {
           grid: {
-            top: 40,
+            top: 50,
             right: 18,
             bottom: 72,
           },
@@ -170,9 +170,13 @@
               show: false
             },
             axisLabel: {
+              showMinLabel: true,
+              showMaxLabel: true,
               margin: 16,
               textStyle: {
-                fontSize: 17 // todo: 20
+                fontFamily: 'Arial',
+                fontWeight: 'normal',
+                fontSize: 18 // todo: 20
               }
             },
             z: 10
@@ -214,7 +218,7 @@
                 normal: {color: 'rgba(198,236,255,0.16)'}
               },
               barGap: '-100%',
-              barCategoryGap: '40%',
+              barCategoryGap: '61%',
               data: dataShadow,
               animation: false,
               markPoint:{},
