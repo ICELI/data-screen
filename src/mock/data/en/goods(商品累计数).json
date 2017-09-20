@@ -1,47 +1,49 @@
 {
+  "statusCode": 200,
+  "message": "操作成功",
   "data": [
     {
-      "industry": "食品",
+      "industry": "Food",
       "num": "42"
     },
     {
-      "industry": "农产品",
+      "industry": "Agro",
       "num": "34"
     },
     {
-      "industry": "工业品",
+      "industry": "Ind.",
       "num": "184"
     },
     {
-      "industry": "矿产",
+      "industry": "Mineral",
       "num": "15"
     },
     {
-      "industry": "机械",
+      "industry": "Mach.",
       "num": "67"
     },
     {
-      "industry": "有色",
+      "industry": "Non-fer",
       "num": "32"
     },
     {
-      "industry": "钢铁",
+      "industry": "Steel",
       "num": "23"
     },
     {
-      "industry": "煤炭",
+      "industry": "Coal",
       "num": "14"
     },
     {
-      "industry": "石油",
+      "industry": "Petro",
       "num": "10"
     },
     {
-      "industry": "消费品",
+      "industry": "CG",
       "num": "135"
     },
     {
-      "industry": "化工",
+      "industry": "Chem",
       "num": "45"
     },
     {

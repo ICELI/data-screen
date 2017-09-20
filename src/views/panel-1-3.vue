@@ -79,7 +79,7 @@
             <div class="panel-list-content">
               <div class="panel-list-scroll">
                 <div class="clearfix" v-for="item in todayIncreaseBusi">
-                  <span class="panel-list-label text-warning">{{item.type}}</span>{{item.business}}
+                  <span class="panel-list-label text-warning mw40">{{item.type}}</span>{{item.business}}
                 </div>
               </div>
             </div>
@@ -202,5 +202,7 @@
 </script>
 
 <style lang="scss" rel="stylesheet/scss">
-
+.mw40 {
+  display: inline-block;min-width: 40px;
+}
 </style>

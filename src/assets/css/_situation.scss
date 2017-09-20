@@ -112,8 +112,8 @@
 
 .order-increase {
   position: absolute;
-  width: 322px;
-  right: 28px;
+  width: 342px;
+  right: 22px;
   bottom: 72px;
   font-size: 22px;
   text-align: left;
@@ -153,7 +153,7 @@
   span {
     display: inline-block;
   }
-  .text-primary {
-    font-size: 30px;
+  .text-primary, .text-primary * {
+    font-size: 30px !important;
   }
 }

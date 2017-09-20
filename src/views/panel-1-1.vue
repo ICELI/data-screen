@@ -54,16 +54,16 @@
             <h3 class="panel-title">Consultations in {{currentYear}} <span class="title-number"><a num="consultationServiceTotal"></a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-9-24">Type</div>
+                <div class="pure-u-12-24">Type</div>
                 <div class="pure-u-6-24">Amt.</div>
-                <div class="pure-u-9-24">Increment</div>
+                <div class="pure-u-6-24">Increment</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
                   <div class="pure-g" v-for="item in consultationService">
-                    <div class="pure-u-9-24 pr20">{{item.type}}</div>
+                    <div class="pure-u-12-24 pr20">{{item.type}}</div>
                     <div class="pure-u-6-24 text-primary">{{item.total | formatNumber}}</div>
-                    <div class="pure-u-9-24 text-danger">+{{item.increase | formatNumber}}</div>
+                    <div class="pure-u-6-24 text-danger">+{{item.increase | formatNumber}}</div>
                   </div>
 
                 </div>
@@ -116,15 +116,15 @@
             </h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-7-24">Industry</div>
-                <div class="pure-u-8-24">Category</div>
+                <div class="pure-u-9-24">Industry</div>
+                <div class="pure-u-6-24">Category</div>
                 <div class="pure-u-9-24">Cert. Companies</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
                   <div class="pure-g" v-for="item in certification.coverItemNum.slice(0, -1)">
-                    <div class="pure-u-7-24 pr20">{{item.industry}}</div>
-                    <div class="pure-u-8-24 text-primary">{{item.itemNum}}</div>
+                    <div class="pure-u-9-24 pr20">{{item.industry}}</div>
+                    <div class="pure-u-6-24 text-primary">{{item.itemNum}}</div>
                     <div class="pure-u-9-24 text-primary">{{item.companyNum | formatNumber}}</div>
                   </div>
                 </div>
@@ -138,16 +138,16 @@
               num="certificationCoverCertifySysTotal"></a></span></h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-9-24">Category</div>
-                <div class="pure-u-6-24">Amt.</div>
-                <div class="pure-u-9-24">Increment</div>
+                <div class="pure-u-14-24">Category</div>
+                <div class="pure-u-4-24">Amt.</div>
+                <div class="pure-u-6-24">Increment</div>
               </div>
               <div class="panel-list-content">
                 <div :class="certification.certifySys.length < 7 ? 'panel-list-line5' : 'panel-list-scroll'">
                   <div class="pure-g" v-for="item in certification.certifySys.slice(0, -1)">
-                    <div class="pure-u-9-24 pr20">{{item.type}}</div>
-                    <div class="pure-u-6-24 text-primary">{{item.total | formatNumber}}</div>
-                    <div class="pure-u-9-24 text-danger">+{{item.increase}}</div>
+                    <div class="pure-u-14-24 pr20">{{item.type}}</div>
+                    <div class="pure-u-4-24 text-primary">{{item.total | formatNumber}}</div>
+                    <div class="pure-u-6-24 text-danger">+{{item.increase}}</div>
                   </div>
 
                 </div>
@@ -216,16 +216,16 @@
             <h3 class="panel-title">Problem Classification</h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-9-24">Category</div>
+                <div class="pure-u-12-24">Category</div>
                 <div class="pure-u-6-24">Amt.</div>
-                <div class="pure-u-9-24">Increment</div>
+                <div class="pure-u-6-24">Increment</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
                   <div class="pure-g" v-for="item in technology.demandNum.slice(0, -1)">
-                    <div class="pure-u-9-24 pr20">{{item.type}}</div>
+                    <div class="pure-u-12-24 pr20">{{item.type}}</div>
                     <div class="pure-u-6-24 text-primary">{{item.total | formatNumber}}</div>
-                    <div class="pure-u-9-24 text-danger">+{{item.increase}}</div>
+                    <div class="pure-u-6-24 text-danger">+{{item.increase}}</div>
                   </div>
 
                 </div>
@@ -239,16 +239,16 @@
             </h3>
             <div class="panel-content panel-list-wrap">
               <div class="pure-g panel-list-header">
-                <div class="pure-u-9-24">Category</div>
+                <div class="pure-u-12-24">Category</div>
                 <div class="pure-u-6-24">Amt.</div>
-                <div class="pure-u-9-24">Increment</div>
+                <div class="pure-u-6-24">Increment</div>
               </div>
               <div class="panel-list-content">
                 <div class="panel-list-scroll">
                   <div class="pure-g" v-for="item in technology.solutionNum.slice(0, -1)">
-                    <div class="pure-u-9-24 pr20">{{item.type}}</div>
+                    <div class="pure-u-12-24 pr20">{{item.type}}</div>
                     <div class="pure-u-6-24 text-primary">{{item.total | formatNumber}}</div>
-                    <div class="pure-u-9-24 text-danger">+{{item.increase}}</div>
+                    <div class="pure-u-6-24 text-danger">+{{item.increase}}</div>
                   </div>
 
                 </div>
@@ -584,6 +584,17 @@
   }
   .doughnut-legend-wrap {
     padding-top: 48px;
+  }
+
+  .panel-ring-wrap {
+    .lab {
+      min-width: 98px;
+      margin-right: 0;
+      font-size: 18px;
+    }
+    .val {
+      font-size: 22px;
+    }
   }
 }
 
