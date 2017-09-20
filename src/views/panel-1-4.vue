@@ -228,7 +228,7 @@
             },
             {
               type: 'bar',
-              barMinHeight: 20,
+//              barMinHeight: 20,
               itemStyle: {
                 normal: {
                   color: new echarts.graphic.LinearGradient(
