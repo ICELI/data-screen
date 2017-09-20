@@ -4,31 +4,15 @@
  * @type {{SERVER_ADDRESS: string, CENTER_ADDRESS: string, USERCENTER_ADDRESS: string, CDN_ADDRESS: string}}
  */
 var address = {
+  // 静态资源CDN服务器
+  CDN_ADDRESS: '',
+
   // api服务器
   API_ADDRESS: 'http://webapi.jumorebigscreen.test',
-  // API_ADDRESS: "http://192.168.23.224",
 
   // 大数据国际api服务器
   API_BIGDATA_EN_ADDRESS: 'http://www.jumoredata.com',
 
-  // 大数据国内api服务器
-  API_BIGDATA_ADDRESS: 'http://www.jumoreshuju.com',
-
-
-  // 中台服务器
-  CENTER_ADDRESS: 'http://192.168.26.119:8082',
-
-  // 单点认证中心
-  USERCENTER_ADDRESS: 'http://uc3.dev.com',
-
-  // 静态资源CDN服务器
-  CDN_ADDRESS: '',
-
-  // 图片服务器
-  IMG_ADDRESS: 'http://image.jm.com',
-
-  // 图片上传服务器
-  UPLOAD_ADDRESS: 'http://image5.jm.com'
 };
 
 module.exports = {
@@ -37,7 +21,5 @@ module.exports = {
   api_proxy: {
     '/webapi/**': address.API_ADDRESS,
     '/dataserviceEN/**': address.API_BIGDATA_EN_ADDRESS,
-    '/dataservice/**': address.API_BIGDATA_ADDRESS,
-    '/sso': address.API_ADDRESS
   },
 };
